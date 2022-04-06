@@ -1,8 +1,8 @@
 import React from "react";
-import ReactECharts, { ReactEChartsProps } from "./composables/Chart_Options";
+import ReactECharts, { ChartsProps } from "./composables/ECharts";
 import { ChartContainer } from "./composables/Charts.style";
 
-const Charts = ({ option, style }: ReactEChartsProps) => {
+const Charts = ({ option, style }: ChartsProps) => {
   return (
     <ChartContainer>    
       <ReactECharts
