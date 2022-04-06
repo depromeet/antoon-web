@@ -27,51 +27,11 @@ export interface ChartTitle{
   subtext: string;
 }
 
-
 interface Props extends ChartVisualiserData {}
-
 
 //데이터 값에 따라 처리(-ing)
 const getChartOption = (data: any) =>{
   return DefaultOption && setOption; 
-}
-
-const setOption: ChartsProps["option"] = {
-  title:{
-    text: "name",
-    subtext: "subTitle",
-  },
-  xAxis: {
-      type: 'category',
-      boundaryGap: false,
-
-      data: ['04.02', '04.03', '04.04', '04.05', '04.06', '04.07', '04.08', '04.09', '04.10']
-  },
-  yAxis: {
-    type: 'value'
-  },
-  series: [
-    {
-      name: "Toon-Rate",
-      data: [3.1, 2.6, 4.8, 4.9, 1.7, 8.0, 9.7, 5.7, 9.7],
-      type: 'line',
-      smooth: true,
-      stack: 'x',
-      areaStyle: {},
-      markLine: {
-        silent: false,
-        precision: 1,
-        lineStyle: {
-          color: "#eee",
-          type: "dashed",
-        },
-        data: [{
-          type: "average",
-          name: "Avg"
-        }]
-      }
-    },
-  ],
 }
 
 const DefaultOption: ChartsProps["option"] = {
@@ -125,6 +85,7 @@ const DefaultOption: ChartsProps["option"] = {
     },
   },
   legend:{
+    data: ["Toon-Rate"],
     icon: 'rect',
     right: "1%",
     top: "center",
@@ -133,8 +94,6 @@ const DefaultOption: ChartsProps["option"] = {
     itemStyle: {
       opacity: 0.8,
     },
-    //mock params
-    data: ["Toon-Rate"]
   },
   grid: {
     left: "10%",
@@ -142,6 +101,44 @@ const DefaultOption: ChartsProps["option"] = {
     top: "10%",
     bottom: "10%",
   },
-}
+};
+
+const setOption: ChartsProps["option"] = {
+  title:{
+    text: "name",
+    subtext: "subTitle",
+  },
+  xAxis: {
+      type: 'category',
+      boundaryGap: false,
+
+      data: ['04.02', '04.03', '04.04', '04.05', '04.06', '04.07', '04.08', '04.09', '04.10']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      name: "Toon-Rate",
+      data: [3.1, 2.6, 4.8, 4.9, 1.7, 8.0, 9.7, 5.7, 9.7],
+      type: 'line',
+      smooth: true,
+      stack: 'x',
+      areaStyle: {},
+      markLine: {
+        silent: false,
+        precision: 1,
+        lineStyle: {
+          color: "#eee",
+          type: "dashed",
+        },
+        data: [{
+          type: "average",
+          name: "Avg"
+        }]
+      }
+    },
+  ], 
+} ;
 
 export default getChartOption;

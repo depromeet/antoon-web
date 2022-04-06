@@ -4,7 +4,9 @@ import getChartOption from '@components/charts/composables/Charts_Options';
 
 const ChartTest: React.FC = () => {
     return (
-      <Charts option={getChartOption("")}/>
+      <div>
+        <Charts option={getChartOption("")}/>
+      </div>
     );
 };
 export default ChartTest;
