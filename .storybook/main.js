@@ -1,12 +1,15 @@
 module.exports = {
     stories: [
-        '../stories/**/*.stories.mdx',
-        '../stories/**/*.stories.@(js|jsx|ts|tsx)',
+        '../components/**/*.stories.@(ts|tsx)',
+        '../pages/**/*.stories.@(ts|tsx)',
     ],
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
     ],
+    features: {
+        storyStoreV7: true,
+    },
     framework: '@storybook/react',
 };
