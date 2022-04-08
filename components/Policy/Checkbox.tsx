@@ -1,5 +1,3 @@
-import { Children } from 'react';
-
 interface Props {
     id: string;
     link: string;
