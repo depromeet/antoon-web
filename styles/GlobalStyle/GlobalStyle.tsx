@@ -23,4 +23,8 @@ const global = css`
         border: none;
         background-color: transparent;
     }
+
+    button {
+        cursor: pointer;
+    }
 `
