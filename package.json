@@ -9,11 +9,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "run-p lint:*",
-    "lint:eslint": "eslint --max-warnings=0 './src/**/*.{ts,tsx}'",
-    "lint:prettier": "prettier --check './src/**/*.{ts,tsx}'",
+    "lint:eslint": "eslint --max-warnings=0 './**/*.{ts,tsx}'",
+    "lint:prettier": "prettier --check './**/*.{ts,tsx}'",
     "lint-fix": "run-p lint-fix:*",
-    "lint-fix:eslint": "eslint --fix --max-warnings=0 './src/**/*.{.ts,tsx}'",
-    "lint-fix:prettier": "prettier --write './src/**/*.{.ts,tsx}'"
+    "lint-fix:eslint": "eslint --fix --max-warnings=0 './**/*.{.ts,tsx}'",
+    "lint-fix:prettier": "prettier --write './**/*.{.ts,tsx}'"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
