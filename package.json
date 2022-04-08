@@ -6,9 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint --max-warnings=0 './src/**/*.{ts,tsx}'",
+    "lint:prettier": "prettier --check './src/**/*.{ts,tsx}'",
+    "lint-fix": "run-p lint-fix:*",
+    "lint-fix:eslint": "eslint --fix --max-warnings=0 './src/**/*.{.ts,tsx}'",
+    "lint-fix:prettier": "prettier --write './src/**/*.{.ts,tsx}'"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -35,6 +40,8 @@
     "eslint-config-next": "12.1.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-storybook": "^0.5.7",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
     "prettier": "2.6.1",
     "typescript": "4.6.3"
   }
