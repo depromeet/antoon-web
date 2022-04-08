@@ -4,7 +4,7 @@ interface Props {
     children: React.ReactNode;
 }
 
-const Checkbox = (props: Props) => {
+export default function Checkbox(props: Props) {
     const { id, link, children } = props;
 
     return (
@@ -16,6 +16,4 @@ const Checkbox = (props: Props) => {
             </a>
         </>
     );
-};
-
-export default Checkbox;
+}
