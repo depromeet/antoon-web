@@ -31,13 +31,10 @@
     "react-dom": "18.0.0",
     "react-query": "^3.34.19",
     "recoil": "^0.7.0",
-<<<<<<< HEAD
     "stylelint": "^14.6.1",
     "stylelint-config-concentric-order": "^5.0.0",
     "tsconfig-paths-webpack-plugin": "^3.5.2"
-=======
     "typescript-eslint": "^0.0.1-alpha.0"
->>>>>>> 9be8acc (:fire:[feature #5] Setting Lint)
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
@@ -64,6 +61,7 @@
     "eslint-plugin-react-hooks": "^4.4.0",
     "eslint-plugin-storybook": "^0.5.7",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
     "prettier": "2.6.1",
@@ -73,6 +71,11 @@
 =======
     "prettier": "^2.6.2",
 >>>>>>> 9be8acc (:fire:[feature #5] Setting Lint)
+=======
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "2.6.1",
+>>>>>>> 2a48c6f (:fire:[feature] resolve conflict)
     "typescript": "4.6.3"
   }
 }
