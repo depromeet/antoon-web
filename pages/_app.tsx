@@ -23,6 +23,11 @@ function MyApp({
     return (
         <>
             <Head>
+                <meta charSet="utf-8" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
                 <title>Depromeet 11th 1team</title>
             </Head>
             <SessionProvider session={session}>
@@ -56,4 +61,4 @@ function Auth({ children }: { children: React.ReactNode & JSX.Element }) {
     return children
 }
 
-export default MyApp
+export default MyApp;
