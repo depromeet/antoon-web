@@ -9,6 +9,12 @@
     "next"
   ],
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "settings": {
     "react": {
