@@ -31,6 +31,7 @@
     "react-dom": "18.0.0",
     "react-query": "^3.34.19",
     "recoil": "^0.7.0",
+    "typescript-eslint": "^0.0.1-alpha.0",
     "stylelint": "^14.6.1",
     "stylelint-config-concentric-order": "^5.0.0",
     "tsconfig-paths-webpack-plugin": "^3.5.2"
