@@ -1,7 +1,7 @@
-import Kakao from './Kakao'
+import Kakao from './Kakao';
 
 function Social() {
-    return <Kakao />
+  return <Kakao />;
 }
 
-export default Social
+export default Social;

@@ -1,7 +1,7 @@
-import Social from '../components/signin/Social'
+import Social from '../components/signin/Social';
 
 function SignIn() {
-    return <Social />
+  return <Social />;
 }
 
-export default SignIn
+export default SignIn;

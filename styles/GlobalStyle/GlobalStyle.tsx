@@ -1,30 +1,30 @@
-import { Global, css } from '@emotion/react'
-import emotionReset from 'emotion-reset'
+import { Global, css } from '@emotion/react';
+import emotionReset from 'emotion-reset';
 
 export default function GlobalStyle() {
-    return <Global styles={global} />
+  return <Global styles={global} />;
 }
 
 const global = css`
-    ${emotionReset}
+  ${emotionReset}
 
-    * {
-        box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
-    input,
-    button {
-        outline: none;
-        border: none;
-        background-color: transparent;
-    }
+  input,
+  button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
 
-    button {
-        cursor: pointer;
-    }
-`
+  button {
+    cursor: pointer;
+  }
+`;
