@@ -1,19 +1,22 @@
-import React, { useRef, useEffect } from "react";
-import { init, getInstanceByDom, registerTheme, use, ComposeOption, BarSeriesOption, TitleComponentOption } from "echarts";
-import type { CSSProperties } from "react";
-import type { ECharts, SetOptionOpts } from "echarts";
-import type {LineSeriesOption } from "echarts/charts";
+import React, { useRef, useEffect } from 'react';
+import {
+  init,
+  getInstanceByDom,
+  registerTheme,
+  use,
+  ComposeOption,
+  BarSeriesOption,
+  TitleComponentOption,
+} from 'echarts';
+import type { CSSProperties } from 'react';
+import type { ECharts, SetOptionOpts } from 'echarts';
+import type { LineSeriesOption } from 'echarts/charts';
 import chalkTheme from './Chart_Style.json';
 
-export type ChartThemeType = 
-  | "light"
-  | "dark"
-  | "chalk"
+export type ChartThemeType = 'light' | 'dark' | 'chalk';
 
 export type EChartsOption = ComposeOption<
-  | BarSeriesOption
-  | LineSeriesOption
-  | TitleComponentOption
+  BarSeriesOption | LineSeriesOption | TitleComponentOption
 >;
 
 export interface ChartsProps {
@@ -32,7 +35,7 @@ const ReactECharts: React.FC<ChartsProps> = ({
   loading,
 }) => {
   const chartRef = useRef<HTMLDivElement>(null);
- 
+
   useEffect(() => {
     let chart: ECharts | undefined;
 
@@ -44,11 +47,11 @@ const ReactECharts: React.FC<ChartsProps> = ({
     function resizeChart() {
       chart?.resize();
     }
-    window.addEventListener("resize", resizeChart);
+    window.addEventListener('resize', resizeChart);
 
     return () => {
       chart?.dispose();
-      window.removeEventListener("resize", resizeChart);
+      window.removeEventListener('resize', resizeChart);
     };
   }, [theme]);
 
@@ -67,13 +70,12 @@ const ReactECharts: React.FC<ChartsProps> = ({
   }, [loading, theme]);
 
   return (
-    <div 
-      className="ec-panel" 
-      ref={chartRef} 
-      style={{ width: "100%",height: "100%", ...style }} 
+    <div
+      className="ec-panel"
+      ref={chartRef}
+      style={{ width: '100%', height: '100%', ...style }}
     />
   );
-}
+};
 
 export default ReactECharts;
-
