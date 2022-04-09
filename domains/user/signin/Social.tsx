@@ -1,4 +1,4 @@
-import Kakao from './Kakao';
+import Kakao from './kakao/Kakao';
 
 function Social() {
   return <Kakao />;

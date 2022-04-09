@@ -1,4 +1,4 @@
-import Checkbox from '../../../components/policy/Checkbox';
+import Checkbox from 'domains/user/policy/checkbox/Checkbox';
 
 export const mock = [
   {

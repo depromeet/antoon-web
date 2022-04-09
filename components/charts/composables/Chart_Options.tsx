@@ -3,7 +3,6 @@ import {
   init,
   getInstanceByDom,
   registerTheme,
-  use,
   ComposeOption,
   BarSeriesOption,
   TitleComponentOption,

@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { mock } from '../../pages/user/oauth/policy';
 import Checkbox from './Checkbox';
+import { mock } from '@pages/user/signup/policy';
 
 export default {
   component: Checkbox,
