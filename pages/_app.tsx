@@ -2,13 +2,24 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
 import { SessionProvider, useSession } from 'next-auth/react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { RecoilRoot } from 'recoil'
 import { ThemeProvider } from '@emotion/react'
 
 import themes from '../styles/Theme/themes'
 import GlobalStyle from '../styles/GlobalStyle/GlobalStyle'
 
-function MyApp({ session, Component, pageProps }: AppProps) {
+interface AppPropsWithAuth extends AppProps {
+    Component: AppProps['Component'] & { auth: boolean }
+}
+
+const queryClient = new QueryClient()
+
+function MyApp({
+    Component,
+    pageProps: { session, ...pageProps },
+}: AppPropsWithAuth) {
     return (
         <>
             <Head>
@@ -20,24 +31,27 @@ function MyApp({ session, Component, pageProps }: AppProps) {
                 <title>Depromeet 11th 1team</title>
             </Head>
             <SessionProvider session={session}>
-                <RecoilRoot>
-                    <ThemeProvider theme={themes}>
-                        <GlobalStyle />
-                        {Component.auth ? (
-                            <Auth>
+                <QueryClientProvider client={queryClient}>
+                    <RecoilRoot>
+                        <ThemeProvider theme={themes}>
+                            <GlobalStyle />
+                            {Component.auth ? (
+                                <Auth>
+                                    <Component {...pageProps} />
+                                </Auth>
+                            ) : (
                                 <Component {...pageProps} />
-                            </Auth>
-                        ) : (
-                            <Component {...pageProps} />
-                        )}
-                    </ThemeProvider>
-                </RecoilRoot>
+                            )}
+                        </ThemeProvider>
+                    </RecoilRoot>
+                    <ReactQueryDevtools initialIsOpen={false} />
+                </QueryClientProvider>
             </SessionProvider>
         </>
     )
 }
 
-function Auth({ children }) {
+function Auth({ children }: { children: React.ReactNode & JSX.Element }) {
     const { status } = useSession({ required: true })
 
     if (status === 'loading') {
