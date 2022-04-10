@@ -2,7 +2,7 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { Global, css } from '@emotion/react';
 import { ThemeProvider } from 'emotion-theming';
 
-import { GlobalStyle } from '@styles/globalstyles/GlobalStyle';
+import GlobalStyle from '@styles/globalstyles/GlobalStyle';
 import themes from '@styles/themes/themes';
 
 export const parameters = {
