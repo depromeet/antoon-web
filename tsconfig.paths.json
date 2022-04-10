@@ -4,19 +4,15 @@
       "baseUrl": ".",
       "paths": {
         "@apis/*": ["apis/*"],
+        "@components/*": ["components/*"],
+        "@constants/*": ["constants/*"],
+        "@domains/*": ["domains/*"],
         "@hooks/*": ["hooks/*"],
         "@pages/*": ["pages/*"],
-        "@utils/*": ["utils/*"],
-        "@_types/*": ["types/*"],
-        "@styles/*": ["styles/*"],
-        "@features/*": ["features/*"],
-        "@contexts/*": ["contexts/*"],
-        "@constants/*": ["constants/*"],
-        "@constants": ["constants/index"],
-        "@components/*": ["components/*"],
-        "@domains/*": ["domains/*"],
+        "@public/*": ["public/*"],
         "@states/*": ["states/*"],
+        "@styles/*": ["styles/*"],
+        "@_types/*": ["types/*"],
       }
     }
-  }
-  
+}

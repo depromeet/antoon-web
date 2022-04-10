@@ -7,19 +7,19 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from '@emotion/react';
 
-import themes from '../styles/Theme/themes';
-import GlobalStyle from '../styles/GlobalStyle/GlobalStyle';
+import themes from '../styles/themes/themes';
+import GlobalStyle from '../styles/globalstyles/GlobalStyle';
 
+// Isssue by react version (18.0.0)
+// https://github.com/vercel/next.js/issues/36019
 interface AppPropsWithAuth extends AppProps {
   Component: AppProps['Component'] & { auth: boolean };
 }
 
 const queryClient = new QueryClient();
 
-function MyApp({
-  Component,
-  pageProps: { session, ...pageProps },
-}: AppPropsWithAuth) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
   return (
     <>
       <Head>
@@ -57,4 +57,5 @@ function Auth({ children }: { children: React.ReactNode & JSX.Element }) {
 
   return children;
 }
+
 export default MyApp;

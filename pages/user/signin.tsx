@@ -1,4 +1,4 @@
-import Social from 'domains/user/signin/Social';
+import Social from '@domains/user/signin/Signin';
 
 function SignIn() {
   return <Social />;
