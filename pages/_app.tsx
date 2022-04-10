@@ -7,8 +7,9 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from '@emotion/react';
 
-import themes from '../styles/themes/themes';
-import GlobalStyle from '../styles/globalstyles/GlobalStyle';
+import themes from '@styles/themes/themes';
+import GlobalStyle from '@styles/globalstyles/GlobalStyle';
+import Layout from '@components/layout/Layout';
 
 // Isssue by react version (18.0.0)
 // https://github.com/vercel/next.js/issues/36019
@@ -34,10 +35,14 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
               <GlobalStyle />
               {Component.auth ? (
                 <Auth>
-                  <Component {...pageProps} />
+                  <Layout>
+                    <Component {...pageProps} />
+                  </Layout>
                 </Auth>
               ) : (
-                <Component {...pageProps} />
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
               )}
             </ThemeProvider>
           </RecoilRoot>
