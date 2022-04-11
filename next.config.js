@@ -5,6 +5,7 @@ const nextConfig = {
     domains: ['k.kakaocdn.net', 'blog.kakaocdn.net'],
   },
   reactStrictMode: true,
+  swcMinify: true,
 };
 
 module.exports = nextConfig;
