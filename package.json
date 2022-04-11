@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "deploy": "sls",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "run-p lint:*",
