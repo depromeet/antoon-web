@@ -11,9 +11,11 @@
     "build-storybook": "build-storybook",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint './**/*.{js,ts,tsx}'",
+    "lint:stylelint": "stylelint './**/*.tsx'",
     "lint:prettier": "prettier --check './**/*.{js,ts,tsx}'",
     "lint-fix": "run-p lint-fix:*",
     "lint-fix:eslint": "eslint --fix './**/*.{js,ts,tsx}'",
+    "lint-fix:stylelint": "stylelint --fix './**/*.tsx'",
     "lint-fix:prettier": "prettier --write './**/*.{js,ts,tsx}'"
   },
   "dependencies": {
