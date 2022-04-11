@@ -11,7 +11,6 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@storybook/addon-knobs/register',
     '@storybook/addon-links',
   ],
   features: {
