@@ -131,17 +131,17 @@ jobs:
         - name: Deploy to dev
           if: github.ref != 'refs/heads/main'
           run: |
-            STAGE=dev yarn deploy
+            STAGE=dev DISTRIBTUION_ID=${{ secrets.DISTRIBTUION_ID_DEV }} yarn deploy
 
         - name: Deploy to stg
           if: github.ref == 'refs/heads/main'
           run: |
-            STAGE=stg yarn deploy
+            STAGE=stg DISTRIBTUION_ID=${{ secrets.DISTRIBTUION_ID_STG }} yarn deploy
 
         - name: Deploy to prd 
           if: github.ref_type == 'tag'
           run: |
-            STAGE=prd yarn deploy
+            STAGE=prd DISTRIBTUION_ID=${{ secrets.DISTRIBTUION_ID_PRD }} yarn deploy
 
     job_chromatic:
       name: Deploy to chromatic
@@ -161,6 +161,5 @@ jobs:
               key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
 
         - name: Deploy to chromatic
-          if: github.ref == 'refs/heads/main'
           run: |
             CHROMATIC_PROJECT_TOKEN=$project_token yarn chromatic

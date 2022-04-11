@@ -9,3 +9,5 @@ application:
       defaultLambda: "${app}-lambda-${stage}"
       apiLambda: "${app}-api-lambda-${stage}"
       imageLambda: "${app}-image-lambda-${stage}"
+    cloudfront:
+      distributionId: ${env.DISTRIBTUION_ID}
