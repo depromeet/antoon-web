@@ -15,5 +15,7 @@ export interface Webtoon {
   content?: string;
   date?: string;
   jenre?: string;
+  status?: string;
+  isLike?: boolean;
   thumnail?: string;
 }

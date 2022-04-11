@@ -23,6 +23,8 @@ const webtoonMock: Webtoon = {
             세상을 향해 자유를 선포한다!`,
   date: '토요일',
   jenre: '판타지',
+  status: 'DOWN',
+  isLike: true,
   thumnail:
     'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
 };

@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Depromeet 11th 1team</title>
+        <title>개미는 툰툰</title>
       </Head>
       <SessionProvider session={session}>
         <QueryClientProvider client={queryClient}>
