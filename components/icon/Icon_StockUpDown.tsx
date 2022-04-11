@@ -5,7 +5,6 @@ import Icon from './Icon';
 
 import type { IconProps } from '@_types/icon-type';
 import { DEFAULT_COLOR, DEFAULT_ICON_FILL } from '@constants/icon-constants';
-import { NodeNextRequest } from 'next/dist/server/base-http/node';
 
 // eslint-disable-next-line react/display-name
 const StockIcon: React.FC<IconProps> = React.memo((props) => (
