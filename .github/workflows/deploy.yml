@@ -153,6 +153,8 @@ jobs:
       steps:
         - name: Checkout current commit (${{ github.sha }})
           uses: actions/checkout@v3
+          with:
+            fetch-depth: 0
 
         - name: Check dependencies cache
           uses: actions/cache@v2
