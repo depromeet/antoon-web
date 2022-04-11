@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
 
 const DetailWrap = styled.div`
   display: block;
@@ -42,7 +41,7 @@ const WebtoonInfo = styled.div`
 const Jenre = styled.p`
   font: 1.6rem/1 'arial';
   position: absolute;
-  top: 31rem;
+  top: 34rem;
   right: 10rem;
 `;
 
@@ -52,63 +51,9 @@ const Title = styled.h2`
   font-weight: bold;
   opacity: 1;
   position: absolute;
-  top: 35rem;
+  top: 39rem;
   right: 10rem;
   font-family: fantasy;
-  transition: all 0.5s;
-`;
-
-const Bar = styled.div`
-  border-bottom: 1px solid ${(props) => props.theme.colors.black_700};
-  width: 100%;
-  padding-top: 3rem;
-`;
-
-const ProInfoWrap = styled.div`
-  margin-bottom: 20px;
-  position: absolute;
-  top: 43rem;
-  right: 10rem;
-`;
-
-const ContentBasicInfo = styled.span`
-  display: inline-block;
-  margin: 1.1rem;
-  font-family: 'notokr-medium';
-  font-size: 1.6rem;
-  color: ${(props) => props.theme.colors.black};
-`;
-
-const ContentBar = styled.p`
-  display: inline-block;
-  width: 0.2rem;
-  height: 1.4rem;
-  background: #cfcfcf;
-`;
-
-const ThumbnailWrap = styled.div`
-  width: 50rem;
-  height: 33rem;
-  overflow: hidden;
-  object-fit: cover;
-  box-shadow: 0 0 10px ${(props) => props.theme.colors.black_700};
-  &:hover img {
-    opacity: 1;
-    transform: scale(1.1);
-    box-shadow: 0 0 10px ${(props) => props.theme.colors.black_700};
-  }
-`;
-
-const ThumbnailImg = styled(Image)`
-  width: 100%;
-  position: relative;
-  left: 0px;
-  top: 0px;
-  z-index: 10;
-  display: block;
-  opacity: 0.8;
-  box-shadow: 0 0 10px ${(props) => props.theme.colors.black_700};
-  object-fit: cover;
   transition: all 0.5s;
 `;
 
@@ -124,17 +69,4 @@ const SubInfoWrap = styled.div`
   }
 `;
 
-export {
-  DetailWrap,
-  TopInfo,
-  WebtoonInfo,
-  ContentBar,
-  Title,
-  Jenre,
-  ProInfoWrap,
-  ThumbnailWrap,
-  ContentBasicInfo,
-  Bar,
-  SubInfoWrap,
-  ThumbnailImg,
-};
+export { DetailWrap, TopInfo, WebtoonInfo, Title, Jenre, SubInfoWrap };

@@ -1,9 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-<<<<<<< HEAD
 import Detail from '@domains/webtoon/detail/Detail';
-=======
-import WebtoonDetail from '@domains/webtoon/detail/WebtoonDetail';
->>>>>>> 94f19a4 (:fire:[feature #21]: Add Webtoon Detail View Skeleton)
 import { Webtoon } from '@_types/webtoon-type';
 import { useRouter } from 'next/router';
 import React from 'react';
