@@ -10,4 +10,4 @@ application:
       apiLambda: "${app}-api-lambda-${stage}"
       imageLambda: "${app}-image-lambda-${stage}"
     cloudfront:
-      distributionId: ${env.DISTRIBTUION_ID}
+      distributionId: ${env.DISTRIBUTION_ID}
