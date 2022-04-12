@@ -73,6 +73,7 @@
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-prettier": "^2.0.0",
+    "stylis": "^4.1.0",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "4.6.3",
     "typescript-eslint": "^0.0.1-alpha.0"
