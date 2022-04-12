@@ -8,7 +8,7 @@ import {
   Title,
   Jenre,
   SubInfoWrap,
-} from './WebtoonDetail.style';
+} from './Detail.style';
 import LabelIcon from '@components/icon/Icon_Label';
 import HeartIcon from '@components/icon/Icon_Heart';
 import ProInfo from '@components/webtoonDetail/ProInfo';
@@ -17,7 +17,7 @@ interface Props {
   item: Webtoon;
 }
 
-function WebtoonDetail(props: Props) {
+function Detail(props: Props) {
   const { item } = props;
 
   return (
@@ -54,4 +54,4 @@ function WebtoonDetail(props: Props) {
   );
 }
 
-export default WebtoonDetail;
+export default Detail;

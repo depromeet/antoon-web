@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import WebtoonDetail from '@domains/webtoon/detail/WebtoonDetail';
+import Detail from '@domains/webtoon/detail/Detail';
 import { Webtoon } from '@_types/webtoon-type';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -36,7 +36,7 @@ function webtoonDetail() {
 
   // Mock
   const mock = webtoonMock;
-  return <WebtoonDetail key={mock.id} item={mock} />;
+  return <Detail key={mock.id} item={mock} />;
 }
 
 export default webtoonDetail;
