@@ -1,3 +1,19 @@
 {
-    "extends": ["stylelint-config-concentric-order"]
+    "extends": ["stylelint-config-standard",
+                "stylelint-prettier/recommended",
+                "stylelint-config-prettier",
+                "stylelint-config-concentric-order"],
+    "plugins": ["stylelint-prettier"],
+    "overrides": [
+        {
+          "files": ["**/*.tsx"],
+          "customSyntax": "@stylelint/postcss-css-in-js"
+        }
+    ],
+    "rules": {
+        "prettier/prettier": true,
+        "no-empty-source": null,
+        "function-no-unknown": null,
+        "font-family-no-missing-generic-family-keyword": null
+    }
 }

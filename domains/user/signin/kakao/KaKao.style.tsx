@@ -3,22 +3,22 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 
 const KakaoWrap = styled.div`
-  text-align: center;
   margin-top: 50px;
+  text-align: center;
 `;
 
 const SignInBtn = styled.button`
-  width: 100px;
-  height: 30px;
   border: 1px solid ${(props) => props.theme.colors.black};
   background-color: #fae100;
+  width: 100px;
+  height: 30px;
 `;
 
 const SignOutBtn = styled.button`
+  border: 1px solid ${(props) => props.theme.colors.black};
+  background-color: #eee;
   width: 100px;
   height: 30px;
-  border: 1px solid ${(props) => props.theme.colors.black};
-  background-color: #eeeeee;
 `;
 
 const User = styled.div``;

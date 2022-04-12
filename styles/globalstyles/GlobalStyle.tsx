@@ -7,11 +7,10 @@ export default function GlobalStyle() {
 
 const global = css`
   ${emotionReset}
-
   * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
 
   html {
@@ -20,9 +19,9 @@ const global = css`
   }
 
   a {
+    cursor: pointer;
     text-decoration: none;
     color: inherit;
-    cursor: pointer;
   }
 
   input,
