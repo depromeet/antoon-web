@@ -1,17 +1,17 @@
 import styled from '@emotion/styled';
 
 const FooterWrap = styled.footer`
-  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   bottom: 0;
-  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #171721;
+  width: 100%;
+  height: 5rem;
   text-align: center;
   color: #e9ecef;
-  background-color: #171721;
-  height: 5rem;
+  font-size: 1.5rem;
 `;
 
 const Nav = styled.div`

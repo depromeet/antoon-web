@@ -1,0 +1,167 @@
+name: deploy
+
+on: push
+
+env:
+    CACHED_DEPENDENCY_PATH: ${{ github.workspace }}/node_modules
+    CACHED_BUILD_PATH: ${{ github.workspace }}/.next
+    BUILD_CACHE_KEY: ${{ github.sha }}
+
+jobs:
+    job_install_dependencies:
+        name: Intsall dependencies
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout current commit (${{ github.sha }})
+              uses: actions/checkout@v3
+
+            - name: Compute dependencies hash key
+              id: compute_lockfile_hash
+              run: echo "::set-output name=key::${{ hashFiles('**/yarn.lock') }}"
+
+            - name: Restore dependencies
+              id: restore_dependencies
+              uses: actions/cache@v2
+              with:
+                  path: ${{ env.CACHED_DEPENDENCY_PATH }}
+                  key: dependencies-${{ steps.compute_lockfile_hash.outputs.key }}
+                  restore-keys: |
+                      dependencies
+            - name: Install Dependencies
+              if: steps.restore_dependencies.outputs.cache-hit == 'false'
+              run: yarn
+            
+        outputs:
+            dependencies_cache_key: dependencies-${{ steps.compute_lockfile_hash.outputs.key }}
+
+    job_lint:
+        name: Lint
+        needs: job_install_dependencies
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout current commit (${{ github.sha }})
+              uses: actions/checkout@v3
+
+            - name: Check dependencies cache
+              uses: actions/cache@v2
+              with:
+                  path: ${{ env.CACHED_DEPENDENCY_PATH }}
+                  key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
+
+            - name: Lint
+              run: |
+                  yarn lint
+                  echo ${{ env.CACHED_BUILD_PATH }}
+
+    job_build:
+        name: Build
+        needs: job_install_dependencies
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout current commit (${{ github.sha }})
+              uses: actions/checkout@v3
+
+            - name: Check dependencies cache
+              uses: actions/cache@v2
+              with:
+                  path: ${{ env.CACHED_DEPENDENCY_PATH }}
+                  key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
+
+            - name: Restore bundle
+              id: restore_bundle
+              uses: actions/cache@v2
+              with:
+                  path: ${{ env.CACHED_BUILD_PATH }}
+                  key: build-${{ env.BUILD_CACHE_KEY }}
+                  restore-keys: |
+                      build
+            - name: Build DEV bundle
+              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.ref != 'refs/heads/main'
+              run: |
+                  cat << EOF >> .env
+                  ${{ secrets.ENV_DEV }}
+                  EOF
+                  yarn build
+            - name: Build STG bundle
+              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.ref == 'refs/heads/main'
+              run: |
+                  cat << EOF >> .env
+                  ${{ secrets.ENV_STG }}
+                  EOF
+                  yarn build
+            - name: Build PRD bundle
+              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.ref_type == 'tag'
+              run: |
+                  cat << EOF >> .env
+                  ${{ secrets.ENV_PRD }}
+                  EOF
+                  yarn build
+
+    job_deploy:
+      name: Deploy
+      needs: [job_install_dependencies, job_lint, job_build]
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout current commit (${{ github.sha }})
+          uses: actions/checkout@v3
+
+        - name: Check dependencies cache
+          uses: actions/cache@v2
+          with:
+              path: ${{ env.CACHED_DEPENDENCY_PATH }}
+              key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
+
+        - name: Check bundle cache
+          uses: actions/cache@v2
+          with:
+            path: ${{ env.CACHED_BUILD_PATH }}
+            key: build-${{ env.BUILD_CACHE_KEY }}
+
+        - name: Configure AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: us-east-1
+
+        - name: Deploy to dev
+          if: github.ref != 'refs/heads/main'
+          run: |
+            STAGE=dev DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_DEV }} yarn deploy
+
+        - name: Deploy to stg
+          if: github.ref == 'refs/heads/main'
+          run: |
+            STAGE=stg DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_STG }} yarn deploy
+
+        - name: Deploy to prd 
+          if: github.ref_type == 'tag'
+          run: |
+            STAGE=prd DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_PRD }} yarn deploy
+
+    job_chromatic:
+      name: Deploy to chromatic
+      needs: [job_install_dependencies, job_lint, job_build]
+      runs-on: ubuntu-latest
+      env:
+        project_token: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+      steps:
+        - name: Checkout current commit (${{ github.sha }})
+          uses: actions/checkout@v3
+          with:
+            fetch-depth: 0
+
+        - name: Check dependencies cache
+          uses: actions/cache@v2
+          with:
+              path: ${{ env.CACHED_DEPENDENCY_PATH }}
+              key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
+
+        - name: Deploy to chromatic
+          run: |
+            CHROMATIC_PROJECT_TOKEN=$project_token yarn chromatic --exit-once-uploaded ** --exit-zero-on-changes **
