@@ -13,6 +13,7 @@
     "rules": {
         "prettier/prettier": true,
         "no-empty-source": null,
-        "function-no-unknown": null
+        "function-no-unknown": null,
+        "font-family-no-missing-generic-family-keyword": null
     }
 }
