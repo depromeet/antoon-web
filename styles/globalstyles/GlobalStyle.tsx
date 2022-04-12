@@ -8,9 +8,9 @@ export default function GlobalStyle() {
 const global = css`
   ${emotionReset}
   * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
 
   html {
