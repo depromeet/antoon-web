@@ -18,6 +18,12 @@
     "lint-fix:stylelint": "stylelint --fix './**/*.tsx' --ignore-path .gitignore",
     "lint-fix:prettier": "prettier --write './**/*.{js,ts,tsx}' --ignore-path .gitignore"
   },
+  "lint-staged": {
+    "./**/*.{js,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
