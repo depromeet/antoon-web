@@ -18,6 +18,11 @@
     "lint-fix:stylelint": "stylelint --fix './**/*.tsx' --ignore-path .gitignore",
     "lint-fix:prettier": "prettier --write './**/*.{js,ts,tsx}' --ignore-path .gitignore"
   },
+  "lint-staged": {
+    "./**/*.{js,ts,tsx}": [
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
@@ -28,7 +33,6 @@
     "emotion-theming": "^11.0.0",
     "json-loader": "^0.5.7",
     "next": "12.1.4",
-    "next-auth": "^4.3.1",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-query": "^3.34.19",
