@@ -29,6 +29,12 @@
       "yarn lint-fix:eslint"
     ]
   },
+  "lint-staged": {
+    "./**/*.{js,ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.8.2",
