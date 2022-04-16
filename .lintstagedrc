@@ -1,3 +1,0 @@
-{
-    "*.{ts,tsx}": ["yarn lint-fix:prettier", "yarn lint-fix:eslint", "yarn lint-fix:stylelint"]
-}
