@@ -2,6 +2,7 @@
 import Detail from '@domains/webtoon/detail/Detail';
 import { Webtoon } from '@_types/webtoon-type';
 import { useRouter } from 'next/router';
+import { ChartData } from '@_types/chart-type';
 import React from 'react';
 
 const webtoonMock: Webtoon = {
@@ -28,6 +29,18 @@ const webtoonMock: Webtoon = {
   thumnail:
     'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
 };
+const ChartMock: ChartData = {
+  label: 'daily',
+  timeseries: {
+    '00:00': 0.1,
+    '04:00': 2.7,
+    '08:00': 4.7,
+    '12:00': 4.9,
+    '16:00': 6.7,
+    '20:00': 9.9,
+    '24:00': 8.7,
+  },
+};
 
 function webtoonDetail() {
   const router = useRouter();
@@ -36,7 +49,7 @@ function webtoonDetail() {
 
   // Mock
   const mock = webtoonMock;
-  return <Detail key={mock.id} item={mock} />;
+  return <Detail key={mock.id} item={mock} chartData={ChartMock} />;
 }
 
 export default webtoonDetail;

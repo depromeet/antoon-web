@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "echarts": "^5.3.2",

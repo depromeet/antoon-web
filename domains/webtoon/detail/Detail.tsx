@@ -12,18 +12,21 @@ import {
 import LabelIcon from '@components/icon/Icon_Label';
 import HeartIcon from '@components/icon/Icon_Heart';
 import ProInfo from '@components/webtoonDetail/ProInfo';
+import Charts from '@components/charts/Charts';
+import { ChartData } from '@_types/chart-type';
 
 interface Props {
   item: Webtoon;
+  chartData: ChartData;
 }
 
 function Detail(props: Props) {
-  const { item } = props;
+  const { item, chartData } = props;
 
   return (
     <>
       <DetailWrap>
-        <TopInfo>
+        {/* <TopInfo>
           <WebtoonInfo>
             <HeartIcon fill={item.isLike} />
             <Jenre className="jenre">
@@ -48,7 +51,8 @@ function Detail(props: Props) {
               <p>{item.content}</p>
             </SubInfoWrap>
           </WebtoonInfo>
-        </TopInfo>
+        </TopInfo>*/}
+        <Charts chartData={chartData} forceUpdate={false} />
       </DetailWrap>
     </>
   );

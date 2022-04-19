@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import {
   init,
   getInstanceByDom,
-  registerTheme,
   ComposeOption,
   BarSeriesOption,
   TitleComponentOption,
@@ -10,7 +9,6 @@ import {
 import type { CSSProperties } from 'react';
 import type { ECharts, SetOptionOpts } from 'echarts';
 import type { LineSeriesOption } from 'echarts/charts';
-import chalkTheme from './Chart_Style.json';
 
 export type ChartThemeType = 'light' | 'dark' | 'chalk';
 
@@ -39,7 +37,6 @@ const ReactECharts: React.FC<ChartsProps> = ({
     let chart: ECharts | undefined;
 
     if (chartRef.current !== null) {
-      registerTheme('chalk', chalkTheme);
       chart = init(chartRef.current, theme);
     }
 
