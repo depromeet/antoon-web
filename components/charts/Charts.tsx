@@ -18,11 +18,6 @@ interface Props {
 
 function Charts({ chartData, forceUpdate }: Props) {
   const xAxisData = Object.keys(chartData.timeseries);
-  const [isLoading, setIsLoading] = useState(false);
-  const onOptionChange = (optionName: string, value: any) => {
-    console.log(optionName, value);
-    return {};
-  };
 
   return (
     <ChartWrapper>
@@ -33,6 +28,7 @@ function Charts({ chartData, forceUpdate }: Props) {
             xAxisData.map((k) => chartData.timeseries[k]),
           )}
         />
+        {/*
         <Tabs>
           <TabsHeader>
             <Tab className="active">1일</Tab>
@@ -42,6 +38,7 @@ function Charts({ chartData, forceUpdate }: Props) {
           </TabsHeader>
           <TabIndicator className="tab-indicator"></TabIndicator>
         </Tabs>
+          */}
       </ChartContainer>
     </ChartWrapper>
   );

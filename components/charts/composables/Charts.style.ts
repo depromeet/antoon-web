@@ -8,16 +8,16 @@ const ChartWrapper = styled.div`
 `;
 const ChartContainer = styled.div`
   height: 40rem;
-  margin: 2rem 2.7rem;
+  margin: 2rem 0rem;
   display: flex;
   flex-direction: row;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0rem;
 `;
 const ChartVisualiserContainer = styled.div`
   display: block;
   flex-direction: row;
   align-items: center;
-  margin: 2rem 2.7rem;
+  margin: 2rem 2rem;
   padding: 0rem;
   padding-top: 0;
   @media (min-width: 480rem) {

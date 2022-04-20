@@ -1,4 +1,3 @@
-import { DEFAULT_ICON_FILL } from '@constants/icon-constants';
 import { graphic } from 'echarts';
 import { getChartToolTip } from '../chart-utils';
 import { ChartsProps } from './ECharts';
@@ -9,26 +8,26 @@ function setOption(
 ): ChartsProps['option'] {
   return {
     title: {
+      show: false,
       text: '9.98점',
       subtext: '어제보다 +0.1점(0.5%)',
       textStyle: {
         color: '#000',
-        fontFamily: 'Preahvihear',
+        fontFamily: 'Pretendard',
         fontStyle: 'normal',
-        fontWeight: 400,
+        fontWeight: 800,
         fontSize: '3.6rem',
         width: '10.9rem',
       },
       subtextStyle: {
         color: '#000',
         opacity: 0.6,
-        fontFamily: 'Preahvihear',
+        fontFamily: 'Pretendard',
         fontStyle: 'normal',
-        fontSize: '1.4rem',
+        fontSize: '1.5rem',
         fontWeight: 400,
-        width: '13.8rem',
+        width: '13rem',
       },
-      left: 20,
     },
     xAxis: {
       type: 'category',

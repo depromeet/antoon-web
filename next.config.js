@@ -5,7 +5,11 @@ const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 const nextConfig = {
   images: {
-    domains: ['k.kakaocdn.net', 'blog.kakaocdn.net'],
+    domains: [
+      'k.kakaocdn.net',
+      'blog.kakaocdn.net',
+      'colorate.azurewebsites.net',
+    ],
   },
   reactStrictMode: true,
   webpack: (config) => {

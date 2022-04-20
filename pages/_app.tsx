@@ -24,9 +24,7 @@ function MyApp({ Component, pageProps }: any) {
         <RecoilRoot>
           <ThemeProvider theme={themes}>
             <GlobalStyle />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <Component {...pageProps} />
           </ThemeProvider>
         </RecoilRoot>
         <ReactQueryDevtools initialIsOpen={false} />
