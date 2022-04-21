@@ -32,7 +32,7 @@ const DetailContents = styled.section`
 `;
 
 const DetailMain = styled.div`
-  height: 500px;
+  height: 60rem;
   position: relative;
   & a {
     display: block;

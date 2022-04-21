@@ -27,6 +27,7 @@ import {
 } from './Detail.style';
 import CategorySlider from '@components/detail/category/CategorySlider';
 import { useEffect, useState } from 'react';
+import Tabs from '@components/detail/tabs/Tabs';
 
 interface Props {
   item: Webtoon;
@@ -76,6 +77,7 @@ function Detail(props: Props) {
                   <ChartWrapper>
                     <Charts chartData={chartData} forceUpdate={false} />
                   </ChartWrapper>
+                  <Tabs />
                 </MainWrapper>
               </DetailMain>
               <DetailSub>
