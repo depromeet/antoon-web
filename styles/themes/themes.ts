@@ -1,5 +1,5 @@
 const themes = {
-  bgColor: {
+  bg_color: {
     primary: '#F1F1F1',
   },
   colors: {
@@ -15,7 +15,9 @@ const themes = {
     layout: '0 2.4rem',
     layout_carousel: '0 0 0 2.4rem',
   },
-  fontSize: {
+  // TODO: 디자인 시스템에 맞춰 설정할 것
+  // https://www.figma.com/file/fgeQYhg1cfGpb4sZe8cAi6/%EB%94%94%ED%94%84%EB%A7%8C-1%EB%B2%88-%EC%B6%9C%EA%B5%AC?node-id=3%3A17
+  font_size: {
     h2: '2.4rem',
     h3: '1.2rem',
   },
