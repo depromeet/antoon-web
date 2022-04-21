@@ -12,26 +12,27 @@ const global = css`
   *,
   *::after,
   *::before {
+    box-sizing: border-box;
     margin: 0 auto;
     padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
   }
+
   html {
     font-size: 62.5%;
     font-weight: 400;
   }
+
   a {
+    margin: 0;
+    background: transparent;
     cursor: pointer;
+    padding: 0;
+    vertical-align: baseline;
     text-decoration: none;
     color: inherit;
-    margin: 0;
-    padding: 0;
     font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
   }
+
   h1,
   h2,
   h3,
@@ -41,25 +42,30 @@ const global = css`
     font-size: 100%;
     font-weight: normal;
   }
+
   input,
   button {
     outline: none;
     border: none;
     background-color: transparent;
   }
+
   button {
     cursor: pointer;
   }
+
   img {
-    max-width: 100%;
     border: none;
+    max-width: 100%;
     vertical-align: middle;
   }
+
   ol,
   ul,
   li {
     list-style: none;
   }
+
   article,
   aside,
   details,
