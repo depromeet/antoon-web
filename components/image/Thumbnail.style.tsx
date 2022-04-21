@@ -7,7 +7,6 @@ const ThumbnailWrap = styled.div<{ scale: boolean }>`
   height: 33rem;
   overflow: hidden;
   object-fit: cover;
-
   &:hover img {
     transform: ${(scale) => (scale ? 'scale(1.1)' : 'scale(1)')};
     opacity: 1;

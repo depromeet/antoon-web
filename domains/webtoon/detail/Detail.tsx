@@ -1,55 +1,107 @@
 import { Webtoon } from '@_types/webtoon-type';
-import Bar from '@components/bar/Bar';
-import Thumbnail from '@components/image/Thumbnail';
+import BackIcon from '@components/icon/Icon_Back';
+import Image from 'next/image';
+import Charts from '@components/charts/Charts';
+import { ChartData } from '@_types/chart-type';
 import {
-  DetailWrap,
-  TopInfo,
-  WebtoonInfo,
-  Title,
-  Jenre,
-  SubInfoWrap,
+  Category,
+  ChartWrapper,
+  Container,
+  ContentBar,
+  Contents,
+  Description,
+  DetailContents,
+  DetailMain,
+  DetailSub,
+  DetailSubWrapper,
+  DetailWrapper,
+  MainScore,
+  MainThumbnail,
+  MainThumbnailImg,
+  MainTitle,
+  MainWrapper,
+  Platform,
+  Point,
+  PointUpDown,
+  ThumbNailWrapper,
 } from './Detail.style';
-import LabelIcon from '@components/icon/Icon_Label';
-import HeartIcon from '@components/icon/Icon_Heart';
-import ProInfo from '@components/webtoonDetail/ProInfo';
+import CategorySlider from '@components/detail/category/CategorySlider';
+import { useEffect, useState } from 'react';
+import Tabs from '@components/detail/tabs/Tabs';
 
 interface Props {
   item: Webtoon;
+  chartData: ChartData;
 }
 
 function Detail(props: Props) {
-  const { item } = props;
+  const { item, chartData } = props;
+  const DEFAULT_MSG = '미정';
+  const [params, setParams] = useState(item.id);
+  useEffect(() => setParams(item.id), [item.id]);
 
   return (
     <>
-      <DetailWrap>
-        <TopInfo>
-          <WebtoonInfo>
-            <HeartIcon fill={item.isLike} />
-            <Jenre className="jenre">
-              <LabelIcon />
-              {item.jenre}
-            </Jenre>
-            <Title> {item.title}</Title>
-            <ProInfo
-              status={item.status}
-              author={item.author}
-              date={item.date}
-              platform={item.platform}
-            />
-            <Thumbnail
-              category="main"
-              scale={true}
-              src={item.thumnail || ''}
-              alt={item.title}
-            />
-            <Bar />
-            <SubInfoWrap>
-              <p>{item.content}</p>
-            </SubInfoWrap>
-          </WebtoonInfo>
-        </TopInfo>
-      </DetailWrap>
+      <DetailWrapper>
+        <Container>
+          <Contents>
+            <DetailContents>
+              <DetailMain>
+                <div className="back_area">
+                  <BackIcon />
+                </div>
+                <MainWrapper>
+                  <MainTitle>
+                    <Platform>
+                      <a href="#">{item.platform} &gt;</a>
+                    </Platform>
+                    <h2 className="ellipsis2">{item.title}</h2>
+                    <MainScore>
+                      <Point>9.98점</Point>
+                      <PointUpDown>어제보다 +0.1점(0.5%)</PointUpDown>
+                    </MainScore>
+                  </MainTitle>
+                  <ThumbNailWrapper>
+                    <MainThumbnail>
+                      <MainThumbnailImg>
+                        <Image
+                          src={item.thumnail || ''}
+                          alt="대학일기"
+                          width={1000}
+                          height={1000}
+                        />
+                      </MainThumbnailImg>
+                      <p>1위</p>
+                    </MainThumbnail>
+                  </ThumbNailWrapper>
+                  <ChartWrapper>
+                    <Charts chartData={chartData} forceUpdate={false} />
+                  </ChartWrapper>
+                  <Tabs />
+                </MainWrapper>
+              </DetailMain>
+              <DetailSub>
+                <DetailSubWrapper>
+                  <h2>작품소개</h2>
+                  <Category>
+                    작가 <ContentBar />
+                    {item.author}
+                  </Category>
+                  <Description>{item.content}</Description>
+                  <CategorySlider
+                    platform={item.platform}
+                    jenre={item.jenre || DEFAULT_MSG}
+                    categoryStatus={{
+                      date: item.date || DEFAULT_MSG,
+                      ingStatus: '연재중',
+                    }}
+                  />
+                </DetailSubWrapper>
+              </DetailSub>
+            </DetailContents>
+          </Contents>
+        </Container>
+      </DetailWrapper>
     </>
   );
 }
