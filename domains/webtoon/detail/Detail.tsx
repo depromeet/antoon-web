@@ -25,7 +25,8 @@ import {
   PointUpDown,
   ThumbNailWrapper,
 } from './Detail.style';
-import CategorySlider from '@components/detail/category/carousel/CategorySlider';
+import CategorySlider from '@components/detail/category/CategorySlider';
+import { useEffect, useState } from 'react';
 
 interface Props {
   item: Webtoon;
@@ -34,6 +35,9 @@ interface Props {
 
 function Detail(props: Props) {
   const { item, chartData } = props;
+  const DEFAULT_MSG = '미정';
+  const [params, setParams] = useState(item.id);
+  useEffect(() => setParams(item.id), [item.id]);
 
   return (
     <>
@@ -48,11 +52,9 @@ function Detail(props: Props) {
                 <MainWrapper>
                   <MainTitle>
                     <Platform>
-                      <a href="#">네이버웹툰 &gt;</a>
+                      <a href="#">{item.platform} &gt;</a>
                     </Platform>
-                    <h2 className="ellipsis2">
-                      흑막 여주가 날 새 엄마로 만들려고 해
-                    </h2>
+                    <h2 className="ellipsis2">{item.title}</h2>
                     <MainScore>
                       <Point>9.98점</Point>
                       <PointUpDown>어제보다 +0.1점(0.5%)</PointUpDown>
@@ -62,7 +64,7 @@ function Detail(props: Props) {
                     <MainThumbnail>
                       <MainThumbnailImg>
                         <Image
-                          src="https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png"
+                          src={item.thumnail || ''}
                           alt="대학일기"
                           width={1000}
                           height={1000}
@@ -80,14 +82,18 @@ function Detail(props: Props) {
                 <DetailSubWrapper>
                   <h2>작품소개</h2>
                   <Category>
-                    작가 <ContentBar /> 순끼
+                    작가 <ContentBar />
+                    {item.author}
                   </Category>
-                  <Description>
-                    세기말 풋사과 보습학원설명설명세기말 풋사과
-                    보습학원설명설명세기말 풋사과 보습학원설명설명세기말 풋사과
-                    보습학원설명설명
-                  </Description>
-                  <CategorySlider />
+                  <Description>{item.content}</Description>
+                  <CategorySlider
+                    platform={item.platform}
+                    jenre={item.jenre || DEFAULT_MSG}
+                    categoryStatus={{
+                      date: item.date || DEFAULT_MSG,
+                      ingStatus: '연재중',
+                    }}
+                  />
                 </DetailSubWrapper>
               </DetailSub>
             </DetailContents>

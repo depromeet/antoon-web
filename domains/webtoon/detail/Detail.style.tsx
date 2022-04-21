@@ -211,6 +211,7 @@ const Description = styled.p`
 
 const ContentBar = styled.p`
   display: inline-block;
+  margin-right: 4px;
   background: #c4c4c4;
   width: 0.2rem;
   height: 1rem;

@@ -7,23 +7,12 @@ import React from 'react';
 
 const webtoonMock: Webtoon = {
   id: 1,
-  platform: 'KAKAO',
-  title: '나 혼자만 레벨업',
-  author: '추공',
-  content: `재능 없는 만년 E급 헌터, 성진우.
-            기이한 던전에서 죽음을 목전에 두지만
-            위기는 언제나 기회와 함께 찾아오는 법!
-
-
-            [플레이어가 되실 자격을 획득하셨습니다.]
-            "플레이어? 내가 레벨업을 할 수 있다고?"
-
-            
-            전 세계 헌터 중 유일무이, 전무후무
-            시스템과 레벨업 능력을 각성한 진우.
-            세상을 향해 자유를 선포한다!`,
-  date: '토요일',
-  jenre: '판타지',
+  platform: '네이버웹툰',
+  title: '흑막 여주가 날 새 엄마로 만들려고 해',
+  author: '순끼',
+  content: `세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명`,
+  date: '월,화',
+  jenre: '학원물',
   status: 'DOWN',
   isLike: true,
   thumnail:

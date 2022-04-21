@@ -12,8 +12,9 @@ const SliderWrapper = styled.div`
     }
   }
 `;
+const CategoryCardWrapper = styled.div``;
 
-const CategoryCard = styled.div`
+const CategorySliderCard = styled.div`
   display: flex';
   width: 20%;
   height: 30%;
@@ -51,7 +52,8 @@ const ImageContainer = styled.div`
 
 export {
   SliderWrapper,
-  CategoryCard,
+  CategoryCardWrapper,
+  CategorySliderCard,
   CategoryTitle,
   CategoryContents,
   ImageContainer,
