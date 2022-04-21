@@ -17,7 +17,7 @@ const Tabs = styled.div`
 `;
 
 const TabsHeader = styled.div`
-  background: #c4c4c4;
+  background: rgba(196, 196, 196, 0.2);
   padding: 10px 6px 10px 0px;
   display: flex;
   border-radius: 10px;
