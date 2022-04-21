@@ -20,9 +20,9 @@
   },
   "lint-staged": {
     "./**/*.{js,ts,tsx}": [
-      "prettier --write --ignore-path .gitignore",
-      "eslint --fix --ignore-path .gitignore",
-      "stylelint --fix --ignore-path .gitignore"
+      "yarn lint-fix:prettier",
+      "yarn lint-fix:stylelint",
+      "yarn lint-fix:eslint"
     ]
   },
   "dependencies": {
