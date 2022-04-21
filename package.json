@@ -19,9 +19,13 @@
     "lint-fix:prettier": "prettier --write './**/*.{js,ts,tsx}' --ignore-path .gitignore"
   },
   "lint-staged": {
-    "./**/*.{js,ts,tsx}": [
+    "./**/*.tsx": [
       "yarn lint-fix:prettier",
       "yarn lint-fix:stylelint",
+      "yarn lint-fix:eslint"
+    ],
+    "./**/*.{js,ts}": [
+      "yarn lint-fix:prettier",
       "yarn lint-fix:eslint"
     ]
   },
