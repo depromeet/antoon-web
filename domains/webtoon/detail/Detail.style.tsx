@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 const DetailWrapper = styled.div`
+  overflow-x: hidden;
   width: 100%;
   min-width: 320px;
   margin: 30px auto;
