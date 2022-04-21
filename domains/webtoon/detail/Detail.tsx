@@ -47,7 +47,7 @@ function Detail(props: Props) {
           <Contents>
             <DetailContents>
               <DetailMain>
-                <div className="back_area">
+                <div className="back-area">
                   <BackIcon />
                 </div>
                 <MainWrapper>

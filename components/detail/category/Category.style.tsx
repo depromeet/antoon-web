@@ -6,6 +6,7 @@ const SliderWrapper = styled.div`
   & .slick-slide {
     margin: 0 3px;
   }
+
   & .slick-list {
     & .slick-track {
       width: 500% !important;
@@ -15,39 +16,40 @@ const SliderWrapper = styled.div`
 const CategoryCardWrapper = styled.div``;
 
 const CategorySliderCard = styled.div`
-  display: flex';
+  display: flex;
+  position: relative;
+  margin: 20px 0;
+  border-radius: 10px;
+  background: #f1f1f1;
   width: 20%;
   height: 30%;
-  background: #f1f1f1;
-  border-radius: 10px;
-  margin: 20px 0px;
-  position: relative;
+
   & div {
-    width:20%;
+    width: 20%;
   }
 `;
 
 const CategoryTitle = styled.p`
-  font-family: 'Pretendard';
-  font-size: 13px;
   opacity: 0.8;
   margin-top: 12px;
   margin-left: 14px;
+  font-family: Pretendard;
+  font-size: 13px;
 `;
 
 const CategoryContents = styled.p`
-  font-family: 'Pretendard';
-  font-size: 16px;
   opacity: 0.8;
   margin-top: 12px;
-  margin-left: 14px;
   margin-bottom: 12px;
+  margin-left: 14px;
+  font-family: Pretendard;
+  font-size: 16px;
 `;
 const ImageContainer = styled.div`
   position: absolute;
-  float: left;
-  bottom: 12px;
   right: 14px;
+  bottom: 12px;
+  float: left;
 `;
 
 export {

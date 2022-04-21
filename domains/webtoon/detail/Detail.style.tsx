@@ -1,24 +1,24 @@
 import styled from '@emotion/styled';
 
 const DetailWrapper = styled.div`
-  overflow-x: hidden;
-  width: 100%;
-  min-width: 320px;
   margin: 30px auto;
   background-color: #f1f1f1;
   background-position: center top;
   background-size: 100%;
+  width: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
 `;
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
-  max-width: 1024px;
   min-width: 320px;
+  max-width: 1024px;
+  height: 100%;
 `;
 
 const Contents = styled.div`
-  & .back_area {
+  & .back-area {
     position: absolute;
     top: 20px;
     left: 20px;
@@ -26,28 +26,31 @@ const Contents = styled.div`
 `;
 
 const DetailContents = styled.section`
-  max-width: 1024px;
-  background: #fff;
-  border-bottom: 8px solid #f1f1f1;
   display: block;
+  border-bottom: 8px solid #f1f1f1;
+  background: #fff;
+  max-width: 1024px;
 `;
 
 const DetailMain = styled.div`
-  height: 60rem;
   position: relative;
+  height: 60rem;
+
   & a {
     display: block;
     position: relative;
   }
+
   & a span {
     display: inline-block;
   }
+
   & h2 {
-    font-family: 'notokr-regular';
+    margin-left: 20px;
+    line-height: 60px;
+    font-family: notokr-regular;
     font-size: 18px;
     font-weight: bold;
-    line-height: 60px;
-    margin-left: 20px;
   }
 `;
 
@@ -55,43 +58,44 @@ const MainWrapper = styled.div`
   padding-top: 62px;
 
   & h2 {
-    font-family: 'Pretendard';
-    font-weight: 700;
-    font-size: 20px;
     line-height: 144%;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-weight: 700;
     font-style: normal;
   }
 `;
 
 const MainTitle = styled.div`
+  float: left;
   width: 55%;
   max-width: 300px;
-  float: left;
+
   & .ellipsis2 {
-    text-overflow: ellipsis;
+    display: box !important;
     overflow: hidden;
-    display: -webkit-box !important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    word-wrap: break-word;
   }
 `;
 
 const Platform = styled.div`
   display: inline-block;
+  margin-bottom: 10px;
+  margin-left: 20px;
   width: 100%;
   height: 100%;
-  margin-left: 20px;
-  margin-bottom: 10px;
-  font-family: 'Preahvihear';
+  line-height: 20.16px;
+  font-family: Preahvihear;
   font-size: 14px;
   font-weight: 400;
-  line-height: 20.16px;
 
   & ::after {
-    content: '';
     display: block;
     width: 100%;
+    content: '';
   }
 `;
 const MainScore = styled.div`
@@ -100,31 +104,31 @@ const MainScore = styled.div`
   margin-left: 20px;
 `;
 const Point = styled.p`
-  color: '#000';
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 800;
-  font-size: 3.6rem;
-  width: 100%;
   margin-bottom: 10px;
+  width: 100%;
+  color: '#000';
+  font-family: Pretendard;
+  font-size: 3.6rem;
+  font-weight: 800;
+  font-style: normal;
 `;
 const PointUpDown = styled.p`
-  color: '#000';
   opacity: 0.6;
-  font-family: 'Pretendard';
-  font-style: 'normal';
+  width: 100%;
+  color: '#000';
+  font-family: Pretendard;
   font-size: 1.5rem;
   font-weight: 400;
-  width: 100%;
+  font-style: 'normal';
 `;
 
 const ThumbNailWrapper = styled.div`
+  position: relative;
+  float: right;
+  margin-top: 40px;
+  margin-right: 20px;
   width: 80px;
   height: 80px;
-  margin-top: 40px;
-  float: right;
-  position: relative;
-  margin-right: 20px;
 `;
 
 const MainThumbnailImg = styled.div`
@@ -133,81 +137,86 @@ const MainThumbnailImg = styled.div`
 
 const MainThumbnail = styled.div`
   position: absolute;
-  right: 0px;
+  right: 0;
   width: 100px;
   height: 100px;
 
   & img {
     border-radius: 50%;
   }
+
   & p {
-    font-size: 14px;
-    font-family: 'Inter';
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    background: #c4c4c4;
-    border-radius: 50%;
     position: absolute;
     bottom: -10px;
+    border-radius: 50%;
+    background: #c4c4c4;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
     color: #000;
+    font-family: Inter;
+    font-size: 14px;
   }
 `;
 
 const DetailSub = styled.div`
-  height: 260px;
-  padding-top: 20px;
   position: relative;
+  padding-top: 20px;
+  height: 260px;
+
   & a {
     display: block;
     position: relative;
   }
+
   & a span {
     display: inline-block;
   }
+
   & h2 {
-    font-family: 'Pretendard';
+    line-height: 60px;
+    font-family: Pretendard;
     font-size: 20px;
     font-weight: bold;
-    line-height: 60px;
   }
 `;
 const DetailSubWrapper = styled.div`
   display: block;
-  margin-left: 20px;
   margin-right: 20px;
+  margin-left: 20px;
+
   & h2 {
-    font-family: 'Pretendard';
-    font-weight: 700;
-    font-size: 20px;
     line-height: 144%;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-weight: 700;
     font-style: normal;
   }
 `;
 const Category = styled.div`
-  font-family: 'Pretendard';
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 144%;
-  font-style: normal;
+  opacity: 0.8;
   margin-top: 12px;
   margin-bottom: 6px;
-  opacity: 0.8;
+  line-height: 144%;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
 `;
 const Description = styled.p`
-  font-family: 'Pretendard';
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 144%;
-  font-style: normal;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  display: box !important;
   opacity: 0.8;
-  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 144%;
+  word-wrap: break-word;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  word-wrap: break-word;
 `;
 
 const ContentBar = styled.p`
@@ -220,11 +229,11 @@ const ContentBar = styled.p`
 
 const ChartWrapper = styled.div`
   display: flex;
-  padding: 0 0px;
+  z-index: 2;
+  padding: 0;
   width: 102%;
   height: 100%;
   overflow-y: visible;
-  z-index: 2;
 `;
 
 export {
