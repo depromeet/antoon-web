@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { default as _Home } from '@domains/webtoon/home/Home';
 
 const Home: NextPage = () => {
   console.log(
@@ -8,7 +9,11 @@ const Home: NextPage = () => {
      /_/  |_|/_/  |/  /__/   \\____/ \\____/ /_/  |/ ',
   );
 
-  return <>antoon</>;
+  return (
+    <>
+      <_Home />
+    </>
+  );
 };
 
 export default Home;
