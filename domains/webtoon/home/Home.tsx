@@ -1,3 +1,6 @@
+import Carousel from '@components/carousel/Carousel';
+import useCarousel from '@hooks/useCarousel';
+import React, { useRef } from 'react';
 import {
   DefaultLayout,
   DefaultHeader,
@@ -5,24 +8,21 @@ import {
   HomeTopWrapper,
   HomeTopTitleWrapper,
   HomeTopTitle,
-  ContentWrapper,
-  ContentSubTitle,
-  ContentTitle,
-  CarouselWrapper,
-  CarouselBox,
-  CarouselContent,
-  CarouselContentCard,
-  CarouselContentRanking,
-  CarouselContentTitle,
-  CarouselContentScore,
-  CarouselContentScoreChangeIcon,
-  CarouselContentScoreChange,
-  CarouselContentAuthor,
-  CarouselContentScoreChangePercentWrapper,
-  CarouselContentScoreChangePercent,
+  HomeSectionWrapper,
+  HomeSectionTitle,
+  HomeSectionSubTitle,
 } from './Home.style';
+import RealTimeChart from './RealTimeChart';
+import Genres from './Genres';
+import Popular from './Popular';
+import Recommendation from './Recommendation';
+import Weekly from './Weekly';
 
-const Home = () => {
+function Home() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  useCarousel(carouselRef);
+
   return (
     <>
       <DefaultLayout>
@@ -32,31 +32,44 @@ const Home = () => {
             <HomeTopTitleWrapper>
               <HomeTopTitle>개미는 오늘도 열심히 툰툰을 보네</HomeTopTitle>
             </HomeTopTitleWrapper>
-            <ContentWrapper>
-              <ContentSubTitle>14:00</ContentSubTitle>
-              <ContentTitle>실시간 차트</ContentTitle>
-            </ContentWrapper>
+            <HomeSectionWrapper>
+              <HomeSectionSubTitle>14:00</HomeSectionSubTitle>
+              <HomeSectionTitle>실시간 차트</HomeSectionTitle>
+              <Carousel ref={carouselRef}>
+                <RealTimeChart />
+              </Carousel>
+            </HomeSectionWrapper>
           </HomeTopWrapper>
-          <ContentWrapper>
-            <ContentSubTitle>어떤 장르를 좋아하시나요?</ContentSubTitle>
-            <ContentTitle>장르별 툰툰</ContentTitle>
-          </ContentWrapper>
-          <ContentWrapper>
-            <ContentSubTitle>언제나 툰툰</ContentSubTitle>
-            <ContentTitle>개미들이 즐겨봐요</ContentTitle>
-          </ContentWrapper>
-          <ContentWrapper>
-            <ContentSubTitle>나만의 툰툰</ContentSubTitle>
-            <ContentTitle>비슷한 취향이 자주 보는 웹툰</ContentTitle>
-          </ContentWrapper>
-          <ContentWrapper>
-            <ContentSubTitle>요일별 웹툰을 추천해요</ContentSubTitle>
-            <ContentTitle>오늘도 툰툰</ContentTitle>
-          </ContentWrapper>
+          <HomeSectionWrapper>
+            <HomeSectionSubTitle>어떤 장르를 좋아하시나요?</HomeSectionSubTitle>
+            <HomeSectionTitle>장르별 툰툰</HomeSectionTitle>
+            <Carousel ref={carouselRef}>
+              <Genres />
+            </Carousel>
+          </HomeSectionWrapper>
+          <HomeSectionWrapper>
+            <HomeSectionSubTitle>언제나 툰툰</HomeSectionSubTitle>
+            <HomeSectionTitle>개미들이 즐겨봐요</HomeSectionTitle>
+            <Carousel ref={carouselRef}>
+              <Popular />
+            </Carousel>
+          </HomeSectionWrapper>
+          <HomeSectionWrapper>
+            <HomeSectionSubTitle>나만의 툰툰</HomeSectionSubTitle>
+            <HomeSectionTitle>비슷한 취향이 자주 보는 웹툰</HomeSectionTitle>
+            <Carousel ref={carouselRef}>
+              <Recommendation />
+            </Carousel>
+          </HomeSectionWrapper>
+          <HomeSectionWrapper>
+            <HomeSectionSubTitle>요일별 웹툰을 추천해요</HomeSectionSubTitle>
+            <HomeSectionTitle>오늘도 툰툰</HomeSectionTitle>
+            <Weekly />
+          </HomeSectionWrapper>
         </HomeContainer>
       </DefaultLayout>
     </>
   );
-};
+}
 
 export default Home;

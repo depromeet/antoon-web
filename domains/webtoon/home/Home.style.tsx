@@ -19,7 +19,6 @@ const DefaultHeader = styled.header`
 const HomeContainer = styled.main``;
 
 const HomeTopWrapper = styled.section`
-  background-color: ${(props) => props.theme.bg_color.primary};
   width: 100%;
 `;
 
@@ -31,47 +30,27 @@ const HomeTopTitleWrapper = styled.div`
   height: 200px;
 `;
 
-const HomeTopTitle = styled.span`
+const HomeTopTitle = styled.h1`
   width: 200px;
+  font-size: 2.4rem;
+  font-weight: bold;
 `;
 
-const ContentWrapper = styled.div`
+const HomeSectionWrapper = styled.section`
   padding: ${(props) => props.theme.padding.layout_carousel};
   padding-top: 3rem;
 `;
 
-const ContentTitle = styled.h2`
-  font-size: ${(props) => props.theme.font_size.h2};
+const HomeSectionTitle = styled.header`
+  margin-bottom: 1.6rem;
+  font-size: 2.4rem;
   font-weight: bold;
 `;
 
-const ContentSubTitle = styled.h3`
-  font-size: ${(props) => props.theme.font_size.h3};
+const HomeSectionSubTitle = styled.small`
+  color: ${(props) => props.theme.colors.grey_400};
+  font-size: 1.2rem;
 `;
-
-const CarouselWrapper = styled.div``;
-
-const CarouselBox = styled.div``;
-
-const CarouselContent = styled.div``;
-
-const CarouselContentCard = styled.div``;
-
-const CarouselContentRanking = styled.div``;
-
-const CarouselContentTitle = styled.div``;
-
-const CarouselContentScore = styled.div``;
-
-const CarouselContentScoreChangeIcon = styled.div``;
-
-const CarouselContentScoreChange = styled.div``;
-
-const CarouselContentAuthor = styled.div``;
-
-const CarouselContentScoreChangePercentWrapper = styled.div``;
-
-const CarouselContentScoreChangePercent = styled.div``;
 
 export {
   DefaultLayout,
@@ -80,19 +59,7 @@ export {
   HomeTopWrapper,
   HomeTopTitleWrapper,
   HomeTopTitle,
-  ContentWrapper,
-  ContentTitle,
-  ContentSubTitle,
-  CarouselWrapper,
-  CarouselBox,
-  CarouselContent,
-  CarouselContentCard,
-  CarouselContentRanking,
-  CarouselContentTitle,
-  CarouselContentScore,
-  CarouselContentScoreChangeIcon,
-  CarouselContentScoreChange,
-  CarouselContentAuthor,
-  CarouselContentScoreChangePercentWrapper,
-  CarouselContentScoreChangePercent,
+  HomeSectionWrapper,
+  HomeSectionTitle,
+  HomeSectionSubTitle,
 };
