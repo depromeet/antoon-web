@@ -16,17 +16,12 @@ const SliderWrapper = styled.div`
 const CategoryCardWrapper = styled.div``;
 
 const CategorySliderCard = styled.div`
-  display: flex;
   position: relative;
   margin: 20px 0;
   border-radius: 10px;
   background: #f1f1f1;
   width: 20%;
   height: 30%;
-
-  & div {
-    width: 20%;
-  }
 `;
 
 const CategoryTitle = styled.p`
