@@ -19,9 +19,15 @@ import Recommendation from './Recommendation';
 import Weekly from './Weekly';
 
 function Home() {
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const RealTimeChartRef = useRef<HTMLDivElement>(null);
+  const GenresRef = useRef<HTMLDivElement>(null);
+  const PopularRef = useRef<HTMLDivElement>(null);
+  const RecommendationRef = useRef<HTMLDivElement>(null);
 
-  useCarousel(carouselRef);
+  useCarousel(RealTimeChartRef);
+  useCarousel(GenresRef);
+  useCarousel(PopularRef);
+  useCarousel(RecommendationRef);
 
   return (
     <>
@@ -35,7 +41,7 @@ function Home() {
             <HomeSectionWrapper>
               <HomeSectionSubTitle>14:00</HomeSectionSubTitle>
               <HomeSectionTitle>실시간 차트</HomeSectionTitle>
-              <Carousel ref={carouselRef}>
+              <Carousel ref={RealTimeChartRef}>
                 <RealTimeChart />
               </Carousel>
             </HomeSectionWrapper>
@@ -43,21 +49,21 @@ function Home() {
           <HomeSectionWrapper>
             <HomeSectionSubTitle>어떤 장르를 좋아하시나요?</HomeSectionSubTitle>
             <HomeSectionTitle>장르별 툰툰</HomeSectionTitle>
-            <Carousel ref={carouselRef}>
+            <Carousel ref={GenresRef}>
               <Genres />
             </Carousel>
           </HomeSectionWrapper>
           <HomeSectionWrapper>
             <HomeSectionSubTitle>언제나 툰툰</HomeSectionSubTitle>
             <HomeSectionTitle>개미들이 즐겨봐요</HomeSectionTitle>
-            <Carousel ref={carouselRef}>
+            <Carousel ref={PopularRef}>
               <Popular />
             </Carousel>
           </HomeSectionWrapper>
           <HomeSectionWrapper>
             <HomeSectionSubTitle>나만의 툰툰</HomeSectionSubTitle>
             <HomeSectionTitle>비슷한 취향이 자주 보는 웹툰</HomeSectionTitle>
-            <Carousel ref={carouselRef}>
+            <Carousel ref={RecommendationRef}>
               <Recommendation />
             </Carousel>
           </HomeSectionWrapper>
