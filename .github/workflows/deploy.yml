@@ -164,4 +164,4 @@ jobs:
 
         - name: Deploy to chromatic
           run: |
-            CHROMATIC_PROJECT_TOKEN=$project_token yarn chromatic --exit-once-uploaded ./**/* --exit-zero-on-changes ./**/*
+            CHROMATIC_PROJECT_TOKEN=$project_token yarn chromatic --skip *
