@@ -14,9 +14,9 @@ const getChartToolTip = (params: any) => {
 
 const getChartToolBoxTooltip = (params: any) => {
   return `<span>
-                ${SVG.LABEL}
-                ${params.name == 'line' ? 'Line' : 'Bar'} 차트
-            </span>
+            ${SVG.LABEL}
+            ${params.name == 'line' ? 'Line' : 'Bar'} 차트
+          </span>
     `;
 };
 
