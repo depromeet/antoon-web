@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 const DetailWrapper = styled.div`
-  margin: 30px auto;
   background-color: #f1f1f1;
   background-position: center top;
   background-size: 100%;
@@ -13,28 +12,18 @@ const DetailWrapper = styled.div`
 const Container = styled.div`
   width: 100%;
   min-width: 320px;
-  max-width: 1024px;
   height: 100%;
-`;
-
-const Contents = styled.div`
-  & .back-area {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
 `;
 
 const DetailContents = styled.section`
   display: block;
   border-bottom: 8px solid #f1f1f1;
   background: #fff;
-  max-width: 1024px;
 `;
 
 const DetailMain = styled.div`
   position: relative;
-  height: 600px;
+  height: 500px;
 
   & a {
     display: block;
@@ -46,7 +35,6 @@ const DetailMain = styled.div`
   }
 
   & h2 {
-    margin-left: 20px;
     line-height: 60px;
     font-family: notokr-regular;
     font-size: 18px;
@@ -55,7 +43,7 @@ const DetailMain = styled.div`
 `;
 
 const MainWrapper = styled.div`
-  padding-top: 62px;
+  padding: 0.8rem 0 0;
 
   & h2 {
     line-height: 144%;
@@ -84,7 +72,6 @@ const MainTitle = styled.div`
 const Platform = styled.div`
   display: inline-block;
   margin-bottom: 4px;
-  margin-left: 20px;
   width: 100%;
   height: 100%;
   line-height: 20.16px;
@@ -99,10 +86,10 @@ const Platform = styled.div`
     content: '';
   }
 `;
+
 const MainScore = styled.div<any>`
   display: block;
   margin-top: 4px;
-  margin-left: 20px;
   color: ${(props) =>
     props?.upDown === 'UP'
       ? props.theme.colors.point_up_100
@@ -120,6 +107,7 @@ const Point = styled.p`
   font-weight: 800;
   font-style: normal;
 `;
+
 const PointUpDown = styled.p`
   opacity: 0.8;
   width: 100%;
@@ -133,7 +121,6 @@ const ThumbNailWrapper = styled.div`
   position: relative;
   float: right;
   margin-top: 0;
-  margin-right: 20px;
   width: 100px;
   height: 100px;
 `;
@@ -189,10 +176,9 @@ const DetailSub = styled.div`
     font-weight: bold;
   }
 `;
+
 const DetailSubWrapper = styled.div`
   display: block;
-  margin-right: 20px;
-  margin-left: 20px;
 
   & h2 {
     line-height: 144%;
@@ -202,6 +188,7 @@ const DetailSubWrapper = styled.div`
     font-style: normal;
   }
 `;
+
 const Category = styled.div`
   opacity: 0.8;
   margin-top: 12px;
@@ -212,6 +199,7 @@ const Category = styled.div`
   font-weight: 400;
   font-style: normal;
 `;
+
 const Description = styled.p`
   display: box !important;
   opacity: 0.8;
@@ -247,7 +235,6 @@ const ChartWrapper = styled.div`
 export {
   DetailWrapper,
   Container,
-  Contents,
   DetailContents,
   DetailMain,
   Platform,

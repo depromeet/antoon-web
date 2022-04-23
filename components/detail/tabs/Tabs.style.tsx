@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 const TabsWrapper = styled.div`
   position: relative;
   margin: -14rem 0 -14px;
-  padding: 0 20px;
   width: 100%;
   height: 36px;
   font-size: 13px;
