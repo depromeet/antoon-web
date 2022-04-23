@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 const CarouselWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 0;
   width: 100%;
   overflow-x: scroll;
   user-select: none;
