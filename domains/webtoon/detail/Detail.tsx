@@ -56,9 +56,21 @@ function Detail(props: Props) {
                       <a href="#">{item.platform} &gt;</a>
                     </Platform>
                     <h2 className="ellipsis2">{item.title}</h2>
-                    <MainScore>
+                    <MainScore upDown={item.status}>
                       <Point>9.98점</Point>
-                      <PointUpDown>어제보다 +0.1점(0.5%)</PointUpDown>
+                      <PointUpDown>
+                        <strong>
+                          <span>
+                            {item.status == 'UP'
+                              ? '+'
+                              : item.status == 'DOWN'
+                              ? '-'
+                              : ''}
+                          </span>
+                          0.1점
+                        </strong>
+                        (0.5%)
+                      </PointUpDown>
                     </MainScore>
                   </MainTitle>
                   <ThumbNailWrapper>
@@ -75,7 +87,11 @@ function Detail(props: Props) {
                     </MainThumbnail>
                   </ThumbNailWrapper>
                   <ChartWrapper>
-                    <Charts chartData={chartData} forceUpdate={false} />
+                    <Charts
+                      chartData={chartData}
+                      forceUpdate={false}
+                      status={item.status || 'NONE'}
+                    />
                   </ChartWrapper>
                   <Tabs />
                 </MainWrapper>

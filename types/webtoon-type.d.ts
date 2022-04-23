@@ -15,7 +15,9 @@ export interface Webtoon {
   content?: string;
   date?: string;
   jenre?: string;
-  status?: string;
+  status?: ChartStatus;
   isLike?: boolean;
   thumnail?: string;
 }
+
+export type ChartStatus = 'UP' | 'DOWN' | 'NONE';
