@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Logo = () => {
+const Search = () => {
   return (
     <svg
       width="24"
@@ -27,4 +27,4 @@ const Logo = () => {
   );
 };
 
-export default Logo;
+export default Search;
