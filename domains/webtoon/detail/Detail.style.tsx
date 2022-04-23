@@ -34,7 +34,7 @@ const DetailContents = styled.section`
 
 const DetailMain = styled.div`
   position: relative;
-  height: 630px;
+  height: 600px;
 
   & a {
     display: block;
