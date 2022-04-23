@@ -43,6 +43,7 @@ const ReactECharts: React.FC<ChartsProps> = ({
     function resizeChart() {
       chart?.resize();
     }
+
     window.addEventListener('resize', resizeChart);
 
     return () => {
