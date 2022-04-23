@@ -10,13 +10,13 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "run-p lint:*",
-    "lint:eslint": "eslint --ignore-path .gitignore './**/*.{js,ts,tsx}'",
-    "lint:stylelint": "stylelint --ignore-path .gitignore './**/*.tsx'",
-    "lint:prettier": "prettier --ignore-path .gitignore --check './**/*.{js,ts,tsx}'",
+    "lint:eslint": "eslint --ignore-path .gitignore \"./**/*.{js,ts,tsx}\"",
+    "lint:stylelint": "stylelint --ignore-path .gitignore \"./**/*.tsx\"",
+    "lint:prettier": "prettier --ignore-path .gitignore --check \"./**/*.{js,ts,tsx}\"",
     "lint-fix": "run-p lint-fix:*",
-    "lint-fix:eslint": "eslint --fix './**/*.{js,ts,tsx}' --ignore-path .gitignore",
-    "lint-fix:stylelint": "stylelint --fix './**/*.tsx' --ignore-path .gitignore",
-    "lint-fix:prettier": "prettier --write './**/*.{js,ts,tsx}' --ignore-path .gitignore"
+    "lint-fix:eslint": "eslint --fix \"./**/*.{js,ts,tsx}\" --ignore-path .gitignore",
+    "lint-fix:stylelint": "stylelint --fix \"./**/*.tsx\" --ignore-path .gitignore",
+    "lint-fix:prettier": "prettier --write \"./**/*.{js,ts,tsx}\" --ignore-path .gitignore"
   },
   "lint-staged": {
     "./**/*.tsx": [
