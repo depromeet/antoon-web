@@ -3,14 +3,15 @@ import ReactECharts from './composables/ECharts';
 import { ChartContainer, ChartWrapper } from './composables/Charts.style';
 import { ChartData } from '@_types/chart-type';
 import setOption from './composables/Chart_Visualizer';
-import Tabs from '@components/detail/tabs/Tabs';
+import { ChartStatus } from '@_types/webtoon-type';
 
 interface Props {
   chartData: ChartData;
-  forceUpdate: boolean;
+  forceUpdate?: boolean;
+  status?: ChartStatus;
 }
 
-function Charts({ chartData, forceUpdate }: Props) {
+function Charts({ chartData, forceUpdate, status }: Props) {
   const xAxisData = Object.keys(chartData.timeseries);
 
   return (
@@ -20,6 +21,7 @@ function Charts({ chartData, forceUpdate }: Props) {
           option={setOption(
             xAxisData,
             xAxisData.map((k) => chartData.timeseries[k]),
+            status,
           )}
         />
       </ChartContainer>
