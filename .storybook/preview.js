@@ -20,11 +20,11 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => (
+  (Story, context) => (
     <ThemeProvider theme={themes}>
       <GlobalStyle />
       <Global styles={css``} />
-      <Story />
+      <Story {...context} />
     </ThemeProvider>
   ),
 ];
