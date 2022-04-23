@@ -92,7 +92,7 @@ function setOption(
           },
         ]),
         lineStyle: {
-          color: '#FF948D',
+          color: getChartStatusFactory(status || 'NONE', 100),
           width: 1,
         },
         areaStyle: {},

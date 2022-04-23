@@ -1,4 +1,3 @@
-import { getChartStatusFactory } from '@components/charts/chart-utils';
 import styled from '@emotion/styled';
 
 const DetailWrapper = styled.div`
@@ -104,7 +103,12 @@ const MainScore = styled.div<any>`
   display: block;
   margin-top: 4px;
   margin-left: 20px;
-  color: ${(props) => getchartstatusfactory(props?.updown, 100)};
+  color: ${(props) =>
+    props?.upDown === 'UP'
+      ? props.theme.colors.point_up_100
+      : props?.upDown === 'DOWN'
+      ? props.theme.colors.point_down_100
+      : '#000 '};
 `;
 
 const Point = styled.p`
@@ -117,7 +121,7 @@ const Point = styled.p`
   font-style: normal;
 `;
 const PointUpDown = styled.p`
-  opacity: 0.6;
+  opacity: 0.8;
   width: 100%;
   font-family: Pretendard;
   font-size: 1.5rem;
