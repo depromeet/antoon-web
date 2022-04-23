@@ -18,6 +18,7 @@ const global = css`
   }
 
   html {
+    background-color: #f1ede9;
     font-family: Pretendard;
     font-size: 62.5%;
     font-weight: 400;
