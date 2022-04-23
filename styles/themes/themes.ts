@@ -19,10 +19,11 @@ const themes = {
     point_down_0: 'rgba(196, 196, 196, 0)',
     point_none_100: 'rgba(245, 247, 250, 0.1)',
     point_none_0: 'rgba(245, 247, 250, 1)',
+    white: '#FFFFFF',
   },
   padding: {
-    layout: '0 2.4rem',
-    layout_carousel: '0 0 0 2.4rem',
+    layout: '0 0',
+    layout_carousel: '0 0 0 0',
   },
 };
 
