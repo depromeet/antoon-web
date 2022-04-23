@@ -8,7 +8,7 @@ import { DEFAULT_COLOR } from '@constants/icon-constants';
 
 // eslint-disable-next-line react/display-name
 const HeartIcon: React.FC<IconProps> = React.memo((props) => (
-  <Icon type="stroke" {...props}>
+  <Icon type="stroke" {...props} cursor="pointer">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill={props.fill ? DEFAULT_COLOR.HEART : 'none'}
