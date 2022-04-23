@@ -1,4 +1,5 @@
 import {
+  RealTimeChartBoxContainer,
   CarouselContent,
   CarouselContentCard,
   CarouselContentRankingWrapper,
@@ -52,13 +53,13 @@ function RealTimeChartBox() {
 
 function RealTimeChart() {
   return (
-    <>
+    <RealTimeChartBoxContainer>
       <RealTimeChartBox />
       <RealTimeChartBox />
       <RealTimeChartBox />
       <RealTimeChartBox />
       <RealTimeChartBox />
-    </>
+    </RealTimeChartBoxContainer>
   );
 }
 
