@@ -34,7 +34,7 @@ const DetailContents = styled.section`
 
 const DetailMain = styled.div`
   position: relative;
-  height: 60rem;
+  height: 630px;
 
   & a {
     display: block;
@@ -61,7 +61,7 @@ const MainWrapper = styled.div`
     line-height: 144%;
     font-family: Pretendard;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 800;
     font-style: normal;
   }
 `;
@@ -83,11 +83,12 @@ const MainTitle = styled.div`
 
 const Platform = styled.div`
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   margin-left: 20px;
   width: 100%;
   height: 100%;
   line-height: 20.16px;
+  color: #838383;
   font-family: Preahvihear;
   font-size: 14px;
   font-weight: 400;
@@ -98,13 +99,20 @@ const Platform = styled.div`
     content: '';
   }
 `;
-const MainScore = styled.div`
+const MainScore = styled.div<any>`
   display: block;
-  margin-top: 10px;
+  margin-top: 4px;
   margin-left: 20px;
+  color: ${(props) =>
+    props?.upDown === 'UP'
+      ? props.theme.colors.point_up_100
+      : props?.upDown === 'DOWN'
+      ? props.theme.colors.point_down_100
+      : '#000 '};
 `;
+
 const Point = styled.p`
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   width: 100%;
   color: '#000';
   font-family: Pretendard;
@@ -115,7 +123,6 @@ const Point = styled.p`
 const PointUpDown = styled.p`
   opacity: 0.6;
   width: 100%;
-  color: '#000';
   font-family: Pretendard;
   font-size: 1.5rem;
   font-weight: 400;
@@ -125,10 +132,10 @@ const PointUpDown = styled.p`
 const ThumbNailWrapper = styled.div`
   position: relative;
   float: right;
-  margin-top: 40px;
+  margin-top: 0;
   margin-right: 20px;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 `;
 
 const MainThumbnailImg = styled.div`
@@ -138,23 +145,24 @@ const MainThumbnailImg = styled.div`
 const MainThumbnail = styled.div`
   position: absolute;
   right: 0;
-  width: 100px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
 
   & img {
-    border-radius: 50%;
+    border-radius: 20%;
   }
 
   & p {
     position: absolute;
-    bottom: -10px;
+    right: 80px;
+    bottom: -20px;
     border-radius: 50%;
-    background: #c4c4c4;
+    background: #626262;
     width: 40px;
     height: 40px;
     text-align: center;
     line-height: 40px;
-    color: #000;
+    color: #fff;
     font-family: Inter;
     font-size: 14px;
   }

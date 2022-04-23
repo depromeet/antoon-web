@@ -13,6 +13,12 @@ const themes = {
     grey_200: '#f5f5f5',
     grey_300: '#cfcfcf',
     grey_400: '#A2A9B0',
+    point_up_100: '#FF4E16',
+    point_up_0: 'rgba(255, 94, 26, 0.06)',
+    point_down_100: 'rgb(28, 92, 255, 0.5)',
+    point_down_0: 'rgba(196, 196, 196, 0)',
+    point_none_100: 'rgba(245, 247, 250, 0.1)',
+    point_none_0: 'rgba(245, 247, 250, 1)',
   },
   padding: {
     layout: '0 2.4rem',

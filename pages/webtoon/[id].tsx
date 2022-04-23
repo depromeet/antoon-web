@@ -13,7 +13,7 @@ const webtoonMock: Webtoon = {
   content: `세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명`,
   date: '월,화',
   jenre: '학원물',
-  status: 'DOWN',
+  status: 'UP',
   isLike: true,
   thumnail:
     'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
@@ -21,13 +21,13 @@ const webtoonMock: Webtoon = {
 const ChartMock: ChartData = {
   label: 'daily',
   timeseries: {
-    '00:00': 0.1,
-    '04:00': 2.7,
-    '08:00': 4.7,
-    '12:00': 4.9,
-    '16:00': 6.7,
-    '20:00': 9.9,
-    '24:00': 8.7,
+    '00:00': 3.12,
+    '04:00': 2.72,
+    '08:00': 5.73,
+    '12:00': 8.92,
+    '16:00': 6.71,
+    '20:00': 9.99,
+    '24:00': 7.73,
   },
 };
 

@@ -1,10 +1,13 @@
+import themes from '@styles/themes/themes';
+import { ChartStatus } from '@_types/webtoon-type';
 import { graphic } from 'echarts';
-import { getChartToolTip } from '../chart-utils';
+import { getChartStatusFactory, getChartToolTip } from '../chart-utils';
 import { ChartsProps } from './ECharts';
 
 function setOption(
   xAxisData: string[],
   seriesData: number[],
+  status?: ChartStatus,
 ): ChartsProps['option'] {
   return {
     title: {
@@ -52,21 +55,13 @@ function setOption(
         fontFamily: 'Preahvihear',
         fontSize: '1rem',
       },
-
       lineHeight: '144%',
     },
     yAxis: {
       type: 'value',
       show: true,
       position: 'right',
-      axisLine: {
-        show: true,
-        lineStyle: {
-          color: '#FF948D',
-          width: 1,
-          type: 'solid',
-        },
-      },
+
       splitLine: {
         show: false,
       },
@@ -81,15 +76,79 @@ function setOption(
         type: 'line',
         smooth: true,
         symbol: 'none',
+        symbolSize: 5,
+        showAllSymbol: true,
         color: new graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: 'rgba(255, 41, 28, 0.5)' },
-          { offset: 1, color: 'rgba(196, 196, 196, 0)' },
+          {
+            offset: 0,
+            color: getChartStatusFactory(status || 'NONE', 100),
+          },
+          {
+            offset: 1,
+            color:
+              status == 'UP'
+                ? themes.colors.point_up_0
+                : themes.colors.point_down_0,
+          },
         ]),
         lineStyle: {
           color: '#FF948D',
           width: 1,
         },
         areaStyle: {},
+        markPoint: {
+          data: [
+            {
+              name: '최고',
+              type: 'max',
+            },
+            {
+              name: '최저',
+              type: 'min',
+            },
+            {
+              name: '첫지점',
+              valueDim: 'x',
+              type: 'min',
+              label: {
+                show: false,
+              },
+              symbol: 'circle',
+              symbolSize: 5,
+              itemStyle: {
+                color: getChartStatusFactory(status || 'NONE', 100),
+              },
+            },
+            {
+              name: '마지막지점',
+              valueIndex: 0,
+              type: 'max',
+              label: {
+                show: false,
+              },
+              symbol: 'circle',
+              symbolSize: 5,
+              itemStyle: {
+                color: getChartStatusFactory(status || 'NONE', 100),
+              },
+            },
+          ],
+          label: {
+            show: true,
+            color: '#767676',
+            formatter: '{b} {@score}점',
+            fontFamily: 'Pretendard',
+            fontSize: '10px',
+            fontWeight: 500,
+            opacity: 0.8,
+            align: 'center',
+            verticalAlign: 'bottom',
+            lineHeight: 14.4,
+            padding: [0, 0, 15, 0],
+          },
+          symbol: 'roundRect',
+          symbolSize: 1,
+        },
       },
     ],
     tooltip: {
