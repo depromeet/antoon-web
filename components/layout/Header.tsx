@@ -1,18 +1,29 @@
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { HeaderWrap } from './Header.style';
 
+import BackIcon from '@components/icon/Icon_Back';
 import Logo from 'assets/svgs/Logo';
 
-function Header() {
+type HeaderProps = {
+  leftBtn?: string;
+};
+
+function Header({ leftBtn }: HeaderProps) {
+  const router = useRouter();
+
   return (
     <HeaderWrap>
-      <Link href="/" passHref>
-        <a>
+      {leftBtn === 'logo' ? (
+        <button onClick={() => router.reload()}>
           <Logo />
-        </a>
-      </Link>
+        </button>
+      ) : (
+        <button onClick={() => router.back()}>
+          <BackIcon />
+        </button>
+      )}
     </HeaderWrap>
   );
 }
