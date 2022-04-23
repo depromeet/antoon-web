@@ -9,6 +9,7 @@ const nextConfig = {
       'k.kakaocdn.net',
       'blog.kakaocdn.net',
       'colorate.azurewebsites.net',
+      'images.unsplash.com',
     ],
   },
   reactStrictMode: true,
