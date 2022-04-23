@@ -1,23 +1,30 @@
 import styled from '@emotion/styled';
 
+const RealTimeChartBoxContainer = styled.div`
+  display: flex;
+  gap: 2.4rem;
+`;
+
 const CarouselBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
   justify-content: flex-start;
-  margin: 0;
-  min-width: 300px;
+  width: 296px;
 `;
 
 const CarouselContent = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 0;
+  gap: 1.2rem;
+
+  > :last-child {
+    margin-left: auto;
+  }
 `;
 
 // TODO: 이미지 태그로 변경할 것
 const CarouselContentCard = styled.div`
-  margin: 0;
   border-radius: 10px;
   background-color: ${(props) => props.theme.bg_color.primary};
   width: 52px;
@@ -52,7 +59,6 @@ const CarouselContentInformationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin: 0;
 `;
 
 const CarouselContentTitle = styled.div`
@@ -60,7 +66,6 @@ const CarouselContentTitle = styled.div`
 `;
 
 const CarouselContentAuthor = styled.div`
-  margin: 0;
   color: ${(props) => props.theme.colors.grey_400};
   font-size: 1.4rem;
 `;
@@ -72,6 +77,7 @@ const CarouselContentScoreWrapper = styled.div`
 `;
 
 const CarouselContentScore = styled.div`
+  text-align: end;
   font-size: 1.6rem;
   font-weight: 600;
 `;
@@ -85,6 +91,7 @@ const CarouselContentScoreChangePercent = styled.div`
 `;
 
 export {
+  RealTimeChartBoxContainer,
   CarouselBox,
   CarouselContent,
   CarouselContentCard,

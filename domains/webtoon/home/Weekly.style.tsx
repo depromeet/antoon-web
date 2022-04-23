@@ -5,7 +5,6 @@ const WeeklyWrapper = styled.div`
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.2rem;
-  margin: 0;
   padding-bottom: 2rem;
   width: 100%;
 `;

@@ -2,7 +2,7 @@
 // https://www.figma.com/file/fgeQYhg1cfGpb4sZe8cAi6/%EB%94%94%ED%94%84%EB%A7%8C-1%EB%B2%88-%EC%B6%9C%EA%B5%AC?node-id=3%3A17
 const themes = {
   bg_color: {
-    primary: '#F1F1F1',
+    primary: '#E9E9E9',
   },
   colors: {
     black: 'rgba(0, 0, 0, 1)',
@@ -13,6 +13,7 @@ const themes = {
     grey_200: '#f5f5f5',
     grey_300: '#cfcfcf',
     grey_400: '#A2A9B0',
+    grey_500: '#9E9E9E',
     point_up_100: '#FF4E16',
     point_up_0: 'rgba(255, 94, 26, 0.06)',
     point_down_100: 'rgba(28, 92, 255, 1)',

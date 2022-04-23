@@ -7,10 +7,15 @@ import {
   HomeContainer,
   HomeTopWrapper,
   HomeTopTitleWrapper,
+  HomeTopSubTitle,
   HomeTopTitle,
   HomeSectionWrapper,
-  HomeSectionTitle,
   HomeSectionSubTitle,
+  HomeSectionTitleWithTimeWrapper,
+  HomeSectionTitle,
+  HomeSectionTitleWithTime,
+  HomeRecommendationWrapper,
+  HomeRecommendationBackground,
 } from './Home.style';
 import RealTimeChart from './RealTimeChart';
 import Genres from './Genres';
@@ -36,41 +41,47 @@ function Home() {
         <HomeContainer>
           <HomeTopWrapper>
             <HomeTopTitleWrapper>
-              <HomeTopTitle>개미는 오늘도 열심히 툰툰을 보네</HomeTopTitle>
+              <HomeTopSubTitle>열심히일하는일개미님</HomeTopSubTitle>
+              <HomeTopTitle>오늘은 어떤 웹툰에 탑승할까요?</HomeTopTitle>
             </HomeTopTitleWrapper>
-            <HomeSectionWrapper>
-              <HomeSectionSubTitle>14:00</HomeSectionSubTitle>
-              <HomeSectionTitle>실시간 차트</HomeSectionTitle>
-              <Carousel ref={RealTimeChartRef}>
-                <RealTimeChart />
-              </Carousel>
-            </HomeSectionWrapper>
           </HomeTopWrapper>
           <HomeSectionWrapper>
-            <HomeSectionSubTitle>어떤 장르를 좋아하시나요?</HomeSectionSubTitle>
+            <HomeSectionSubTitle>다같이 영차영차</HomeSectionSubTitle>
+            <HomeSectionTitleWithTimeWrapper>
+              <HomeSectionTitle>실시간 차트</HomeSectionTitle>
+              <HomeSectionTitleWithTime>14:00 기준</HomeSectionTitleWithTime>
+            </HomeSectionTitleWithTimeWrapper>
+            <Carousel ref={RealTimeChartRef}>
+              <RealTimeChart />
+            </Carousel>
+          </HomeSectionWrapper>
+          <HomeSectionWrapper>
+            <HomeSectionSubTitle>어떤 장르가 좋을까?</HomeSectionSubTitle>
             <HomeSectionTitle>장르별 툰툰</HomeSectionTitle>
             <Carousel ref={GenresRef}>
               <Genres />
             </Carousel>
           </HomeSectionWrapper>
           <HomeSectionWrapper>
-            <HomeSectionSubTitle>언제나 툰툰</HomeSectionSubTitle>
-            <HomeSectionTitle>개미들이 즐겨봐요</HomeSectionTitle>
+            <HomeSectionSubTitle>상한가 열차 탑승!</HomeSectionSubTitle>
+            <HomeSectionTitle>상승 중인 툰툰</HomeSectionTitle>
             <Carousel ref={PopularRef}>
               <Popular />
             </Carousel>
           </HomeSectionWrapper>
+          <HomeRecommendationWrapper>
+            <HomeRecommendationBackground>
+              <HomeSectionSubTitle>이건 탑승해야 돼</HomeSectionSubTitle>
+              <HomeSectionTitle>20대 개미들이 즐겨봐요</HomeSectionTitle>
+              <Carousel ref={RecommendationRef}>
+                <Recommendation />
+              </Carousel>
+            </HomeRecommendationBackground>
+          </HomeRecommendationWrapper>
           <HomeSectionWrapper>
-            <HomeSectionSubTitle>나만의 툰툰</HomeSectionSubTitle>
-            <HomeSectionTitle>비슷한 취향이 자주 보는 웹툰</HomeSectionTitle>
-            <Carousel ref={RecommendationRef}>
-              <Recommendation />
-            </Carousel>
-          </HomeSectionWrapper>
-          <HomeSectionWrapper>
-            <HomeSectionSubTitle>요일별 웹툰을 추천해요</HomeSectionSubTitle>
-            <HomeSectionTitle>오늘도 툰툰</HomeSectionTitle>
-            <Weekly />
+            <HomeSectionSubTitle>개미는 오늘도 줍줍</HomeSectionSubTitle>
+            <HomeSectionTitle>요일별 툰툰</HomeSectionTitle>
+            {/* <Weekly /> */}
           </HomeSectionWrapper>
         </HomeContainer>
       </DefaultLayout>
