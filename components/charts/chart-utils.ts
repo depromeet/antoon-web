@@ -4,7 +4,7 @@ import themes from '@styles/themes/themes';
 import { ChartStatus } from '@_types/webtoon-type';
 
 const getChartToolTip = (params: any) => {
-  return params instanceof Array && params.length
+  return params instanceof Array && params?.length
     ? params.reduce(
         (acc, param) =>
           (acc += `${SVG.STAR} <b>${param.value}</b>${
@@ -13,14 +13,6 @@ const getChartToolTip = (params: any) => {
         `<b><span>${params[0].axisValueLabel} - </span></b>`,
       )
     : null;
-};
-
-const getChartToolBoxTooltip = (params: any) => {
-  return `<span>
-            ${SVG.LABEL}
-            ${params.name == 'line' ? 'Line' : 'Bar'} 차트
-          </span>
-    `;
 };
 
 const getChartStatusFactory = (status: ChartStatus, gradient: number) => {
@@ -34,4 +26,4 @@ const getChartStatusFactory = (status: ChartStatus, gradient: number) => {
   }
 };
 
-export { getChartToolTip, getChartToolBoxTooltip, getChartStatusFactory };
+export { getChartToolTip, getChartStatusFactory };

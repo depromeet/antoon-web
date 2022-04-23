@@ -8,7 +8,7 @@ import { ChartStatus } from '@_types/webtoon-type';
 interface Props {
   chartData: ChartData;
   forceUpdate?: boolean;
-  status: ChartStatus;
+  status?: ChartStatus;
 }
 
 function Charts({ chartData, forceUpdate, status }: Props) {

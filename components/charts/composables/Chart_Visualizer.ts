@@ -10,28 +10,6 @@ function setOption(
   status?: ChartStatus,
 ): ChartsProps['option'] {
   return {
-    title: {
-      show: false,
-      text: '9.98점',
-      subtext: '어제보다 +0.1점(0.5%)',
-      textStyle: {
-        color: '#000',
-        fontFamily: 'Pretendard',
-        fontStyle: 'normal',
-        fontWeight: 800,
-        fontSize: '3.6rem',
-        width: '10.9rem',
-      },
-      subtextStyle: {
-        color: '#000',
-        opacity: 0.6,
-        fontFamily: 'Pretendard',
-        fontStyle: 'normal',
-        fontSize: '1.5rem',
-        fontWeight: 400,
-        width: '13rem',
-      },
-    },
     xAxis: {
       type: 'category',
       boundaryGap: false,
@@ -76,8 +54,6 @@ function setOption(
         type: 'line',
         smooth: true,
         symbol: 'none',
-        symbolSize: 5,
-        showAllSymbol: true,
         color: new graphic.LinearGradient(0, 0, 0, 1, [
           {
             offset: 0,
@@ -159,11 +135,10 @@ function setOption(
         fontWeight: 'normal',
         textShadowBlur: 30,
       },
-      alwaysShowContent: true,
       formatter: (params: any) => getChartToolTip(params),
       axisPointer: {
         type: 'line',
-        animation: true,
+        animation: false,
       },
     },
     grid: {
