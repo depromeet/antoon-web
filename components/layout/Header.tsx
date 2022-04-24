@@ -1,29 +1,43 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 
-import { HeaderWrap } from './Header.style';
+import Logo from '@assets/svgs/Logo';
+import BackIcon from '@components/icon/BackIcon';
 
-import BackIcon from '@components/icon/Icon_Back';
-import Logo from 'assets/svgs/Logo';
+import SearchBar from './SearchBar';
+
+import { HeaderWrap, LeftBtn, RightBtn } from './Header.style';
 
 type HeaderProps = {
   leftBtn?: string;
+  rightBtn?: string;
 };
 
-function Header({ leftBtn }: HeaderProps) {
+function Header({ leftBtn, rightBtn }: HeaderProps) {
   const router = useRouter();
 
   return (
     <HeaderWrap>
-      {leftBtn === 'logo' ? (
-        <button onClick={() => router.reload()}>
-          <Logo />
-        </button>
-      ) : (
-        <button onClick={() => router.back()}>
-          <BackIcon />
-        </button>
-      )}
+      <LeftBtn>
+        {leftBtn === 'logo' ? (
+          <button onClick={() => router.reload()}>
+            <Logo />
+          </button>
+        ) : (
+          <button onClick={() => router.back()}>
+            <BackIcon />
+          </button>
+        )}
+      </LeftBtn>
+
+      <RightBtn>
+        {rightBtn === 'menu' ? (
+          <></>
+        ) : rightBtn === 'search' ? (
+          <SearchBar />
+        ) : (
+          <></>
+        )}
+      </RightBtn>
     </HeaderWrap>
   );
 }
