@@ -4,6 +4,7 @@ import { Webtoon } from '@_types/webtoon-type';
 import { useRouter } from 'next/router';
 import { ChartData } from '@_types/chart-type';
 import React from 'react';
+import Header from '@components/layout/Header';
 
 const webtoonMock: Webtoon = {
   id: 1,
@@ -38,7 +39,12 @@ function webtoonDetail() {
 
   // Mock
   const mock = webtoonMock;
-  return <Detail key={mock.id} item={mock} chartData={ChartMock} />;
+  return (
+    <>
+      <Header />
+      <Detail key={mock.id} item={mock} chartData={ChartMock} />
+    </>
+  );
 }
 
 export default webtoonDetail;

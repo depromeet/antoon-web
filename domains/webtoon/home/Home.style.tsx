@@ -1,20 +1,5 @@
 import styled from '@emotion/styled';
 
-// TODO: 공통 레이아웃으로 변경
-const DefaultLayout = styled.div`
-  max-width: 1024px;
-  height: 100vh;
-`;
-
-// TODO: 공통 헤더로 변경
-const DefaultHeader = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 2.4rem;
-  height: 56px;
-`;
-
 const HomeContainer = styled.main``;
 
 const HomeTopWrapper = styled.section`
@@ -85,8 +70,6 @@ const HomeRecommendationBackground = styled.div`
 `;
 
 export {
-  DefaultLayout,
-  DefaultHeader,
   HomeContainer,
   HomeTopWrapper,
   HomeTopTitleWrapper,

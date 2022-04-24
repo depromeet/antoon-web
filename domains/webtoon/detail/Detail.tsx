@@ -1,5 +1,4 @@
 import { Webtoon } from '@_types/webtoon-type';
-import BackIcon from '@components/icon/Icon_Back';
 import Image from 'next/image';
 import Charts from '@components/charts/Charts';
 import { ChartData } from '@_types/chart-type';
@@ -8,7 +7,6 @@ import {
   ChartWrapper,
   Container,
   ContentBar,
-  Contents,
   Description,
   DetailContents,
   DetailMain,
@@ -44,78 +42,73 @@ function Detail(props: Props) {
     <>
       <DetailWrapper>
         <Container>
-          <Contents>
-            <DetailContents>
-              <DetailMain>
-                <div className="back-area">
-                  <BackIcon />
-                </div>
-                <MainWrapper>
-                  <MainTitle>
-                    <Platform>
-                      <a href="#">{item.platform} &gt;</a>
-                    </Platform>
-                    <h2 className="ellipsis2">{item.title}</h2>
-                    <MainScore upDown={item.status}>
-                      <Point>9.98점</Point>
-                      <PointUpDown>
-                        <strong>
-                          <span>
-                            {item.status == 'UP'
-                              ? '+'
-                              : item.status == 'DOWN'
-                              ? '-'
-                              : ''}
-                          </span>
-                          0.1점
-                        </strong>
-                        (0.5%)
-                      </PointUpDown>
-                    </MainScore>
-                  </MainTitle>
-                  <ThumbNailWrapper>
-                    <MainThumbnail>
-                      <MainThumbnailImg>
-                        <Image
-                          src={item.thumnail || ''}
-                          alt="대학일기"
-                          width={1000}
-                          height={1000}
-                        />
-                      </MainThumbnailImg>
-                      <p>1위</p>
-                    </MainThumbnail>
-                  </ThumbNailWrapper>
-                  <ChartWrapper>
-                    <Charts
-                      chartData={chartData}
-                      forceUpdate={false}
-                      status={item.status || 'NONE'}
-                    />
-                  </ChartWrapper>
-                  <Tabs />
-                </MainWrapper>
-              </DetailMain>
-              <DetailSub>
-                <DetailSubWrapper>
-                  <h2>작품소개</h2>
-                  <Category>
-                    작가 <ContentBar />
-                    {item.author}
-                  </Category>
-                  <Description>{item.content}</Description>
-                  <CategorySlider
-                    platform={item.platform}
-                    jenre={item.jenre || DEFAULT_MSG}
-                    categoryStatus={{
-                      date: item.date || DEFAULT_MSG,
-                      ingStatus: '연재중',
-                    }}
+          <DetailContents>
+            <DetailMain>
+              <MainWrapper>
+                <MainTitle>
+                  <Platform>
+                    <a href="#">{item.platform} &gt;</a>
+                  </Platform>
+                  <h2 className="ellipsis2">{item.title}</h2>
+                  <MainScore upDown={item.status}>
+                    <Point>9.98점</Point>
+                    <PointUpDown>
+                      <strong>
+                        <span>
+                          {item.status == 'UP'
+                            ? '+'
+                            : item.status == 'DOWN'
+                            ? '-'
+                            : ''}
+                        </span>
+                        0.1점
+                      </strong>
+                      (0.5%)
+                    </PointUpDown>
+                  </MainScore>
+                </MainTitle>
+                <ThumbNailWrapper>
+                  <MainThumbnail>
+                    <MainThumbnailImg>
+                      <Image
+                        src={item.thumnail || ''}
+                        alt="대학일기"
+                        width={1000}
+                        height={1000}
+                      />
+                    </MainThumbnailImg>
+                    <p>1위</p>
+                  </MainThumbnail>
+                </ThumbNailWrapper>
+                <ChartWrapper>
+                  <Charts
+                    chartData={chartData}
+                    forceUpdate={false}
+                    status={item.status || 'NONE'}
                   />
-                </DetailSubWrapper>
-              </DetailSub>
-            </DetailContents>
-          </Contents>
+                </ChartWrapper>
+                <Tabs />
+              </MainWrapper>
+            </DetailMain>
+            <DetailSub>
+              <DetailSubWrapper>
+                <h2>작품소개</h2>
+                <Category>
+                  작가 <ContentBar />
+                  {item.author}
+                </Category>
+                <Description>{item.content}</Description>
+                <CategorySlider
+                  platform={item.platform}
+                  jenre={item.jenre || DEFAULT_MSG}
+                  categoryStatus={{
+                    date: item.date || DEFAULT_MSG,
+                    ingStatus: '연재중',
+                  }}
+                />
+              </DetailSubWrapper>
+            </DetailSub>
+          </DetailContents>
         </Container>
       </DetailWrapper>
     </>

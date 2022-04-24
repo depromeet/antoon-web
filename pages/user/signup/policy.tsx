@@ -1,3 +1,4 @@
+import Header from '@components/layout/Header';
 import Checkbox from '@domains/user/policy/checkbox/Checkbox';
 
 export const mock = [
@@ -14,11 +15,16 @@ export const mock = [
 ];
 
 function policy() {
-  return mock.map((item) => (
-    <Checkbox key={item.id} id={item.id} link={item.link}>
-      {item.label}
-    </Checkbox>
-  ));
+  return (
+    <>
+      <Header />
+      {mock.map((item) => (
+        <Checkbox key={item.id} id={item.id} link={item.link}>
+          {item.label}
+        </Checkbox>
+      ))}
+    </>
+  );
 }
 
 export default policy;
