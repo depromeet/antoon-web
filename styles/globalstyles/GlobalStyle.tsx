@@ -45,15 +45,20 @@ const global = css`
     font-weight: normal;
   }
 
-  input,
-  button {
+  input {
     outline: none;
     border: none;
     background-color: transparent;
   }
 
   button {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: inherit;
     cursor: pointer;
+    padding: 0;
+    overflow: visible;
   }
 
   img {

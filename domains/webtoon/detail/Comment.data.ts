@@ -1,4 +1,4 @@
-const commentdata = [
+const comments = [
   {
     id: 1,
     name: '김루하',
@@ -32,4 +32,4 @@ const commentdata = [
   },
 ];
 
-export { commentdata };
+export { comments };

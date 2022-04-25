@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { commentdata } from './Comment.data';
+import { comments } from './Comment.data';
 
 import {
   Title,
@@ -18,7 +16,7 @@ import ProfileImg from '@components/image/UserProfile';
 import FavoriteBtn from '@components/button/FavoriteBtn';
 
 function Comment() {
-  const data = commentdata;
+  const data = comments;
 
   return (
     <>

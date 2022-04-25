@@ -11,6 +11,7 @@ const themes = {
     bisque: 'rgb(255,228,196,1)',
     grey_100: 'rgb(245,256,256,1)',
     grey_200: '#f5f5f5',
+    grey_250: '#f3f3f3',
     grey_300: '#cfcfcf',
     grey_400: '#A2A9B0',
     grey_500: '#9E9E9E',
