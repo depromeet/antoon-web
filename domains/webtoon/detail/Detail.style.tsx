@@ -17,7 +17,6 @@ const Container = styled.div`
 
 const DetailContents = styled.section`
   display: block;
-  border-bottom: 8px solid #f1f1f1;
   background: #fff;
 `;
 

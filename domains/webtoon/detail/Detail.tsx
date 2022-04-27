@@ -26,6 +26,7 @@ import {
 import CategorySlider from '@components/detail/category/CategorySlider';
 import { useEffect, useState } from 'react';
 import Tabs from '@components/detail/tabs/Tabs';
+import Bar from '@components/bar/Bar';
 
 interface Props {
   item: Webtoon;
@@ -110,6 +111,7 @@ function Detail(props: Props) {
             </DetailSub>
           </DetailContents>
         </Container>
+        <Bar />
       </DetailWrapper>
     </>
   );

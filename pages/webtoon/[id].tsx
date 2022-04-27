@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { ChartData } from '@_types/chart-type';
 import React from 'react';
 import Header from '@components/layout/Header';
+import Comment from '@domains/webtoon/detail/Comment';
 
 const webtoonMock: Webtoon = {
   id: 1,
@@ -43,6 +44,7 @@ function webtoonDetail() {
     <>
       <Header />
       <Detail key={mock.id} item={mock} chartData={ChartMock} />
+      <Comment />
     </>
   );
 }
