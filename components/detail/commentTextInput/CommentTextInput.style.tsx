@@ -56,6 +56,7 @@ const TextArea = styled.textarea`
   border: none;
   resize: none;
   border-radius: 10px;
+  outline: none;
   background: ${(props) => props.theme.colors.grey_260};
   font-family: Pretendard;
   font-size: 14px;
@@ -88,6 +89,16 @@ const SubmitButton = styled.button<{ isShow: boolean }>`
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
+  -webkit-tap-highlight-color: transparent;
+
+  -moz-transition: height 0.5s ease;
+  -webkit-transition: height 0.5s ease;
+  -o-transition: height 0.5s ease;
+  transition: height 0.5s ease;
+
+  &:hover {
+    background: ${(props) => props.theme.colors.grey_900};
+  }
 `;
 
 export {
