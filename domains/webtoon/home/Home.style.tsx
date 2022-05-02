@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 const HomeContainer = styled.main``;
 
 const HomeTopWrapper = styled.section`
-  padding: ${(props) => props.theme.padding.layout};
   padding-top: 0.8rem;
 `;
 
@@ -27,7 +26,6 @@ const HomeTopTitle = styled.h1`
 `;
 
 const HomeSectionWrapper = styled.section`
-  padding: ${(props) => props.theme.padding.layout_carousel};
   padding-top: 3rem;
 `;
 
@@ -59,14 +57,13 @@ const HomeSectionTitleWithTime = styled.span`
 `;
 
 const HomeRecommendationWrapper = styled.section`
+  margin: 0 -2.4rem;
   padding: 3rem 0;
 `;
 
 const HomeRecommendationBackground = styled.div`
   background-color: #f5f7fa;
-  padding: ${(props) => props.theme.padding.layout_carousel};
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding: 3rem 2.4rem;
 `;
 
 export {
