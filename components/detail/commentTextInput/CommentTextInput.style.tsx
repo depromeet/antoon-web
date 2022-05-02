@@ -8,7 +8,7 @@ const CommentTextInputWrapper = styled.div`
   padding-top: 5px;
   padding-bottom: 0px;
   padding-left: 10px;
-  background: ${(props) => props.theme.colors.grey_250};
+  background: ${(props) => props.theme.colors.grey_260};
   border-radius: 10px;
 `;
 
