@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
+/* stylelint-disable */
+
 const CommentWrapper = styled.div``;
 const Title = styled.p`
-  margin: 2.4rem 0 2.4rem;
+  margin: 2.4rem 0;
   font-size: 2rem;
   font-weight: 700;
 `;
