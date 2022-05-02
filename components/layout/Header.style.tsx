@@ -7,4 +7,15 @@ const HeaderWrap = styled.header`
   height: 5.6rem;
 `;
 
-export { HeaderWrap };
+const LeftBtn = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
+
+const RightBtn = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+`;
+
+export { HeaderWrap, LeftBtn, RightBtn };

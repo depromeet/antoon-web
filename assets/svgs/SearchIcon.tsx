@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-const Search = () => {
+const SearchIcon: React.VFC<React.SVGProps<SVGSVGElement>> = ({
+  stroke,
+}: {
+  stroke?: string;
+}) => {
   return (
     <svg
       width="24"
@@ -11,14 +15,14 @@ const Search = () => {
     >
       <path
         d="M11 19.5C15.4183 19.5 19 15.9183 19 11.5C19 7.08172 15.4183 3.5 11 3.5C6.58172 3.5 3 7.08172 3 11.5C3 15.9183 6.58172 19.5 11 19.5Z"
-        stroke="black"
+        stroke={stroke ? stroke : 'black'}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M21.0004 21.4999L16.6504 17.1499"
-        stroke="black"
+        stroke={stroke ? stroke : 'black'}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -27,4 +31,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default memo(SearchIcon);

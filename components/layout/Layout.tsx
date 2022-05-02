@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import React from 'react';
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,7 +8,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-const MainWrap = styled.main`
+const MainWrap = styled.div`
   margin: 0 auto;
   background-color: ${(props) => props.theme.colors.white};
   padding: 0 2.4rem;
