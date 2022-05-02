@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { commentdata } from './Comment.data';
+import { comments } from './Comment.data';
 
 import {
   Title,
@@ -20,7 +18,7 @@ import FavoriteBtn from '@components/button/FavoriteBtn';
 import CommentTextInput from '@components/detail/commentTextInput/commentTextInput';
 
 function Comment() {
-  const data = commentdata;
+  const data = comments;
 
   return (
     <>
