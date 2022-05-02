@@ -15,7 +15,7 @@ import {
 
 import ProfileImg from '@components/image/UserProfile';
 import FavoriteBtn from '@components/button/FavoriteBtn';
-import CommentTextInput from '@components/detail/commentTextInput/commentTextInput';
+import CommentTextInput from '@components/detail/commentTextInput/CommentTextInput';
 
 function Comment() {
   const data = comments;
