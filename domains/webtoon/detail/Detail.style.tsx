@@ -17,7 +17,6 @@ const Container = styled.div`
 
 const DetailContents = styled.section`
   display: block;
-  border-bottom: 8px solid #f1f1f1;
   background: #fff;
 `;
 
@@ -87,7 +86,7 @@ const Platform = styled.div`
   }
 `;
 
-const MainScore = styled.div<any>`
+const MainScore = styled.div<{ upDown: string }>`
   display: block;
   margin-top: 4px;
   color: ${(props) =>

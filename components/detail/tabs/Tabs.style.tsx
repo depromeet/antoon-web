@@ -44,7 +44,7 @@ const Tab = styled.div`
 const TabIndicator = styled.div`
   position: absolute;
   top: 4px;
-  left: 25px;
+  left: 6px;
   transition: all 300ms ease-in-out;
   border-radius: 10px;
   background: #fff;

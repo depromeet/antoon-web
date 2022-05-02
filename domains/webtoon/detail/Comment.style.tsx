@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
+const CommentWrapper = styled.div``;
 const Title = styled.p`
-  margin: 0 0 2.4rem;
+  margin: 2.4rem 0 2.4rem;
   font-size: 2rem;
   font-weight: 700;
 `;
@@ -49,6 +50,7 @@ const Favorite = styled.span`
 `;
 
 export {
+  CommentWrapper,
   Title,
   CommentWrap,
   MainWrap,

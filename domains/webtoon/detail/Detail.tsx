@@ -26,6 +26,7 @@ import {
 import CategorySlider from '@components/detail/category/CategorySlider';
 import { useEffect, useState } from 'react';
 import Tabs from '@components/detail/tabs/Tabs';
+import Bar from '@components/bar/Bar';
 
 interface Props {
   item: Webtoon;
@@ -50,7 +51,7 @@ function Detail(props: Props) {
                     <a href="#">{item.platform} &gt;</a>
                   </Platform>
                   <h2 className="ellipsis2">{item.title}</h2>
-                  <MainScore upDown={item.status}>
+                  <MainScore upDown={item.status || ''}>
                     <Point>9.98점</Point>
                     <PointUpDown>
                       <strong>
@@ -110,6 +111,7 @@ function Detail(props: Props) {
             </DetailSub>
           </DetailContents>
         </Container>
+        <Bar />
       </DetailWrapper>
     </>
   );
