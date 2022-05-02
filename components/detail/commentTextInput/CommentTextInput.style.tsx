@@ -12,9 +12,10 @@ const CommentTextInputWrapper = styled.div`
   border-radius: 10px;
 `;
 
-const ProfileWrapper = styled.div`
+const ProfileWrapper = styled.div<any>`
   height: 40px;
   padding: 10px;
+  display: ${(props) => (props.isShow ? 'block' : 'none')};
 `;
 
 const Profile = styled.div`
@@ -35,7 +36,7 @@ const ProfileName = styled.p`
   color: ${(props) => props.theme.colors.grey_900};
 `;
 
-const ByteCheckArea = styled.p`
+const ContentCheckArea = styled.p`
   position: absolute;
   right: 16px;
   top: 16px;
@@ -61,9 +62,31 @@ const TextArea = styled.textarea`
   font-weight: 400;
   color: ${(props) => props.theme.colors.black};
 
+  -moz-transition: height 0.5s ease;
+  -webkit-transition: height 0.5s ease;
+  -o-transition: height 0.5s ease;
+  transition: height 0.5s ease;
+
   ::-webkit-input-placeholder {
     color: ${(props) => props.theme.colors.grey_350};
   }
+`;
+
+const SubmitButton = styled.button<any>`
+  position: absolute;
+  display: ${(props) => (props.isShow ? 'block' : 'none')};
+  width: 50px;
+  height: 28px;
+  bottom: 15px;
+  right: 18px;
+  border-radius: 8px;
+  padding: 4px;
+  background: ${(props) => props.theme.colors.grey_350};
+  color: ${(props) => props.theme.colors.grey_150};
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
 `;
 
 export {
@@ -73,5 +96,6 @@ export {
   ProfileWrapper,
   Profile,
   ProfileName,
-  ByteCheckArea,
+  ContentCheckArea,
+  SubmitButton,
 };
