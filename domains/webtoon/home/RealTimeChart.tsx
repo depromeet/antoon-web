@@ -1,65 +1,47 @@
+import { webtoons } from './mock';
 import {
-  RealTimeChartBoxContainer,
-  CarouselContent,
-  CarouselContentCard,
-  CarouselContentRankingWrapper,
-  CarouselContentRanking,
-  CarouselContentScoreChangeWrapper,
-  CarouselContentScoreChangeIcon,
-  CarouselContentScoreChange,
-  CarouselContentInformationWrapper,
-  CarouselContentTitle,
-  CarouselContentAuthor,
-  CarouselContentScoreWrapper,
-  CarouselContentScore,
-  CarouselContentScoreChangePercent,
-  CarouselBox,
+  RealTimeChartContainer,
+  RealTimeChartCardWrapper,
+  RealTimeChartCard,
+  RealTimeChartRankingWrapper,
+  RealTimeChartRanking,
+  RealTimeChartScoreChangeWrapper,
+  RealTimeChartScoreChangeIcon,
+  RealTimeChartScoreChange,
+  RealTimeChartInformationWrapper,
+  RealTimeChartTitle,
+  RealTimeChartAuthor,
+  RealTimeChartScoreWrapper,
+  RealTimeChartScore,
+  RealTimeChartScoreChangePercent,
 } from './RealTimeChart.style';
-
-function RealTimeChartContent() {
-  return (
-    <CarouselContent>
-      <CarouselContentCard />
-      <CarouselContentRankingWrapper>
-        <CarouselContentRanking>1</CarouselContentRanking>
-        <CarouselContentScoreChangeWrapper>
-          <CarouselContentScoreChangeIcon>▲</CarouselContentScoreChangeIcon>
-          <CarouselContentScoreChange>-</CarouselContentScoreChange>
-        </CarouselContentScoreChangeWrapper>
-      </CarouselContentRankingWrapper>
-      <CarouselContentInformationWrapper>
-        <CarouselContentTitle>독립일기</CarouselContentTitle>
-        <CarouselContentAuthor>자까</CarouselContentAuthor>
-      </CarouselContentInformationWrapper>
-      <CarouselContentScoreWrapper>
-        <CarouselContentScore>9.89</CarouselContentScore>
-        <CarouselContentScoreChangePercent>
-          + 1.54%
-        </CarouselContentScoreChangePercent>
-      </CarouselContentScoreWrapper>
-    </CarouselContent>
-  );
-}
-
-function RealTimeChartBox() {
-  return (
-    <CarouselBox>
-      <RealTimeChartContent />
-      <RealTimeChartContent />
-      <RealTimeChartContent />
-    </CarouselBox>
-  );
-}
 
 function RealTimeChart() {
   return (
-    <RealTimeChartBoxContainer>
-      <RealTimeChartBox />
-      <RealTimeChartBox />
-      <RealTimeChartBox />
-      <RealTimeChartBox />
-      <RealTimeChartBox />
-    </RealTimeChartBoxContainer>
+    <RealTimeChartContainer>
+      {webtoons.map((webtoon) => (
+        <RealTimeChartCardWrapper key={webtoon.id}>
+          <RealTimeChartCard />
+          <RealTimeChartRankingWrapper>
+            <RealTimeChartRanking>{webtoon.ranking}</RealTimeChartRanking>
+            <RealTimeChartScoreChangeWrapper>
+              <RealTimeChartScoreChangeIcon>▲</RealTimeChartScoreChangeIcon>
+              <RealTimeChartScoreChange>-</RealTimeChartScoreChange>
+            </RealTimeChartScoreChangeWrapper>
+          </RealTimeChartRankingWrapper>
+          <RealTimeChartInformationWrapper>
+            <RealTimeChartTitle>{webtoon.title}</RealTimeChartTitle>
+            <RealTimeChartAuthor>{webtoon.author}</RealTimeChartAuthor>
+          </RealTimeChartInformationWrapper>
+          <RealTimeChartScoreWrapper>
+            <RealTimeChartScore>{webtoon.score}</RealTimeChartScore>
+            <RealTimeChartScoreChangePercent>
+              + {webtoon.scoreChangedPercent}%
+            </RealTimeChartScoreChangePercent>
+          </RealTimeChartScoreWrapper>
+        </RealTimeChartCardWrapper>
+      ))}
+    </RealTimeChartContainer>
   );
 }
 

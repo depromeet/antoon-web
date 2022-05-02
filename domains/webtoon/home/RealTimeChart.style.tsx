@@ -1,49 +1,42 @@
 import styled from '@emotion/styled';
 
-const RealTimeChartBoxContainer = styled.div`
+const RealTimeChartContainer = styled.div`
   display: flex;
-  gap: 2.4rem;
-  margin-right: 2.4rem;
-`;
+  flex-flow: column wrap;
+  height: 204px;
 
-const CarouselBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-  justify-content: flex-start;
-  width: 296px;
-`;
-
-const CarouselContent = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 1.2rem;
-
-  > :last-child {
-    margin-left: auto;
+  > :not(:nth-child(3n)) {
+    padding-bottom: 2.4rem;
   }
 `;
 
+const RealTimeChartCardWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  padding-right: 2.4rem;
+`;
+
 // TODO: 이미지 태그로 변경할 것
-const CarouselContentCard = styled.div`
+const RealTimeChartCard = styled.div`
   border-radius: 10px;
   background-color: ${(props) => props.theme.bg_color.primary};
   width: 52px;
   height: 52px;
 `;
 
-const CarouselContentRankingWrapper = styled.div`
+const RealTimeChartRankingWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 `;
 
-const CarouselContentRanking = styled.div`
+const RealTimeChartRanking = styled.div`
   font-size: 2rem;
   font-weight: 800;
 `;
 
-const CarouselContentScoreChangeWrapper = styled.div`
+const RealTimeChartScoreChangeWrapper = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.2rem;
@@ -52,38 +45,42 @@ const CarouselContentScoreChangeWrapper = styled.div`
 `;
 
 // TODO: 아이콘으로 변경할 것
-const CarouselContentScoreChangeIcon = styled.div``;
+const RealTimeChartScoreChangeIcon = styled.div``;
 
-const CarouselContentScoreChange = styled.div``;
+const RealTimeChartScoreChange = styled.div``;
 
-const CarouselContentInformationWrapper = styled.div`
+const RealTimeChartInformationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 `;
 
-const CarouselContentTitle = styled.div`
+const RealTimeChartTitle = styled.div`
+  width: 135px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 1.6rem;
 `;
 
-const CarouselContentAuthor = styled.div`
+const RealTimeChartAuthor = styled.div`
   color: ${(props) => props.theme.colors.grey_400};
   font-size: 1.4rem;
 `;
 
-const CarouselContentScoreWrapper = styled.div`
+const RealTimeChartScoreWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 `;
 
-const CarouselContentScore = styled.div`
+const RealTimeChartScore = styled.div`
   text-align: end;
   font-size: 1.6rem;
   font-weight: 600;
 `;
 
-const CarouselContentScoreChangePercent = styled.div`
+const RealTimeChartScoreChangePercent = styled.div`
   border-radius: 5px;
   background-color: #ff482010;
   padding: 0.35rem;
@@ -92,19 +89,18 @@ const CarouselContentScoreChangePercent = styled.div`
 `;
 
 export {
-  RealTimeChartBoxContainer,
-  CarouselBox,
-  CarouselContent,
-  CarouselContentCard,
-  CarouselContentRankingWrapper,
-  CarouselContentRanking,
-  CarouselContentScoreChangeWrapper,
-  CarouselContentScoreChangeIcon,
-  CarouselContentScoreChange,
-  CarouselContentInformationWrapper,
-  CarouselContentTitle,
-  CarouselContentAuthor,
-  CarouselContentScoreWrapper,
-  CarouselContentScore,
-  CarouselContentScoreChangePercent,
+  RealTimeChartContainer,
+  RealTimeChartCardWrapper,
+  RealTimeChartCard,
+  RealTimeChartRankingWrapper,
+  RealTimeChartRanking,
+  RealTimeChartScoreChangeWrapper,
+  RealTimeChartScoreChangeIcon,
+  RealTimeChartScoreChange,
+  RealTimeChartInformationWrapper,
+  RealTimeChartTitle,
+  RealTimeChartAuthor,
+  RealTimeChartScoreWrapper,
+  RealTimeChartScore,
+  RealTimeChartScoreChangePercent,
 };
