@@ -55,7 +55,7 @@ const TextArea = styled.textarea`
   border: none;
   resize: none;
   border-radius: 10px;
-  background: ${(props) => props.theme.colors.grey_250};
+  background: ${(props) => props.theme.colors.grey_260};
   font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
