@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const RealTimeChartBoxContainer = styled.div`
   display: flex;
   gap: 2.4rem;
+  margin-right: 2.4rem;
 `;
 
 const CarouselBox = styled.div`

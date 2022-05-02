@@ -42,7 +42,7 @@ function Home() {
           </HomeTopTitleWrapper>
         </HomeTopWrapper>
         <HomeSectionWrapper>
-          <HomeSectionSubTitle>다같이 영차영차</HomeSectionSubTitle>
+          <HomeSectionSubTitle>다같이 영차영차!</HomeSectionSubTitle>
           <HomeSectionTitleWithTimeWrapper>
             <HomeSectionTitle>실시간 차트</HomeSectionTitle>
             <HomeSectionTitleWithTime>14:00 기준</HomeSectionTitleWithTime>

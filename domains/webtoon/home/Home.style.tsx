@@ -26,6 +26,7 @@ const HomeTopTitle = styled.h1`
 `;
 
 const HomeSectionWrapper = styled.section`
+  margin-right: -2.4rem;
   padding-top: 3rem;
 `;
 
@@ -64,6 +65,7 @@ const HomeRecommendationWrapper = styled.section`
 const HomeRecommendationBackground = styled.div`
   background-color: #f5f7fa;
   padding: 3rem 2.4rem;
+  padding-right: 0;
 `;
 
 export {

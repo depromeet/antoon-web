@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const GenresWrapper = styled.div`
   display: flex;
   gap: 1.2rem;
+  margin-right: 2.4rem;
 `;
 
 const CarouselBox = styled.div`
