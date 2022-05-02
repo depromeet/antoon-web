@@ -1,3 +1,4 @@
+import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 
 const CommentTextInputWrapper = styled.div`
@@ -12,7 +13,7 @@ const CommentTextInputWrapper = styled.div`
   border-radius: 10px;
 `;
 
-const ProfileWrapper = styled.div<any>`
+const ProfileWrapper = styled.div<{ isShow: boolean }>`
   height: 40px;
   padding: 10px;
   display: ${(props) => (props.isShow ? 'block' : 'none')};
@@ -72,7 +73,7 @@ const TextArea = styled.textarea`
   }
 `;
 
-const SubmitButton = styled.button<any>`
+const SubmitButton = styled.button<{ isShow: boolean }>`
   position: absolute;
   display: ${(props) => (props.isShow ? 'block' : 'none')};
   width: 50px;

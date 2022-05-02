@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Row = styled.div<any>`
+const Row = styled.div<{ centeredX: boolean; centeredY: boolean }>`
   display: 'flex';
   flex-direction: 'row';
   justify-content: 'space-between';

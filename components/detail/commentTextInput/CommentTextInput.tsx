@@ -31,7 +31,7 @@ function CommentTextInput(props: Props) {
     [MAX_LENGTH_CONTENT, setContent],
   );
 
-  const focusHandler = (e: any) => {
+  const focusHandler = () => {
     if (!focused && textareaRef.current != null) {
       textareaRef.current.style.height = `${
         textareaRef.current.offsetHeight * 4

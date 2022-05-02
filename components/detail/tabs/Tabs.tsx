@@ -7,8 +7,8 @@ function Tabs() {
   const dayArr = ['1일', '1주', '1달', '3달'];
   const [currentTab, setCurrentTab] = useState(dayArr[0]);
 
-  const onClickHandler = (e: any) => {
-    setCurrentTab(e.currentTarget.textContent);
+  const onClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+    setCurrentTab(e.currentTarget.textContent || '');
     if (indicatorRef.current != null)
       indicatorRef.current.style.left = `${e.currentTarget.offsetLeft + 4}px`;
   };

@@ -51,7 +51,7 @@ function Detail(props: Props) {
                     <a href="#">{item.platform} &gt;</a>
                   </Platform>
                   <h2 className="ellipsis2">{item.title}</h2>
-                  <MainScore upDown={item.status}>
+                  <MainScore upDown={item.status || ''}>
                     <Point>9.98점</Point>
                     <PointUpDown>
                       <strong>

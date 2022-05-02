@@ -86,7 +86,7 @@ const Platform = styled.div`
   }
 `;
 
-const MainScore = styled.div<any>`
+const MainScore = styled.div<{ upDown: string }>`
   display: block;
   margin-top: 4px;
   color: ${(props) =>
