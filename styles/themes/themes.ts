@@ -19,6 +19,7 @@ const themes = {
     grey_400: '#A2A9B0',
     grey_450: '#8A8A8A',
     grey_500: '#9E9E9E',
+    grey_600: '#757575',
     grey_900: '#40444D',
     point_up_100: '#FF4E16',
     point_up_0: 'rgba(255, 94, 26, 0.06)',

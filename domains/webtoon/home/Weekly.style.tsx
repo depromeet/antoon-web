@@ -11,11 +11,33 @@ const WeeklyWrapper = styled.div`
 
 const CarouselBox = styled.div`
   flex: 0 0 33%;
+  border-radius: 16px;
   background-color: ${(props) => props.theme.bg_color.primary};
-  width: 100px;
-  max-width: 100px;
-  height: 100px;
-  max-height: 100px;
+  width: 98px;
+  height: 98px;
 `;
 
-export { WeeklyWrapper, CarouselBox };
+const DaySelectButtonWContainer = styled.div`
+  display: flex;
+  gap: 3.2rem;
+`;
+
+type DaySelectButtonProps = {
+  selected: boolean;
+};
+
+const DaySelectButton = styled.button<DaySelectButtonProps>`
+  border-radius: 24px;
+  background-color: ${(props) =>
+    props.selected ? props.theme.colors.grey_900 : 'none'};
+  width: 32px;
+  height: 32px;
+  color: ${(props) => (props.selected ? 'white' : props.theme.colors.grey_600)};
+`;
+
+export {
+  WeeklyWrapper,
+  CarouselBox,
+  DaySelectButtonWContainer,
+  DaySelectButton,
+};

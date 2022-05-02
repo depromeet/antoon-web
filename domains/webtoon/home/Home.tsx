@@ -77,7 +77,7 @@ function Home() {
         <HomeSectionWrapper>
           <HomeSectionSubTitle>개미는 오늘도 줍줍</HomeSectionSubTitle>
           <HomeSectionTitle>요일별 툰툰</HomeSectionTitle>
-          {/* <Weekly /> */}
+          <Weekly />
         </HomeSectionWrapper>
       </HomeContainer>
     </>
