@@ -15,7 +15,7 @@ const webtoonMock: Webtoon = {
   content: `세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명`,
   date: '월,화',
   jenre: '학원물',
-  status: 'DOWN',
+  status: 'UP',
   isLike: true,
   thumnail:
     'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
