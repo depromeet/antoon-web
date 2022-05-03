@@ -1,4 +1,4 @@
-import { webtoons } from './mock';
+import { webtoons } from './webtoons.mock';
 import {
   RealTimeChartContainer,
   RealTimeChartCardWrapper,

@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import { webtoons } from './webtoons.mock';
 import {
-  WeeklyWrapper,
-  CarouselBox,
+  WeeklyContainer,
   DaySelectButtonWContainer,
   DaySelectButton,
+  WeeklyCardContainer,
+  WeeklyCardWrapper,
+  WeeklyCard,
+  WeeklyCardTitle,
+  WeeklyCardAuthor,
 } from './Weekly.style';
 
 const days = ['일', '월', '화', '수', '목', '금', '토'];
 type Day = typeof days[number];
 
-const today: Day = days[new Date().getDay()] as Day;
+const today: Day = days[new Date().getDay()];
 
 function Weekly() {
   const [selectedDay, setSelectedDay] = useState<Day>(today);
@@ -19,36 +24,28 @@ function Weekly() {
   };
 
   return (
-    <WeeklyWrapper>
+    <WeeklyContainer>
       <DaySelectButtonWContainer>
-        <DaySelectButton selected={'월' === selectedDay} onClick={onSelectDay}>
-          월
-        </DaySelectButton>
-        <DaySelectButton selected={'화' === selectedDay} onClick={onSelectDay}>
-          화
-        </DaySelectButton>
-        <DaySelectButton selected={'수' === selectedDay} onClick={onSelectDay}>
-          수
-        </DaySelectButton>
-        <DaySelectButton selected={'목' === selectedDay} onClick={onSelectDay}>
-          목
-        </DaySelectButton>
-        <DaySelectButton selected={'금' === selectedDay} onClick={onSelectDay}>
-          금
-        </DaySelectButton>
-        <DaySelectButton selected={'토' === selectedDay} onClick={onSelectDay}>
-          토
-        </DaySelectButton>
-        <DaySelectButton selected={'일' === selectedDay} onClick={onSelectDay}>
-          일
-        </DaySelectButton>
+        {days.map((day) => (
+          <DaySelectButton
+            key={day}
+            selected={day === selectedDay}
+            onClick={onSelectDay}
+          >
+            {day}
+          </DaySelectButton>
+        ))}
       </DaySelectButtonWContainer>
-      {/* <CarouselBox />
-      <CarouselBox />
-      <CarouselBox />
-      <CarouselBox />
-      <CarouselBox /> */}
-    </WeeklyWrapper>
+      <WeeklyCardContainer>
+        {webtoons.map((webtoon) => (
+          <WeeklyCardWrapper key={webtoon.id}>
+            <WeeklyCard />
+            <WeeklyCardTitle>{webtoon.title}</WeeklyCardTitle>
+            <WeeklyCardAuthor>{webtoon.author}</WeeklyCardAuthor>
+          </WeeklyCardWrapper>
+        ))}
+      </WeeklyCardContainer>
+    </WeeklyContainer>
   );
 }
 

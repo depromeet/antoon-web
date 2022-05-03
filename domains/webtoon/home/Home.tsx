@@ -1,6 +1,6 @@
+import React, { useRef } from 'react';
 import Carousel from '@components/carousel/Carousel';
 import useCarousel from '@hooks/useCarousel';
-import React, { useRef } from 'react';
 import {
   HomeContainer,
   HomeTopWrapper,
@@ -14,6 +14,7 @@ import {
   HomeSectionTitleWithTime,
   HomeRecommendationWrapper,
   HomeRecommendationBackground,
+  HomeWeeklyWrapper,
 } from './Home.style';
 import RealTimeChart from './RealTimeChart';
 import Genres from './Genres';
@@ -74,11 +75,11 @@ function Home() {
             </Carousel>
           </HomeRecommendationBackground>
         </HomeRecommendationWrapper>
-        <HomeSectionWrapper>
+        <HomeWeeklyWrapper>
           <HomeSectionSubTitle>개미는 오늘도 줍줍</HomeSectionSubTitle>
           <HomeSectionTitle>요일별 툰툰</HomeSectionTitle>
           <Weekly />
-        </HomeSectionWrapper>
+        </HomeWeeklyWrapper>
       </HomeContainer>
     </>
   );

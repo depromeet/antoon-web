@@ -68,6 +68,8 @@ const HomeRecommendationBackground = styled.div`
   padding-right: 0;
 `;
 
+const HomeWeeklyWrapper = styled.section``;
+
 export {
   HomeContainer,
   HomeTopWrapper,
@@ -81,4 +83,5 @@ export {
   HomeSectionTitleWithTime,
   HomeRecommendationWrapper,
   HomeRecommendationBackground,
+  HomeWeeklyWrapper,
 };
