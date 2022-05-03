@@ -53,10 +53,10 @@ const RealTimeChartInformationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 135px;
 `;
 
 const RealTimeChartTitle = styled.div`
-  width: 135px;
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -64,6 +64,9 @@ const RealTimeChartTitle = styled.div`
 `;
 
 const RealTimeChartAuthor = styled.div`
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: ${(props) => props.theme.colors.grey_400};
   font-size: 1.4rem;
 `;
