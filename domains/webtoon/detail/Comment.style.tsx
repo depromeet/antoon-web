@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 
-/* stylelint-disable */
-
 const CommentWrapper = styled.div``;
 const Title = styled.p`
   margin: 2.4rem 0;
