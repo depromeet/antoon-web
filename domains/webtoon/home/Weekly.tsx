@@ -38,8 +38,14 @@ function Weekly() {
       </DaySelectButtonWContainer>
       <WeeklyCardContainer>
         {webtoons.map((webtoon) => (
-          <WeeklyCardWrapper key={webtoon.id}>
-            <WeeklyCard />
+          <WeeklyCardWrapper key={webtoon.id} href={`/webtoon/${webtoon.id}`}>
+            <WeeklyCard
+              alt={webtoon.title}
+              src={webtoon.imageUrl}
+              width={92}
+              height={92}
+              layout="fixed"
+            />
             <WeeklyCardTitle>{webtoon.title}</WeeklyCardTitle>
             <WeeklyCardAuthor>{webtoon.author}</WeeklyCardAuthor>
           </WeeklyCardWrapper>

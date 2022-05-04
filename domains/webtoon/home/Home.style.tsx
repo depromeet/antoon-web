@@ -25,6 +25,16 @@ const HomeTopTitle = styled.h1`
   font-weight: bold;
 `;
 
+const HomeRealtimeChartWrapper = styled.section`
+  margin-right: -2.4rem;
+  margin-left: -0.8rem;
+  padding-top: 3rem;
+`;
+
+const HomeRealtimeChartTitleWrapper = styled.section`
+  padding-left: 0.8rem;
+`;
+
 const HomeSectionWrapper = styled.section`
   margin-right: -2.4rem;
   padding-top: 3rem;
@@ -73,6 +83,8 @@ const HomeWeeklyWrapper = styled.section``;
 export {
   HomeContainer,
   HomeTopWrapper,
+  HomeRealtimeChartWrapper,
+  HomeRealtimeChartTitleWrapper,
   HomeTopTitleWrapper,
   HomeTopSubTitle,
   HomeTopTitle,

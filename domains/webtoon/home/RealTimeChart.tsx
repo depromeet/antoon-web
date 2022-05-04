@@ -6,7 +6,6 @@ import {
   RealTimeChartRankingWrapper,
   RealTimeChartRanking,
   RealTimeChartScoreChangeWrapper,
-  RealTimeChartScoreChangeIcon,
   RealTimeChartScoreChange,
   RealTimeChartInformationWrapper,
   RealTimeChartTitle,
@@ -15,18 +14,32 @@ import {
   RealTimeChartScore,
   RealTimeChartScoreChangePercent,
 } from './RealTimeChart.style';
+import { default as RealTimeChartScoreChangeIcon } from '@components/icon/ScoreChangeIcon';
 
 function RealTimeChart() {
   return (
     <RealTimeChartContainer>
       {webtoons.map((webtoon) => (
-        <RealTimeChartCardWrapper key={webtoon.id}>
-          <RealTimeChartCard />
+        <RealTimeChartCardWrapper
+          key={webtoon.id}
+          href={`webtoon/${webtoon.id}`}
+        >
+          <RealTimeChartCard
+            alt={webtoon.title}
+            src={webtoon.imageUrl}
+            width={52}
+            height={52}
+            layout="fixed"
+          />
           <RealTimeChartRankingWrapper>
             <RealTimeChartRanking>{webtoon.ranking}</RealTimeChartRanking>
             <RealTimeChartScoreChangeWrapper>
-              <RealTimeChartScoreChangeIcon>▲</RealTimeChartScoreChangeIcon>
-              <RealTimeChartScoreChange>-</RealTimeChartScoreChange>
+              <RealTimeChartScoreChangeIcon
+                rankingStatus={webtoon.rankingStatus}
+              />
+              <RealTimeChartScoreChange rankingStatus={webtoon.rankingStatus}>
+                {webtoon.rankingChanged === 0 ? '-' : webtoon.rankingChanged}
+              </RealTimeChartScoreChange>
             </RealTimeChartScoreChangeWrapper>
           </RealTimeChartRankingWrapper>
           <RealTimeChartInformationWrapper>
@@ -35,8 +48,15 @@ function RealTimeChart() {
           </RealTimeChartInformationWrapper>
           <RealTimeChartScoreWrapper>
             <RealTimeChartScore>{webtoon.score}</RealTimeChartScore>
-            <RealTimeChartScoreChangePercent>
-              + {webtoon.scoreChangedPercent}%
+            <RealTimeChartScoreChangePercent
+              scoreChangedStatus={webtoon.scoreChangedStatus}
+            >
+              {webtoon.scoreChangedStatus === 'up'
+                ? '+'
+                : webtoon.scoreChangedStatus === 'down'
+                ? '-'
+                : ''}
+              {webtoon.scoreChangedPercent.toFixed(2)}%
             </RealTimeChartScoreChangePercent>
           </RealTimeChartScoreWrapper>
         </RealTimeChartCardWrapper>

@@ -9,6 +9,7 @@ const themes = {
     black_700: '#191919',
     black_800: 'rgba(0,0,0,0.8)',
     bisque: 'rgb(255,228,196,1)',
+    cool_grey_50: '#878D96',
     grey_90: '#21272A',
     grey_100: 'rgb(245,256,256,1)',
     grey_150: '#FAFAFB',

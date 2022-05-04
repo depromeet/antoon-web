@@ -1,24 +1,30 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 const RealTimeChartContainer = styled.div`
-  display: flex;
-  flex-flow: column wrap;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  gap: 0 0.8rem;
+  padding-right: 1.6rem;
   height: 204px;
+`;
 
-  > :not(:nth-child(3n)) {
-    padding-bottom: 2.4rem;
+const RealTimeChartCardWrapper = styled.a`
+  display: flex;
+  gap: 1.2rem;
+  justify-content: space-between;
+  border-radius: 5px;
+  padding: 0.8rem 0.8rem 0.8rem 1rem;
+
+  @media (hover: hover) and (pointer: fine) {
+    :hover {
+      background-color: ${(props) => props.theme.colors.grey_150};
+    }
   }
 `;
 
-const RealTimeChartCardWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 1.2rem;
-  padding-right: 2.4rem;
-`;
-
-// TODO: 이미지 태그로 변경할 것
-const RealTimeChartCard = styled.div`
+const RealTimeChartCard = styled(Image)`
   border-radius: 10px;
   background-color: ${(props) => props.theme.bg_color.primary};
   width: 52px;
@@ -41,13 +47,26 @@ const RealTimeChartScoreChangeWrapper = styled.div`
   flex-direction: row;
   gap: 0.2rem;
   align-items: center;
-  color: #ff4820;
+  justify-content: center;
 `;
 
-// TODO: 아이콘으로 변경할 것
-const RealTimeChartScoreChangeIcon = styled.div``;
+type RealTimeChartScoreChangeProps = {
+  rankingStatus: string;
+};
 
-const RealTimeChartScoreChange = styled.div``;
+const RealTimeChartScoreChange = styled.div<RealTimeChartScoreChangeProps>`
+  color: ${(props) => {
+    switch (props.rankingStatus) {
+      case 'up':
+        return '#ff4820';
+      case 'down':
+        return '#1934B5';
+      case 'stable':
+      default:
+        return 'black';
+    }
+  }};
+`;
 
 const RealTimeChartInformationWrapper = styled.div`
   display: flex;
@@ -75,6 +94,7 @@ const RealTimeChartScoreWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 48px;
 `;
 
 const RealTimeChartScore = styled.div`
@@ -83,12 +103,30 @@ const RealTimeChartScore = styled.div`
   font-weight: 600;
 `;
 
-const RealTimeChartScoreChangePercent = styled.div`
+type RealTimeChartScoreChangePercentProps = {
+  scoreChangedStatus: string;
+};
+
+const RealTimeChartScoreChangePercent = styled.div<RealTimeChartScoreChangePercentProps>`
   border-radius: 5px;
-  background-color: #ff482010;
   padding: 0.35rem;
-  color: #ff4820;
+  text-align: end;
   font-size: 1.2rem;
+
+  ${(props) => {
+    switch (props.scoreChangedStatus) {
+      case 'up':
+        return { color: '#ff4820', backgroundColor: '#ff482010' };
+      case 'down':
+        return { color: '#1934B5', backgroundColor: '#1934B510' };
+      case 'stable':
+      default:
+        return {
+          color: props.theme.colors.grey_900,
+          backgroundColor: props.theme.colors.grey_260,
+        };
+    }
+  }};
 `;
 
 export {
@@ -98,7 +136,6 @@ export {
   RealTimeChartRankingWrapper,
   RealTimeChartRanking,
   RealTimeChartScoreChangeWrapper,
-  RealTimeChartScoreChangeIcon,
   RealTimeChartScoreChange,
   RealTimeChartInformationWrapper,
   RealTimeChartTitle,

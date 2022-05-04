@@ -7,6 +7,8 @@ import {
   HomeTopTitleWrapper,
   HomeTopSubTitle,
   HomeTopTitle,
+  HomeRealtimeChartWrapper,
+  HomeRealtimeChartTitleWrapper,
   HomeSectionWrapper,
   HomeSectionSubTitle,
   HomeSectionTitleWithTimeWrapper,
@@ -42,16 +44,18 @@ function Home() {
             <HomeTopTitle>오늘은 어떤 웹툰에 탑승할까요?</HomeTopTitle>
           </HomeTopTitleWrapper>
         </HomeTopWrapper>
-        <HomeSectionWrapper>
-          <HomeSectionSubTitle>다같이 영차영차!</HomeSectionSubTitle>
-          <HomeSectionTitleWithTimeWrapper>
-            <HomeSectionTitle>실시간 차트</HomeSectionTitle>
-            <HomeSectionTitleWithTime>14:00 기준</HomeSectionTitleWithTime>
-          </HomeSectionTitleWithTimeWrapper>
+        <HomeRealtimeChartWrapper>
+          <HomeRealtimeChartTitleWrapper>
+            <HomeSectionSubTitle>다같이 영차영차!</HomeSectionSubTitle>
+            <HomeSectionTitleWithTimeWrapper>
+              <HomeSectionTitle>실시간 차트</HomeSectionTitle>
+              <HomeSectionTitleWithTime>14:00 기준</HomeSectionTitleWithTime>
+            </HomeSectionTitleWithTimeWrapper>
+          </HomeRealtimeChartTitleWrapper>
           <Carousel ref={RealTimeChartRef}>
             <RealTimeChart />
           </Carousel>
-        </HomeSectionWrapper>
+        </HomeRealtimeChartWrapper>
         <HomeSectionWrapper>
           <HomeSectionSubTitle>어떤 장르가 좋을까?</HomeSectionSubTitle>
           <HomeSectionTitle>장르별 툰툰</HomeSectionTitle>

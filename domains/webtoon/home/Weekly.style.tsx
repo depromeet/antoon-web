@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 const WeeklyContainer = styled.div`
   padding-bottom: 6rem;
@@ -41,11 +42,11 @@ const WeeklyCardContainer = styled.div`
   justify-content: center;
 `;
 
-const WeeklyCardWrapper = styled.div`
+const WeeklyCardWrapper = styled.a`
   width: 98px;
 `;
 
-const WeeklyCard = styled.div`
+const WeeklyCard = styled(Image)`
   margin-bottom: 0.8rem;
   border-radius: 16px;
   background-color: ${(props) => props.theme.bg_color.primary};

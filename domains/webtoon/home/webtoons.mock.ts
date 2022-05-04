@@ -1,4 +1,19 @@
-const webtoons = [
+type Status = 'up' | 'down' | 'stable';
+
+interface Webtoon {
+  id: number;
+  ranking: number;
+  rankingStatus: Status;
+  rankingChanged: number;
+  title: string;
+  author: string;
+  imageUrl: string;
+  score: number;
+  scoreChangedStatus: Status;
+  scoreChangedPercent: number;
+}
+
+const webtoons: Webtoon[] = [
   {
     id: 1,
     ranking: 1,
@@ -6,9 +21,10 @@ const webtoons = [
     rankingChanged: 0,
     title: '연애혁명',
     author: '232',
-    score: 9.89,
-    scoreChangedStatus: 'up',
-    scoreChangedPercent: 1.54,
+    imageUrl: '/images/thumb_연애혁명.png',
+    score: 9.99,
+    scoreChangedStatus: 'stable',
+    scoreChangedPercent: 0.0,
   },
   {
     id: 2,
@@ -17,6 +33,7 @@ const webtoons = [
     rankingChanged: 3,
     title: '흑막 여주가 날 새엄마로 만들려고 해',
     author: '자까',
+    imageUrl: '/images/thumb_세기말_풋사과_보습학원.png',
     score: 9.89,
     scoreChangedStatus: 'up',
     scoreChangedPercent: 1.54,
@@ -28,6 +45,7 @@ const webtoons = [
     rankingChanged: 1,
     title: '먹는 인생',
     author: '홍끼',
+    imageUrl: '/images/thumbnail_먹는인생.jpeg',
     score: 9.89,
     scoreChangedStatus: 'down',
     scoreChangedPercent: 1.54,
@@ -39,6 +57,7 @@ const webtoons = [
     rankingChanged: 0,
     title: '연애혁명',
     author: '232',
+    imageUrl: '/images/thumb_연애혁명.png',
     score: 9.89,
     scoreChangedStatus: 'up',
     scoreChangedPercent: 1.54,
@@ -50,6 +69,7 @@ const webtoons = [
     rankingChanged: 3,
     title: '흑막 여주가 날 새엄마로 만들려고 해',
     author: '자까',
+    imageUrl: '/images/thumb_세기말_풋사과_보습학원.png',
     score: 9.89,
     scoreChangedStatus: 'up',
     scoreChangedPercent: 1.54,
@@ -61,6 +81,7 @@ const webtoons = [
     rankingChanged: 1,
     title: '먹는 인생',
     author: '홍끼',
+    imageUrl: '/images/thumb_먹는인생.png',
     score: 9.89,
     scoreChangedStatus: 'down',
     scoreChangedPercent: 1.54,
@@ -72,6 +93,7 @@ const webtoons = [
     rankingChanged: 0,
     title: '연애혁명',
     author: '232',
+    imageUrl: '/images/thumb_연애혁명.png',
     score: 9.89,
     scoreChangedStatus: 'up',
     scoreChangedPercent: 1.54,
@@ -83,6 +105,7 @@ const webtoons = [
     rankingChanged: 3,
     title: '흑막 여주가 날 새엄마로 만들려고 해',
     author: '자까',
+    imageUrl: '/images/thumb_세기말_풋사과_보습학원.png',
     score: 9.89,
     scoreChangedStatus: 'up',
     scoreChangedPercent: 1.54,
@@ -94,6 +117,7 @@ const webtoons = [
     rankingChanged: 1,
     title: '먹는 인생',
     author: '홍끼',
+    imageUrl: '/images/thumb_먹는인생.png',
     score: 9.89,
     scoreChangedStatus: 'down',
     scoreChangedPercent: 1.54,
@@ -105,6 +129,7 @@ const webtoons = [
     rankingChanged: 0,
     title: '연애혁명',
     author: '232',
+    imageUrl: '/images/thumb_연애혁명.png',
     score: 9.89,
     scoreChangedStatus: 'up',
     scoreChangedPercent: 1.54,
@@ -116,6 +141,7 @@ const webtoons = [
     rankingChanged: 3,
     title: '흑막 여주가 날 새엄마로 만들려고 해',
     author: '자까',
+    imageUrl: '/images/thumb_세기말_풋사과_보습학원.png',
     score: 9.89,
     scoreChangedStatus: 'up',
     scoreChangedPercent: 1.54,
@@ -127,6 +153,7 @@ const webtoons = [
     rankingChanged: 1,
     title: '먹는 인생',
     author: '홍끼',
+    imageUrl: '/images/thumb_먹는인생.png',
     score: 9.89,
     scoreChangedStatus: 'down',
     scoreChangedPercent: 1.54,
