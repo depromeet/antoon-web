@@ -19,7 +19,7 @@ const RealTimeChartCardWrapper = styled.a`
 
   @media (hover: hover) and (pointer: fine) {
     :hover {
-      background-color: ${(props) => props.theme.colors.grey_150};
+      background-color: ${(props) => props.theme.colors.grey_260};
     }
   }
 `;
@@ -123,7 +123,7 @@ const RealTimeChartScoreChangePercent = styled.div<RealTimeChartScoreChangePerce
       default:
         return {
           color: props.theme.colors.grey_900,
-          backgroundColor: props.theme.colors.grey_260,
+          backgroundColor: '#00000010',
         };
     }
   }};

@@ -38,12 +38,20 @@ const DaySelectButton = styled.button<DaySelectButtonProps>`
 const WeeklyCardContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  gap: 0.8rem;
+  gap: 0.4rem;
   justify-content: center;
 `;
 
 const WeeklyCardWrapper = styled.a`
-  width: 98px;
+  border-radius: 12px;
+  padding: 0.4rem;
+  width: 100px;
+
+  @media (hover: hover) and (pointer: fine) {
+    :hover {
+      background-color: ${(props) => props.theme.colors.grey_260};
+    }
+  }
 `;
 
 const WeeklyCard = styled(Image)`
