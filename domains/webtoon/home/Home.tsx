@@ -1,12 +1,14 @@
+import React, { useRef } from 'react';
 import Carousel from '@components/carousel/Carousel';
 import useCarousel from '@hooks/useCarousel';
-import React, { useRef } from 'react';
 import {
   HomeContainer,
   HomeTopWrapper,
   HomeTopTitleWrapper,
   HomeTopSubTitle,
   HomeTopTitle,
+  HomeRealtimeChartWrapper,
+  HomeRealtimeChartTitleWrapper,
   HomeSectionWrapper,
   HomeSectionSubTitle,
   HomeSectionTitleWithTimeWrapper,
@@ -14,6 +16,7 @@ import {
   HomeSectionTitleWithTime,
   HomeRecommendationWrapper,
   HomeRecommendationBackground,
+  HomeWeeklyWrapper,
 } from './Home.style';
 import RealTimeChart from './RealTimeChart';
 import Genres from './Genres';
@@ -41,16 +44,18 @@ function Home() {
             <HomeTopTitle>오늘은 어떤 웹툰에 탑승할까요?</HomeTopTitle>
           </HomeTopTitleWrapper>
         </HomeTopWrapper>
-        <HomeSectionWrapper>
-          <HomeSectionSubTitle>다같이 영차영차</HomeSectionSubTitle>
-          <HomeSectionTitleWithTimeWrapper>
-            <HomeSectionTitle>실시간 차트</HomeSectionTitle>
-            <HomeSectionTitleWithTime>14:00 기준</HomeSectionTitleWithTime>
-          </HomeSectionTitleWithTimeWrapper>
+        <HomeRealtimeChartWrapper>
+          <HomeRealtimeChartTitleWrapper>
+            <HomeSectionSubTitle>다같이 영차영차!</HomeSectionSubTitle>
+            <HomeSectionTitleWithTimeWrapper>
+              <HomeSectionTitle>실시간 차트</HomeSectionTitle>
+              <HomeSectionTitleWithTime>14:00 기준</HomeSectionTitleWithTime>
+            </HomeSectionTitleWithTimeWrapper>
+          </HomeRealtimeChartTitleWrapper>
           <Carousel ref={RealTimeChartRef}>
             <RealTimeChart />
           </Carousel>
-        </HomeSectionWrapper>
+        </HomeRealtimeChartWrapper>
         <HomeSectionWrapper>
           <HomeSectionSubTitle>어떤 장르가 좋을까?</HomeSectionSubTitle>
           <HomeSectionTitle>장르별 툰툰</HomeSectionTitle>
@@ -74,11 +79,11 @@ function Home() {
             </Carousel>
           </HomeRecommendationBackground>
         </HomeRecommendationWrapper>
-        <HomeSectionWrapper>
+        <HomeWeeklyWrapper>
           <HomeSectionSubTitle>개미는 오늘도 줍줍</HomeSectionSubTitle>
           <HomeSectionTitle>요일별 툰툰</HomeSectionTitle>
-          {/* <Weekly /> */}
-        </HomeSectionWrapper>
+          <Weekly />
+        </HomeWeeklyWrapper>
       </HomeContainer>
     </>
   );

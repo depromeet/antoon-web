@@ -1,27 +1,28 @@
-import { Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 
 const CommentTextInputWrapper = styled.div`
   position: relative;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: ${(props) => props.theme.colors.grey_260};
+  padding-top: 5px;
+  padding-bottom: 0;
+  padding-left: 10px;
   width: 100%;
   height: auto;
-  margin-bottom: 20px;
-  padding-top: 5px;
-  padding-bottom: 0px;
-  padding-left: 10px;
-  background: ${(props) => props.theme.colors.grey_260};
-  border-radius: 10px;
 `;
 
 const ProfileWrapper = styled.div<{ isShow: boolean }>`
-  height: 40px;
-  padding: 10px;
+  /* stylelint-disable-next-line */
   display: ${(props) => (props.isShow ? 'block' : 'none')};
+  padding: 10px;
+  height: 40px;
 `;
 
 const Profile = styled.div`
   border: none;
   vertical-align: middle;
+
   & img {
     border-radius: 50%;
   }
@@ -29,72 +30,65 @@ const Profile = styled.div`
 
 const ProfileName = styled.p`
   display: inline-block;
+  margin-left: 10px;
+  vertical-align: super;
+  color: ${(props) => props.theme.colors.grey_900};
   font-family: Pretendard;
   font-size: 12px;
   font-weight: 700;
-  vertical-align: super;
-  margin-left: 10px;
-  color: ${(props) => props.theme.colors.grey_900};
 `;
 
 const ContentCheckArea = styled.p`
   position: absolute;
-  right: 16px;
   top: 16px;
+  right: 16px;
+  color: ${(props) => props.theme.colors.grey_450};
   font-family: Pretendard;
   font-size: 12px;
   font-weight: 400;
-  color: ${(props) => props.theme.colors.grey_450};
 `;
 
 const TextAreaWrapper = styled.div``;
 
 const TextArea = styled.textarea`
-  width: 100%;
-  padding: 10px;
-  height: 38px;
-  border: none;
-  resize: none;
-  border-radius: 10px;
+  transition: height 0.5s ease;
   outline: none;
+  border: none;
+  border-radius: 10px;
   background: ${(props) => props.theme.colors.grey_260};
+  padding: 10px;
+  width: 100%;
+  height: 38px;
+  resize: none;
+  color: ${(props) => props.theme.colors.black};
   font-family: Pretendard;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  color: ${(props) => props.theme.colors.black};
+  font-style: normal;
 
-  -moz-transition: height 0.5s ease;
-  -webkit-transition: height 0.5s ease;
-  -o-transition: height 0.5s ease;
-  transition: height 0.5s ease;
-
-  ::-webkit-input-placeholder {
+  ::placeholder {
     color: ${(props) => props.theme.colors.grey_350};
   }
 `;
 
 const SubmitButton = styled.button<{ isShow: boolean }>`
-  position: absolute;
+  /* stylelint-disable-next-line */
   display: ${(props) => (props.isShow ? 'block' : 'none')};
+  position: absolute;
+  right: 18px;
+  bottom: 15px;
+  transition: height 0.5s ease;
+  border-radius: 8px;
+  background: ${(props) => props.theme.colors.grey_350};
+  padding: 4px;
   width: 50px;
   height: 28px;
-  bottom: 15px;
-  right: 18px;
-  border-radius: 8px;
-  padding: 4px;
-  background: ${(props) => props.theme.colors.grey_350};
   color: ${(props) => props.theme.colors.grey_150};
   font-family: Pretendard;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
+  font-style: normal;
   -webkit-tap-highlight-color: transparent;
-
-  -moz-transition: height 0.5s ease;
-  -webkit-transition: height 0.5s ease;
-  -o-transition: height 0.5s ease;
-  transition: height 0.5s ease;
 
   &:hover {
     background: ${(props) => props.theme.colors.grey_900};

@@ -1,65 +1,67 @@
+import { webtoons } from './webtoons.mock';
 import {
-  RealTimeChartBoxContainer,
-  CarouselContent,
-  CarouselContentCard,
-  CarouselContentRankingWrapper,
-  CarouselContentRanking,
-  CarouselContentScoreChangeWrapper,
-  CarouselContentScoreChangeIcon,
-  CarouselContentScoreChange,
-  CarouselContentInformationWrapper,
-  CarouselContentTitle,
-  CarouselContentAuthor,
-  CarouselContentScoreWrapper,
-  CarouselContentScore,
-  CarouselContentScoreChangePercent,
-  CarouselBox,
+  RealTimeChartContainer,
+  RealTimeChartCardWrapper,
+  RealTimeChartCard,
+  RealTimeChartRankingWrapper,
+  RealTimeChartRanking,
+  RealTimeChartScoreChangeWrapper,
+  RealTimeChartScoreChange,
+  RealTimeChartInformationWrapper,
+  RealTimeChartTitle,
+  RealTimeChartAuthor,
+  RealTimeChartScoreWrapper,
+  RealTimeChartScore,
+  RealTimeChartScoreChangePercent,
 } from './RealTimeChart.style';
-
-function RealTimeChartContent() {
-  return (
-    <CarouselContent>
-      <CarouselContentCard />
-      <CarouselContentRankingWrapper>
-        <CarouselContentRanking>1</CarouselContentRanking>
-        <CarouselContentScoreChangeWrapper>
-          <CarouselContentScoreChangeIcon>▲</CarouselContentScoreChangeIcon>
-          <CarouselContentScoreChange>-</CarouselContentScoreChange>
-        </CarouselContentScoreChangeWrapper>
-      </CarouselContentRankingWrapper>
-      <CarouselContentInformationWrapper>
-        <CarouselContentTitle>독립일기</CarouselContentTitle>
-        <CarouselContentAuthor>자까</CarouselContentAuthor>
-      </CarouselContentInformationWrapper>
-      <CarouselContentScoreWrapper>
-        <CarouselContentScore>9.89</CarouselContentScore>
-        <CarouselContentScoreChangePercent>
-          + 1.54%
-        </CarouselContentScoreChangePercent>
-      </CarouselContentScoreWrapper>
-    </CarouselContent>
-  );
-}
-
-function RealTimeChartBox() {
-  return (
-    <CarouselBox>
-      <RealTimeChartContent />
-      <RealTimeChartContent />
-      <RealTimeChartContent />
-    </CarouselBox>
-  );
-}
+import { default as RealTimeChartScoreChangeIcon } from '@components/icon/ScoreChangeIcon';
 
 function RealTimeChart() {
   return (
-    <RealTimeChartBoxContainer>
-      <RealTimeChartBox />
-      <RealTimeChartBox />
-      <RealTimeChartBox />
-      <RealTimeChartBox />
-      <RealTimeChartBox />
-    </RealTimeChartBoxContainer>
+    <RealTimeChartContainer>
+      {webtoons.map((webtoon) => (
+        <RealTimeChartCardWrapper
+          key={webtoon.id}
+          href={`webtoon/${webtoon.id}`}
+        >
+          <RealTimeChartCard
+            alt={webtoon.title}
+            src={webtoon.imageUrl}
+            width={52}
+            height={52}
+            layout="fixed"
+          />
+          <RealTimeChartRankingWrapper>
+            <RealTimeChartRanking>{webtoon.ranking}</RealTimeChartRanking>
+            <RealTimeChartScoreChangeWrapper>
+              <RealTimeChartScoreChangeIcon
+                rankingStatus={webtoon.rankingStatus}
+              />
+              <RealTimeChartScoreChange rankingStatus={webtoon.rankingStatus}>
+                {webtoon.rankingChanged === 0 ? '-' : webtoon.rankingChanged}
+              </RealTimeChartScoreChange>
+            </RealTimeChartScoreChangeWrapper>
+          </RealTimeChartRankingWrapper>
+          <RealTimeChartInformationWrapper>
+            <RealTimeChartTitle>{webtoon.title}</RealTimeChartTitle>
+            <RealTimeChartAuthor>{webtoon.author}</RealTimeChartAuthor>
+          </RealTimeChartInformationWrapper>
+          <RealTimeChartScoreWrapper>
+            <RealTimeChartScore>{webtoon.score}</RealTimeChartScore>
+            <RealTimeChartScoreChangePercent
+              scoreChangedStatus={webtoon.scoreChangedStatus}
+            >
+              {webtoon.scoreChangedStatus === 'up'
+                ? '+'
+                : webtoon.scoreChangedStatus === 'down'
+                ? '-'
+                : ''}
+              {webtoon.scoreChangedPercent.toFixed(2)}%
+            </RealTimeChartScoreChangePercent>
+          </RealTimeChartScoreWrapper>
+        </RealTimeChartCardWrapper>
+      ))}
+    </RealTimeChartContainer>
   );
 }
 

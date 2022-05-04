@@ -9,6 +9,8 @@ const themes = {
     black_700: '#191919',
     black_800: 'rgba(0,0,0,0.8)',
     bisque: 'rgb(255,228,196,1)',
+    cool_grey_50: '#878D96',
+    grey_90: '#21272A',
     grey_100: 'rgb(245,256,256,1)',
     grey_150: '#FAFAFB',
     grey_200: '#f5f5f5',
@@ -19,6 +21,7 @@ const themes = {
     grey_400: '#A2A9B0',
     grey_450: '#8A8A8A',
     grey_500: '#9E9E9E',
+    grey_600: '#757575',
     grey_900: '#40444D',
     point_up_100: '#FF4E16',
     point_up_0: 'rgba(255, 94, 26, 0.06)',
@@ -27,10 +30,6 @@ const themes = {
     point_none_100: 'rgba(245, 247, 250, 0.1)',
     point_none_0: 'rgba(245, 247, 250, 1)',
     white: '#FFFFFF',
-  },
-  padding: {
-    layout: '0 0',
-    layout_carousel: '0 0 0 0',
   },
 };
 
