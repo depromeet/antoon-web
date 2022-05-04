@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-const Logo: React.VFC<React.SVGProps<SVGSVGElement>> = () => {
+const LogoIcon: React.VFC<React.SVGProps<SVGSVGElement>> = () => {
   return (
     <svg
       width="60"
@@ -66,4 +66,4 @@ const Logo: React.VFC<React.SVGProps<SVGSVGElement>> = () => {
   );
 };
 
-export default memo(Logo);
+export default memo(LogoIcon);

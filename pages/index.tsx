@@ -12,7 +12,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Header leftBtn="logo" />
+      <Header leftBtn="logo" rightBtn="menu" />
       <_Home />
     </>
   );

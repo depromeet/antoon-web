@@ -1,7 +1,7 @@
-import { KakaoWrap } from './KaKao.style';
+import { SignInBtn } from './KaKao.style';
 
 function Kakao() {
-  return <KakaoWrap></KakaoWrap>;
+  return <SignInBtn>카카오톡으로 로그인</SignInBtn>;
 }
 
 export default Kakao;

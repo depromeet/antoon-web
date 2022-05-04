@@ -1,11 +1,11 @@
 import Header from '@components/layout/Header';
-import Social from '@domains/user/signin/Signin';
+import SignInWrap from '@domains/user/signin/SignInMain';
 
 function SignIn() {
   return (
     <>
       <Header />
-      <Social />
+      <SignInWrap />
     </>
   );
 }

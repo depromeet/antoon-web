@@ -1,7 +1,7 @@
 import Kakao from './kakao/Kakao';
 
-function Social() {
+function SocialSignIn() {
   return <Kakao />;
 }
 
-export default Social;
+export default SocialSignIn;

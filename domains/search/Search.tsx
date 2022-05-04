@@ -5,8 +5,8 @@ import { searchAtom } from '@states/search';
 
 import useAutoComplete from '@hooks/useAutoComplete';
 
+import LogoIcon from '@assets/svgs/LogoIcon';
 import SearchIcon from '@assets/svgs/SearchIcon';
-import Logo from '@assets/svgs/Logo';
 
 import { webtoons } from './Search.data';
 
@@ -31,7 +31,7 @@ function Search() {
     <>
       {searchInput == '' ? (
         <Default>
-          <Logo />
+          <LogoIcon />
         </Default>
       ) : (
         searchResult.map((searchResult) => {
