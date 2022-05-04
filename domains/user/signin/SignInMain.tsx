@@ -3,9 +3,9 @@ import Link from 'next/link';
 import Intro from './Intro';
 import SocialSignIn from './SocialSignIn';
 
-import { SignInWrap, GoToMain } from './SignIn.style';
+import { SignInWrap, GoToMain } from './SignInMain.style';
 
-function SignIn() {
+function SignInMain() {
   return (
     <SignInWrap>
       <Intro />
@@ -19,4 +19,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignInMain;
