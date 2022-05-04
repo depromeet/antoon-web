@@ -1,4 +1,4 @@
-import LogoIcon from '@assets/svgs/LogoIcon';
+import LogoIcon from '@assets/icons/LogoIcon';
 import IntroDetail from './IntroDetail';
 
 import { IntroMain, LogoWrap } from './Intro.style';

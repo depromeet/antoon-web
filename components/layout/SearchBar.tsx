@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { searchAtom } from '@states/search';
 
-import DeleteIcon from '@assets/svgs/DeleteIcon';
+import DeleteIcon from '@assets/icons/DeleteIcon';
 
 import { SearchBarWrap, SearchInput } from './SearchBar.style';
 

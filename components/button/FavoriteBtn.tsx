@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-import HeartIcon from '@components/icon/Icon_Heart';
+import HeartIcon from '@assets/icons/HeartIcon';
 
 type FavoriteProps = {
   isFavoriteChecked: boolean;
