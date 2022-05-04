@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import Logo from '@assets/svgs/Logo';
+import LogoIcon from '@assets/svgs/LogoIcon';
 import BackIcon from '@components/icon/BackIcon';
 
 import SearchBar from './SearchBar';
@@ -20,7 +20,7 @@ function Header({ leftBtn, rightBtn }: HeaderProps) {
       <LeftBtn>
         {leftBtn === 'logo' ? (
           <button onClick={() => router.reload()}>
-            <Logo />
+            <LogoIcon />
           </button>
         ) : (
           <button onClick={() => router.back()}>
