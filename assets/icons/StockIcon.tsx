@@ -4,7 +4,7 @@ import React from 'react';
 import Icon from './Icon';
 
 import type { IconProps } from '@_types/icon-type';
-import { DEFAULT_COLOR, DEFAULT_ICON_FILL } from '@constants/icon-constants';
+import { DEFAULT_COLOR } from '@constants/icon-constants';
 
 // eslint-disable-next-line react/display-name
 const StockIcon: React.FC<IconProps> = React.memo((props) => (

@@ -5,8 +5,8 @@ import { searchAtom } from '@states/search';
 
 import useAutoComplete from '@hooks/useAutoComplete';
 
-import LogoIcon from '@assets/svgs/LogoIcon';
-import SearchIcon from '@assets/svgs/SearchIcon';
+import LogoIcon from '@assets/icons/LogoIcon';
+import SearchIcon from '@assets/icons/SearchIcon';
 
 import { webtoons } from './Search.data';
 

@@ -14,7 +14,7 @@ import {
   RealTimeChartScore,
   RealTimeChartScoreChangePercent,
 } from './RealTimeChart.style';
-import { default as RealTimeChartScoreChangeIcon } from '@components/icon/ScoreChangeIcon';
+import { default as RealTimeChartScoreChangeIcon } from '@assets/icons/ScoreChangeIcon';
 
 function RealTimeChart() {
   return (

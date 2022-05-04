@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
-import LogoIcon from '@assets/svgs/LogoIcon';
-import BackIcon from '@components/icon/BackIcon';
+import LogoIcon from '@assets/icons/LogoIcon';
+import BackIcon from '@assets/icons/BackIcon';
 
 import SearchBar from './SearchBar';
 
