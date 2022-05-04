@@ -1,7 +1,22 @@
-import Kakao from './kakao/Kakao';
+import Link from 'next/link';
 
-function Social() {
-  return <Kakao />;
+import Intro from './Intro';
+import SocialSignIn from './SocialSignIn';
+
+import { SignInWrap, GoToMain } from './SignIn.style';
+
+function SignIn() {
+  return (
+    <SignInWrap>
+      <Intro />
+      <SocialSignIn />
+      <Link href="/" passHref>
+        <a>
+          <GoToMain>개미는툰툰 둘러보기 &gt;</GoToMain>
+        </a>
+      </Link>
+    </SignInWrap>
+  );
 }
 
-export default Social;
+export default SignIn;
