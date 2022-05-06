@@ -1,21 +1,14 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-type ImgProps = {
-  width: string;
-  height: string;
-};
-
-const ProfileImgWrap = styled.div<ImgProps>`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+const ProfileImgWrap = styled.div`
+  position: relative;
+  width: 3.2rem;
+  height: 3.2rem;
 `;
 
-const ProfileImg = styled(Image)<{ src: string }>`
+const ProfileImg = styled(Image)`
   border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 `;
 
-export { type ImgProps, ProfileImgWrap, ProfileImg };
+export { ProfileImgWrap, ProfileImg };
