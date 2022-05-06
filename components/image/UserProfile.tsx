@@ -4,15 +4,17 @@ import { ProfileImgWrap, ProfileImg } from './UserProfile.style';
 
 type ImgProps = {
   src: string;
+  width: string;
+  height: string;
 };
 
-function UserProfile({ src }: ImgProps) {
+function UserProfile({ src, width, height }: ImgProps) {
   return (
-    <ProfileImgWrap>
+    <ProfileImgWrap width={width} height={height}>
       <ProfileImg
         src={src}
-        width="32"
-        height="32"
+        width={width}
+        height={height}
         layout="fixed"
         objectFit="cover"
       />
