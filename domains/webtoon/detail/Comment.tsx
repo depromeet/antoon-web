@@ -28,7 +28,7 @@ function Comment() {
         {data.map((data) => {
           return (
             <CommentWrap key={data.id}>
-              <ProfileImg src={data.profileimg} />
+              <ProfileImg src={data.profileimg} width="32" height="32" />
               <MainWrap>
                 <UserInfo>
                   <Name>{data.name}</Name>
