@@ -1,11 +1,21 @@
 import React from 'react';
 
-import { ImgProps, ProfileImgWrap, ProfileImg } from './UserProfile.style';
+import { ProfileImgWrap, ProfileImg } from './UserProfile.style';
 
-function UserProfile({ src, width, height }: ImgProps & { src: string }) {
+type ImgProps = {
+  src: string;
+};
+
+function UserProfile({ src }: ImgProps) {
   return (
-    <ProfileImgWrap width={width} height={height}>
-      <ProfileImg src={src} width="100%" height="100%" />
+    <ProfileImgWrap>
+      <ProfileImg
+        src={src}
+        width="32"
+        height="32"
+        layout="fixed"
+        objectFit="cover"
+      />
     </ProfileImgWrap>
   );
 }
