@@ -39,6 +39,7 @@
     "emotion-reset": "^3.0.1",
     "emotion-theming": "^11.0.0",
     "json-loader": "^0.5.7",
+    "ky": "^0.30.0",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
