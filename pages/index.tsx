@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { default as _Home } from '@domains/webtoon/home/Home';
 import Header from '@components/layout/Header';
 import { QueryClient, dehydrate } from 'react-query';
-import { getWebtoons, useGetWebtoons } from '@apis/webtoons';
+import { getWebtoons, useGetWebtoonById, useGetWebtoons } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
 
 const Home: NextPage = () => {
@@ -13,8 +13,15 @@ const Home: NextPage = () => {
      /_/  |_|/_/  |/  /__/   \\____/ \\____/ /_/  |/ ',
   );
 
-  const { data, isSuccess, isLoading, isError } = useGetWebtoons();
-  console.log('webtoons', data, isSuccess, isLoading, isError);
+  // SSR
+  const { data: webtoons, isSuccess, isLoading, isError } = useGetWebtoons();
+  console.log('webtoons', webtoons, isSuccess, isLoading, isError);
+
+  const webtoonId = 1;
+
+  // CSR
+  const { data: webtoon } = useGetWebtoonById(webtoonId);
+  console.log('webtoon', webtoon);
 
   return (
     <>
@@ -27,6 +34,7 @@ const Home: NextPage = () => {
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
+  // SSR prefetch
   await queryClient.prefetchQuery(webtoons.all, getWebtoons);
 
   return {

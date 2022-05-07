@@ -6,8 +6,16 @@ const getWebtoons = async () => {
   return await api.get('webtoons').json();
 };
 
-const useGetWebtoons = () => {
-  return useQuery(webtoons.all, getWebtoons);
+const getWebtoonById = async (webtoonId: number) => {
+  return await api.get(`webtoons/${webtoonId}`).json();
 };
 
-export { getWebtoons, useGetWebtoons };
+const useGetWebtoons = () => {
+  return useQuery(webtoons.lists(), () => getWebtoons());
+};
+
+const useGetWebtoonById = (webtoonId: number) => {
+  return useQuery(webtoons.list(webtoonId), () => getWebtoonById(webtoonId));
+};
+
+export { getWebtoons, getWebtoonById, useGetWebtoons, useGetWebtoonById };
