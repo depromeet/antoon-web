@@ -34,15 +34,10 @@ function SignIn() {
   );
 }
 
-export async function getServerSideProps({
-  req,
-  res,
-  query,
-}: GetServerSidePropsContext) {
-  const accessToken = res ? '' : '';
+export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+  const loginStatus = query.status ? true : '';
 
-  if (accessToken) {
-    res.setHeader('Authorization', `Bearer ${accessToken}`);
+  if (loginStatus) {
     return {
       redirect: {
         destination: '/',
