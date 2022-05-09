@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 
 const ThumbnailWrap = styled.div<{ scale: boolean }>`
-  box-shadow: 0 0 10px ${(props) => props.theme.colors.black_700};
+  box-shadow: 0 0 10px ${(props) => props.theme.colors.secondary.black};
   width: 50rem;
   height: 33rem;
   overflow: hidden;
@@ -11,7 +11,7 @@ const ThumbnailWrap = styled.div<{ scale: boolean }>`
   &:hover img {
     transform: ${(scale) => (scale ? 'scale(1.1)' : 'scale(1)')};
     opacity: 1;
-    box-shadow: 0 0 10px ${(props) => props.theme.colors.black_700};
+    box-shadow: 0 0 10px ${(props) => props.theme.colors.secondary.black};
   }
 `;
 
@@ -23,7 +23,7 @@ const ThumbnailImg = styled(Image)`
   transition: all 0.5s;
   opacity: 0.8;
   z-index: 10;
-  box-shadow: 0 0 10px ${(props) => props.theme.colors.black_700};
+  box-shadow: 0 0 10px ${(props) => props.theme.colors.secondary.black};
   width: 100%;
   object-fit: cover;
 `;

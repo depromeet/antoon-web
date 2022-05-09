@@ -4,7 +4,7 @@ const CommentTextInputWrapper = styled.div`
   position: relative;
   margin-bottom: 20px;
   border-radius: 10px;
-  background: ${(props) => props.theme.colors.grey_260};
+  background: ${(props) => props.theme.colors.primary.gray_200};
   padding-top: 5px;
   padding-bottom: 0;
   padding-left: 10px;
@@ -32,8 +32,7 @@ const ProfileName = styled.p`
   display: inline-block;
   margin-left: 10px;
   vertical-align: super;
-  color: ${(props) => props.theme.colors.grey_900};
-  font-family: Pretendard;
+  color: ${(props) => props.theme.colors.grayscale.gray_800};
   font-size: 12px;
   font-weight: 700;
 `;
@@ -42,8 +41,7 @@ const ContentCheckArea = styled.p`
   position: absolute;
   top: 16px;
   right: 16px;
-  color: ${(props) => props.theme.colors.grey_450};
-  font-family: Pretendard;
+  color: ${(props) => props.theme.colors.grayscale.gray_700};
   font-size: 12px;
   font-weight: 400;
 `;
@@ -55,19 +53,18 @@ const TextArea = styled.textarea`
   outline: none;
   border: none;
   border-radius: 10px;
-  background: ${(props) => props.theme.colors.grey_260};
+  background: ${(props) => props.theme.colors.primary.gray_200};
   padding: 10px;
   width: 100%;
   height: 38px;
   resize: none;
-  color: ${(props) => props.theme.colors.black};
-  font-family: Pretendard;
+  color: ${(props) => props.theme.colors.basic.black};
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
 
   ::placeholder {
-    color: ${(props) => props.theme.colors.grey_350};
+    color: ${(props) => props.theme.colors.grayscale.gray_500};
   }
 `;
 
@@ -79,19 +76,18 @@ const SubmitButton = styled.button<{ isShow: boolean }>`
   bottom: 15px;
   transition: height 0.5s ease;
   border-radius: 8px;
-  background: ${(props) => props.theme.colors.grey_350};
+  background: ${(props) => props.theme.colors.grayscale.gray_500};
   padding: 4px;
   width: 50px;
   height: 28px;
-  color: ${(props) => props.theme.colors.grey_150};
-  font-family: Pretendard;
+  color: ${(props) => props.theme.colors.primary.gray_100};
   font-size: 12px;
   font-weight: 400;
   font-style: normal;
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
-    background: ${(props) => props.theme.colors.grey_900};
+    background: ${(props) => props.theme.colors.grayscale.gray_800};
   }
 `;
 

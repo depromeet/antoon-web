@@ -28,7 +28,6 @@ const CategoryTitle = styled.p`
   opacity: 0.8;
   margin-top: 12px;
   margin-left: 14px;
-  font-family: Pretendard;
   font-size: 13px;
 `;
 
@@ -37,7 +36,6 @@ const CategoryContents = styled.p`
   margin-top: 12px;
   margin-bottom: 12px;
   margin-left: 14px;
-  font-family: Pretendard;
   font-size: 16px;
 `;
 const ImageContainer = styled.div`

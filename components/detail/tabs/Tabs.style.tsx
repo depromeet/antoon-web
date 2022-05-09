@@ -35,7 +35,6 @@ const Tab = styled.div`
   width: 25%;
   text-align: center;
   color: '#000';
-  font-family: Pretendard;
   font-weight: 400;
   font-style: normal;
   -webkit-tap-highlight-color: transparent;

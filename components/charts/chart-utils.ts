@@ -18,11 +18,11 @@ const getChartToolTip = (params: any) => {
 const getChartStatusFactory = (status: ChartStatus, gradient: number) => {
   switch (status) {
     case 'UP':
-      return themes.colors.point_up_100;
+      return themes.colors.secondary.red;
     case 'DOWN':
-      return themes.colors.point_down_100;
+      return themes.colors.secondary.blue;
     default:
-      return themes.colors.point_none_100;
+      return themes.colors.chart.point_none_100;
   }
 };
 

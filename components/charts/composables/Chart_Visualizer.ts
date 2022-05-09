@@ -63,8 +63,8 @@ function setOption(
             offset: 1,
             color:
               status == 'UP'
-                ? themes.colors.point_up_0
-                : themes.colors.point_down_0,
+                ? themes.colors.chart.point_up_0
+                : themes.colors.chart.point_down_0,
           },
         ]),
         lineStyle: {

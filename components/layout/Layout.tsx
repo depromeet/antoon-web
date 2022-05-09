@@ -10,7 +10,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 const MainWrap = styled.div`
   margin: 0 auto;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${(props) => props.theme.colors.basic.white};
   padding: 0 2.4rem;
   width: min(768px, 100%);
   min-height: 100vh;

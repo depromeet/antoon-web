@@ -18,14 +18,14 @@ const PopularCardWrapper = styled.a`
 
   @media (hover: hover) and (pointer: fine) {
     :hover {
-      background-color: ${(props) => props.theme.colors.grey_260};
+      background-color: ${(props) => props.theme.colors.primary.gray_200};
     }
   }
 `;
 
 const PopularCard = styled(Image)`
   border-radius: 10px;
-  background-color: ${(props) => props.theme.bg_color.primary};
+  background-color: ${(props) => props.theme.colors.primary.gray_300};
   width: 120px;
   height: 120px;
 `;
@@ -71,7 +71,7 @@ const PopularScoreChangePercent = styled.div<PopularScoreChangePercentProps>`
       case 'stable':
       default:
         return {
-          color: props.theme.colors.grey_900,
+          color: props.theme.colors.grayscale.gray_800,
           backgroundColor: '#00000010',
         };
     }

@@ -41,7 +41,7 @@ const HomeSectionWrapper = styled.section`
 `;
 
 const HomeSectionSubTitle = styled.small`
-  color: ${(props) => props.theme.colors.grey_400};
+  color: ${(props) => props.theme.colors.grayscale.gray_600};
   font-size: 1.2rem;
 `;
 
@@ -63,7 +63,7 @@ const HomeSectionTitle = styled.header`
 
 const HomeSectionTitleWithTime = styled.span`
   padding-left: 0.6rem;
-  color: ${(props) => props.theme.colors.grey_500};
+  color: ${(props) => props.theme.colors.grayscale.gray_500};
   font-size: 1.2rem;
 `;
 
