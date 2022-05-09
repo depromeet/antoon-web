@@ -35,7 +35,6 @@ const DetailMain = styled.div`
 
   & h2 {
     line-height: 60px;
-    font-family: notokr-regular;
     font-size: 18px;
     font-weight: bold;
   }
@@ -46,7 +45,6 @@ const MainWrapper = styled.div`
 
   & h2 {
     line-height: 144%;
-    font-family: Pretendard;
     font-size: 20px;
     font-weight: 800;
     font-style: normal;
@@ -75,7 +73,6 @@ const Platform = styled.div`
   height: 100%;
   line-height: 20.16px;
   color: #838383;
-  font-family: Preahvihear;
   font-size: 14px;
   font-weight: 400;
 
@@ -91,9 +88,9 @@ const MainScore = styled.div<{ upDown: string }>`
   margin-top: 4px;
   color: ${(props) =>
     props?.upDown === 'UP'
-      ? props.theme.colors.point_up_100
+      ? props.theme.colors.secondary.red
       : props?.upDown === 'DOWN'
-      ? props.theme.colors.point_down_100
+      ? props.theme.colors.secondary.blue
       : '#000 '};
 `;
 
@@ -101,7 +98,6 @@ const Point = styled.p`
   margin-bottom: 2px;
   width: 100%;
   color: '#000';
-  font-family: Pretendard;
   font-size: 3.6rem;
   font-weight: 800;
   font-style: normal;
@@ -110,7 +106,6 @@ const Point = styled.p`
 const PointUpDown = styled.p`
   opacity: 0.8;
   width: 100%;
-  font-family: Pretendard;
   font-size: 1.5rem;
   font-weight: 400;
   font-style: 'normal';
@@ -149,7 +144,6 @@ const MainThumbnail = styled.div`
     text-align: center;
     line-height: 40px;
     color: #fff;
-    font-family: Inter;
     font-size: 14px;
   }
 `;
@@ -170,7 +164,6 @@ const DetailSub = styled.div`
 
   & h2 {
     line-height: 60px;
-    font-family: Pretendard;
     font-size: 20px;
     font-weight: bold;
   }
@@ -181,7 +174,6 @@ const DetailSubWrapper = styled.div`
 
   & h2 {
     line-height: 144%;
-    font-family: Pretendard;
     font-size: 20px;
     font-weight: 700;
     font-style: normal;
@@ -193,7 +185,6 @@ const Category = styled.div`
   margin-top: 12px;
   margin-bottom: 6px;
   line-height: 144%;
-  font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
@@ -206,7 +197,6 @@ const Description = styled.p`
   text-overflow: ellipsis;
   line-height: 144%;
   word-wrap: break-word;
-  font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
   font-style: normal;

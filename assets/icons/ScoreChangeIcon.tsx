@@ -5,7 +5,7 @@ const ScoreChangeIcon = (props: any) => {
   const { rankingStatus } = props;
 
   const status = {
-    color: themes.colors.cool_grey_50,
+    color: themes.colors.grayscale.gray_700,
     display: 'inline',
     transform: '',
   };

@@ -6,7 +6,6 @@ const LogoWrap = styled.div`
 
 const IntroMain = styled.p`
   margin: 2rem 0 0;
-  text-align: center;
   font-size: 2.4rem;
   font-weight: 800;
 `;

@@ -11,7 +11,7 @@ const CarouselBox = styled.div`
   flex-direction: column;
   border-radius: 40px;
   border-radius: 16px;
-  background-color: ${(props) => props.theme.bg_color.primary};
+  background-color: ${(props) => props.theme.colors.primary.gray_300};
   width: 144px;
   height: 115px;
 `;
