@@ -17,6 +17,7 @@ function UserProfile({ src, width, height }: ImgProps) {
         height={height}
         layout="fixed"
         objectFit="cover"
+        alt="profile"
       />
     </ProfileImgWrap>
   );
