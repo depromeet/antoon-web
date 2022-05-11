@@ -1,11 +1,11 @@
-import Header from '@components/layout/Header';
-import _Search from '@domains/search/Search';
+import Header from '@components/layout/Header/Header';
+import SearchWrap from '@domains/search/Search';
 
 function Search() {
   return (
     <>
-      <Header rightBtn="search" />
-      <_Search />
+      <Header rightBtn="searchBar" />
+      <SearchWrap />
     </>
   );
 }

@@ -4,7 +4,7 @@ import { Webtoon } from '@_types/webtoon-type';
 import { useRouter } from 'next/router';
 import { ChartData } from '@_types/chart-type';
 import React from 'react';
-import Header from '@components/layout/Header';
+import Header from '@components/layout/Header/Header';
 import Comment from '@domains/webtoon/detail/Comment';
 
 const webtoonMock: Webtoon = {

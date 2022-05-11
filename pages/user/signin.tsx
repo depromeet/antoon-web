@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 
-import Header from '@components/layout/Header';
+import Header from '@components/layout/Header/Header';
 import Intro from '@domains/user/signin/Intro';
 
 import {

@@ -1,4 +1,4 @@
-import Header from '@components/layout/Header';
+import Header from '@components/layout/Header/Header';
 import Checkbox from '@domains/user/policy/checkbox/Checkbox';
 
 export const mock = [
