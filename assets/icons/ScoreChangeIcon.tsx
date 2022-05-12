@@ -1,7 +1,9 @@
 import { memo } from 'react';
 import themes from '@styles/themes/themes';
 
-const ScoreChangeIcon = (props: any) => {
+type RankingStatus = 'up' | 'down' | 'stable';
+
+const ScoreChangeIcon = (props: { rankingStatus: RankingStatus }) => {
   const { rankingStatus } = props;
 
   const status = {
@@ -12,11 +14,11 @@ const ScoreChangeIcon = (props: any) => {
 
   switch (rankingStatus) {
     case 'up':
-      status.color = '#FF4820';
+      status.color = themes.colors.secondary.red;
       status.transform = 'rotate(180)';
       break;
     case 'down':
-      status.color = '#1934B5';
+      status.color = themes.colors.secondary.blue;
       break;
     case 'stable':
     default:
@@ -38,5 +40,4 @@ const ScoreChangeIcon = (props: any) => {
   );
 };
 
-// export default memo(ScoreChangeIcon);
-export default ScoreChangeIcon;
+export default memo(ScoreChangeIcon);
