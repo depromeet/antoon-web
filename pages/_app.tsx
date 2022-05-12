@@ -7,7 +7,7 @@ import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from '@emotion/react';
 
 import themes from '@styles/themes/themes';
-import GlobalStyle from '@styles/globalstyles/GlobalStyle';
+import GlobalStyle from '@styles/GlobalStyle';
 import Layout from '@components/layout/Layout';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

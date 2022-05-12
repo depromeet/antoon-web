@@ -1,11 +1,11 @@
-import DefaultProfileImg from '@assets/images/DefaultProfileImg';
+import ProfileDefaultImg from '@assets/images/ProfileDefaultImg';
 
 import { EditProfileImgWrap } from './EditProfileImg.style';
 
 function EditProfileImg() {
   return (
     <EditProfileImgWrap>
-      <DefaultProfileImg />
+      <ProfileDefaultImg />
     </EditProfileImgWrap>
   );
 }

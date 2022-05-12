@@ -24,7 +24,7 @@ function SearchBar() {
       <SearchInput
         value={searchInput}
         onChange={onChangeInput}
-        placeholder='"일기"를 입력해주세요.'
+        placeholder="웹툰 제목을 입력해주세요."
       />
       <DeleteIcon onClick={resetInput} />
     </SearchBarWrap>
