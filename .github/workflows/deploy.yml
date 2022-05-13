@@ -79,7 +79,7 @@ jobs:
                   restore-keys: |
                       build
             - name: Build DEV bundle
-              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.ref != 'refs/heads/main'
+              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.ref != 'refs/heads/main' && github.ref_type != 'tag'
               run: |
                   cat << EOF >> .env
                   ${{ secrets.ENV_DEV }}
@@ -129,7 +129,7 @@ jobs:
             aws-region: us-east-1
 
         - name: Deploy to dev
-          if: github.ref != 'refs/heads/main'
+          if: github.ref != 'refs/heads/main' && github.ref_type != 'tag'
           run: |
             STAGE=dev DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_DEV }} yarn deploy
 

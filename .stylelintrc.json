@@ -14,6 +14,10 @@
         "prettier/prettier": true,
         "no-empty-source": null,
         "function-no-unknown": null,
-        "font-family-no-missing-generic-family-keyword": null
+        "font-family-no-missing-generic-family-keyword": null,
+        "value-keyword-case": ["lower",{
+            "ignoreKeywords": ["/props.*/"]
+        }]
+
     }
 }
