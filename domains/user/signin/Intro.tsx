@@ -1,19 +1,20 @@
-import LogoIcon from '@assets/icons/LogoIcon';
 import IntroDetail from './IntroDetail';
 
-import { IntroMain, LogoWrap } from './Intro.style';
+import SignInDefaultImg from '@assets/images/SignInDefaultImg';
+
+import { IntroMainWrap, IntroMain } from './Intro.style';
 
 function Intro() {
   return (
     <>
-      <IntroMain>
-        좋아하는 웹툰 순위를
-        <br />
-        직접 올려보세요
-      </IntroMain>
-      <LogoWrap>
-        <LogoIcon />
-      </LogoWrap>
+      <IntroMainWrap>
+        <IntroMain>
+          좋아하는 웹툰 순위를
+          <br />
+          직접 올려보세요
+        </IntroMain>
+        <SignInDefaultImg />
+      </IntroMainWrap>
       <IntroDetail
         main="취향에 맞는 웹툰을 찾아보세요"
         sub="나랑 같은 취향의 웹툰을 보는사람까지"
