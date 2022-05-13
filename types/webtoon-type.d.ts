@@ -21,3 +21,17 @@ export interface Webtoon {
 }
 
 export type ChartStatus = 'UP' | 'DOWN' | 'NONE';
+
+export interface WebtoonRank {
+  webtoons: {
+    id: number;
+    title: string;
+    writers: string[];
+    thumbnail: string;
+    rank: number;
+    // rankChangedPercent / set name from backend data
+    gapPercent: number;
+    score: number;
+    scoreChangedPercent: number;
+  }[];
+}
