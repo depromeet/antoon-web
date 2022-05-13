@@ -19,6 +19,7 @@ import {
   MainTitle,
   MainWrapper,
   Platform,
+  PlatformImg,
   Point,
   PointUpDown,
   ThumbNailWrapper,
@@ -27,6 +28,7 @@ import CategorySlider from '@components/detail/category/CategorySlider';
 import { useEffect, useState } from 'react';
 import Tabs from '@components/detail/tabs/Tabs';
 import Bar from '@components/bar/Bar';
+import BtnFooter from '@components/detail/button/BtnFooter';
 
 interface Props {
   item: Webtoon;
@@ -47,29 +49,28 @@ function Detail(props: Props) {
             <DetailMain>
               <MainWrapper>
                 <MainTitle>
-                  <Platform>
-                    <a href="#">{item.platform} &gt;</a>
+                  <Platform platform={item.platform}>
+                    <a href="#">
+                      {' '}
+                      <PlatformImg platform={item.platform}></PlatformImg>
+                      {item.platform} 바로가기&gt;
+                    </a>
                   </Platform>
                   <h2 className="ellipsis2">{item.title}</h2>
                   <MainScore upDown={item.status || ''}>
-                    <Point>9.98점</Point>
+                    <Point>998점</Point>
                     <PointUpDown>
-                      <strong>
-                        <span>
-                          {item.status == 'UP'
-                            ? '+'
-                            : item.status == 'DOWN'
-                            ? '-'
-                            : ''}
-                        </span>
-                        0.1점
-                      </strong>
-                      (0.5%)
+                      {item.status == 'UP'
+                        ? '+'
+                        : item.status == 'DOWN'
+                        ? '-'
+                        : ''}
+                      5점<span className="up-down-point">(14%)</span>
                     </PointUpDown>
                   </MainScore>
                 </MainTitle>
                 <ThumbNailWrapper>
-                  <MainThumbnail>
+                  <MainThumbnail upDown={item.status || ''}>
                     <MainThumbnailImg>
                       <Image
                         src={item.thumnail || ''}
@@ -78,7 +79,7 @@ function Detail(props: Props) {
                         height={1000}
                       />
                     </MainThumbnailImg>
-                    <p>1위</p>
+                    <p>12위</p>
                   </MainThumbnail>
                 </ThumbNailWrapper>
                 <ChartWrapper>
@@ -91,6 +92,7 @@ function Detail(props: Props) {
                 <Tabs />
               </MainWrapper>
             </DetailMain>
+            <Bar />
             <DetailSub>
               <DetailSubWrapper>
                 <h2>작품소개</h2>
@@ -100,18 +102,19 @@ function Detail(props: Props) {
                 </Category>
                 <Description>{item.content}</Description>
                 <CategorySlider
-                  platform={item.platform}
                   jenre={item.jenre || DEFAULT_MSG}
                   categoryStatus={{
                     date: item.date || DEFAULT_MSG,
                     ingStatus: '연재중',
                   }}
+                  platform={item.platform}
                 />
               </DetailSubWrapper>
             </DetailSub>
+            <Bar />
           </DetailContents>
+          <BtnFooter />
         </Container>
-        <Bar />
       </DetailWrapper>
     </>
   );

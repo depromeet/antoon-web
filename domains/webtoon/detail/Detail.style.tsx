@@ -22,7 +22,7 @@ const DetailContents = styled.section`
 
 const DetailMain = styled.div`
   position: relative;
-  height: 500px;
+  height: 520px;
 
   & a {
     display: block;
@@ -45,8 +45,14 @@ const MainWrapper = styled.div`
 
   & h2 {
     line-height: 144%;
+<<<<<<< HEAD
     font-size: 20px;
     font-weight: 800;
+=======
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: 600;
+>>>>>>> 63fb187 (:fire:[feature]: 디자인 수정 및 상세 푸터 작성)
     font-style: normal;
   }
 `;
@@ -66,21 +72,40 @@ const MainTitle = styled.div`
   }
 `;
 
-const Platform = styled.div`
+const Platform = styled.div<{ platform: string }>`
   display: inline-block;
+  align-items: center;
   margin-bottom: 4px;
   width: 100%;
   height: 100%;
-  line-height: 20.16px;
-  color: #838383;
-  font-size: 14px;
-  font-weight: 400;
+
+  line-height: 17.28px;
+  color: ${(props) =>
+    props?.platform == 'NAVER'
+      ? props.theme.colors.platform.naver
+      : props?.platform == 'KAKAO'
+      ? props.theme.colors.platform.kakao
+      : props.theme.colors.platform.lezhin};
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 500;
 
   & ::after {
     display: block;
     width: 100%;
     content: '';
   }
+`;
+
+const PlatformImg = styled.span<{ platform: string }>`
+  margin-right: 4px;
+  border-radius: 20%;
+  background-image: url(${(props) =>
+    `/assets/platform_${props?.platform}.png`});
+  background-size: cover;
+  width: 13px;
+  height: 13px;
+  vertical-align: text-top;
 `;
 
 const MainScore = styled.div<{ upDown: string }>`
@@ -98,7 +123,8 @@ const Point = styled.p`
   margin-bottom: 2px;
   width: 100%;
   color: '#000';
-  font-size: 3.6rem;
+  font-family: Pretendard;
+  font-size: 32px;
   font-weight: 800;
   font-style: normal;
 `;
@@ -106,9 +132,15 @@ const Point = styled.p`
 const PointUpDown = styled.p`
   opacity: 0.8;
   width: 100%;
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 700;
   font-style: 'normal';
+
+  & .up-down-point {
+    font-size: 12px;
+    font-weight: 500;
+  }
 `;
 
 const ThumbNailWrapper = styled.div`
@@ -123,7 +155,7 @@ const MainThumbnailImg = styled.div`
   position: relative;
 `;
 
-const MainThumbnail = styled.div`
+const MainThumbnail = styled.div<{ upDown: string }>`
   position: absolute;
   right: 0;
   width: 10rem;
@@ -134,24 +166,35 @@ const MainThumbnail = styled.div`
   }
 
   & p {
+    display: flex;
     position: absolute;
-    right: 80px;
-    bottom: -20px;
-    border-radius: 50%;
-    background: #626262;
-    width: 40px;
-    height: 40px;
+    top: 10px;
+    right: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    border-radius: 40px;
+    background: ${(props) =>
+      props?.upDown === 'UP'
+        ? props.theme.colors.chart.point_up_100
+        : props?.upDown === 'DOWN'
+        ? props.theme.colors.chart.point_down_100
+        : '#000 '};
+    padding: 1px 6px;
+    width: 32px;
+    height: 14px;
     text-align: center;
-    line-height: 40px;
+    line-height: 14.4px;
     color: #fff;
-    font-size: 14px;
+    font-family: Pretendard;
+    font-size: 10px;
   }
 `;
 
 const DetailSub = styled.div`
   position: relative;
-  padding-top: 20px;
-  height: 260px;
+  padding-top: 30px;
+  height: 280px;
 
   & a {
     display: block;
@@ -226,6 +269,7 @@ export {
   Container,
   DetailContents,
   DetailMain,
+  PlatformImg,
   Platform,
   MainWrapper,
   MainTitle,

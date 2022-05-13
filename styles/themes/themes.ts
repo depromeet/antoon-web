@@ -29,8 +29,16 @@ const themes = {
     },
     chart: {
       point_up_0: 'rgba(255, 94, 26, 0.06)',
+      point_up_100: '#FF4E16',
       point_down_0: 'rgba(196, 196, 196, 0)',
+      point_down_100: '#315EFF',
+      point_none_0: '#ffffff',
       point_none_100: 'rgba(245, 247, 250, 0.1)',
+    },
+    platform: {
+      naver: '#00D564',
+      kakao: '#F7E600',
+      lezhin: '#ed1c24',
     },
   },
 };
