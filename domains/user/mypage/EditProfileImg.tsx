@@ -5,7 +5,7 @@ import { EditProfileImgWrap } from './EditProfileImg.style';
 function EditProfileImg() {
   return (
     <EditProfileImgWrap>
-      <ProfileDefaultImg />
+      <ProfileDefaultImg width="80" height="80" />
     </EditProfileImgWrap>
   );
 }
