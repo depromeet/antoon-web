@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 const MyPageBanner: React.VFC<React.SVGProps<SVGSVGElement>> = () => {
   return (
     <svg
-      width="312"
+      width="100%"
       height="100"
       viewBox="0 0 312 100"
       fill="none"
