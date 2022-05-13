@@ -65,7 +65,7 @@ const IndicatorContainer = styled.div`
 
 const IndicatorWrapper = styled.div<{ currentStep?: boolean }>`
   display: flex;
-  cursor: ${(props) => (props.currentstep ? 'default' : 'pointer')};
+  cursor: ${(props) => (props.currentStep ? 'default' : 'pointer')};
 `;
 
 const button = css`
