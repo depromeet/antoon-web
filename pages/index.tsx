@@ -4,6 +4,7 @@ import Header from '@components/layout/Header/Header';
 import { QueryClient, dehydrate } from 'react-query';
 import { getWebtoons, useGetWebtoonById, useGetWebtoons } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
+import Modal from '@components/modal/onboard/Modal';
 
 const Home: NextPage = () => {
   console.log(
@@ -26,6 +27,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Header leftBtn="logo" rightBtn="menu" accessToken="" />
+      <Modal />
       <_Home />
     </>
   );

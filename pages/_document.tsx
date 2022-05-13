@@ -13,6 +13,7 @@ function Document() {
       <body>
         <Main />
         <NextScript />
+        <div id="onboard-modal"></div>
       </body>
     </Html>
   );
