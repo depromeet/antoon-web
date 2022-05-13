@@ -5,8 +5,8 @@ import { CategorySliderCard, SliderWrapper } from './Category.style';
 import CategoryCard from './CategoryCard';
 
 interface CategoryCardColumn {
-  platform: string;
   jenre: string;
+  platform: string;
   categoryStatus: {
     date: string;
     ingStatus: string;
@@ -36,6 +36,7 @@ function CategorySlider(props: CategoryCardColumn) {
           k && k === 'categoryStatus' ? (
             <CategorySliderCard key={i}>
               <CategoryCard
+                categoryType={i}
                 categoryTitle={val.ingStatus}
                 categoryContents={val.date}
               />
@@ -43,6 +44,7 @@ function CategorySlider(props: CategoryCardColumn) {
           ) : (
             <CategorySliderCard key={i}>
               <CategoryCard
+                categoryType={i}
                 categoryTitle={CategoryEnum[k as keyof typeof CategoryEnum]}
                 categoryContents={val}
               />

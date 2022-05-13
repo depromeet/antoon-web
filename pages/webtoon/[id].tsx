@@ -9,12 +9,12 @@ import Comment from '@domains/webtoon/detail/Comment';
 
 const webtoonMock: Webtoon = {
   id: 1,
-  platform: '네이버웹툰',
+  platform: 'NAVER',
   title: '흑막 여주가 날 새 엄마로 만들려고 해',
   author: '순끼',
   content: `세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명세기말 풋사과 보습학원설명설명`,
   date: '월,화',
-  jenre: '학원물',
+  jenre: '판타지',
   status: 'UP',
   isLike: true,
   thumnail:

@@ -28,7 +28,9 @@ const CategoryTitle = styled.p`
   opacity: 0.8;
   margin-top: 12px;
   margin-left: 14px;
-  font-size: 13px;
+  color: ${(props) => props.theme.colors.grayscale.gray_800};
+  font-family: Pretendard;
+  font-size: 12px;
 `;
 
 const CategoryContents = styled.p`
@@ -37,12 +39,25 @@ const CategoryContents = styled.p`
   margin-bottom: 12px;
   margin-left: 14px;
   font-size: 16px;
+  font-weight: 700;
 `;
 const ImageContainer = styled.div`
   position: absolute;
-  right: 14px;
+  right: 18px;
   bottom: 12px;
   float: left;
+`;
+
+const CategoryImg = styled.span<{ type: number; status: number | string }>`
+  display: block;
+  border-radius: 20%;
+  background-image: url(${(props) =>
+    props.type == 2
+      ? `/assets/platform_${props.status}.png`
+      : `/assets/jenre_${props.status}.png`});
+  background-size: cover;
+  width: 24px;
+  height: 24px;
 `;
 
 export {
@@ -52,4 +67,5 @@ export {
   CategoryTitle,
   CategoryContents,
   ImageContainer,
+  CategoryImg,
 };

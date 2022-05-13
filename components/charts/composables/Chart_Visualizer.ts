@@ -1,7 +1,7 @@
 import themes from '@styles/themes/themes';
 import { ChartStatus } from '@_types/webtoon-type';
 import { graphic } from 'echarts';
-import { getChartStatusFactory, getChartToolTip } from '../chart-utils';
+import { getChartStatusFactory, getTodayFormat } from '../chart-utils';
 import { ChartsProps } from './ECharts';
 
 function setOption(
@@ -73,42 +73,6 @@ function setOption(
         },
         areaStyle: {},
         markPoint: {
-          data: [
-            {
-              name: '최고',
-              type: 'max',
-            },
-            {
-              name: '최저',
-              type: 'min',
-            },
-            {
-              name: '첫지점',
-              valueDim: 'x',
-              type: 'min',
-              label: {
-                show: false,
-              },
-              symbol: 'circle',
-              symbolSize: 5,
-              itemStyle: {
-                color: getChartStatusFactory(status || 'NONE', 100),
-              },
-            },
-            {
-              name: '마지막지점',
-              valueIndex: 0,
-              type: 'max',
-              label: {
-                show: false,
-              },
-              symbol: 'circle',
-              symbolSize: 5,
-              itemStyle: {
-                color: getChartStatusFactory(status || 'NONE', 100),
-              },
-            },
-          ],
           label: {
             show: true,
             color: '#767676',
@@ -128,18 +92,42 @@ function setOption(
       },
     ],
     tooltip: {
+      show: true,
       trigger: 'axis',
       textStyle: {
-        fontSize: 15,
-        fontFamily: 'sans-serif',
-        fontWeight: 'normal',
-        textShadowBlur: 30,
+        fontSize: 10,
+        color: '#808591',
+        fontFamily: 'Pretendard',
+        fontWeight: 'medium',
       },
-      formatter: (params: any) => getChartToolTip(params),
+      position: function (
+        pos: any,
+        params: any,
+        dom: any,
+        rect: any,
+        size: any,
+      ) {
+        interface Position {
+          top: number;
+          [key: string]: number;
+        }
+        const obj: Position = {
+          top: 0,
+        };
+        obj['left'] = pos[0] - 50;
+        //obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 5;
+        return obj;
+      },
+      formatter: `${getTodayFormat()} {b0}`,
       axisPointer: {
         type: 'line',
+        lineStyle: {
+          color: '#808591',
+          dashOffset: 100,
+        },
         animation: false,
       },
+      extraCssText: 'box-shadow: 0 0 0px rgba(0, 0, 0, 0);',
     },
     grid: {
       left: '8%',
