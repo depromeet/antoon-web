@@ -75,7 +75,7 @@ jobs:
               uses: actions/cache@v2
               with:
                   path: ${{ env.CACHED_BUILD_PATH }}
-                  key: build-${{ env.BUILD_CACHE_KEY }}
+                  key: build-${{ env.BUILD_CACHE_KEY }}}-${{ github.ref_name }}
                   restore-keys: |
                       build
             - name: Build DEV bundle
@@ -119,7 +119,7 @@ jobs:
           uses: actions/cache@v2
           with:
             path: ${{ env.CACHED_BUILD_PATH }}
-            key: build-${{ env.BUILD_CACHE_KEY }}
+            key: build-${{ env.BUILD_CACHE_KEY }}-${{ github.ref_name }}
 
         - name: Configure AWS Credentials
           uses: aws-actions/configure-aws-credentials@v1
