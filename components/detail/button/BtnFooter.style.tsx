@@ -4,7 +4,6 @@ const BtnWrapper = styled.div`
   display: flex;
   position: fixed;
   bottom: 0;
-  bottom: 0;
   left: 0;
   justify-content: space-evenly;
   z-index: 10;
@@ -15,7 +14,6 @@ const BtnWrapper = styled.div`
 const FilterBlur = styled.div`
   display: flex;
   position: fixed;
-  bottom: 0;
   bottom: 0;
   left: 0;
   background-color: rgb(255 255 255 / 70%);

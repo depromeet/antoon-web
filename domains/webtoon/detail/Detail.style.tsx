@@ -45,14 +45,8 @@ const MainWrapper = styled.div`
 
   & h2 {
     line-height: 144%;
-<<<<<<< HEAD
     font-size: 20px;
     font-weight: 800;
-=======
-    font-family: Pretendard;
-    font-size: 16px;
-    font-weight: 600;
->>>>>>> 63fb187 (:fire:[feature]: 디자인 수정 및 상세 푸터 작성)
     font-style: normal;
   }
 `;
@@ -78,7 +72,6 @@ const Platform = styled.div<{ platform: string }>`
   margin-bottom: 4px;
   width: 100%;
   height: 100%;
-
   line-height: 17.28px;
   color: ${(props) =>
     props?.platform == 'NAVER'

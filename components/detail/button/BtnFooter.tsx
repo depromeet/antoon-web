@@ -36,6 +36,12 @@ const getReturnValues = (countDown: number) => {
 };
 
 function BtnFooter() {
+  const [isSSR, setIsSSR] = useState(true);
+
+  useEffect(() => {
+    setIsSSR(false);
+  }, []);
+
   const targetTime = new Date();
   targetTime.setMonth(targetTime.getMonth() + 1);
   targetTime.setHours(0, 0, 0);
@@ -45,7 +51,8 @@ function BtnFooter() {
       <FilterBlur></FilterBlur>
       <StockTimer>
         <TimerCount>
-          투표 종료까지 시간 {hours}시간: {minutes}분 : {seconds}초 남음
+          {!isSSR &&
+            `투표 종료까지 시간 ${hours}시간: ${minutes}분 : ${seconds}초 남음`}
         </TimerCount>
       </StockTimer>
       <UpDownBtn upDownStatus="up" upDownUser={120} />
