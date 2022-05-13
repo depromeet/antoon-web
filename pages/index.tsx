@@ -2,7 +2,11 @@ import type { NextPage } from 'next';
 import { default as _Home } from '@domains/webtoon/home/Home';
 import Header from '@components/layout/Header/Header';
 import { QueryClient, dehydrate } from 'react-query';
-import { getWebtoons, useGetWebtoonById, useGetWebtoons } from '@apis/webtoons';
+import {
+  getWebtoonsRanks,
+  useGetWebtoonById,
+  useGetWebtoons,
+} from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
 import Modal from '@components/modal/onboard/Modal';
 
@@ -37,7 +41,7 @@ export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   // SSR prefetch
-  await queryClient.prefetchQuery(webtoons.all, getWebtoons);
+  await queryClient.prefetchQuery(webtoons.ranks(), getWebtoonsRanks);
 
   return {
     props: {

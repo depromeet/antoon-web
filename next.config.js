@@ -8,6 +8,7 @@ const nextConfig = {
     domains: [
       'k.kakaocdn.net',
       'blog.kakaocdn.net',
+      'dn-img-page.kakao.com',
       'colorate.azurewebsites.net',
       'images.unsplash.com',
     ],
