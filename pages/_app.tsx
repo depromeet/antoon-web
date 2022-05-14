@@ -12,7 +12,16 @@ import Layout from '@components/layout/Layout';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function MyApp({ Component, pageProps }: any) {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+          },
+        },
+      }),
+  );
 
   return (
     <>
