@@ -5,7 +5,7 @@ const BtnWrapper = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
-  justify-content: space-evenly;
+  justify-content: center;
   z-index: 10;
   width: 100vw;
   height: 160px;
@@ -30,6 +30,7 @@ const StockTimer = styled.div`
   border-radius: 15px;
   background: ${(props) => props.theme.colors.grayscale.gray_900};
   width: 60vw;
+  max-width: 330px;
   height: 35px;
 `;
 

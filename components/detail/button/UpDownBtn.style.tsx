@@ -3,22 +3,24 @@ import styled from '@emotion/styled';
 const UpDownBtnWrapper = styled.div<{ status: string }>`
   position: relative;
   margin-top: 50px;
+  margin-right: ${(props) => (props.status === 'up' ? '20px' : '0')};
   margin-bottom: 20px;
   border-radius: 15px;
   background: ${(props) =>
     props.status == 'up'
       ? props.theme.colors.chart.point_up_100
       : props.theme.colors.chart.point_down_100};
+  padding-top: 7px;
   width: 43vw;
-  height: 6vh;
+  max-width: 320px;
+  height: 56px;
+  vertical-align: middle;
   text-align: center;
-  line-height: 0vh;
+  line-height: 2vh;
 `;
 
 const UpDownBtnTitle = styled.div`
   position: flex;
-  margin-top: 7px;
-  margin-bottom: 10px;
   color: #fff;
   font-family: Pretendard;
   font-size: 16px;
