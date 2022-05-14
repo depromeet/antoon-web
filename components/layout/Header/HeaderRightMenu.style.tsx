@@ -12,6 +12,10 @@ const MenuWrap = styled.div`
   svg {
     margin: 0 1.6rem 0 0;
   }
+
+  a:nth-child(2) {
+    max-width: 2.4rem;
+  }
 `;
 
 export { RightWrap, MenuWrap };
