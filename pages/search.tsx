@@ -7,7 +7,9 @@ import Header from '@components/layout/Header/Header';
 
 import SearchWrap from '@domains/search/Search';
 
-function Search(props) {
+function Search(props: {
+  dehydratedState: { queries: { state: { data: { webtoons: any } } }[] };
+}) {
   const webtoons =
     props && props.dehydratedState.queries[0].state.data.webtoons;
 

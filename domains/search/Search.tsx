@@ -10,14 +10,14 @@ import SearchIcon from '@assets/icons/SearchIcon';
 
 import { SearchResultWrap, SearchResult, Default } from './Search.style';
 
-function Search({ webtoons }) {
+function Search({ webtoons }: { webtoons: any }) {
   const data = webtoons;
 
   const searchInput = useRecoilValue(searchAtom);
 
   const autoComplete = useAutoComplete(searchInput);
 
-  const searchResult = data.filter((data) => {
+  const searchResult = data.filter((data: { title: string }) => {
     if (searchInput == '') return;
     else return autoComplete.test(data.title);
   });
@@ -29,16 +29,27 @@ function Search({ webtoons }) {
           <SearchDefaultImg />
         </Default>
       ) : (
-        searchResult.map((searchResult) => {
-          return (
-            <SearchResultWrap key={searchResult.id}>
-              <>
-                <SearchIcon stroke="#B6BCC7" />
-                <SearchResult>{searchResult.title}</SearchResult>
-              </>
-            </SearchResultWrap>
-          );
-        })
+        searchResult.map(
+          (searchResult: {
+            id: React.Key | null | undefined;
+            title:
+              | boolean
+              | React.ReactChild
+              | React.ReactFragment
+              | React.ReactPortal
+              | null
+              | undefined;
+          }) => {
+            return (
+              <SearchResultWrap key={searchResult.id}>
+                <>
+                  <SearchIcon stroke="#B6BCC7" />
+                  <SearchResult>{searchResult.title}</SearchResult>
+                </>
+              </SearchResultWrap>
+            );
+          },
+        )
       )}
     </>
   );
