@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 const GenresWrapper = styled.div`
   display: flex;
@@ -6,14 +7,44 @@ const GenresWrapper = styled.div`
   margin-right: 2.4rem;
 `;
 
-const CarouselBox = styled.div`
+const CarouselBox = styled.div<{ genreName: string }>`
   display: flex;
   flex-direction: column;
   border-radius: 40px;
   border-radius: 16px;
-  background-color: ${(props) => props.theme.colors.primary.gray_300};
+
+  /* TODO: index signature 타입 처리하기 */
+  background-color: ${(props) => props.theme.colors.genres[props.genreName]};
   width: 144px;
   height: 115px;
 `;
 
-export { GenresWrapper, CarouselBox };
+const GenreContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 1.6rem;
+`;
+
+const GenreThumbnailContainer = styled.div`
+  display: flex;
+`;
+
+const GenreThumbnail = styled(Image)`
+  border-radius: 4rem;
+`;
+
+const GenreDescription = styled.div`
+  color: ${(props) => props.theme.colors.grayscale.gray_1000};
+  font-size: 1.6rem;
+  font-weight: 700;
+`;
+
+export {
+  GenresWrapper,
+  CarouselBox,
+  GenreContentWrapper,
+  GenreThumbnailContainer,
+  GenreThumbnail,
+  GenreDescription,
+};

@@ -40,6 +40,18 @@ const themes = {
       kakao: '#F7E600',
       lezhin: '#ed1c24',
     },
+    genres: {
+      일상: '#E8DFDA',
+      개그: '#F6EBC9',
+      판타지: '#DDD6F6',
+      액션: '#CBE8D3',
+      드라마: '#D5DFEB',
+      순정: '#FBD2DD',
+      감성: '#DCF0CF',
+      스릴러: '#BFC4DB',
+      무협: '#F4D0BF',
+      스포츠: '#BDE4ED',
+    },
   },
 };
 
