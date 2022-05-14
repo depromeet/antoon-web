@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import EditProfileImg from './EditProfileImg';
 import EditName from './EditName';
 
@@ -42,10 +44,14 @@ function MyPage() {
           <ChebronRightIcon />
         </PolicyLink>
         <CustomHr margin="2.4rem 0 1.6rem -2.4rem" />
-        <LogOutBtn>
-          <span> 로그아웃</span>
-          <ChebronRightIcon />
-        </LogOutBtn>
+        <Link href="/user/signin" passHref>
+          <a>
+            <LogOutBtn>
+              <span> 로그아웃</span>
+              <ChebronRightIcon />
+            </LogOutBtn>
+          </a>
+        </Link>
       </Menu>
     </MyPageWrap>
   );

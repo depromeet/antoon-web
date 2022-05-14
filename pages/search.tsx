@@ -24,7 +24,6 @@ function Search(props: {
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
-  // SSR prefetch
   await queryClient.prefetchQuery(webtoons.all, getWebtoons);
 
   return {
