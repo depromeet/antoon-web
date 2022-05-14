@@ -3,9 +3,11 @@ import { default as _Home } from '@domains/webtoon/home/Home';
 import Header from '@components/layout/Header/Header';
 import { QueryClient, dehydrate } from 'react-query';
 import {
-  getWebtoonsRanks,
-  useGetWebtoonById,
   useGetWebtoons,
+  useGetWebtoonById,
+  getWebtoonsRanks,
+  getWebtoonsByDay,
+  useGetWebtoonsByDay,
 } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
 import Modal from '@components/modal/onboard/Modal';
@@ -44,6 +46,9 @@ export async function getServerSideProps() {
 
   // SSR prefetch
   await queryClient.prefetchQuery(webtoons.ranks(), getWebtoonsRanks);
+  await queryClient.prefetchQuery(webtoons.days('금'), () =>
+    getWebtoonsByDay('금'),
+  );
 
   return {
     props: {
