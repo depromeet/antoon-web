@@ -7,8 +7,29 @@ import {
   GenreDescription,
 } from './Genres.style';
 
+export type genre =
+  | '일상'
+  | '개그'
+  | '판타지'
+  | '액션'
+  | '드라마'
+  | '순정'
+  | '감성'
+  | '스릴러'
+  | '무협'
+  | '스포츠';
+
+type Genre = {
+  name: genre;
+  description1: string;
+  description2: string;
+  rank1: string;
+  rank2: string;
+  rank3: string;
+};
+
 function Genres() {
-  const genres = [
+  const genres: Genre[] = [
     {
       name: '일상',
       description1: '매일매일',

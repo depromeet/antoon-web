@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { genre } from './Genres';
 
 const GenresWrapper = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ const GenresWrapper = styled.div`
   margin-right: 2.4rem;
 `;
 
-const CarouselBox = styled.div<{ genreName: string }>`
+const CarouselBox = styled.div<{ genreName: genre }>`
   display: flex;
   flex-direction: column;
   border-radius: 40px;
