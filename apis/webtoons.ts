@@ -39,6 +39,29 @@ const useGetWebtoonsRanks = () => {
   );
 };
 
+// TODO
+const getWebtoonGenres = async () => {
+  return await api.get('generes').json();
+};
+
+// TODO
+const useGetWebtoonGenres = () => {
+  return;
+};
+
+const getWebtoonsByDay = async (day: string) => {
+  return await api
+    .get(`days/${day}`)
+    .then((res) => res.json())
+    .catch((e) => console.log(e));
+};
+
+const useGetWebtoonsByDay = (day: string) => {
+  return useQuery<any, HTTPError>(webtoons.days(day), () =>
+    getWebtoonsByDay(day),
+  );
+};
+
 export {
   getWebtoons,
   useGetWebtoons,
@@ -46,4 +69,6 @@ export {
   useGetWebtoonById,
   getWebtoonsRanks,
   useGetWebtoonsRanks,
+  getWebtoonsByDay,
+  useGetWebtoonsByDay,
 };
