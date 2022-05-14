@@ -2,14 +2,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 
+import KakaoLoginImg from '@assets/images/KakaoLoginImg';
+import ChebronRightIcon from '@assets/icons/ChebronRightIcon';
+
 import Header from '@components/layout/Header/Header';
 import Intro from '@domains/user/signin/Intro';
 
-import {
-  SignInWrap,
-  GoToMain,
-  SignInBtn,
-} from '@domains/user/signin/SignInMain.style';
+import { SignInWrap, GoToMain } from '@domains/user/signin/SignInMain.style';
 
 function SignIn() {
   const router = useRouter();
@@ -23,10 +22,14 @@ function SignIn() {
       <Header />
       <SignInWrap>
         <Intro />
-        <SignInBtn onClick={onClickKakao}>카카오톡으로 로그인</SignInBtn>
+        <button onClick={onClickKakao}>
+          <KakaoLoginImg />
+        </button>
         <Link href="/" passHref>
           <a>
-            <GoToMain>개미는툰툰 둘러보기 &gt;</GoToMain>
+            <GoToMain>
+              <span>개미는툰툰 둘러보기</span> <ChebronRightIcon />
+            </GoToMain>
           </a>
         </Link>
       </SignInWrap>

@@ -1,13 +1,18 @@
 import styled from '@emotion/styled';
 
-const LogoWrap = styled.div`
-  padding: 10rem 0;
+const IntroMainWrap = styled.div`
+  position: relative;
+  margin: 0 0 6.9rem;
 `;
 
 const IntroMain = styled.p`
-  margin: 2rem 0 0;
+  position: absolute;
+  z-index: 10;
+  margin: 2rem 0 0 2.4rem;
+  text-align: left;
+  line-height: 3.264rem;
   font-size: 2.4rem;
   font-weight: 800;
 `;
 
-export { IntroMain, LogoWrap };
+export { IntroMainWrap, IntroMain };

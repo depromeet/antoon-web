@@ -13,7 +13,7 @@ import {
   CommentWrapper,
 } from './Comment.style';
 
-import ProfileImg from '@components/image/UserProfile';
+import UserProfile from '@components/image/UserProfile';
 import FavoriteBtn from '@components/button/FavoriteBtn';
 import CommentTextInput from '@components/detail/commentTextInput/CommentTextInput';
 
@@ -28,7 +28,7 @@ function Comment() {
         {data.map((data) => {
           return (
             <CommentWrap key={data.id}>
-              <ProfileImg src={data.profileimg} width="32" height="32" />
+              <UserProfile src={data.profileimg} width="32" height="32" />
               <MainWrap>
                 <UserInfo>
                   <Name>{data.name}</Name>
