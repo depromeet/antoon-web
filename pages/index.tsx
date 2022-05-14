@@ -9,6 +9,7 @@ import {
 } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
 import Modal from '@components/modal/onboard/Modal';
+import FloatingBtn from '@components/button/FloatingBtn';
 
 const Home: NextPage = () => {
   console.log(
@@ -33,6 +34,7 @@ const Home: NextPage = () => {
       <Header leftBtn="logo" rightBtn="menu" accessToken="" />
       <Modal />
       <_Home />
+      <FloatingBtn />
     </>
   );
 };
