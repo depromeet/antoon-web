@@ -8,7 +8,7 @@ const IntroMainWrap = styled.div`
 const IntroMain = styled.p`
   position: absolute;
   z-index: 10;
-  margin: 2rem 0 0;
+  margin: 2rem 0 0 2.4rem;
   text-align: left;
   line-height: 3.264rem;
   font-size: 2.4rem;

@@ -40,8 +40,6 @@ function SignIn() {
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const loginStatus = query.status ? true : '';
 
-  console.log('query', query);
-
   if (loginStatus) {
     return {
       redirect: {

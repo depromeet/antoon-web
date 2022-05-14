@@ -1,15 +1,26 @@
 import {
   IntroDetailWrap,
+  ImgWrap,
   Img,
   ContentWrap,
   MainText,
   SubText,
 } from './IntroDetail.style';
 
-function IntroDetail({ main, sub }: { main: string; sub: string }) {
+function IntroDetail({
+  src,
+  main,
+  sub,
+}: {
+  src: string;
+  main: string;
+  sub: string;
+}) {
   return (
     <IntroDetailWrap>
-      <Img />
+      <ImgWrap>
+        <Img src={src} width="24" height="24" />
+      </ImgWrap>
       <ContentWrap>
         <MainText>{main}</MainText>
         <SubText>{sub}</SubText>
