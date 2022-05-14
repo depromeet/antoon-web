@@ -33,6 +33,7 @@
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@sentry/nextjs": "^6.19.7",
     "echarts": "^5.3.2",
     "echarts-for-react": "^3.0.2",
     "echarts-next-for-react": "^1.1.1",

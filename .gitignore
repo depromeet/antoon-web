@@ -42,3 +42,6 @@ build-storybook.log
 storybook-static
 
 
+
+# Sentry
+.sentryclirc
