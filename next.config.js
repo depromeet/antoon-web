@@ -9,6 +9,7 @@ const nextConfig = {
       'k.kakaocdn.net',
       'blog.kakaocdn.net',
       'dn-img-page.kakao.com',
+      'shared-comic.pstatic.net',
       'colorate.azurewebsites.net',
       'images.unsplash.com',
     ],
