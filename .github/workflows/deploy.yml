@@ -6,6 +6,7 @@ env:
     CACHED_DEPENDENCY_PATH: ${{ github.workspace }}/node_modules
     CACHED_BUILD_PATH: ${{ github.workspace }}/.next
     BUILD_CACHE_KEY: ${{ github.sha }}
+    SENTRY_RELEASE: ${{ github.sha }}
 
 jobs:
     job_install_dependencies:
