@@ -39,3 +39,20 @@ export interface WebtoonRank {
     gapPercent: number;
   }[];
 }
+
+export type Genre =
+  | '일상'
+  | '개그'
+  | '판타지'
+  | '액션'
+  | '드라마'
+  | '순정'
+  | '감성'
+  | '스릴러'
+  | '무협'
+  | '스포츠';
+
+export interface WebtoonGenres {
+  genre: Genre;
+  thumbnail: string;
+}
