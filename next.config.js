@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
@@ -24,14 +24,20 @@ const nextConfig = {
       }),
     );
 
+    config.plugins.push(
+      new SentryWebpackPlugin({
+        include: '.next',
+        ignore: ['node_modules'],
+        urlPrefix: '~/_next',
+      }),
+    );
+
     return config;
   },
 };
 
 const sentryWebpackPluginOptions = {
   silent: true,
-  org: 'antoon',
-  project: 'antoon-web',
 };
 
 module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
