@@ -1,5 +1,5 @@
 app: antoon 
-stage: ${env.STAGE}
+stage: ${env.ENV}
 
 application:
   component: "./node_modules/@sls-next/serverless-component"

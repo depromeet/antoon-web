@@ -51,7 +51,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
-    "@sentry/webpack-plugin": "^1.18.9",
     "@sls-next/aws-cloudfront": "3.6.0",
     "@sls-next/aws-lambda": "3.6.0",
     "@sls-next/aws-sqs": "3.5.3",

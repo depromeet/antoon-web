@@ -134,7 +134,7 @@ jobs:
               cat << EOF >> .env
               ${{ secrets.ENV_DEV }}
               EOF
-              SENTRY_RELEASE=${{ github.sha }} STAGE=dev DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_DEV }} yarn deploy
+              SENTRY_RELEASE=${{ github.sha }} DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_DEV }} yarn deploy
 
         - name: Deploy to stg
           if: github.ref == 'refs/heads/main'
@@ -142,7 +142,7 @@ jobs:
               cat << EOF >> .env
               ${{ secrets.ENV_STG }}
               EOF
-              SENTRY_RELEASE=${{ github.sha }} STAGE=stg DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_STG }} yarn deploy
+              SENTRY_RELEASE=${{ github.sha }} DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_STG }} yarn deploy
 
         - name: Deploy to prd 
           if: github.ref_type == 'tag'
@@ -150,7 +150,7 @@ jobs:
               cat << EOF >> .env
               ${{ secrets.ENV_PRD }}
               EOF
-              SENTRY_RELEASE=${{ github.sha }} STAGE=prd DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_PRD }} yarn deploy
+              SENTRY_RELEASE=${{ github.sha }} DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_PRD }} yarn deploy
 
     job_chromatic:
       name: Deploy to chromatic

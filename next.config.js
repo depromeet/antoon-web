@@ -2,7 +2,6 @@
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
-const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
@@ -23,16 +22,6 @@ const nextConfig = {
         failOnWarning: false,
       }),
     );
-
-    if (process.env.ENV !== 'LOCAL') {
-      config.plugins.push(
-        new SentryWebpackPlugin({
-          include: '.next',
-          ignore: ['node_modules'],
-          urlPrefix: '~/_next',
-        }),
-      );
-    }
 
     return config;
   },
