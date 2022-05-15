@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
+import { Genre } from '@_types/webtoon-type';
 import Image from 'next/image';
-import { genre } from './Genres';
 
 const GenresWrapper = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const GenresWrapper = styled.div`
   margin-right: 2.4rem;
 `;
 
-const CarouselBox = styled.div<{ genreName: genre }>`
+const CarouselBox = styled.div<{ genreName: Genre }>`
   display: flex;
   flex-direction: column;
   border-radius: 40px;

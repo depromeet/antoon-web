@@ -36,7 +36,7 @@ const Home: NextPage = () => {
       <Header leftBtn="logo" rightBtn="menu" accessToken="" />
       <button
         onClick={() => {
-          throw new Error('버튼 에러');
+          throw new Error('버튼 에러!!!');
         }}
       >
         에러나는 버튼
