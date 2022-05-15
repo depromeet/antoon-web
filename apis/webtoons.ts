@@ -41,7 +41,7 @@ const useGetWebtoonsRanks = () => {
 
 const getWebtoonsGenres = async () => {
   return await api
-    .get('generes')
+    .get('webtoons/genres')
     .then((res) => res.json())
     .catch((e) => console.log(e));
 };

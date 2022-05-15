@@ -19,8 +19,6 @@ type GenreData = {
 };
 
 function Genres() {
-  const { data } = useGetWebtoonsGenres();
-
   const genres: GenreData[] = [
     {
       name: '일상',

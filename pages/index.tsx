@@ -3,11 +3,9 @@ import { default as _Home } from '@domains/webtoon/home/Home';
 import Header from '@components/layout/Header/Header';
 import { QueryClient, dehydrate } from 'react-query';
 import {
-  useGetWebtoons,
-  useGetWebtoonById,
   getWebtoonsRanks,
   getWebtoonsByDay,
-  useGetWebtoonsByDay,
+  getWebtoonsGenres,
 } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
 import Modal from '@components/modal/onboard/Modal';
@@ -21,26 +19,9 @@ const Home: NextPage = () => {
      /_/  |_|/_/  |/  /__/   \\____/ \\____/ /_/  |/ ',
   );
 
-  // SSR;
-  const { data: webtoons, isSuccess, isLoading, isError } = useGetWebtoons();
-  console.log('webtoons', webtoons, isSuccess, isLoading, isError);
-
-  const webtoonId = 1;
-
-  // CSR;
-  const { data: webtoon } = useGetWebtoonById(webtoonId);
-  console.log('webtoon', webtoon);
-
   return (
     <>
       <Header leftBtn="logo" rightBtn="menu" accessToken="" />
-      <button
-        onClick={() => {
-          throw new TypeError('버튼 에러가 나버림!!!');
-        }}
-      >
-        에러나는 버튼
-      </button>
       <Modal />
       <_Home />
       <FloatingBtn />
@@ -51,8 +32,9 @@ const Home: NextPage = () => {
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
-  // SSR prefetch
   await queryClient.prefetchQuery(webtoons.ranks(), getWebtoonsRanks);
+  // TODO: 계속 타임아웃 나서 나중에 사용
+  // await queryClient.prefetchQuery(webtoons.genres(), getWebtoonsGenres);
   await queryClient.prefetchQuery(webtoons.days('금'), () =>
     getWebtoonsByDay('금'),
   );
