@@ -11,3 +11,4 @@ application:
       imageLambda: "${app}-image-lambda-${stage}"
     cloudfront:
       distributionId: ${env.DISTRIBUTION_ID}
+    useServerlessTraceTarget: true
