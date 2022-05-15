@@ -30,6 +30,8 @@ const nextConfig = {
 
 const sentryWebpackPluginOptions = {
   silent: true,
+  org: 'antoon',
+  project: 'antoon-web',
 };
 
 module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);

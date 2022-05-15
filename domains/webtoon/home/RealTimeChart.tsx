@@ -1,4 +1,3 @@
-import { webtoons } from './webtoons.mock';
 import {
   RealTimeChartContainer,
   RealTimeChartCardWrapper,
@@ -30,12 +29,7 @@ function RealTimeChart() {
   return (
     <RealTimeChartContainer>
       {data?.webtoons.map((webtoon) => {
-        const minus = Math.round(Math.random()) ? 1 : -1;
-        const rankChanged = Math.trunc(Math.random() * 5) * minus;
-        const scoreChanged = (
-          ((Math.random() * 12 * 100) / 100) *
-          minus
-        ).toFixed(2);
+        const rankChanged = 0;
 
         return (
           <RealTimeChartCardWrapper
@@ -68,15 +62,14 @@ function RealTimeChart() {
                 >
                   {/* /* TODO: set data form api | temporary handle from const data that not be offered from api */}
                   {/* {webtoon.rankingChanged === 0 ? '-' : webtoon.rankingChanged} */}
-                  {!isSSR && (rankChanged === 0 ? '-' : Math.abs(rankChanged))}
+                  {!isSSR && (rankChanged === 0 ? '-' : rankChanged)}
                 </RealTimeChartScoreChange>
               </RealTimeChartScoreChangeWrapper>
             </RealTimeChartRankingWrapper>
             <RealTimeChartInformationWrapper>
               <RealTimeChartTitle>{webtoon.title}</RealTimeChartTitle>
               <RealTimeChartAuthor>
-                {/* // TODO: do webtoon.writers.join(" | ") | in now the data isn't united */}
-                {webtoon.writers}
+                {webtoon.writers.map((writer) => writer.name)}
               </RealTimeChartAuthor>
             </RealTimeChartInformationWrapper>
             <RealTimeChartScoreWrapper>
@@ -84,17 +77,17 @@ function RealTimeChart() {
               <RealTimeChartScoreChangePercent
                 /* TODO: set data form api | temporary handle from const data that not be offered from api */
                 scoreChangedStatus={
-                  Number(scoreChanged) > 0
+                  webtoon.gapPercent > 0
                     ? 'up'
-                    : Number(scoreChanged) < 0
+                    : webtoon.gapPercent < 0
                     ? 'down'
                     : 'stable'
                 }
               >
-                {!isSSR && Number(scoreChanged) > 0 ? '+' : ''}
+                {!isSSR && webtoon.gapPercent > 0 ? '+' : ''}
                 {/* /* TODO: set data form api | temporary handle from const data that not be offered from api */}
                 {/* {webtoon.scoreChangedPercent.toFixed(2)}% */}
-                {!isSSR && scoreChanged}%
+                {!isSSR && webtoon.gapPercent}%
               </RealTimeChartScoreChangePercent>
             </RealTimeChartScoreWrapper>
           </RealTimeChartCardWrapper>

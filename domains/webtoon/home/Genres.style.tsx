@@ -13,8 +13,6 @@ const CarouselBox = styled.div<{ genreName: genre }>`
   flex-direction: column;
   border-radius: 40px;
   border-radius: 16px;
-
-  /* TODO: index signature 타입 처리하기 */
   background-color: ${(props) => props.theme.colors.genres[props.genreName]};
   width: 144px;
   height: 115px;

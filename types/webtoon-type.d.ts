@@ -22,16 +22,20 @@ export interface Webtoon {
 
 export type ChartStatus = 'UP' | 'DOWN' | 'NONE';
 
+export interface WebtoonWriter {
+  webtoonWriterId: number;
+  name: string;
+}
+
 export interface WebtoonRank {
   webtoons: {
     id: number;
     title: string;
-    writers: string[];
+    writers: WebtoonWriter[];
     thumbnail: string;
     rank: number;
-    // rankChangedPercent / set name from backend data
-    gapPercent: number;
+    // rankCahnged: number;
     score: number;
-    scoreChangedPercent: number;
+    gapPercent: number;
   }[];
 }
