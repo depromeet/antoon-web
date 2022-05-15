@@ -24,13 +24,15 @@ const nextConfig = {
       }),
     );
 
-    config.plugins.push(
-      new SentryWebpackPlugin({
-        include: '.next',
-        ignore: ['node_modules'],
-        urlPrefix: '~/_next',
-      }),
-    );
+    if (process.env.ENV !== 'LOCAL') {
+      config.plugins.push(
+        new SentryWebpackPlugin({
+          include: '.next',
+          ignore: ['node_modules'],
+          urlPrefix: '~/_next',
+        }),
+      );
+    }
 
     return config;
   },
