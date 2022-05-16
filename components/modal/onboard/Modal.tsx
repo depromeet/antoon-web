@@ -1,4 +1,5 @@
 import StepIndicator from '@assets/icons/StepIndicator';
+import { Mixpanel } from 'mixpanel';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -40,18 +41,36 @@ function Modal() {
     setPortal(document.getElementById('onboard-modal'));
 
     if (localStorage.getItem('antoon-onboard-introduce') === 'true') {
-      onCloseModal();
+      closeModal();
     }
   }, []);
+
+  const closeModal = () => {
+    document.body.style.cssText = '';
+    setModalOpen(false);
+    localStorage.setItem('antoon-onboard-introduce', 'true');
+  };
 
   const onStep = (step: Step) => {
     setStep(step);
   };
 
-  const onCloseModal = () => {
-    document.body.style.cssText = '';
-    setModalOpen(false);
-    localStorage.setItem('antoon-onboard-introduce', 'true');
+  const onSkip = () => {
+    Mixpanel.track('온보딩', {
+      type: 'modal',
+      event: 'skip',
+    });
+
+    closeModal();
+  };
+
+  const onFinish = () => {
+    Mixpanel.track('온보딩', {
+      type: 'modal',
+      event: 'finish',
+    });
+
+    closeModal();
   };
 
   const First = (
@@ -77,7 +96,7 @@ function Modal() {
         </DescriptionDetail>
       </DescriptionWrapper>
       <ButtonContainer>
-        <SkipButton onClick={onCloseModal}>건너뛰기</SkipButton>
+        <SkipButton onClick={onSkip}>건너뛰기</SkipButton>
         <IndicatorContainer>
           <IndicatorWrapper onClick={() => onStep('first')} currentStep={true}>
             <StepIndicator active={true} />
@@ -169,7 +188,7 @@ function Modal() {
             <StepIndicator active={true} />
           </IndicatorWrapper>
         </IndicatorContainer>
-        <StartButton onClick={onCloseModal}>시작하기</StartButton>
+        <StartButton onClick={onFinish}>시작하기</StartButton>
       </ButtonContainer>
     </>
   );

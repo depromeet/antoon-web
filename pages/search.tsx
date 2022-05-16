@@ -6,10 +6,18 @@ import { getWebtoons } from '@apis/webtoons';
 import Header from '@components/layout/Header/Header';
 
 import SearchWrap from '@domains/search/Search';
+import { Mixpanel } from 'mixpanel';
+import { useEffect } from 'react';
 
 function Search(props: {
   dehydratedState: { queries: { state: { data: { webtoons: any } } }[] };
 }) {
+  useEffect(() => {
+    Mixpanel.track('페이지 진입', {
+      page: '검색 페이지',
+    });
+  });
+
   const webtoons =
     props && props.dehydratedState.queries[0].state.data.webtoons;
 

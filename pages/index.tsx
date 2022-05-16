@@ -2,14 +2,12 @@ import type { NextPage } from 'next';
 import { default as _Home } from '@domains/webtoon/home/Home';
 import Header from '@components/layout/Header/Header';
 import { QueryClient, dehydrate } from 'react-query';
-import {
-  getWebtoonsRanks,
-  getWebtoonsByDay,
-  getWebtoonsGenres,
-} from '@apis/webtoons';
+import { getWebtoonsRanks, getWebtoonsByDay } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
 import Modal from '@components/modal/onboard/Modal';
 import FloatingBtn from '@components/button/FloatingBtn';
+import { Mixpanel } from 'mixpanel';
+import { useEffect } from 'react';
 
 const Home: NextPage = () => {
   console.log(
@@ -18,6 +16,12 @@ const Home: NextPage = () => {
       / /_| | / / | /  /  /  / /_/ // /_/ / / / | /  \n\
      /_/  |_|/_/  |/  /__/   \\____/ \\____/ /_/  |/ ',
   );
+
+  useEffect(() => {
+    Mixpanel.track('페이지 진입', {
+      page: '홈 페이지',
+    });
+  }, []);
 
   return (
     <>

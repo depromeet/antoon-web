@@ -1,5 +1,7 @@
 import Header from '@components/layout/Header/Header';
 import Checkbox from '@domains/user/policy/checkbox/Checkbox';
+import { Mixpanel } from 'mixpanel';
+import { useEffect } from 'react';
 
 export const mock = [
   {
@@ -14,7 +16,13 @@ export const mock = [
   },
 ];
 
-function policy() {
+function Policy() {
+  useEffect(() => {
+    Mixpanel.track('페이지 진입', {
+      page: '정책동의 페이지',
+    });
+  });
+
   return (
     <>
       <Header />
@@ -27,4 +35,4 @@ function policy() {
   );
 }
 
-export default policy;
+export default Policy;

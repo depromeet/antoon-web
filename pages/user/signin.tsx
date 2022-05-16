@@ -9,9 +9,17 @@ import Header from '@components/layout/Header/Header';
 import Intro from '@domains/user/signin/Intro';
 
 import { SignInWrap, GoToMain } from '@domains/user/signin/SignInMain.style';
+import { Mixpanel } from 'mixpanel';
+import { useEffect } from 'react';
 
 function SignIn() {
   const router = useRouter();
+
+  useEffect(() => {
+    Mixpanel.track('페이지 진입', {
+      page: '로그인 페이지',
+    });
+  }, []);
 
   const onClickKakao = () => {
     router.push('https://api.antoon.fun/oauth2/authorization/kakao');
