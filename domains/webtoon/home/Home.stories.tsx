@@ -1,5 +1,4 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
 
 import Home from './Home';
 
@@ -8,6 +7,7 @@ export default {
   title: '홈 페이지',
 } as ComponentMeta<typeof Home>;
 
-export const 홈: ComponentStory<typeof Home> = () => {
-  return <Home />;
-};
+// TODO: api 문제 해결
+// export const 홈: ComponentStory<typeof Home> = () => {
+//   return <Home />;
+// };
