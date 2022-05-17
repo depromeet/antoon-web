@@ -1,3 +1,5 @@
+import { useGetWebtoonsGenres } from '@apis/webtoons';
+import { Genre } from '@_types/webtoon-type';
 import {
   GenresWrapper,
   CarouselBox,
@@ -7,20 +9,8 @@ import {
   GenreDescription,
 } from './Genres.style';
 
-export type genre =
-  | '일상'
-  | '개그'
-  | '판타지'
-  | '액션'
-  | '드라마'
-  | '순정'
-  | '감성'
-  | '스릴러'
-  | '무협'
-  | '스포츠';
-
-type Genre = {
-  name: genre;
+type GenreData = {
+  name: Genre;
   description1: string;
   description2: string;
   rank1: string;
@@ -29,7 +19,7 @@ type Genre = {
 };
 
 function Genres() {
-  const genres: Genre[] = [
+  const genres: GenreData[] = [
     {
       name: '일상',
       description1: '매일매일',

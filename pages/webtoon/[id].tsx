@@ -3,9 +3,10 @@ import Detail from '@domains/webtoon/detail/Detail';
 import { Webtoon } from '@_types/webtoon-type';
 import { useRouter } from 'next/router';
 import { ChartData } from '@_types/chart-type';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '@components/layout/Header/Header';
 import Comment from '@domains/webtoon/detail/Comment';
+import { Mixpanel } from 'mixpanel';
 
 const webtoonMock: Webtoon = {
   id: 1,
@@ -36,6 +37,14 @@ const ChartMock: ChartData = {
 function webtoonDetail() {
   const router = useRouter();
   const { id } = router.query;
+
+  useEffect(() => {
+    Mixpanel.track('페이지 진입', {
+      page: '웹툰 상세 페이지',
+      webtoonId: id,
+    });
+  }, []);
+
   console.log(`[router-checking]: ...${id}...`);
 
   // Mock

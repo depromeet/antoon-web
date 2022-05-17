@@ -41,4 +41,8 @@ yarn-error.log*
 build-storybook.log
 storybook-static
 
+# sentry
+.sentryclirc
 
+# serverless
+.serverless*

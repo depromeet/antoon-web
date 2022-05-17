@@ -1,5 +1,5 @@
 app: antoon 
-stage: ${env.STAGE}
+stage: ${env.ENV}
 
 application:
   component: "./node_modules/@sls-next/serverless-component"
@@ -11,3 +11,4 @@ application:
       imageLambda: "${app}-image-lambda-${stage}"
     cloudfront:
       distributionId: ${env.DISTRIBUTION_ID}
+    useServerlessTraceTarget: true

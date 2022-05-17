@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
+const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
   images: {
@@ -26,4 +27,8 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const sentryWebpackPluginOptions = {
+  silent: true,
+};
+
+module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);

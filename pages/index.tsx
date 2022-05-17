@@ -2,16 +2,12 @@ import type { NextPage } from 'next';
 import { default as _Home } from '@domains/webtoon/home/Home';
 import Header from '@components/layout/Header/Header';
 import { QueryClient, dehydrate } from 'react-query';
-import {
-  useGetWebtoons,
-  useGetWebtoonById,
-  getWebtoonsRanks,
-  getWebtoonsByDay,
-  useGetWebtoonsByDay,
-} from '@apis/webtoons';
+import { getWebtoonsRanks, getWebtoonsByDay } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
 import Modal from '@components/modal/onboard/Modal';
 import FloatingBtn from '@components/button/FloatingBtn';
+import { Mixpanel } from 'mixpanel';
+import { useEffect } from 'react';
 
 const Home: NextPage = () => {
   console.log(
@@ -21,15 +17,11 @@ const Home: NextPage = () => {
      /_/  |_|/_/  |/  /__/   \\____/ \\____/ /_/  |/ ',
   );
 
-  // SSR;
-  const { data: webtoons, isSuccess, isLoading, isError } = useGetWebtoons();
-  console.log('webtoons', webtoons, isSuccess, isLoading, isError);
-
-  const webtoonId = 1;
-
-  // CSR;
-  const { data: webtoon } = useGetWebtoonById(webtoonId);
-  console.log('webtoon', webtoon);
+  useEffect(() => {
+    Mixpanel.track('페이지 진입', {
+      page: '홈 페이지',
+    });
+  }, []);
 
   return (
     <>
@@ -44,8 +36,9 @@ const Home: NextPage = () => {
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
-  // SSR prefetch
   await queryClient.prefetchQuery(webtoons.ranks(), getWebtoonsRanks);
+  // TODO: 계속 타임아웃 나서 나중에 사용
+  // await queryClient.prefetchQuery(webtoons.genres(), getWebtoonsGenres);
   await queryClient.prefetchQuery(webtoons.days('금'), () =>
     getWebtoonsByDay('금'),
   );
