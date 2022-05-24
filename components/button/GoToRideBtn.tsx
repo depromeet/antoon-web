@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Mixpanel } from 'mixpanel';
 import Link from 'next/link';
 
 type Props = {
@@ -8,9 +9,17 @@ type Props = {
 function GoToRideButton(props: Props) {
   const { content } = props;
 
+  const onGoToRide = () => {
+    Mixpanel.track('탑승하러 가기', {
+      type: 'button',
+      event: 'click',
+      page: 'home',
+    });
+  };
+
   return (
     <Link href="/#realtime-chart" passHref>
-      <Btn>{content}</Btn>
+      <Btn onClick={onGoToRide}>{content}</Btn>
     </Link>
   );
 }
