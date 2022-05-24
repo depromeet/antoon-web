@@ -26,10 +26,18 @@ const HomeTopTitle = styled.h1`
   font-weight: bold;
 `;
 
-const HomeBannerWrapper = styled.div`
+const HomeBannerContainer = styled.div`
   display: flex;
+  position: relative;
   justify-content: center;
   margin-top: 1.2rem;
+`;
+
+const HomeBannerWrapper = styled.div`
+  position: absolute;
+  bottom: 2.4rem;
+  left: 50%;
+  transform: translate(-50%, 0);
 `;
 
 const HomeRealtimeChartWrapper = styled.section`
@@ -95,6 +103,7 @@ export {
   HomeTopTitleWrapper,
   HomeTopSubTitle,
   HomeTopTitle,
+  HomeBannerContainer,
   HomeBannerWrapper,
   HomeSectionWrapper,
   HomeSectionSubTitle,

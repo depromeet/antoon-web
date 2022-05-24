@@ -7,6 +7,7 @@ import {
   HomeTopTitleWrapper,
   HomeTopSubTitle,
   HomeTopTitle,
+  HomeBannerContainer,
   HomeBannerWrapper,
   HomeRealtimeChartWrapper,
   HomeRealtimeChartTitleWrapper,
@@ -25,6 +26,7 @@ import Popular from './Popular';
 import Recommendation from './Recommendation';
 import Weekly from './Weekly';
 import HomePageBanner from '@assets/banners/HomePageBanner';
+import GoToRideButton from '@components/button/GoToRideBtn';
 
 function Home() {
   const RealTimeChartRef = useRef<HTMLDivElement>(null);
@@ -43,12 +45,15 @@ function Home() {
         <HomeTopTitleWrapper>
           <HomeTopSubTitle>열심히일하는일개미님</HomeTopSubTitle>
           <HomeTopTitle>오늘은 어떤 웹툰에 탑승할까요?</HomeTopTitle>
-          <HomeBannerWrapper>
+          <HomeBannerContainer>
             <HomePageBanner />
-          </HomeBannerWrapper>
+            <HomeBannerWrapper>
+              <GoToRideButton content="탑승하러 가기" />
+            </HomeBannerWrapper>
+          </HomeBannerContainer>
         </HomeTopTitleWrapper>
       </HomeTopWrapper>
-      <HomeRealtimeChartWrapper>
+      <HomeRealtimeChartWrapper id="realtime-chart">
         <HomeRealtimeChartTitleWrapper>
           <HomeSectionSubTitle>다같이 영차영차!</HomeSectionSubTitle>
           <HomeSectionTitleWithTimeWrapper>
