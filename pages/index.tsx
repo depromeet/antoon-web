@@ -37,11 +37,12 @@ export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(webtoons.ranks(), getWebtoonsRanks);
+
   // TODO: 계속 타임아웃 나서 나중에 사용
   // await queryClient.prefetchQuery(webtoons.genres(), getWebtoonsGenres);
-  await queryClient.prefetchQuery(webtoons.days('금'), () =>
-    getWebtoonsByDay('금'),
-  );
+  // await queryClient.prefetchQuery(webtoons.days('금'), () =>
+  //   getWebtoonsByDay('금'),
+  // );
 
   return {
     props: {

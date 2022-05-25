@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { webtoons } from '@apis/queryKeys';
-import { api } from '.';
+import { api } from './api';
 import { WebtoonGenres, WebtoonRank } from '@_types/webtoon-type';
 import { HTTPError } from 'ky';
 

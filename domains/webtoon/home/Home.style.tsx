@@ -10,6 +10,7 @@ const HomeTopTitleWrapper = styled.div`
   display: inline-block;
   align-items: flex-start;
   padding-top: 0.8rem;
+  width: 100%;
   height: 200px;
 `;
 
@@ -23,6 +24,20 @@ const HomeTopTitle = styled.h1`
   width: 200px;
   font-size: 2.4rem;
   font-weight: bold;
+`;
+
+const HomeBannerContainer = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-top: 1.2rem;
+`;
+
+const HomeBannerWrapper = styled.div`
+  position: absolute;
+  bottom: 2.4rem;
+  left: 50%;
+  transform: translate(-50%, 0);
 `;
 
 const HomeRealtimeChartWrapper = styled.section`
@@ -88,6 +103,8 @@ export {
   HomeTopTitleWrapper,
   HomeTopSubTitle,
   HomeTopTitle,
+  HomeBannerContainer,
+  HomeBannerWrapper,
   HomeSectionWrapper,
   HomeSectionSubTitle,
   HomeSectionTitleWithTimeWrapper,

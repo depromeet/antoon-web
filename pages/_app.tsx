@@ -9,6 +9,7 @@ import { ThemeProvider } from '@emotion/react';
 import themes from '@styles/themes/themes';
 import GlobalStyle from '@styles/GlobalStyle';
 import Layout from '@components/layout/Layout';
+import useSmoothScroll from '@hooks/useSmoothScroll';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function MyApp({ Component, pageProps }: any) {
@@ -22,6 +23,8 @@ function MyApp({ Component, pageProps }: any) {
         },
       }),
   );
+
+  useSmoothScroll();
 
   return (
     <>

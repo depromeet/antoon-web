@@ -1,4 +1,5 @@
 import {
+  OnError,
   RealTimeChartContainer,
   RealTimeChartCardWrapper,
   RealTimeChartCard,
@@ -25,6 +26,9 @@ function RealTimeChart() {
   useEffect(() => {
     setIsSSR(false);
   }, []);
+
+  if (data === undefined)
+    return <OnError>랭킹을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
     <RealTimeChartContainer>
