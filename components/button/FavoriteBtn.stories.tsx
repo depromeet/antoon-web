@@ -11,8 +11,10 @@ const Template: ComponentStory<typeof FavoriteBtn> = (args) => (
   <FavoriteBtn {...args} />
 );
 
-export const FavoriteButton = Template.bind({});
-FavoriteButton.args = {
+export const 댓글_좋아요_버튼 = Template.bind({});
+
+댓글_좋아요_버튼.args = {
   isFavoriteChecked: true,
 };
-FavoriteButton.parameters = { actions: { handles: ['click button'] } };
+
+댓글_좋아요_버튼.parameters = { actions: { handles: ['click button'] } };
