@@ -14,6 +14,6 @@
 <br />
 <br />
 
-![tech-stack](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBtw3P%2FbtrCkJ73j67%2Ft6adhcpbKkjKsMnei1UhlK%2Fimg.png)
+![tech-stack](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FQipuw%2FbtrCj3FLvfC%2FLqI9dYrcxbice5MuVS11B1%2Fimg.png)
 
-![structure](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FQipuw%2FbtrCj3FLvfC%2FLqI9dYrcxbice5MuVS11B1%2Fimg.png)
+![structure](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBtw3P%2FbtrCkJ73j67%2Ft6adhcpbKkjKsMnei1UhlK%2Fimg.png)
