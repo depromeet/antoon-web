@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 const ChebronRightIcon: React.VFC<React.SVGProps<SVGSVGElement>> = () => {
   return (
