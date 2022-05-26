@@ -55,7 +55,7 @@ const getWebtoonsRising = async () => {
 };
 
 const useGetWebtoonsRising = () => {
-  return useQuery<WebtoonRising, HTTPError>(webtoons.days(day), () =>
+  return useQuery<WebtoonRising, HTTPError>(webtoons.rising(), () =>
     getWebtoonsRising(),
   );
 };
