@@ -56,3 +56,15 @@ export interface WebtoonGenres {
   genre: Genre;
   thumbnail: string;
 }
+
+export type Day = '일' | '월' | '화' | '수' | '목' | '금' | '토';
+
+export interface WebtoonWeekly {
+  data: {
+    day: Day;
+    thumbnail: string;
+    title: string;
+    webtoonId: number;
+    writers: string[];
+  }[];
+}

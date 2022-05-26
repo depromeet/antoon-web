@@ -43,10 +43,18 @@ const WeeklyCardContainer = styled.div`
   justify-content: center;
 `;
 
-const WeeklyCardWrapper = styled.a`
-  border-radius: 12px;
+const SkeleteonWrapper = styled.div`
+  display: grid;
+  gap: 0.2rem;
+  z-index: 0;
   padding: 0.4rem;
-  width: 100px;
+  width: 10rem;
+`;
+
+const WeeklyCardWrapper = styled.a`
+  border-radius: 1.2rem;
+  padding: 0.4rem;
+  width: 10rem;
 
   @media (hover: hover) and (pointer: fine) {
     :hover {
@@ -56,11 +64,7 @@ const WeeklyCardWrapper = styled.a`
 `;
 
 const WeeklyCard = styled(Image)`
-  margin-bottom: 0.8rem;
   border-radius: 16px;
-  background-color: ${(props) => props.theme.colors.primary.gray_300};
-  width: 100%;
-  height: 98px;
 `;
 
 const WeeklyCardTitle = styled.div`
@@ -85,6 +89,7 @@ export {
   DaySelectButtonWContainer,
   DaySelectButton,
   WeeklyCardContainer,
+  SkeleteonWrapper,
   WeeklyCardWrapper,
   WeeklyCard,
   WeeklyCardTitle,

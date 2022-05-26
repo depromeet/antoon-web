@@ -1,7 +1,11 @@
 import { useQuery } from 'react-query';
 import { webtoons } from '@apis/queryKeys';
 import { api } from './api';
-import { WebtoonGenres, WebtoonRank } from '@_types/webtoon-type';
+import {
+  WebtoonGenres,
+  WebtoonRank,
+  WebtoonWeekly,
+} from '@_types/webtoon-type';
 import { HTTPError } from 'ky';
 
 const getWebtoons = async () => {
@@ -54,13 +58,16 @@ const useGetWebtoonsGenres = () => {
 
 const getWebtoonsByDay = async (day: string) => {
   return await api
-    .get(`days/${day}`)
+    .get(`webtoons/days/${day}`)
     .then((res) => res.json())
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
 };
 
 const useGetWebtoonsByDay = (day: string) => {
-  return useQuery<any, HTTPError>(webtoons.days(day), () =>
+  return useQuery<WebtoonWeekly, HTTPError>(webtoons.days(day), () =>
     getWebtoonsByDay(day),
   );
 };

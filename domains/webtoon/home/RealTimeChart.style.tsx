@@ -1,13 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-const OnError = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  color: ${(props) => props.theme.colors.grayscale.gray_700};
-`;
-
 const RealTimeChartContainer = styled.div`
   display: grid;
   grid-template-rows: repeat(3, auto);
@@ -137,7 +130,6 @@ const RealTimeChartScoreChangePercent = styled.div<RealTimeChartScoreChangePerce
 `;
 
 export {
-  OnError,
   RealTimeChartContainer,
   RealTimeChartCardWrapper,
   RealTimeChartCard,
