@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
+import { useEffect } from 'react';
+
+import { setCookies } from 'cookies-next';
+
+import { Mixpanel } from 'mixpanel';
 
 import KakaoLoginImg from '@assets/images/KakaoLoginImg';
 import ChebronRightIcon from '@assets/icons/ChebronRightIcon';
@@ -9,8 +14,6 @@ import Header from '@components/layout/Header/Header';
 import Intro from '@domains/user/signin/Intro';
 
 import { SignInWrap, GoToMain } from '@domains/user/signin/SignInMain.style';
-import { Mixpanel } from 'mixpanel';
-import { useEffect } from 'react';
 
 function SignIn() {
   const router = useRouter();
@@ -45,10 +48,31 @@ function SignIn() {
   );
 }
 
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-  const loginStatus = query.status ? true : '';
+export async function getServerSideProps({
+  req,
+  res,
+  query,
+}: GetServerSidePropsContext) {
+  const statusQuery = query.status as string;
+  const authArr = statusQuery?.split(/[?=]/);
 
-  if (loginStatus) {
+  const status = authArr && authArr[0];
+  const access = authArr && authArr[2];
+  const refresh = authArr && authArr[4];
+
+  setCookies('access', access, { req, res });
+  setCookies('refresh', refresh, { req, res });
+
+  if (status === 'signin') {
+    return {
+      redirect: {
+        destination: '/user/signup/policy',
+        permanent: false,
+      },
+    };
+  }
+
+  if (status === 'success') {
     return {
       redirect: {
         destination: '/',
