@@ -7,7 +7,7 @@ import { webtoons } from '@apis/queryKeys';
 import Modal from '@components/modal/onboard/Modal';
 import FloatingBtn from '@components/button/FloatingBtn';
 import { Mixpanel } from 'mixpanel';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const Home: NextPage = () => {
   console.log(
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Header leftBtn="logo" rightBtn="menu" accessToken="" />
+      <Header leftBtn="logo" rightBtn="menu" />
       <Modal />
       <_Home />
       <FloatingBtn />

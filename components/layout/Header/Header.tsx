@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import HeaderLeftMenu from './HeaderLeftMenu';
 import HeaderRightMenu from './HeaderRightMenu';
 
@@ -7,15 +9,24 @@ type HeaderProps = {
   leftBtn?: string;
   title?: string;
   rightBtn?: string;
-  accessToken?: string;
 };
 
-function Header({ leftBtn, title, rightBtn, accessToken }: HeaderProps) {
+function Header({ leftBtn, title, rightBtn }: HeaderProps) {
+  const [isSSR, setIsSSR] = useState(true);
+
+  useEffect(() => {
+    setIsSSR(false);
+  }, []);
+
   return (
     <HeaderWrap>
-      <HeaderLeftMenu leftBtn={leftBtn} />
-      {title && <Title>{title}</Title>}
-      <HeaderRightMenu rightBtn={rightBtn} accessToken={accessToken} />
+      {!isSSR && (
+        <>
+          <HeaderLeftMenu leftBtn={leftBtn} />
+          {title && <Title>{title}</Title>}
+          <HeaderRightMenu rightBtn={rightBtn} />
+        </>
+      )}
     </HeaderWrap>
   );
 }
