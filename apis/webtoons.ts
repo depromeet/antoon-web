@@ -2,8 +2,9 @@ import { useQuery } from 'react-query';
 import { webtoons } from '@apis/queryKeys';
 import { api } from './api';
 import {
-  WebtoonGenres,
   WebtoonRank,
+  WebtoonGenres,
+  WebtoonRising,
   WebtoonWeekly,
 } from '@_types/webtoon-type';
 import { HTTPError } from 'ky';
@@ -40,6 +41,22 @@ const getWebtoonsRanks = async () => {
 const useGetWebtoonsRanks = () => {
   return useQuery<WebtoonRank, HTTPError>(webtoons.ranks(), () =>
     getWebtoonsRanks(),
+  );
+};
+
+const getWebtoonsRising = async () => {
+  return await api
+    .get('webtoons/top-upper')
+    .then((res) => res.json())
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
+};
+
+const useGetWebtoonsRising = () => {
+  return useQuery<WebtoonRising, HTTPError>(webtoons.days(day), () =>
+    getWebtoonsRising(),
   );
 };
 
@@ -81,6 +98,8 @@ export {
   useGetWebtoonsRanks,
   getWebtoonsGenres,
   useGetWebtoonsGenres,
+  getWebtoonsRising,
+  useGetWebtoonsRising,
   getWebtoonsByDay,
   useGetWebtoonsByDay,
 };

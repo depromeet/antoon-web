@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-const PopularWrapper = styled.div`
+const RisingWrapper = styled.div`
   display: flex;
   gap: 0.4rem;
   margin-right: 2.4rem;
 `;
 
-const PopularCardWrapper = styled.a`
+const RisingCardWrapper = styled.a`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -23,21 +23,21 @@ const PopularCardWrapper = styled.a`
   }
 `;
 
-const PopularCard = styled(Image)`
+const RisingCard = styled(Image)`
   border-radius: 10px;
   background-color: ${(props) => props.theme.colors.primary.gray_300};
   width: 120px;
   height: 120px;
 `;
 
-const PopularInformationWrapper = styled.div`
+const RisingInformationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   width: 135px;
 `;
 
-const PopularTitle = styled.div`
+const RisingTitle = styled.div`
   width: 125px;
   overflow-x: hidden;
   text-overflow: ellipsis;
@@ -45,18 +45,18 @@ const PopularTitle = styled.div`
   font-size: 1.6rem;
 `;
 
-const PopularScoreWrapper = styled.div`
+const RisingScoreWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   width: 48px;
 `;
 
-type PopularScoreChangePercentProps = {
+type RisingScoreChangePercentProps = {
   scoreChangedStatus: string;
 };
 
-const PopularScoreChangePercent = styled.div<PopularScoreChangePercentProps>`
+const RisingScoreChangePercent = styled.div<RisingScoreChangePercentProps>`
   border-radius: 5px;
   padding: 0.35rem;
   text-align: end;
@@ -79,11 +79,11 @@ const PopularScoreChangePercent = styled.div<PopularScoreChangePercentProps>`
 `;
 
 export {
-  PopularWrapper,
-  PopularCardWrapper,
-  PopularCard,
-  PopularInformationWrapper,
-  PopularTitle,
-  PopularScoreWrapper,
-  PopularScoreChangePercent,
+  RisingWrapper,
+  RisingCardWrapper,
+  RisingCard,
+  RisingInformationWrapper,
+  RisingTitle,
+  RisingScoreWrapper,
+  RisingScoreChangePercent,
 };

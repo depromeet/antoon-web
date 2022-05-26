@@ -22,7 +22,7 @@ import {
 } from './Home.style';
 import RealTimeChart from './RealTimeChart';
 import Genres from './Genres';
-import Popular from './Popular';
+import Rising from './Rising';
 import Recommendation from './Recommendation';
 import Weekly from './Weekly';
 import HomePageBanner from '@assets/banners/HomePageBanner';
@@ -31,12 +31,12 @@ import GoToRideButton from '@components/button/GoToRideBtn';
 function Home() {
   const RealTimeChartRef = useRef<HTMLDivElement>(null);
   const GenresRef = useRef<HTMLDivElement>(null);
-  const PopularRef = useRef<HTMLDivElement>(null);
+  const RisingRef = useRef<HTMLDivElement>(null);
   const RecommendationRef = useRef<HTMLDivElement>(null);
 
   useCarousel(RealTimeChartRef);
   useCarousel(GenresRef);
-  useCarousel(PopularRef);
+  useCarousel(RisingRef);
   useCarousel(RecommendationRef);
 
   return (
@@ -75,8 +75,8 @@ function Home() {
       <HomeSectionWrapper>
         <HomeSectionSubTitle>상한가 열차 탑승!</HomeSectionSubTitle>
         <HomeSectionTitle>상승 중인 툰툰</HomeSectionTitle>
-        <Carousel ref={PopularRef}>
-          <Popular />
+        <Carousel ref={RisingRef}>
+          <Rising />
         </Carousel>
       </HomeSectionWrapper>
       <HomeRecommendationWrapper>

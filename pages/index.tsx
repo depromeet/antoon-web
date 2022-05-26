@@ -2,12 +2,12 @@ import type { NextPage } from 'next';
 import { default as _Home } from '@domains/webtoon/home/Home';
 import Header from '@components/layout/Header/Header';
 import { QueryClient, dehydrate } from 'react-query';
-import { getWebtoonsRanks, getWebtoonsByDay } from '@apis/webtoons';
+import { getWebtoonsRanks, getWebtoonsRising } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
 import Modal from '@components/modal/onboard/Modal';
 import FloatingBtn from '@components/button/FloatingBtn';
 import { Mixpanel } from 'mixpanel';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const Home: NextPage = () => {
   console.log(
@@ -40,7 +40,7 @@ export async function getServerSideProps() {
 
   // TODO: 계속 타임아웃 나서 나중에 사용
   // await queryClient.prefetchQuery(webtoons.genres(), getWebtoonsGenres);
-
+  await queryClient.prefetchQuery(webtoons.rising(), getWebtoonsRising);
   return {
     props: {
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
