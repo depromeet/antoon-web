@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 const KakaoLoginImg: React.VFC<React.SVGProps<SVGSVGElement>> = () => {
   return (

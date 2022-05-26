@@ -53,8 +53,8 @@ const CategoryImg = styled.span<{ type: number; status: number | string }>`
   border-radius: 20%;
   background-image: url(${(props) =>
     props.type == 2
-      ? `/assets/platform_${props.status}.png`
-      : `/assets/jenre_${props.status}.png`});
+      ? `/images/platform_${props.status}.png`
+      : `/images/jenre_${props.status}.png`});
   background-size: cover;
   width: 24px;
   height: 24px;

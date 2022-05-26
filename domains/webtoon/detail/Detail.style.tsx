@@ -94,7 +94,7 @@ const PlatformImg = styled.span<{ platform: string }>`
   margin-right: 4px;
   border-radius: 20%;
   background-image: url(${(props) =>
-    `/assets/platform_${props?.platform}.png`});
+    `/images/platform_${props?.platform}.png`});
   background-size: cover;
   width: 13px;
   height: 13px;

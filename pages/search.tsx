@@ -9,9 +9,7 @@ import SearchWrap from '@domains/search/Search';
 import { Mixpanel } from 'mixpanel';
 import { useEffect } from 'react';
 
-function Search(props: {
-  dehydratedState: { queries: { state: { data: { webtoons: any } } }[] };
-}) {
+function Search(props: any) {
   useEffect(() => {
     Mixpanel.track('페이지 진입', {
       page: '검색 페이지',
