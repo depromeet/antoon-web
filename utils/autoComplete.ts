@@ -11,7 +11,7 @@ function reg(ch: string) {
       .split(',')
       .map((v) => {
         const entry = v.split(':');
-        entry[1] = entry[1].charCodeAt(0) as any;
+        (entry[1] as unknown) = entry[1].charCodeAt(0);
 
         return entry;
       }),
