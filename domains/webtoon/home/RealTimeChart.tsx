@@ -1,5 +1,4 @@
 import {
-  OnError,
   RealTimeChartContainer,
   RealTimeChartCardWrapper,
   RealTimeChartCard,
@@ -17,6 +16,7 @@ import {
 import { default as RealTimeChartScoreChangeIcon } from '@assets/icons/ScoreChangeIcon';
 import { useGetWebtoonsRanks } from '@apis/webtoons';
 import { useEffect, useState } from 'react';
+import OnError from '@components/OnError';
 
 function RealTimeChart() {
   const { data } = useGetWebtoonsRanks();

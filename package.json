@@ -45,6 +45,7 @@
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-loading-skeleton": "^3.1.0",
     "react-query": "^3.34.19",
     "react-slick": "^0.29.0",
     "recoil": "^0.7.0",
