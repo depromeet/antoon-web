@@ -57,6 +57,15 @@ export interface WebtoonGenres {
   thumbnail: string;
 }
 
+export interface WebtoonRising {
+  webtoons: {
+    id: number;
+    title: string;
+    scoreGapPercent: number;
+    thumbnail: string;
+  }[];
+}
+
 export type Day = '일' | '월' | '화' | '수' | '목' | '금' | '토';
 
 export interface WebtoonWeekly {
