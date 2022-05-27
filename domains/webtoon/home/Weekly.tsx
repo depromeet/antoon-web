@@ -7,7 +7,7 @@ import {
 import WeeklyWebtoons from './WeeklyWebtoons';
 import { Day } from '@_types/webtoon-type';
 
-const days = ['일', '월', '화', '수', '목', '금', '토'];
+const days = ['월', '화', '수', '목', '금', '토', '일'];
 const today = days[new Date().getDay()] as Day;
 
 function Weekly() {
