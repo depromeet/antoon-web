@@ -1,6 +1,7 @@
-import { comments } from './Comment.data';
+import { useGetCommentsById } from '@apis/comments';
 
 import {
+  CommentListWrap,
   Title,
   CommentWrap,
   MainWrap,
@@ -15,33 +16,41 @@ import {
 import UserProfile from '@components/image/UserProfile';
 import FavoriteBtn from '@components/button/FavoriteBtn';
 import CommentTextInput from '@components/detail/commentTextInput/CommentTextInput';
+import OnError from '@components/OnError';
+import ErrorBoundary from '@components/ErrorBoundary';
 
-function Comment() {
-  const data = comments;
+import { IComment } from '@_types/comments-type';
+
+function Comment({ id }: { id: string | string[] | undefined }) {
+  const { data: comments, isError } = useGetCommentsById(id);
+
+  if (isError) return <OnError>댓글을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
-    <>
-      <Title>개미들의 행진 {data.length}</Title>
-      <CommentTextInput length={data.length} />
-      {data.map((data) => {
-        return (
-          <CommentWrap key={data.id}>
-            <UserProfile src={data.profileimg} width="32" height="32" />
-            <MainWrap>
-              <UserInfo>
-                <Name>{data.name}</Name>
-                <TimeStamp>{data.timestamp}분전</TimeStamp>
-              </UserInfo>
-              <Content>{data.content}</Content>
-              <FavoriteWrap>
-                <FavoriteBtn isFavoriteChecked={data.isFavoriteChecked} />
-                <Favorite>{data.favorite}</Favorite>
-              </FavoriteWrap>
-            </MainWrap>
-          </CommentWrap>
-        );
-      })}
-    </>
+    <ErrorBoundary message="댓글을 불러오지 못하고 있어요 😭😭😭">
+      <CommentListWrap>
+        <Title>개미들의 행진 {comments?.data.length}</Title>
+        <CommentTextInput length={comments?.data.length} />
+        {comments?.data.map((comment: IComment) => {
+          return (
+            <CommentWrap key={comment.discussionId}>
+              <UserProfile src={comment.imageUrl} width="32" height="32" />
+              <MainWrap>
+                <UserInfo>
+                  <Name>{comment.nickname}</Name>
+                  <TimeStamp>몇 분 전일까요?</TimeStamp>
+                </UserInfo>
+                <Content>{comment.content}</Content>
+                <FavoriteWrap>
+                  <FavoriteBtn isFavoriteChecked={comment.isUserLike} />
+                  <Favorite>{comment.likeCount}</Favorite>
+                </FavoriteWrap>
+              </MainWrap>
+            </CommentWrap>
+          );
+        })}
+      </CommentListWrap>
+    </ErrorBoundary>
   );
 }
 

@@ -8,4 +8,9 @@ const webtoons = {
   days: (day: string) => [...webtoons.all, 'days', day],
 };
 
-export { webtoons };
+const comments = {
+  all: ['comments'],
+  lists: (id: string | string[] | undefined) => [...comments.all, id],
+};
+
+export { webtoons, comments };
