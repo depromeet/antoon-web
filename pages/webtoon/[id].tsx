@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import Detail from '@domains/webtoon/detail/Detail';
-import { Webtoon } from '@_types/webtoon-type';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { ChartData } from '@_types/chart-type';
-import React, { useEffect } from 'react';
-import Header from '@components/layout/Header/Header';
-import Comment from '@domains/webtoon/detail/Comment';
 import { Mixpanel } from 'mixpanel';
+
+import { Webtoon } from '@_types/webtoon-type';
+import { ChartData } from '@_types/chart-type';
+
+import Header from '@components/layout/Header/Header';
+import Detail from '@domains/webtoon/detail/Detail';
+import Comment from '@domains/webtoon/detail/Comment';
 
 const webtoonMock: Webtoon = {
   id: 1,
@@ -21,6 +23,7 @@ const webtoonMock: Webtoon = {
   thumnail:
     'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
 };
+
 const ChartMock: ChartData = {
   label: 'daily',
   timeseries: {
@@ -43,17 +46,16 @@ function webtoonDetail() {
       page: '웹툰 상세 페이지',
       webtoonId: id,
     });
-  }, []);
-
-  console.log(`[router-checking]: ...${id}...`);
+  }, [id]);
 
   // Mock
   const mock = webtoonMock;
+
   return (
     <>
       <Header />
       <Detail key={mock.id} item={mock} chartData={ChartMock} />
-      <Comment />
+      <Comment id={id} />
     </>
   );
 }
