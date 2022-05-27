@@ -45,10 +45,10 @@ function reg(ch: string) {
   return pattern(ch);
 }
 
-function useAutoComplete(searchInput: string) {
+function autoComplete(searchInput: string) {
   const pattern = searchInput.split('').map(reg).join('.*?');
 
   return new RegExp(pattern);
 }
 
-export default useAutoComplete;
+export default autoComplete;
