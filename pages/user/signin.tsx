@@ -63,7 +63,7 @@ export async function getServerSideProps({
   setCookies('access', access, { req, res });
   setCookies('refresh', refresh, { req, res });
 
-  if (status === 'signin') {
+  if (status === 'signup') {
     return {
       redirect: {
         destination: '/user/signup/policy',
