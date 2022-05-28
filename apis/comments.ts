@@ -2,15 +2,15 @@ import { useQuery } from 'react-query';
 import { comments } from './queryKeys';
 import { api } from './api';
 
-const getCommentsById = async (webtoonId: string | string[] | undefined) => {
+const getCommentsById = async (id: number) => {
   return await api
-    .get(`webtoons/${webtoonId}/discussions`)
+    .get(`webtoons/${id}/discussions`)
     .then((res) => res.json())
     .catch((e) => console.log(e));
 };
 
-const useGetCommentsById = (webtoonId: string | string[] | undefined) => {
-  return useQuery(comments.lists(webtoonId), () => getCommentsById(webtoonId));
+const useGetCommentsById = (id: number) => {
+  return useQuery(comments.lists(id), () => getCommentsById(id));
 };
 
 export { getCommentsById, useGetCommentsById };
