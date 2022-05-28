@@ -6,7 +6,7 @@ export enum PlatformEnum {
   LEZHIN = '레진코믹스',
   ETC = '기타',
 }
-
+/*
 export interface Webtoon {
   id: number;
   platform: PlatformEnum[PlatformType];
@@ -19,8 +19,37 @@ export interface Webtoon {
   isLike?: boolean;
   thumnail?: string;
 }
+*/
+export interface Webtoon {
+  webtoondId: number;
+  title: string;
+  content: string;
+  webtoonUrl: string;
+  thumbnail: string;
+  platform: PlatformType;
+  platformDescription: string;
+  status: PUBLISH;
+  statusDescription: string;
+  genres: WebtoonCategory[];
+  publishDays: WebtoonPublishDays[];
+  writers: WebtoonWriter[];
+  recommendationCountId: number;
+  joinCount: number;
+  leaveCount: number;
+}
 
 export type ChartStatus = 'UP' | 'DOWN' | 'NONE';
+
+export interface WebtoonCategory {
+  webtoonGenreId: number;
+  genreCategory: string;
+  genreCategoryDescription: Genre;
+}
+
+export interface WebtoonPublishDays {
+  webtoonPublishDayId: number;
+  day: string;
+}
 
 export interface WebtoonWriter {
   webtoonWriterId: number;
