@@ -22,7 +22,7 @@ function CommentTextInput(props: Props) {
   const [focused, setFocused] = useState(false);
   const [content, setContent] = useState('');
 
-  const placeHolderText = `${props.length}번째 행진에 동참해 보세요!`;
+  const placeHolderText = `${props.length + 1}번째 행진에 동참해 보세요!`;
 
   const ContentCheckHandler = useCallback(
     (text) => {

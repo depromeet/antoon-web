@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+const CommentListWrap = styled.div`
+  min-height: 30rem;
+`;
+
 const Title = styled.p`
   margin: 2.4rem 0;
   font-size: 2rem;
@@ -49,6 +53,7 @@ const Favorite = styled.span`
 `;
 
 export {
+  CommentListWrap,
   Title,
   CommentWrap,
   MainWrap,
