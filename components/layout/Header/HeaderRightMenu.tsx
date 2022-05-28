@@ -4,7 +4,6 @@ import { getCookie } from 'cookies-next';
 import SearchIcon from '@assets/icons/SearchIcon';
 import ShareIcon from '@assets/icons/ShareIcon';
 
-import SearchBar from './SearchBar';
 import UserProfile from '@components/image/UserProfile';
 
 import { RightWrap, MenuWrap } from './HeaderRightMenu.style';
@@ -39,8 +38,6 @@ function HeaderRightMenu({ rightBtn }: { rightBtn?: string }) {
             </Link>
           )}
         </MenuWrap>
-      ) : rightBtn === 'searchBar' ? (
-        <SearchBar />
       ) : rightBtn === 'share' ? (
         <ShareIcon />
       ) : (
