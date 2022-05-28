@@ -57,7 +57,7 @@ function setOption(
         color: new graphic.LinearGradient(0, 0, 0, 1, [
           {
             offset: 0,
-            color: getChartStatusFactory(status || 'NONE', 100),
+            color: getChartStatusFactory(status || 'STALE', 100),
           },
           {
             offset: 1,
@@ -68,7 +68,7 @@ function setOption(
           },
         ]),
         lineStyle: {
-          color: getChartStatusFactory(status || 'NONE', 100),
+          color: getChartStatusFactory(status || 'STALE', 100),
           width: 1,
         },
         areaStyle: {},

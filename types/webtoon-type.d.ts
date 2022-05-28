@@ -6,20 +6,7 @@ export enum PlatformEnum {
   LEZHIN = '레진코믹스',
   ETC = '기타',
 }
-/*
-export interface Webtoon {
-  id: number;
-  platform: PlatformEnum[PlatformType];
-  title: string;
-  author?: string;
-  content?: string;
-  date?: string;
-  jenre?: string;
-  status?: ChartStatus;
-  isLike?: boolean;
-  thumnail?: string;
-}
-*/
+
 export interface Webtoon {
   webtoondId: number;
   title: string;
@@ -38,7 +25,7 @@ export interface Webtoon {
   leaveCount: number;
 }
 
-export type ChartStatus = 'UP' | 'DOWN' | 'NONE';
+export type ChartStatus = 'UP' | 'DOWN' | 'STALE';
 
 export interface WebtoonCategory {
   webtoonGenreId: number;

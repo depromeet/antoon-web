@@ -66,7 +66,7 @@ function Detail({ id }: { id: number }) {
   };
 
   useLayoutEffect(() => {
-    if (descriptionRef.current && descriptionRef.current.offsetHeight) {
+    if (descriptionRef.current) {
       !isEllipsisActive(descriptionRef.current) && setIsHide(true);
     }
   });
