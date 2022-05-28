@@ -1,5 +1,5 @@
 import { ArrowRight, CheckFill, CheckLine } from '@assets/icons';
-import { all } from '@pages/user/signup/policy';
+import { all } from '@pages/user/signup/Policy';
 import { Dispatch, SetStateAction } from 'react';
 import {
   CheckboxWrapper,
@@ -10,7 +10,7 @@ import {
 interface Props {
   id: string;
   message: string;
-  link: string;
+  link?: string;
   agreeAll?: boolean;
   checkedItems: string[];
   setCheckedItems: Dispatch<SetStateAction<string[]>>;

@@ -59,7 +59,6 @@ function Policy() {
       <Checkbox
         id="전체동의"
         message="전체동의"
-        link=""
         agreeAll
         checkedItems={checkedItems}
         setCheckedItems={setCheckedItems}
