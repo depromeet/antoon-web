@@ -3,8 +3,6 @@ import { QueryClient, dehydrate } from 'react-query';
 import { webtoons } from '@apis/queryKeys';
 import { getWebtoons } from '@apis/webtoons';
 
-import Header from '@components/layout/Header/Header';
-
 import SearchWrap from '@domains/search/Search';
 import { Mixpanel } from 'mixpanel';
 import { useEffect } from 'react';
@@ -19,12 +17,7 @@ function Search(props: any) {
   const webtoons =
     props && props.dehydratedState.queries[0].state.data.webtoons;
 
-  return (
-    <>
-      <Header rightBtn="searchBar" />
-      <SearchWrap webtoons={webtoons} />
-    </>
-  );
+  return <SearchWrap webtoons={webtoons} />;
 }
 
 export async function getServerSideProps() {
