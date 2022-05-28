@@ -77,3 +77,10 @@ export interface WebtoonWeekly {
     writers: string[];
   }[];
 }
+
+export interface WebtoonSearch {
+  id: number;
+  title: string;
+  writers: WebtoonWriter[];
+  thumbnail: string;
+}
