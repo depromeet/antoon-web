@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Mixpanel } from 'mixpanel';
@@ -37,7 +36,7 @@ const ChartMock: ChartData = {
   },
 };
 
-function webtoonDetail() {
+function WebtoonDetail() {
   const router = useRouter();
   const { id } = router.query;
 
@@ -55,9 +54,9 @@ function webtoonDetail() {
     <>
       <Header />
       <Detail key={mock.id} item={mock} chartData={ChartMock} />
-      <Comment id={id} />
+      <Comment id={Number(id)} />
     </>
   );
 }
 
-export default webtoonDetail;
+export default WebtoonDetail;

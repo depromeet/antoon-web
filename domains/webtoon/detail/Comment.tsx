@@ -21,7 +21,7 @@ import ErrorBoundary from '@components/ErrorBoundary';
 
 import { IComment } from '@_types/comments-type';
 
-function Comment({ id }: { id: string | string[] | undefined }) {
+function Comment({ id }: { id: number }) {
   const { data: comments, isError } = useGetCommentsById(id);
 
   if (isError) return <OnError>댓글을 불러오지 못하고 있어요 😭😭😭</OnError>;
