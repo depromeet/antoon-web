@@ -4,6 +4,7 @@ const webtoons = {
   list: (id: number) => [...webtoons.lists(), id],
   ranks: () => [...webtoons.all, 'ranks'],
   genres: () => [...webtoons.all, 'genres'],
+  genresTop3: () => [...webtoons.all, 'genres', 'top3'],
   rising: () => [...webtoons.all, 'rising'],
   days: (day: string) => [...webtoons.all, 'days', day],
 };

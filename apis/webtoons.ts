@@ -6,6 +6,7 @@ import {
   WebtoonGenres,
   WebtoonRising,
   WebtoonWeekly,
+  WebtoonGenresTop3,
 } from '@_types/webtoon-type';
 import { HTTPError } from 'ky';
 
@@ -73,6 +74,22 @@ const useGetWebtoonsGenres = () => {
   );
 };
 
+const getWebtoonsGenresTop3 = async () => {
+  return await api
+    .get('webtoons/genres/top3')
+    .then((res) => res.json())
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
+};
+
+const useGetWebtoonsGenresTop3 = () => {
+  return useQuery<WebtoonGenresTop3, HTTPError>(webtoons.genresTop3(), () =>
+    getWebtoonsGenresTop3(),
+  );
+};
+
 const getWebtoonsByDay = async (day: string) => {
   return await api
     .get(`webtoons/days/${day}`)
@@ -98,6 +115,8 @@ export {
   useGetWebtoonsRanks,
   getWebtoonsGenres,
   useGetWebtoonsGenres,
+  getWebtoonsGenresTop3,
+  useGetWebtoonsGenresTop3,
   getWebtoonsRising,
   useGetWebtoonsRising,
   getWebtoonsByDay,

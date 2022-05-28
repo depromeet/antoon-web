@@ -1,3 +1,4 @@
+import { webtoons } from '@apis/queryKeys';
 export type PlatformType = 'NAVER' | 'KAKAO' | 'LEZHIN' | 'ETC';
 
 export enum PlatformEnum {
@@ -46,15 +47,22 @@ export type Genre =
   | '판타지'
   | '액션'
   | '드라마'
-  | '순정'
+  | '로맨스'
   | '감성'
   | '스릴러'
-  | '무협'
+  | '무협/사극'
   | '스포츠';
 
+// TODO: chagne to real genre types
 export interface WebtoonGenres {
   genre: Genre;
   thumbnail: string;
+}
+export interface WebtoonGenresTop3 {
+  webtoons: {
+    genre: Genre;
+    thumbnail: string;
+  }[];
 }
 
 export interface WebtoonRising {
