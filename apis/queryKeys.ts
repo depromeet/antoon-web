@@ -5,6 +5,7 @@ const webtoons = {
   ranks: () => [...webtoons.all, 'ranks'],
   genres: () => [...webtoons.all, 'genres'],
   rising: () => [...webtoons.all, 'rising'],
+  recommendation: () => [...webtoons.all, 'recommendation'],
   days: (day: string) => [...webtoons.all, 'days', day],
 };
 

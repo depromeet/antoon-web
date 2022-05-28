@@ -2,7 +2,11 @@ import type { NextPage } from 'next';
 import { default as _Home } from '@domains/webtoon/home/Home';
 import Header from '@components/layout/Header/Header';
 import { QueryClient, dehydrate } from 'react-query';
-import { getWebtoonsRanks, getWebtoonsRising } from '@apis/webtoons';
+import {
+  getWebtoonsRanks,
+  getWebtoonsRecommendation,
+  getWebtoonsRising,
+} from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
 import Modal from '@components/modal/onboard/Modal';
 import FloatingBtn from '@components/button/FloatingBtn';
@@ -37,10 +41,11 @@ export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(webtoons.ranks(), getWebtoonsRanks);
-
-  // TODO: 계속 타임아웃 나서 나중에 사용
-  // await queryClient.prefetchQuery(webtoons.genres(), getWebtoonsGenres);
   await queryClient.prefetchQuery(webtoons.rising(), getWebtoonsRising);
+  await queryClient.prefetchQuery(
+    webtoons.recommendation(),
+    getWebtoonsRecommendation,
+  );
   return {
     props: {
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),

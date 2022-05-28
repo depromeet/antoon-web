@@ -6,6 +6,7 @@ import {
   WebtoonGenres,
   WebtoonRising,
   WebtoonWeekly,
+  WebtoonRecommendation,
 } from '@_types/webtoon-type';
 import { HTTPError } from 'ky';
 
@@ -73,6 +74,20 @@ const useGetWebtoonsGenres = () => {
   );
 };
 
+const getWebtoonsRecommendation = async () => {
+  return await api
+    .get('webtoons/ages')
+    .then((res) => res.json())
+    .catch((e) => console.log(e));
+};
+
+const useGetWebtoonsRecommendation = () => {
+  return useQuery<WebtoonRecommendation, HTTPError>(
+    webtoons.recommendation(),
+    () => getWebtoonsRecommendation(),
+  );
+};
+
 const getWebtoonsByDay = async (day: string) => {
   return await api
     .get(`webtoons/days/${day}`)
@@ -100,6 +115,8 @@ export {
   useGetWebtoonsGenres,
   getWebtoonsRising,
   useGetWebtoonsRising,
+  getWebtoonsRecommendation,
+  useGetWebtoonsRecommendation,
   getWebtoonsByDay,
   useGetWebtoonsByDay,
 };

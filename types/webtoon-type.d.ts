@@ -66,6 +66,22 @@ export interface WebtoonRising {
   }[];
 }
 
+export type RecommendationGenre = {
+  webtoonGenreId: number;
+  genreCategory: string;
+  genreCategoryDescription: string;
+};
+
+export interface WebtoonRecommendation {
+  webtoons: {
+    webtoonId: number;
+    title: string;
+    thumbnail: string;
+    genres: RecommendationGenre[];
+    joinCount: number;
+  }[];
+}
+
 export type Day = '일' | '월' | '화' | '수' | '목' | '금' | '토';
 
 export interface WebtoonWeekly {

@@ -7,6 +7,6 @@ export default {
   component: Recommendation,
 } as ComponentMeta<typeof Recommendation>;
 
-export const 연령대별_추천_웹툰: ComponentStory<typeof Recommendation> = () => (
-  <Recommendation />
-);
+// export const 연령대별_추천_웹툰: ComponentStory<typeof Recommendation> = () => (
+//   <Recommendation />
+// );

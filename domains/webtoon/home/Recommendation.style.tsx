@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
 
 const RecommendationWrapper = styled.div`
   display: flex;
@@ -45,11 +46,8 @@ const RideHeadCount = styled.div`
   font-size: 1.2rem;
 `;
 
-const WebtoonBox = styled.div`
+const Thumbnail = styled(Image)`
   border-radius: 0.8rem;
-  background-color: ${(props) => props.theme.colors.grayscale.gray_300};
-  width: 8rem;
-  height: 8rem;
 `;
 
 export {
@@ -59,5 +57,5 @@ export {
   GenreChip,
   Title,
   RideHeadCount,
-  WebtoonBox,
+  Thumbnail,
 };
