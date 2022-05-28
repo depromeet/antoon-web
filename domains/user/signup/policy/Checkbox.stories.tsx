@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Checkbox from './Checkbox';
-import { mock } from '@pages/user/signup/Policy';
+import { mock } from '@pages/user/signup/policy';
 
 export default {
   component: Checkbox,
