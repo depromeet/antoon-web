@@ -8,19 +8,35 @@ export enum PlatformEnum {
 }
 
 export interface Webtoon {
-  id: number;
-  platform: PlatformEnum[PlatformType];
+  webtoondId: number;
   title: string;
-  author?: string;
-  content?: string;
-  date?: string;
-  jenre?: string;
-  status?: ChartStatus;
-  isLike?: boolean;
-  thumnail?: string;
+  content: string;
+  webtoonUrl: string;
+  thumbnail: string;
+  platform: PlatformType;
+  platformDescription: string;
+  status: PUBLISH;
+  statusDescription: string;
+  genres: WebtoonCategory[];
+  publishDays: WebtoonPublishDays[];
+  writers: WebtoonWriter[];
+  recommendationCountId: number;
+  joinCount: number;
+  leaveCount: number;
 }
 
-export type ChartStatus = 'UP' | 'DOWN' | 'NONE';
+export type ChartStatus = 'UP' | 'DOWN' | 'STALE';
+
+export interface WebtoonCategory {
+  webtoonGenreId: number;
+  genreCategory: string;
+  genreCategoryDescription: Genre;
+}
+
+export interface WebtoonPublishDays {
+  webtoonPublishDayId: number;
+  day: string;
+}
 
 export interface WebtoonWriter {
   webtoonWriterId: number;
