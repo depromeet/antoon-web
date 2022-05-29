@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import styled from '@emotion/styled';
 
-const DeleteIcon: React.VFC<React.SVGProps<SVGSVGElement>> = () => {
+const DeleteIcon = ({ resetInput }: { resetInput: () => void }) => {
   return (
-    <DeleteWrap>
+    <DeleteWrap onClick={resetInput}>
       <svg
         width="20"
         height="20"
@@ -33,8 +33,9 @@ const DeleteIcon: React.VFC<React.SVGProps<SVGSVGElement>> = () => {
 
 const DeleteWrap = styled.button`
   position: absolute;
-  right: 1rem;
+  right: 0;
   z-index: 10;
+  padding: 1rem;
 `;
 
 export default memo(DeleteIcon);

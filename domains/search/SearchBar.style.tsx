@@ -1,5 +1,23 @@
 import styled from '@emotion/styled';
 
+const SearchBarHeaderWrap = styled.header`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 5.6rem;
+`;
+
+const LeftWrap = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
+
+const RightWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+`;
+
 const SearchBarWrap = styled.div`
   display: flex;
   position: relative;
@@ -17,4 +35,4 @@ const SearchInput = styled.input`
   font-size: 1.6rem;
 `;
 
-export { SearchBarWrap, SearchInput };
+export { SearchBarHeaderWrap, LeftWrap, RightWrap, SearchBarWrap, SearchInput };

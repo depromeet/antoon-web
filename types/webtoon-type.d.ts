@@ -117,3 +117,12 @@ export interface WebtoonWeekly {
     writers: string[];
   }[];
 }
+
+export interface WebtoonSearch {
+  webtoonId: number;
+  title: string;
+  writers: WebtoonWriter[];
+  thumbnail: string;
+  score: number;
+  scoreGapPercent: number;
+}
