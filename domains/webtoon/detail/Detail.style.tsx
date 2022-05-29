@@ -145,6 +145,7 @@ const InfoContent = styled.p<{ isShow: boolean }>`
   left: 0;
   transition: all 0.3s;
   opacity: ${(props) => (props.isShow ? '1' : '0')};
+  z-index: 99;
   background-image: url('/images/tooltip.png');
   background-repeat: no-repeat;
   width: 170px;
