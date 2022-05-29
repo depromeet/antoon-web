@@ -1,4 +1,10 @@
+import { webtoons } from '@apis/queryKeys';
+import { getWebtoonsRecommendation } from '@apis/webtoons';
+import ErrorBoundary from '@components/ErrorBoundary';
+import OnError from '@components/OnError';
+import { WebtoonRecommendation } from '@_types/webtoon-type';
 import React from 'react';
+import { useQuery } from 'react-query';
 import {
   RecommendationWrapper,
   CarouselBox,
@@ -6,37 +12,44 @@ import {
   GenreChip,
   Title,
   RideHeadCount,
-  WebtoonBox,
+  Thumbnail,
 } from './Recommendation.style';
 
 function Recommendation() {
+  const { data, isError } = useQuery<WebtoonRecommendation>(
+    webtoons.recommendation(),
+    getWebtoonsRecommendation,
+  );
+
+  if (data === undefined || isError)
+    return <OnError>연령별 웹툰을 불러오지 못하고 있어요 😭😭😭</OnError>;
+
   return (
-    <RecommendationWrapper>
-      <CarouselBox>
-        <InformationWrapper>
-          <GenreChip>장르</GenreChip>
-          <Title>일이삼사 오츄기</Title>
-          <RideHeadCount>32,623 개미 탑승 중</RideHeadCount>
-        </InformationWrapper>
-        <WebtoonBox />
-      </CarouselBox>
-      <CarouselBox>
-        <InformationWrapper>
-          <GenreChip>장르</GenreChip>
-          <Title>일이삼사 오츄기</Title>
-          <RideHeadCount>32,623 개미 탑승 중</RideHeadCount>
-        </InformationWrapper>
-        <WebtoonBox />
-      </CarouselBox>
-      <CarouselBox>
-        <InformationWrapper>
-          <GenreChip>장르</GenreChip>
-          <Title>일이삼사 오츄기</Title>
-          <RideHeadCount>32,623 개미 탑승 중</RideHeadCount>
-        </InformationWrapper>
-        <WebtoonBox />
-      </CarouselBox>
-    </RecommendationWrapper>
+    <ErrorBoundary message="연령별 웹툰을 불러오지 못하고 있어요 😭😭😭">
+      <RecommendationWrapper>
+        {data?.webtoons.map((webtoon) => (
+          <CarouselBox key={webtoon.webtoonId}>
+            <InformationWrapper>
+              <GenreChip>
+                {webtoon.genres
+                  .map((genre) => genre.genreCategoryDescription)
+                  .join('/')}
+              </GenreChip>
+              <Title>{webtoon.title}</Title>
+              <RideHeadCount>
+                {webtoon.joinCount || 0} 개미 탑승 중
+              </RideHeadCount>
+            </InformationWrapper>
+            <Thumbnail
+              src={webtoon.thumbnail}
+              width={80}
+              height={80}
+              objectFit="cover"
+            />
+          </CarouselBox>
+        ))}
+      </RecommendationWrapper>
+    </ErrorBoundary>
   );
 }
 

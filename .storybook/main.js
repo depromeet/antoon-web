@@ -23,6 +23,12 @@ module.exports = {
         configFile: path.resolve(__dirname, '../tsconfig.json'),
       }),
     );
+
+    config.module.rules.unshift({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
     return config;
   },
 };

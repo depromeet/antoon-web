@@ -6,6 +6,8 @@ import {
   WebtoonGenres,
   WebtoonRising,
   WebtoonWeekly,
+  WebtoonRecommendation,
+  WebtoonGenresTop3,
   Webtoon,
 } from '@_types/webtoon-type';
 import { HTTPError } from 'ky';
@@ -76,6 +78,36 @@ const useGetWebtoonsGenres = () => {
   );
 };
 
+const getWebtoonsRecommendation = async () => {
+  return await api
+    .get('webtoons/ages')
+    .then((res) => res.json())
+    .catch((e) => console.log(e));
+};
+
+const useGetWebtoonsRecommendation = () => {
+  return useQuery<WebtoonRecommendation, HTTPError>(
+    webtoons.recommendation(),
+    () => getWebtoonsRecommendation(),
+  );
+};
+
+const getWebtoonsGenresTop3 = async () => {
+  return await api
+    .get('webtoons/genres/top3')
+    .then((res) => res.json())
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
+};
+
+const useGetWebtoonsGenresTop3 = () => {
+  return useQuery<WebtoonGenresTop3, HTTPError>(webtoons.genresTop3(), () =>
+    getWebtoonsGenresTop3(),
+  );
+};
+
 const getWebtoonsByDay = async (day: string) => {
   return await api
     .get(`webtoons/days/${day}`)
@@ -101,8 +133,12 @@ export {
   useGetWebtoonsRanks,
   getWebtoonsGenres,
   useGetWebtoonsGenres,
+  getWebtoonsGenresTop3,
+  useGetWebtoonsGenresTop3,
   getWebtoonsRising,
   useGetWebtoonsRising,
+  getWebtoonsRecommendation,
+  useGetWebtoonsRecommendation,
   getWebtoonsByDay,
   useGetWebtoonsByDay,
 };
