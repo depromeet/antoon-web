@@ -85,7 +85,7 @@ function Search({ webtoons }: { webtoons: [] }) {
         searchResults.webtoons.map((searchResults: WebtoonSearch) => {
           return (
             <SearchResult
-              key={searchResults.id}
+              key={searchResults.webtoonId}
               searchResults={searchResults}
             />
           );
@@ -98,6 +98,8 @@ function Search({ webtoons }: { webtoons: [] }) {
               <AutoCompletList
                 key={autoCompleteList.id}
                 autoCompleteList={autoCompleteList}
+                setSearchResults={setSearchResults}
+                setSearchInput={setSearchInput}
               />
             );
           },
