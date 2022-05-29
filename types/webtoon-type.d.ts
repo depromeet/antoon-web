@@ -79,8 +79,10 @@ export interface WebtoonWeekly {
 }
 
 export interface WebtoonSearch {
-  id: number;
+  webtoonId: number;
   title: string;
   writers: WebtoonWriter[];
   thumbnail: string;
+  score: number;
+  scoreGapPercent: number;
 }
