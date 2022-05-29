@@ -8,8 +8,9 @@ import { ChartData } from '@_types/chart-type';
 import Header from '@components/layout/Header/Header';
 import Detail from '@domains/webtoon/detail/Detail';
 import Comment from '@domains/webtoon/detail/Comment';
+import { GetServerSideProps } from 'next';
 
-const webtoonMock: Webtoon = {
+const webtoonMock = {
   id: 1,
   platform: 'NAVER',
   title: '흑막 여주가 날 새 엄마로 만들려고 해',
@@ -23,23 +24,21 @@ const webtoonMock: Webtoon = {
     'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
 };
 
-const ChartMock: ChartData = {
-  label: 'daily',
-  timeseries: {
-    '00:00': 3.12,
-    '04:00': 2.72,
-    '08:00': 5.73,
-    '12:00': 8.92,
-    '16:00': 6.71,
-    '20:00': 9.99,
-    '24:00': 7.73,
-  },
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { query } = context;
+  const { id } = query;
+  return {
+    props: {
+      id,
+    },
+  };
 };
 
-function WebtoonDetail() {
-  const router = useRouter();
-  const { id } = router.query;
+interface Prop {
+  id: number;
+}
 
+function WebtoonDetail({ id }: Prop) {
   useEffect(() => {
     Mixpanel.track('페이지 진입', {
       page: '웹툰 상세 페이지',
@@ -47,13 +46,10 @@ function WebtoonDetail() {
     });
   }, [id]);
 
-  // Mock
-  const mock = webtoonMock;
-
   return (
     <>
       <Header />
-      <Detail key={mock.id} item={mock} chartData={ChartMock} />
+      <Detail id={Number(id)} />
       <Comment id={Number(id)} />
     </>
   );

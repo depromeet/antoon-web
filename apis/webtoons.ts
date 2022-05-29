@@ -7,6 +7,7 @@ import {
   WebtoonRising,
   WebtoonWeekly,
   WebtoonGenresTop3,
+  Webtoon,
 } from '@_types/webtoon-type';
 import { HTTPError } from 'ky';
 
@@ -29,7 +30,9 @@ const getWebtoonById = async (webtoonId: number) => {
 };
 
 const useGetWebtoonById = (webtoonId: number) => {
-  return useQuery(webtoons.list(webtoonId), () => getWebtoonById(webtoonId));
+  return useQuery<Webtoon>(webtoons.list(webtoonId), () =>
+    getWebtoonById(webtoonId),
+  );
 };
 
 const getWebtoonsRanks = async () => {
