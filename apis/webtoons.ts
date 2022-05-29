@@ -7,6 +7,8 @@ import {
   WebtoonRising,
   WebtoonWeekly,
   WebtoonRecommendation,
+  WebtoonGenresTop3,
+  Webtoon,
 } from '@_types/webtoon-type';
 import { HTTPError } from 'ky';
 
@@ -29,7 +31,9 @@ const getWebtoonById = async (webtoonId: number) => {
 };
 
 const useGetWebtoonById = (webtoonId: number) => {
-  return useQuery(webtoons.list(webtoonId), () => getWebtoonById(webtoonId));
+  return useQuery<Webtoon>(webtoons.list(webtoonId), () =>
+    getWebtoonById(webtoonId),
+  );
 };
 
 const getWebtoonsRanks = async () => {
@@ -88,6 +92,22 @@ const useGetWebtoonsRecommendation = () => {
   );
 };
 
+const getWebtoonsGenresTop3 = async () => {
+  return await api
+    .get('webtoons/genres/top3')
+    .then((res) => res.json())
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
+};
+
+const useGetWebtoonsGenresTop3 = () => {
+  return useQuery<WebtoonGenresTop3, HTTPError>(webtoons.genresTop3(), () =>
+    getWebtoonsGenresTop3(),
+  );
+};
+
 const getWebtoonsByDay = async (day: string) => {
   return await api
     .get(`webtoons/days/${day}`)
@@ -113,6 +133,8 @@ export {
   useGetWebtoonsRanks,
   getWebtoonsGenres,
   useGetWebtoonsGenres,
+  getWebtoonsGenresTop3,
+  useGetWebtoonsGenresTop3,
   getWebtoonsRising,
   useGetWebtoonsRising,
   getWebtoonsRecommendation,

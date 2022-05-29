@@ -5,6 +5,7 @@ import { QueryClient, dehydrate } from 'react-query';
 import {
   getWebtoonsRanks,
   getWebtoonsRecommendation,
+  getWebtoonsGenresTop3,
   getWebtoonsRising,
 } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
@@ -46,6 +47,8 @@ export async function getServerSideProps() {
     webtoons.recommendation(),
     getWebtoonsRecommendation,
   );
+  await queryClient.prefetchQuery(webtoons.genresTop3(), getWebtoonsGenresTop3);
+
   return {
     props: {
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),

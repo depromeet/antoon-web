@@ -17,10 +17,6 @@ export type JenreType = {
   [key: string]: number;
 };
 
-/**
- * @description 장르 카드
- * 영어로 바꾸자...
- */
 export const JenreEnum: JenreType = {
   일상: 1,
   개그: 2,
@@ -35,6 +31,7 @@ export const JenreEnum: JenreType = {
 };
 
 function CategoryCard(props: Props) {
+  const DEFAULT_JENRE = JenreEnum['일상'];
   const { categoryType, categoryTitle, categoryContents } = props;
 
   return (
@@ -45,7 +42,7 @@ function CategoryCard(props: Props) {
         {categoryType == 0 && (
           <CategoryImg
             type={categoryType}
-            status={JenreEnum[categoryContents]}
+            status={JenreEnum[categoryContents] || DEFAULT_JENRE}
           />
         )}
       </ImageContainer>

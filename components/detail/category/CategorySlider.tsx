@@ -26,6 +26,7 @@ function CategorySlider(props: CategoryCardColumn) {
     centerPadding: '50px',
     slidesToShow: 2.5,
     swipeToSlide: true,
+    useTransform: false,
     dots: false,
   };
 
