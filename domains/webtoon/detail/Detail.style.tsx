@@ -51,22 +51,22 @@ const MainWrapper = styled.div`
   }
 `;
 
-const MainTitle = styled.div`
+const MainHeader = styled.div`
   float: left;
   width: 55%;
   max-width: 300px;
-
-  & .ellipsis2 {
-    display: box !important;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
 `;
 
-const Platform = styled.div<{ platform: string }>`
+const MainTitle = styled.h2`
+  display: box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
+
+const PlatformHeader = styled.div<{ platform: string }>`
   display: inline-block;
   align-items: center;
   margin-bottom: 4px;
@@ -89,6 +89,8 @@ const Platform = styled.div<{ platform: string }>`
     content: '';
   }
 `;
+
+const Platform = styled.a``;
 
 const PlatformImg = styled.span<{ platform: string }>`
   margin-right: 4px;
@@ -129,11 +131,11 @@ const PointUpDown = styled.p`
   font-size: 14px;
   font-weight: 700;
   font-style: 'normal';
+`;
 
-  & .up-down-point {
-    font-size: 12px;
-    font-weight: 500;
-  }
+const PointPercentage = styled.span`
+  font-size: 12px;
+  font-weight: 500;
 `;
 
 const ThumbNailWrapper = styled.div`
@@ -147,6 +149,8 @@ const ThumbNailWrapper = styled.div`
 const MainThumbnailImg = styled.div`
   position: relative;
 `;
+
+const MainThumbnailRanking = styled.p``;
 
 const MainThumbnail = styled.div<{ upDown: string }>`
   position: absolute;
@@ -218,34 +222,71 @@ const DetailSubWrapper = styled.div`
 
 const Category = styled.div`
   opacity: 0.8;
-  margin-top: 12px;
-  margin-bottom: 6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   line-height: 144%;
-  font-size: 14px;
+  color: ${(props) => props.theme.colors.grayscale.gray_700};
+  font-size: 12px;
   font-weight: 400;
   font-style: normal;
+
+  & span:not(:last-child)::after {
+    margin-right: 4px;
+    margin-left: 4px;
+    border-right: 2px solid ${(props) => props.theme.colors.grayscale.gray_300};
+    padding: 0;
+    content: '';
+  }
 `;
 
-const Description = styled.p`
-  display: box !important;
-  opacity: 0.8;
+const CategoryTitle = styled.h2``;
+
+const Description = styled.div`
+  position: relative;
+`;
+
+const DescriptionContent = styled.p`
+  display: box;
+  position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 144%;
   word-wrap: break-word;
+  color: ${(props) => props.theme.colors.grayscale.gray_800};
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+
+  &.show {
+    display: block;
+    max-height: none;
+    overflow: auto;
+    -webkit-line-clamp: unset;
+  }
 `;
 
-const ContentBar = styled.p`
-  display: inline-block;
-  margin-right: 4px;
-  background: #c4c4c4;
-  width: 0.2rem;
-  height: 1rem;
+const DescriptionMoreBtn = styled.button`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: ${(props) => props.theme.colors.grayscale.gray_300};
+  background: linear-gradient(
+    90deg,
+    ${(props) => props.theme.colors.grayscale.gray_600} 0%,
+    rgb(255 255 255 / 0%) 0%,
+    ${(props) => props.theme.colors.basic.white} 18%
+  );
+  padding-left: 20px;
+  max-height: 2rem;
+  line-height: 2rem;
+  color: ${(props) => props.theme.colors.grayscale.gray_700};
+  font-size: 12px;
+
+  &.hide {
+    display: none;
+  }
 `;
 
 const ChartWrapper = styled.div`
@@ -262,20 +303,26 @@ export {
   Container,
   DetailContents,
   DetailMain,
+  PlatformHeader,
   PlatformImg,
   Platform,
   MainWrapper,
+  MainHeader,
   MainTitle,
   MainScore,
   Point,
   PointUpDown,
+  PointPercentage,
   ThumbNailWrapper,
   MainThumbnailImg,
+  MainThumbnailRanking,
   MainThumbnail,
   DetailSub,
   DetailSubWrapper,
   Category,
+  CategoryTitle,
   Description,
-  ContentBar,
+  DescriptionContent,
+  DescriptionMoreBtn,
   ChartWrapper,
 };
