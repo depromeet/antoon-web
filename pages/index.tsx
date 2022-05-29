@@ -3,8 +3,9 @@ import { default as _Home } from '@domains/webtoon/home/Home';
 import Header from '@components/layout/Header/Header';
 import { QueryClient, dehydrate } from 'react-query';
 import {
-  getWebtoonsGenresTop3,
   getWebtoonsRanks,
+  getWebtoonsRecommendation,
+  getWebtoonsGenresTop3,
   getWebtoonsRising,
 } from '@apis/webtoons';
 import { webtoons } from '@apis/queryKeys';
@@ -41,12 +42,12 @@ export async function getServerSideProps() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(webtoons.ranks(), getWebtoonsRanks);
-
-  // TODO: 계속 타임아웃 나서 나중에 사용
-  // await queryClient.prefetchQuery(webtoons.genres(), getWebtoonsGenres);
-
-  await queryClient.prefetchQuery(webtoons.genresTop3(), getWebtoonsGenresTop3);
   await queryClient.prefetchQuery(webtoons.rising(), getWebtoonsRising);
+  await queryClient.prefetchQuery(
+    webtoons.recommendation(),
+    getWebtoonsRecommendation,
+  );
+  await queryClient.prefetchQuery(webtoons.genresTop3(), getWebtoonsGenresTop3);
 
   return {
     props: {
