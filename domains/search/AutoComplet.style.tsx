@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const AutoCompleteListWrap = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
   width: 100%;
   height: 4.8rem;
 `;
