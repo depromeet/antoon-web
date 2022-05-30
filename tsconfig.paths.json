@@ -14,6 +14,7 @@
         "@states/*": ["states/*"],
         "@styles/*": ["styles/*"],
         "@_types/*": ["types/*"],
+        "@utils/*": ["utils/*"],
       }
     }
 }
