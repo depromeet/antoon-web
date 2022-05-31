@@ -124,6 +124,35 @@ const Point = styled.p`
   font-style: normal;
 `;
 
+const PointTooltip = styled.span`
+  position: relative;
+  z-index: 99;
+  outline: none;
+`;
+
+const InfoBtn = styled.button`
+  position: absolute;
+  left: 8px;
+  background-image: url('/images/info_line.png');
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  -webkit-tap-highlight-color: transparent;
+`;
+const InfoContent = styled.p<{ isShow: boolean }>`
+  position: absolute;
+  top: 20px;
+  left: 0;
+  transition: all 0.3s;
+  opacity: ${(props) => (props.isShow ? '1' : '0')};
+  z-index: 99;
+  background-image: url('/images/tooltip.png');
+  background-repeat: no-repeat;
+  width: 170px;
+  height: 82px;
+  object-fit: cover;
+`;
+
 const PointUpDown = styled.p`
   opacity: 0.8;
   width: 100%;
@@ -311,6 +340,9 @@ export {
   MainTitle,
   MainScore,
   Point,
+  PointTooltip,
+  InfoBtn,
+  InfoContent,
   PointUpDown,
   PointPercentage,
   ThumbNailWrapper,
