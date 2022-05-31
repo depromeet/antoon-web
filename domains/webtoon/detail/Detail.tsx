@@ -15,6 +15,8 @@ import {
   DetailSub,
   DetailSubWrapper,
   DetailWrapper,
+  InfoBtn,
+  InfoContent,
   MainHeader,
   MainScore,
   MainThumbnail,
@@ -27,6 +29,7 @@ import {
   PlatformImg,
   Point,
   PointPercentage,
+  PointTooltip,
   PointUpDown,
   ThumbNailWrapper,
 } from './Detail.style';
@@ -38,14 +41,18 @@ import { useGetWebtoonById } from '@apis/webtoons';
 import ErrorBoundary from '@components/ErrorBoundary';
 import OnError from '@components/OnError';
 import { DEFAULT_IMG } from '@constants/icon-constants';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { isEllipsisActive } from 'utils/css-util';
+import Modal from '@components/modal/detail/Modal';
 
 function Detail({ id }: { id: number }) {
   const { data, isError } = useGetWebtoonById(id);
   const detailSubRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const [isHide, setIsHide] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [joinLeave, setJoinLeave] = useState('');
+  const [isShowTooltip, setIsShowTooltip] = useState(false);
   const DESCRIPTION_MORE_DEFAULT_MARGIN = 40;
 
   /**
@@ -65,8 +72,8 @@ function Detail({ id }: { id: number }) {
     },
   };
 
-  useLayoutEffect(() => {
-    if (descriptionRef.current) {
+  useEffect(() => {
+    if (descriptionRef.current && descriptionRef.current.clientHeight > 0) {
       !isEllipsisActive(descriptionRef.current) && setIsHide(true);
     }
   });
@@ -85,6 +92,10 @@ function Detail({ id }: { id: number }) {
         DESCRIPTION_MORE_DEFAULT_MARGIN
       }px`;
     }
+  };
+
+  const handleTooltipClick = () => {
+    setIsShowTooltip(!isShowTooltip);
   };
 
   const calculatedPublishedDay = () => {
@@ -138,7 +149,13 @@ function Detail({ id }: { id: number }) {
                   </PlatformHeader>
                   <MainTitle>{data.title}</MainTitle>
                   <MainScore upDown={'UP' || ''}>
-                    <Point>998점</Point>
+                    <Point>
+                      998점
+                      <PointTooltip>
+                        <InfoBtn onClick={handleTooltipClick}></InfoBtn>
+                        <InfoContent isShow={isShowTooltip}></InfoContent>
+                      </PointTooltip>
+                    </Point>
                     <PointUpDown>
                       {'+' || ''}
                       5점<PointPercentage>(14%)</PointPercentage>
@@ -202,8 +219,19 @@ function Detail({ id }: { id: number }) {
             </DetailSub>
             <Bar />
           </DetailContents>
-          <BtnFooter />
+          <BtnFooter
+            onOpen={() => setIsModalOpen(true)}
+            onJoinLeave={() => {
+              setIsModalOpen(true), setJoinLeave('JOIN');
+            }}
+          />
         </Container>
+        <Modal
+          title={data.title}
+          joinLeave={'JOIN'}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
       </DetailWrapper>
     </ErrorBoundary>
   );

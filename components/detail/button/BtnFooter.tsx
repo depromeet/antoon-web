@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { MouseEventHandler, useEffect, useState } from 'react';
 import {
   BtnWrapper,
   FilterBlur,
@@ -35,7 +35,13 @@ const getReturnValues = (countDown: number) => {
   return [hours, minutes, seconds];
 };
 
-function BtnFooter() {
+function BtnFooter({
+  onOpen,
+  onJoinLeave,
+}: {
+  onOpen: MouseEventHandler<HTMLButtonElement>;
+  onJoinLeave: any;
+}) {
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
@@ -55,8 +61,18 @@ function BtnFooter() {
             `투표 종료까지 시간 ${hours}시간: ${minutes}분 : ${seconds}초 남음`}
         </TimerCount>
       </StockTimer>
-      <UpDownBtn upDownStatus="up" upDownUser={120} />
-      <UpDownBtn upDownStatus="down" upDownUser={280} />
+      <UpDownBtn
+        upDownStatus="JOIN"
+        upDownUser={120}
+        onOpen={onOpen}
+        onJoinLeave={onJoinLeave}
+      />
+      <UpDownBtn
+        upDownStatus="LEAVE"
+        upDownUser={280}
+        onOpen={onOpen}
+        onJoinLeave={onJoinLeave}
+      />
     </BtnWrapper>
   );
 }

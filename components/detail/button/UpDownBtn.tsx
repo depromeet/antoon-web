@@ -1,4 +1,5 @@
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
+import { MouseEventHandler } from 'react';
 import {
   UpDownBtnWrapper,
   UpDownBtnTitle,
@@ -14,19 +15,28 @@ interface Props {
    * @name 탑승하차-인원
    */
   upDownUser: number;
+  /**
+   * @name 모달
+   */
+  onOpen: MouseEventHandler<HTMLElement>;
+  onJoinLeave: any;
 }
 
 function UpDownBtn(props: Props) {
+  const clickwrapper = () => {
+    props.onJoinLeave;
+  };
+
   return (
     <>
-      <UpDownBtnWrapper status={props.upDownStatus}>
+      <UpDownBtnWrapper status={props.upDownStatus} onClick={props.onOpen}>
         <UpDownBtnTitle>
-          {props.upDownStatus == 'up' && (
+          {props.upDownStatus === 'JOIN' && (
             <span>
               <StockUpIcon /> {'탑승하기'}
             </span>
           )}
-          {props.upDownStatus == 'down' && (
+          {props.upDownStatus === 'LEAVE' && (
             <span>
               <StockDownIcon /> {'하차하기'}
             </span>
@@ -34,8 +44,8 @@ function UpDownBtn(props: Props) {
         </UpDownBtnTitle>
         <UpDownBtnSub>
           {props.upDownUser} 개미
-          {props.upDownStatus == 'up' && '탑승 😎'}
-          {props.upDownStatus == 'down' && '하차 😭'}
+          {props.upDownStatus === 'JOIN' && '탑승 😎'}
+          {props.upDownStatus === 'LEAVE' && '하차 😭'}
         </UpDownBtnSub>
       </UpDownBtnWrapper>
     </>

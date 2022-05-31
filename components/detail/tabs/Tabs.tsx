@@ -9,8 +9,9 @@ function Tabs() {
 
   const onClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     setCurrentTab(e.currentTarget.textContent || '');
-    if (indicatorRef.current != null)
+    if (indicatorRef.current != null) {
       indicatorRef.current.style.left = `${e.currentTarget.offsetLeft + 4}px`;
+    }
   };
 
   return (

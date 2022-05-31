@@ -4,6 +4,7 @@ const ChartWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  z-index: 9 !important;
 `;
 const ChartContainer = styled.div`
   height: 40rem;
