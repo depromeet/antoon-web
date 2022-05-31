@@ -41,7 +41,7 @@ import { useGetWebtoonById } from '@apis/webtoons';
 import ErrorBoundary from '@components/ErrorBoundary';
 import OnError from '@components/OnError';
 import { DEFAULT_IMG } from '@constants/icon-constants';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { isEllipsisActive } from 'utils/css-util';
 import Modal from '@components/modal/detail/Modal';
 
@@ -72,8 +72,8 @@ function Detail({ id }: { id: number }) {
     },
   };
 
-  useLayoutEffect(() => {
-    if (descriptionRef.current) {
+  useEffect(() => {
+    if (descriptionRef.current && descriptionRef.current.clientHeight > 0) {
       !isEllipsisActive(descriptionRef.current) && setIsHide(true);
     }
   });
