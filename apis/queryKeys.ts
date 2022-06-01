@@ -16,4 +16,10 @@ const comments = {
   isLiked: (id: number) => [...comments.all, 'isLiked', id],
 };
 
-export { webtoons, comments };
+const user = {
+  all: ['userInfo'],
+  tokens: (refreshToken: string) => [...user.all, 'tokens', refreshToken],
+  information: () => [...user.all, 'information'],
+};
+
+export { webtoons, comments, user };

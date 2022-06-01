@@ -1,36 +1,43 @@
 import type { NextPage } from 'next';
-import { default as _Home } from '@domains/webtoon/home/Home';
-import Header from '@components/layout/Header/Header';
+import { useEffect } from 'react';
 import { QueryClient, dehydrate } from 'react-query';
+import { getCookie } from 'cookies-next';
+import { Mixpanel } from 'mixpanel';
+
+import Header from '@components/layout/Header/Header';
+import Modal from '@components/modal/onboard/Modal';
+import { default as _Home } from '@domains/webtoon/home/Home';
+import FloatingBtn from '@components/button/FloatingBtn';
+
+import { api } from '@apis/api';
+import { webtoons } from '@apis/queryKeys';
 import {
   getWebtoonsRanks,
   getWebtoonsRecommendation,
   getWebtoonsGenresTop3,
   getWebtoonsRising,
 } from '@apis/webtoons';
-import { webtoons } from '@apis/queryKeys';
-import Modal from '@components/modal/onboard/Modal';
-import FloatingBtn from '@components/button/FloatingBtn';
-import { Mixpanel } from 'mixpanel';
-import { useEffect } from 'react';
+import { useGetUserInformation } from '@apis/user';
 
 const Home: NextPage = () => {
-  console.log(
-    '        /   |   / | / /___  __// __  // __  / / | / /\n\
-       / /| |  /  |/ /  /  /  / / / // / / / /  |/ / \n\
-      / /_| | / / | /  /  /  / /_/ // /_/ / / / | /  \n\
-     /_/  |_|/_/  |/  /__/   \\____/ \\____/ /_/  |/ ',
-  );
-
   useEffect(() => {
     Mixpanel.track('페이지 진입', {
       page: '홈 페이지',
     });
   }, []);
 
+  const accessToken = getCookie('Access');
+  api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
+  const { data: user, isSuccess } = useGetUserInformation();
+
   return (
     <>
-      <Header leftBtn="logo" rightBtn="menu" />
+      {isSuccess ? (
+        <Header leftBtn="logo" rightBtn="menu" imageUrl={user.imageUrl} />
+      ) : (
+        <Header leftBtn="logo" rightBtn="menu" />
+      )}
       <Modal />
       <_Home />
       <FloatingBtn />

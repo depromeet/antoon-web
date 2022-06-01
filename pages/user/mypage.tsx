@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
+import { Mixpanel } from 'mixpanel';
+
 import Header from '@components/layout/Header/Header';
 import MyPageWrap from '@domains/user/mypage/MyPage';
-import { Mixpanel } from 'mixpanel';
-import { useEffect } from 'react';
 
 function MyPage() {
   useEffect(() => {
