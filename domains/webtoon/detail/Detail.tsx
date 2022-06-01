@@ -110,7 +110,7 @@ function Detail({ id }: { id: number }) {
     if (chartType && chartData_days) {
       getChartParameter();
     }
-  }, [chartType]);
+  });
 
   if (!data || !chartData_days)
     return <OnError> 웹툰정보를 불러오지 못하고 있어요😭😭😭</OnError>;
