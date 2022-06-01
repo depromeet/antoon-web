@@ -12,7 +12,8 @@ const webtoons = {
 
 const comments = {
   all: ['comments'],
-  lists: (id: number) => [...comments.all, id],
+  lists: (id: number) => [...comments.all, 'lists', id],
+  isLiked: (id: number) => [...comments.all, 'isLiked', id],
 };
 
 export { webtoons, comments };

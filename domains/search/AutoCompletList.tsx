@@ -18,16 +18,12 @@ function AutoCompletList({
 
   const onClickAutoCompleteList = async () => {
     try {
-      const keywordResults = await api
-        .post(`webtoons/search`, {
-          json: {
-            webtoons: [autoCompleteList.id],
-          },
-        })
-        .json();
+      const keywordResults = await api.post(`webtoons/search`, {
+        webtoons: [autoCompleteList.id],
+      });
 
       setSearchInput(autoCompleteList.title);
-      setSearchResults(keywordResults as any);
+      setSearchResults(keywordResults.data as any);
       router.replace('/search', `/search?keyword=${autoCompleteList.title}`, {
         shallow: true,
       });
