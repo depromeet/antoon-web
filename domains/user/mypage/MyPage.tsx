@@ -40,7 +40,7 @@ function MyPage() {
         ) : (
           <ProfileDefaultImg width="80" height="80" />
         )}
-        <UserName name={user.name} />
+        {user && <UserName name={user.name} />}
         <MyPageBanner />
         <Menu>
           <CustomHr margin="2.4rem 0 1.6rem -2.4rem" />
