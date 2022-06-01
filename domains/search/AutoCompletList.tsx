@@ -28,7 +28,9 @@ function AutoCompletList({
 
       setSearchInput(autoCompleteList.title);
       setSearchResults(keywordResults as any);
-      router.push(`/search?keyword=${autoCompleteList.title}`);
+      router.replace('/search', `/search?keyword=${autoCompleteList.title}`, {
+        shallow: true,
+      });
     } catch (e) {
       return e;
     }

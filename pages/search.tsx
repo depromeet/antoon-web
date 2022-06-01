@@ -1,11 +1,12 @@
+import { GetServerSidePropsContext } from 'next';
+import { useEffect } from 'react';
 import { QueryClient, dehydrate } from 'react-query';
+import { Mixpanel } from 'mixpanel';
 
 import { webtoons } from '@apis/queryKeys';
 import { getWebtoons } from '@apis/webtoons';
 
 import SearchWrap from '@domains/search/Search';
-import { Mixpanel } from 'mixpanel';
-import { useEffect } from 'react';
 
 function Search(props: any) {
   useEffect(() => {
@@ -20,10 +21,19 @@ function Search(props: any) {
   return <SearchWrap webtoons={webtoons} />;
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(webtoons.all, getWebtoons);
+
+  if (query.keyword) {
+    return {
+      redirect: {
+        destination: '/search',
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
