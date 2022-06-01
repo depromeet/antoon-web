@@ -10,6 +10,8 @@ import { RightWrap, MenuWrap } from './HeaderRightMenu.style';
 import ProfileDefaultImg from '@assets/images/ProfileDefaultImg';
 
 function HeaderRightMenu({ rightBtn }: { rightBtn?: string }) {
+  const token = undefined;
+
   return (
     <RightWrap>
       {rightBtn === 'menu' ? (
@@ -19,7 +21,7 @@ function HeaderRightMenu({ rightBtn }: { rightBtn?: string }) {
               <SearchIcon />
             </a>
           </Link>
-          {/* {token === undefined ? (
+          {token === undefined ? (
             <Link href="/user/signin" passHref>
               <a>
                 <ProfileDefaultImg width="24" height="24" />
@@ -37,7 +39,7 @@ function HeaderRightMenu({ rightBtn }: { rightBtn?: string }) {
                 />
               </a>
             </Link>
-          )} */}
+          )}
         </MenuWrap>
       ) : rightBtn === 'share' ? (
         <ShareIcon />
