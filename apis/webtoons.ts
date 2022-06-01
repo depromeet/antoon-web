@@ -10,12 +10,11 @@ import {
   WebtoonGenresTop3,
   Webtoon,
 } from '@_types/webtoon-type';
-import { HTTPError } from 'ky';
 
 const getWebtoons = async () => {
   return await api
     .get('webtoons')
-    .then((res) => res.json())
+    .then((res) => res.data)
     .catch((e) => console.log(e));
 };
 
@@ -26,7 +25,7 @@ const useGetWebtoons = () => {
 const getWebtoonById = async (webtoonId: number) => {
   return await api
     .get(`webtoons/${webtoonId}`)
-    .then((res) => res.json())
+    .then((res) => res.data)
     .catch((e) => console.log(e));
 };
 
@@ -39,20 +38,18 @@ const useGetWebtoonById = (webtoonId: number) => {
 const getWebtoonsRanks = async () => {
   return await api
     .get('top-ranks')
-    .then((res) => res.json())
+    .then((res) => res.data)
     .catch((e) => console.log(e));
 };
 
 const useGetWebtoonsRanks = () => {
-  return useQuery<WebtoonRank, HTTPError>(webtoons.ranks(), () =>
-    getWebtoonsRanks(),
-  );
+  return useQuery<WebtoonRank>(webtoons.ranks(), () => getWebtoonsRanks());
 };
 
 const getWebtoonsRising = async () => {
   return await api
     .get('webtoons/top-upper')
-    .then((res) => res.json())
+    .then((res) => res.data)
     .catch((e) => {
       console.log(e);
       return e;
@@ -60,42 +57,37 @@ const getWebtoonsRising = async () => {
 };
 
 const useGetWebtoonsRising = () => {
-  return useQuery<WebtoonRising, HTTPError>(webtoons.rising(), () =>
-    getWebtoonsRising(),
-  );
+  return useQuery<WebtoonRising>(webtoons.rising(), () => getWebtoonsRising());
 };
 
 const getWebtoonsGenres = async () => {
   return await api
     .get('webtoons/genres')
-    .then((res) => res.json())
+    .then((res) => res.data)
     .catch((e) => console.log(e));
 };
 
 const useGetWebtoonsGenres = () => {
-  return useQuery<WebtoonGenres, HTTPError>(webtoons.genres(), () =>
-    getWebtoonsGenres(),
-  );
+  return useQuery<WebtoonGenres>(webtoons.genres(), () => getWebtoonsGenres());
 };
 
 const getWebtoonsRecommendation = async () => {
   return await api
     .get('webtoons/ages')
-    .then((res) => res.json())
+    .then((res) => res.data)
     .catch((e) => console.log(e));
 };
 
 const useGetWebtoonsRecommendation = () => {
-  return useQuery<WebtoonRecommendation, HTTPError>(
-    webtoons.recommendation(),
-    () => getWebtoonsRecommendation(),
+  return useQuery<WebtoonRecommendation>(webtoons.recommendation(), () =>
+    getWebtoonsRecommendation(),
   );
 };
 
 const getWebtoonsGenresTop3 = async () => {
   return await api
     .get('webtoons/genres/top3')
-    .then((res) => res.json())
+    .then((res) => res.data)
     .catch((e) => {
       console.log(e);
       return e;
@@ -103,7 +95,7 @@ const getWebtoonsGenresTop3 = async () => {
 };
 
 const useGetWebtoonsGenresTop3 = () => {
-  return useQuery<WebtoonGenresTop3, HTTPError>(webtoons.genresTop3(), () =>
+  return useQuery<WebtoonGenresTop3>(webtoons.genresTop3(), () =>
     getWebtoonsGenresTop3(),
   );
 };
@@ -111,7 +103,7 @@ const useGetWebtoonsGenresTop3 = () => {
 const getWebtoonsByDay = async (day: string) => {
   return await api
     .get(`webtoons/days/${day}`)
-    .then((res) => res.json())
+    .then((res) => res.data)
     .catch((e) => {
       console.log(e);
       return e;
@@ -119,7 +111,7 @@ const getWebtoonsByDay = async (day: string) => {
 };
 
 const useGetWebtoonsByDay = (day: string) => {
-  return useQuery<WebtoonWeekly, HTTPError>(webtoons.days(day), () =>
+  return useQuery<WebtoonWeekly>(webtoons.days(day), () =>
     getWebtoonsByDay(day),
   );
 };

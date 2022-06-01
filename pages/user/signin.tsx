@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 import { useEffect } from 'react';
 
-import { setCookies } from 'cookies-next';
-
 import { Mixpanel } from 'mixpanel';
+
+import { api } from '@apis/api';
 
 import KakaoLoginImg from '@assets/images/KakaoLoginImg';
 import ChebronRightIcon from '@assets/icons/ChebronRightIcon';
@@ -16,6 +16,8 @@ import Intro from '@domains/user/signin/Intro';
 import { SignInWrap, GoToMain } from '@domains/user/signin/SignInMain.style';
 
 function SignIn() {
+  const KAKAO_SIGNIN_URL = 'https://api.antoon.fun/oauth2/authorization/kakao';
+
   const router = useRouter();
 
   useEffect(() => {
@@ -24,8 +26,8 @@ function SignIn() {
     });
   }, []);
 
-  const onClickKakao = () => {
-    router.push('https://api.antoon.fun/oauth2/authorization/kakao');
+  const onClickKakaoSignIn = () => {
+    router.push(KAKAO_SIGNIN_URL);
   };
 
   return (
@@ -33,7 +35,7 @@ function SignIn() {
       <Header />
       <SignInWrap>
         <Intro />
-        <button onClick={onClickKakao}>
+        <button onClick={onClickKakaoSignIn}>
           <KakaoLoginImg />
         </button>
         <Link href="/" passHref>
@@ -48,20 +50,15 @@ function SignIn() {
   );
 }
 
-export async function getServerSideProps({
-  req,
-  res,
-  query,
-}: GetServerSidePropsContext) {
+export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const statusQuery = query.status as string;
   const authArr = statusQuery?.split(/[?=]/);
 
   const status = authArr && authArr[0];
-  const access = authArr && authArr[2];
-  const refresh = authArr && authArr[4];
+  const accessToken = authArr && authArr[2];
+  // const refreshToken = authArr && authArr[4];
 
-  setCookies('access', access, { req, res });
-  setCookies('refresh', refresh, { req, res });
+  api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
   if (status === 'signup') {
     return {
