@@ -35,7 +35,7 @@ function MyPage() {
   return (
     <ErrorBoundary message="사용자 정보를 불러오지 못하고 있어요 😭😭😭">
       <MyPageWrap>
-        {user.imageUrl ? (
+        {user ? (
           <UserProfile src={user.imageUrl} width="80" height="80" />
         ) : (
           <ProfileDefaultImg width="80" height="80" />
