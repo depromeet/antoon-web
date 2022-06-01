@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 import { useEffect } from 'react';
-
+import { setCookies } from 'cookies-next';
 import { Mixpanel } from 'mixpanel';
 
 import { api } from '@apis/api';
@@ -50,15 +50,21 @@ function SignIn() {
   );
 }
 
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+export async function getServerSideProps({
+  req,
+  res,
+  query,
+}: GetServerSidePropsContext) {
   const statusQuery = query.status as string;
   const authArr = statusQuery?.split(/[?=]/);
 
   const status = authArr && authArr[0];
   const accessToken = authArr && authArr[2];
-  // const refreshToken = authArr && authArr[4];
+  const refreshToken = authArr && authArr[4];
 
   api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+  setCookies('Access', accessToken, { req, res, maxAge: 60 * 60 * 24 * 60 });
+  setCookies('Refresh', refreshToken, { req, res, maxAge: 60 * 60 * 24 * 60 });
 
   if (status === 'signup') {
     return {
