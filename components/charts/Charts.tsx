@@ -1,28 +1,35 @@
 import React from 'react';
 import ReactECharts from './composables/ECharts';
 import { ChartContainer, ChartWrapper } from './composables/Charts.style';
-import { ChartData } from '@_types/chart-type';
+import { Graph } from '@_types/chart-type';
 import setOption from './composables/Chart_Visualizer';
 import { ChartStatus } from '@_types/webtoon-type';
+import { calculateDateTimeFomramtter } from '@utils/string-util';
 
 interface Props {
-  chartData: ChartData;
+  chartData?: Graph;
   forceUpdate?: boolean;
   status?: ChartStatus;
 }
 
+interface xAxisType {
+  xAxisKey: string[];
+  xAxisData: number[];
+}
+
 function Charts({ chartData, forceUpdate, status }: Props) {
-  const xAxisData = Object.keys(chartData.timeseries);
+  const xAxis: xAxisType = { xAxisKey: [], xAxisData: [] };
+
+  chartData?.graphScores.forEach((e, i) => {
+    xAxis.xAxisKey[i] = calculateDateTimeFomramtter(e.snapshotTime);
+    xAxis.xAxisData[i] = e.graphScore;
+  });
 
   return (
     <ChartWrapper>
       <ChartContainer>
         <ReactECharts
-          option={setOption(
-            xAxisData,
-            xAxisData.map((k) => chartData.timeseries[k]),
-            status,
-          )}
+          option={setOption(xAxis.xAxisKey, xAxis.xAxisData, status)}
         />
       </ChartContainer>
     </ChartWrapper>

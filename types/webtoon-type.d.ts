@@ -23,9 +23,11 @@ export interface Webtoon {
   recommendationCountId: number;
   joinCount: number;
   leaveCount: number;
+  score: number;
+  scoreGapPercent: number;
 }
 
-export type ChartStatus = 'UP' | 'DOWN' | 'STALE';
+export type ChartStatus = 'UP' | 'DOWN' | 'STALE' | '';
 
 export interface WebtoonCategory {
   webtoonGenreId: number;
