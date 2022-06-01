@@ -55,6 +55,8 @@ type upDownStatusType = {
   sign: string;
 };
 
+type JoinLeaveStatusType = 'NONE' | 'JOINED' | 'LEAVED';
+
 function Detail({ id }: { id: number }) {
   const { data } = useGetWebtoonById(id);
 
@@ -281,6 +283,9 @@ function Detail({ id }: { id: number }) {
           <BtnFooter
             onOpen={() => setIsModalOpen(true)}
             onJoinLeave={setJoinLeave}
+            joinLeaveStatus={'NONE'}
+            joinCount={data.joinCount || 0}
+            leaveCount={data.leaveCount || 0}
           />
         </Container>
         <Modal
