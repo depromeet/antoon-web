@@ -5,6 +5,8 @@ import {
   FilterBlur,
   StockTimer,
   TimerCount,
+  ToastMessage,
+  ToastMessageWrapper,
   UpDownBlockInfo,
   UpDownBlockTitle,
   UpDownBlockWrapper,
@@ -12,6 +14,7 @@ import {
 import UpDownBtn from './UpDownBtn';
 import useCountdown from '@hooks/useCountdown';
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
+import Toast from './Toast';
 
 function BtnFooter({
   onOpen,
@@ -28,21 +31,37 @@ function BtnFooter({
   leaveCount: number;
 }) {
   const [isSSR, setIsSSR] = useState(true);
+  const [ToastStatus, setToastStatus] = useState(false);
 
   useEffect(() => {
     setIsSSR(false);
-  }, []);
+    if (ToastStatus) {
+      setTimeout(() => setToastStatus(false), 1500);
+    }
+  }, [ToastStatus]);
+
+  const onToast = () => {
+    setToastStatus(true);
+  };
 
   const [hours, minutes, seconds] = useCountdown(countDownFormatter());
   return (
     <BtnWrapper>
       <FilterBlur></FilterBlur>
-      <StockTimer>
-        <TimerCount>
-          {!isSSR &&
-            `투표 종료까지 시간 ${hours}시간: ${minutes}분 : ${seconds}초 남음`}
-        </TimerCount>
-      </StockTimer>
+      {!ToastStatus && (
+        <StockTimer>
+          <TimerCount>
+            {!isSSR &&
+              `투표 종료까지 시간 ${hours}시간: ${minutes}분 : ${seconds}초 남음`}
+          </TimerCount>
+        </StockTimer>
+      )}
+      {ToastStatus && (
+        <Toast
+          joinLeaveStatus={joinLeaveStatus}
+          toastAnimation={ToastStatus}
+        ></Toast>
+      )}
       {joinLeaveStatus === 'NONE' && (
         <>
           <UpDownBtn
@@ -61,16 +80,22 @@ function BtnFooter({
       )}
       {joinLeaveStatus !== 'NONE' && (
         <>
-          <UpDownBlockWrapper status={joinLeaveStatus}>
+          <UpDownBlockWrapper status={joinLeaveStatus} onClick={onToast}>
             <UpDownBlockTitle>
-              {joinLeaveStatus === 'JOINED'
-                ? <StockUpIcon /> + '탑승 중!'
-                : <StockDownIcon /> + '하차 중...'}
+              {joinLeaveStatus === 'JOINED' ? (
+                <>
+                  <StockUpIcon /> {'탑승 중!'}
+                </>
+              ) : (
+                <>
+                  <StockDownIcon /> {'하차 중...'}
+                </>
+              )}
             </UpDownBlockTitle>
             <UpDownBlockInfo>
               {joinLeaveStatus === 'JOINED'
-                ? { joinCount } + '개미 탑승😎'
-                : { joinCount } + '하차 😭'}
+                ? joinCount + ' 개미 탑승😎'
+                : leaveCount + ' 개미 하차 😭'}
             </UpDownBlockInfo>
           </UpDownBlockWrapper>
         </>

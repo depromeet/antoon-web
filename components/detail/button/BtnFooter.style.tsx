@@ -67,7 +67,7 @@ const UpDownBlockTitle = styled.div`
   position: flex;
   color: #fff;
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   font-style: normal;
 `;
@@ -81,6 +81,35 @@ const UpDownBlockInfo = styled.div`
   font-style: normal;
 `;
 
+const ToastMessageWrapper = styled.div`
+  background: ${(props) => props.theme.colors.basic.black};
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  transition: all 0.5s;
+  opacity: 0.8;
+  width: 86%;
+  height: 30px;
+  text-align: left;
+  vertical-align: middle;
+  margin: 0 20px;
+  padding: 8px;
+  padding-left: 20px;
+`;
+
+const ToastMessage = styled.p<{ status: string }>`
+  font-size: 11.5px;
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.basic.white};
+  & span {
+    border-radius: 50%;
+    background: ${(props) =>
+      props.status == 'JOINED'
+        ? props.theme.colors.chart.point_up_100
+        : props.theme.colors.chart.point_down_100};
+  }
+`;
+
 export {
   BtnWrapper,
   FilterBlur,
@@ -89,4 +118,6 @@ export {
   UpDownBlockWrapper,
   UpDownBlockTitle,
   UpDownBlockInfo,
+  ToastMessageWrapper,
+  ToastMessage,
 };

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
-import { MouseEventHandler } from 'react';
 import {
   UpDownBtnWrapper,
   UpDownBtnTitle,
