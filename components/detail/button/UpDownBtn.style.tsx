@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 const UpDownBtnWrapper = styled.div<{ status: string }>`
   position: relative;
   margin-top: 50px;
-  margin-right: ${(props) => (props.status === 'up' ? '20px' : '0')};
+  margin-right: ${(props) => (props.status === 'JOIN' ? '20px' : '0')};
   margin-bottom: 20px;
   border-radius: 15px;
   background: ${(props) =>
-    props.status == 'up'
+    props.status == 'JOIN'
       ? props.theme.colors.chart.point_up_100
       : props.theme.colors.chart.point_down_100};
   padding-top: 7px;

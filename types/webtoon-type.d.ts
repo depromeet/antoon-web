@@ -7,7 +7,6 @@ export enum PlatformEnum {
   LEZHIN = '레진코믹스',
   ETC = '기타',
 }
-
 export interface Webtoon {
   webtoondId: number;
   title: string;
