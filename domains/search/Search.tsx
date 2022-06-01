@@ -7,12 +7,11 @@ import autoComplete from 'utils/autoComplete';
 
 import SearchDefaultImg from '@assets/images/SearchDefaultImg';
 
+import SearchBar from './SearchBar';
 import AutoCompletList from './AutoCompletList';
 import SearchResult from './SearchResult';
 
 import { Default } from './Search.style';
-
-import SearchBar from './SearchBar';
 
 import { WebtoonSearch } from '@_types/webtoon-type';
 
@@ -59,7 +58,9 @@ function Search({ webtoons }: { webtoons: [] }) {
           .json();
 
         setSearchResults(keywordResults as any);
-        router.push(`/search?keyword=${searchInput}`);
+        router.replace('/search', `/search?keyword=${searchInput}`, {
+          shallow: true,
+        });
       } catch (e) {
         return e;
       }
