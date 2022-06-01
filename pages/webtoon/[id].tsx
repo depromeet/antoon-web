@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Mixpanel } from 'mixpanel';
 
@@ -9,6 +9,7 @@ import Header from '@components/layout/Header/Header';
 import Detail from '@domains/webtoon/detail/Detail';
 import Comment from '@domains/webtoon/detail/Comment';
 import { GetServerSideProps } from 'next';
+import Modal from '@components/modal/detail/Modal';
 
 const webtoonMock = {
   id: 1,

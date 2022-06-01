@@ -29,7 +29,7 @@ const Tab = styled.div`
   position: relative;
   transition: all 300ms ease-in-out;
   opacity: 0.6;
-  z-index: 2;
+  z-index: 10;
   cursor: pointer;
   padding: 3px 10px;
   width: 25%;
