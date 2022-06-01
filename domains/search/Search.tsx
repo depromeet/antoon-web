@@ -49,15 +49,11 @@ function Search({ webtoons }: { webtoons: [] }) {
   const onKeyDownEnter = async (e: any) => {
     if (e.key == 'Enter' && searchLists.length > 0) {
       try {
-        const keywordResults = await api
-          .post(`webtoons/search`, {
-            json: {
-              webtoons: searchLists,
-            },
-          })
-          .json();
+        const keywordResults = await api.post(`webtoons/search`, {
+          webtoons: searchLists,
+        });
 
-        setSearchResults(keywordResults as any);
+        setSearchResults(keywordResults.data as any);
         router.replace('/search', `/search?keyword=${searchInput}`, {
           shallow: true,
         });
