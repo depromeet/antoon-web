@@ -274,8 +274,9 @@ const Description = styled.div`
   position: relative;
 `;
 
+/* stylelint-disable */
 const DescriptionContent = styled.p`
-  display: -webkit-box;
+  display: box;
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
