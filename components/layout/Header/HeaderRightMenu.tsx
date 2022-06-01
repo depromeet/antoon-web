@@ -9,9 +9,13 @@ import { RightWrap, MenuWrap } from './HeaderRightMenu.style';
 
 import ProfileDefaultImg from '@assets/images/ProfileDefaultImg';
 
-function HeaderRightMenu({ rightBtn }: { rightBtn?: string }) {
-  const token = undefined;
-
+function HeaderRightMenu({
+  rightBtn,
+  imageUrl,
+}: {
+  rightBtn?: string;
+  imageUrl?: string;
+}) {
   return (
     <RightWrap>
       {rightBtn === 'menu' ? (
@@ -21,22 +25,16 @@ function HeaderRightMenu({ rightBtn }: { rightBtn?: string }) {
               <SearchIcon />
             </a>
           </Link>
-          {token === undefined ? (
-            <Link href="/user/signin" passHref>
+          {imageUrl ? (
+            <Link href="/user/mypage" passHref>
               <a>
-                <ProfileDefaultImg width="24" height="24" />
+                <UserProfile src={imageUrl} width="24" height="24" />
               </a>
             </Link>
           ) : (
-            <Link href="/user/mypage" passHref>
+            <Link href="/user/signin" passHref>
               <a>
-                <UserProfile
-                  src={
-                    'https://images.unsplash.com/photo-1520209759809-a9bcb6cb3241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
-                  }
-                  width="24"
-                  height="24"
-                />
+                <ProfileDefaultImg width="24" height="24" />
               </a>
             </Link>
           )}

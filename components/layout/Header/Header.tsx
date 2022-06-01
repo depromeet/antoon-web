@@ -9,9 +9,10 @@ type HeaderProps = {
   leftBtn?: string;
   title?: string;
   rightBtn?: string;
+  imageUrl?: string;
 };
 
-function Header({ leftBtn, title, rightBtn }: HeaderProps) {
+function Header({ leftBtn, title, rightBtn, imageUrl }: HeaderProps) {
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function Header({ leftBtn, title, rightBtn }: HeaderProps) {
         <>
           <HeaderLeftMenu leftBtn={leftBtn} />
           {title && <Title>{title}</Title>}
-          <HeaderRightMenu rightBtn={rightBtn} />
+          <HeaderRightMenu rightBtn={rightBtn} imageUrl={imageUrl} />
         </>
       )}
     </HeaderWrap>
