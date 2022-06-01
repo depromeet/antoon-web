@@ -60,11 +60,9 @@ function Detail({ id }: { id: number }) {
 
   const chartData_days = useGetGraphScore(id, 'days').data;
   const chartData_weekends = useGetGraphScore(id, 'weekends').data;
-  /*
-  테스트용
   const chartData_months = useGetGraphScore(id, 'months').data;
   const chartData_three_months = useGetGraphScore(id, 'three-months').data;
-  */
+
   const detailSubRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const [chartData, setChartData] = useState<Graph>();
@@ -88,12 +86,12 @@ function Detail({ id }: { id: number }) {
       case 'weekends':
         setChartData(chartData_weekends);
         break;
-      /*
       case 'months':
-        return chartData_months;
+        setChartData(chartData_months);
+        break;
       case 'three-months':
-        return chartData_three_months;
-        */
+        setChartData(chartData_three_months);
+        break;
       default:
         setChartData(chartData_days);
     }
