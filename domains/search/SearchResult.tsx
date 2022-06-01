@@ -25,13 +25,7 @@ function SearchResult({ searchResults }: { searchResults: WebtoonSearch }) {
     <SearchResultWrap
       key={searchResults.webtoonId}
       onClick={() => {
-        router.replace(
-          '/search',
-          `/search?keyword=${searchResults.webtoonId}`,
-          {
-            shallow: true,
-          },
-        );
+        router.push(`/webtoon/${searchResults.webtoonId}`);
       }}
     >
       <ThumbnailWrap width="64" height="64">
