@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const DetailWrapper = styled.div`
-  background-color: #f1f1f1;
+  background-color: #fff;
   background-position: center top;
   background-size: 100%;
   width: 100%;
@@ -66,6 +66,31 @@ const MainTitle = styled.h2`
   -webkit-box-orient: vertical;
 `;
 
+const VoteTimeHeader = styled.div`
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding: 13px 10px;
+  background: ${(props) => props.theme.colors.grayscale.gray_200};
+  border-radius: 10px;
+  margin-bottom: 10px;
+`;
+
+const VoteTimeContents = styled.p`
+  font-size: 13px;
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.basic.black};
+`;
+
+const VoteTime = styled.span<{ upDown: string }>`
+  color: ${(props) =>
+    props?.upDown === 'UP'
+      ? props.theme.colors.secondary.red
+      : props?.upDown === 'DOWN'
+      ? props.theme.colors.secondary.blue
+      : props.theme.colors.chart.point_none_100};
+`;
+
 const PlatformHeader = styled.div<{ platform: string }>`
   display: inline-block;
   align-items: center;
@@ -111,7 +136,7 @@ const MainScore = styled.div<{ upDown: string }>`
       ? props.theme.colors.secondary.red
       : props?.upDown === 'DOWN'
       ? props.theme.colors.secondary.blue
-      : '#000 '};
+      : props.theme.colors.chart.point_none_100};
 `;
 
 const Point = styled.p`
@@ -139,7 +164,7 @@ const InfoBtn = styled.button`
   height: 30px;
   -webkit-tap-highlight-color: transparent;
 `;
-const InfoContent = styled.p<{ isShow: boolean }>`
+const InfoContent = styled.span<{ isShow: boolean }>`
   position: absolute;
   top: 20px;
   left: 0;
@@ -194,26 +219,21 @@ const MainThumbnail = styled.div<{ upDown: string }>`
   & p {
     display: flex;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    bottom: -14px;
+    left: -20px;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     border-radius: 40px;
-    background: ${(props) =>
-      props?.upDown === 'UP'
-        ? props.theme.colors.chart.point_up_100
-        : props?.upDown === 'DOWN'
-        ? props.theme.colors.chart.point_down_100
-        : '#000 '};
-    padding: 1px 6px;
-    width: 32px;
-    height: 14px;
+    background: ${(props) => props.theme.colors.grayscale.gray_800};
+    padding: 4px 8px;
+    width: 40px;
+    height: 40px;
     text-align: center;
     line-height: 14.4px;
     color: #fff;
     font-family: Pretendard;
-    font-size: 10px;
+    font-size: 12px;
   }
 `;
 
@@ -333,6 +353,9 @@ export {
   Container,
   DetailContents,
   DetailMain,
+  VoteTimeHeader,
+  VoteTimeContents,
+  VoteTime,
   PlatformHeader,
   PlatformImg,
   Platform,

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { SVG } from '@constants/icon-constants';
 import themes from '@styles/themes/themes';
 import { ChartStatus } from '@_types/webtoon-type';
 

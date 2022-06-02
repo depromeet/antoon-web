@@ -20,7 +20,7 @@ const ModalContent = styled.div`
   margin-right: 20px;
   border-radius: 20px;
   background-color: ${(props) => props.theme.colors.basic.white};
-  padding: 50px;
+  padding: 40px;
   width: 80%;
   max-width: 708px;
   height: 250px;
@@ -28,21 +28,21 @@ const ModalContent = styled.div`
 `;
 const ModalTitle = styled.h2`
   line-height: 26.4px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
 `;
 const ModalInfo = styled.p`
-  margin-top: 14px;
+  margin-top: 12px;
   margin-bottom: 20px;
   line-height: 20px;
   color: ${(props) => props.theme.colors.grayscale.gray_700};
-  font-size: 15px;
+  font-size: 13px;
 `;
 const ModalClose = styled.button`
   margin-right: 10px;
   border-radius: 10px;
   background-color: ${(props) => props.theme.colors.grayscale.gray_200};
-  width: 48%;
+  width: 46%;
   height: 30%;
 `;
 const ModalFunc = styled.button<{ joinLeave: string }>`
@@ -51,7 +51,7 @@ const ModalFunc = styled.button<{ joinLeave: string }>`
     props.joinLeave === 'JOIN'
       ? props.theme.colors.chart.point_up_100
       : props.theme.colors.chart.point_down_100};
-  width: 48%;
+  width: 46%;
   height: 30%;
   color: ${(props) => props.theme.colors.basic.white};
 `;

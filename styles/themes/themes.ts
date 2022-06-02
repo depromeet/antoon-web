@@ -33,7 +33,7 @@ const themes = {
       point_down_0: 'rgba(196, 196, 196, 0)',
       point_down_100: '#315EFF',
       point_none_0: '#ffffff',
-      point_none_100: 'rgba(245, 247, 250, 0.1)',
+      point_none_100: 'rgba(165, 165, 165, 1)',
     },
     platform: {
       naver: '#00D564',
