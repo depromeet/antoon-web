@@ -67,19 +67,19 @@ const MainTitle = styled.h2`
 `;
 
 const VoteTimeHeader = styled.div`
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: ${(props) => props.theme.colors.grayscale.gray_200};
+  padding: 13px 10px;
   width: 100%;
   height: 40px;
   text-align: center;
-  padding: 13px 10px;
-  background: ${(props) => props.theme.colors.grayscale.gray_200};
-  border-radius: 10px;
-  margin-bottom: 10px;
 `;
 
 const VoteTimeContents = styled.p`
+  color: ${(props) => props.theme.colors.basic.black};
   font-size: 13px;
   font-weight: 700;
-  color: ${(props) => props.theme.colors.basic.black};
 `;
 
 const VoteTime = styled.span<{ upDown: string }>`
