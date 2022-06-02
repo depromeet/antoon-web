@@ -12,39 +12,40 @@ const appearSlowly = keyframes`
 `;
 
 const ToastMessageWrapper = styled.div<{ toastAnimation: boolean }>`
-  background: ${(props) => props.theme.colors.basic.black};
-  border-radius: 10px;
   position: absolute;
   transition: all 0.5s;
   opacity: 0.8;
-  width: 85%;
-  height: 40px;
-  text-align: left;
-  vertical-align: middle;
   margin: 0 20px;
+  border-radius: 10px;
+  background: ${(props) => props.theme.colors.basic.black};
   padding: 12px;
   padding-left: 20px;
+  width: 85%;
   max-width: 470px;
+  height: 40px;
   animation: ${appearSlowly} 1.5s;
+  vertical-align: middle;
+  text-align: left;
 `;
 
 const ToastMessage = styled.p<{ status: string }>`
+  color: ${(props) => props.theme.colors.basic.white};
   font-size: 12.5px;
   font-weight: 700;
-  color: ${(props) => props.theme.colors.basic.white};
+
   & span {
-    color: ${(props) => props.theme.colors.basic.black};
     margin-right: 15px;
-    overflow: hidden;
-    padding: 1.5px;
-    padding-left: 3px;
-    font-size: 10px;
-    font-weight: 1000;
     border-radius: 45%;
     background: ${(props) =>
       props.status == 'JOINED'
         ? props.theme.colors.chart.point_up_100
         : props.theme.colors.chart.point_down_100};
+    padding: 1.5px;
+    padding-left: 3px;
+    overflow: hidden;
+    color: ${(props) => props.theme.colors.basic.black};
+    font-size: 10px;
+    font-weight: 1000;
   }
 `;
 

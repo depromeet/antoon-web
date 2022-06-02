@@ -65,7 +65,7 @@ const UpDownBlockWrapper = styled.div<{ status: string }>`
 
 const UpDownBlockTitle = styled.div`
   position: flex;
-  color: ${(props) => props.theme.colors.basic.white}
+  color: ${(props) => props.theme.colors.basic.white};
   font-family: Pretendard;
   font-size: 15px;
   font-weight: 700;
