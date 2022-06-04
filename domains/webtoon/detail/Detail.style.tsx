@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { ChartStatus } from '@_types/webtoon-type';
 
 const DetailWrapper = styled.div`
   background-color: #fff;
@@ -22,7 +23,7 @@ const DetailContents = styled.section`
 
 const DetailMain = styled.div`
   position: relative;
-  height: 520px;
+  height: 515px;
 
   & a {
     display: block;
@@ -34,7 +35,7 @@ const DetailMain = styled.div`
   }
 
   & h2 {
-    line-height: 60px;
+    line-height: 25px;
     font-size: 18px;
     font-weight: bold;
   }
@@ -206,7 +207,7 @@ const MainThumbnailImg = styled.div`
 
 const MainThumbnailRanking = styled.p``;
 
-const MainThumbnail = styled.div<{ upDown: string }>`
+const MainThumbnail = styled.div<{ upDown: ChartStatus }>`
   position: absolute;
   right: 0;
   width: 10rem;
@@ -219,21 +220,25 @@ const MainThumbnail = styled.div<{ upDown: string }>`
   & p {
     display: flex;
     position: absolute;
-    bottom: -14px;
-    left: -20px;
+    top: 10px;
+    right: 10px;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     border-radius: 40px;
-    background: ${(props) => props.theme.colors.grayscale.gray_800};
-    padding: 4px 8px;
-    width: 40px;
-    height: 40px;
+    background: ${(props) =>
+      props?.upDown === 'UP'
+        ? props.theme.colors.secondary.red
+        : props?.upDown === 'DOWN'
+        ? props.theme.colors.secondary.blue
+        : props.theme.colors.chart.point_none_100};
+    padding: 1px 6px;
+    width: 32px;
+    height: 14px;
     text-align: center;
     line-height: 14.4px;
-    color: #fff;
-    font-family: Pretendard;
-    font-size: 12px;
+    color: ${(props) => props.theme.colors.basic.white};
+    font-size: 10px;
   }
 `;
 

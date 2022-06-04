@@ -77,14 +77,6 @@ function setOption(
         markPoint: {
           data: [
             {
-              name: '최고',
-              type: 'max',
-            },
-            {
-              name: '최저',
-              type: 'min',
-            },
-            {
               name: '첫지점',
               valueDim: 'x',
               type: 'min',
@@ -152,7 +144,7 @@ function setOption(
         const obj: Position = {
           top: 0,
         };
-        obj['left'] = pos[0] - 40;
+        obj['left'] = pos[0] - size.viewSize[0] / 9;
         //obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 5;
         return obj;
       },
