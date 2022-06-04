@@ -15,7 +15,7 @@ const Icon: React.FC<IconProps> = ({
   width,
   height,
   size = DEFAULT_ICON_SIZE,
-  fill = 'DEFAULT_ICON_FILL',
+  fill = DEFAULT_ICON_FILL,
   stroke = 'none',
   type = 'fill',
   ...props

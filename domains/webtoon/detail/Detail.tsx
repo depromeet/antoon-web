@@ -283,7 +283,7 @@ function Detail({ id }: { id: number }) {
           <BtnFooter
             onOpen={() => setIsModalOpen(true)}
             onJoinLeave={setJoinLeave}
-            joinLeaveStatus={'NONE'}
+            joinLeaveStatus={'JOIN'}
             joinCount={data.joinCount || 0}
             leaveCount={data.leaveCount || 0}
           />

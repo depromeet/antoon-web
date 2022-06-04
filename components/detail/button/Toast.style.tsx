@@ -33,20 +33,40 @@ const ToastMessage = styled.p<{ status: string }>`
   font-size: 12.5px;
   font-weight: 700;
 
-  & span {
+  & svg {
     margin-right: 15px;
-    border-radius: 45%;
-    background: ${(props) =>
-      props.status == 'JOINED'
-        ? props.theme.colors.chart.point_up_100
-        : props.theme.colors.chart.point_down_100};
     padding: 1.5px;
     padding-left: 3px;
     overflow: hidden;
-    color: ${(props) => props.theme.colors.basic.black};
     font-size: 10px;
     font-weight: 1000;
   }
 `;
 
-export { ToastMessageWrapper, ToastMessage };
+const ToastCheckMark = styled.span<{ status: string }>`
+  margin-right: 15px;
+  border-radius: 45%;
+  background: ${(props) =>
+    props.status == 'JOINED'
+      ? props.theme.colors.chart.point_up_100
+      : props.theme.colors.chart.point_down_100};
+  padding: 1.5px;
+  padding-left: 3px;
+  overflow: hidden;
+  color: ${(props) => props.theme.colors.basic.black};
+  font-size: 10px;
+  font-weight: 1000;
+`;
+
+const ToastMessageContent = styled.span`
+  position: absolute;
+  top: 13px;
+  margin-bottom: 20px;
+`;
+
+export {
+  ToastMessageWrapper,
+  ToastMessage,
+  ToastCheckMark,
+  ToastMessageContent,
+};
