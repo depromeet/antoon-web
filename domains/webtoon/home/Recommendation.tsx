@@ -1,10 +1,10 @@
+import { useQuery } from 'react-query';
+import MoonLoader from 'react-spinners/MoonLoader';
 import { webtoons } from '@apis/queryKeys';
 import { getWebtoonsRecommendation } from '@apis/webtoons';
+import { WebtoonRecommendation } from '@_types/webtoon-type';
 import ErrorBoundary from '@components/ErrorBoundary';
 import OnError from '@components/OnError';
-import { WebtoonRecommendation } from '@_types/webtoon-type';
-import React from 'react';
-import { useQuery } from 'react-query';
 import {
   RecommendationWrapper,
   CarouselBox,
@@ -14,12 +14,15 @@ import {
   RideHeadCount,
   Thumbnail,
 } from './Recommendation.style';
+import LoadingSpinner from '@components/spinner/LoadingSpinner';
 
 function Recommendation() {
-  const { data, isError } = useQuery<WebtoonRecommendation>(
+  const { data, isLoading, isError } = useQuery<WebtoonRecommendation>(
     webtoons.recommendation(),
     getWebtoonsRecommendation,
   );
+
+  if (isLoading) return <LoadingSpinner />;
 
   if (data === undefined || isError)
     return <OnError>연령별 웹툰을 불러오지 못하고 있어요 😭😭😭</OnError>;

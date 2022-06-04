@@ -40,7 +40,10 @@ const getWebtoonsRanks = async () => {
   return await api
     .get('top-ranks')
     .then((res) => res.data)
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
 };
 
 const useGetWebtoonsRanks = () => {
@@ -65,7 +68,10 @@ const getWebtoonsGenres = async () => {
   return await api
     .get('webtoons/genres')
     .then((res) => res.data)
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
 };
 
 const useGetWebtoonsGenres = () => {
@@ -76,7 +82,10 @@ const getWebtoonsRecommendation = async () => {
   return await api
     .get('webtoons/ages')
     .then((res) => res.data)
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
 };
 
 const useGetWebtoonsRecommendation = () => {

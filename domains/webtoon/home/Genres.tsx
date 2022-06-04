@@ -2,6 +2,7 @@ import { webtoons } from '@apis/queryKeys';
 import { getWebtoonsGenresTop3 } from '@apis/webtoons';
 import ErrorBoundary from '@components/ErrorBoundary';
 import OnError from '@components/OnError';
+import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import { Genre, WebtoonGenresTop3 } from '@_types/webtoon-type';
 import { useQuery } from 'react-query';
 import {
@@ -87,12 +88,14 @@ const genres: GenreData[] = [
 ];
 
 function Genres() {
-  const { data } = useQuery<WebtoonGenresTop3>(
+  const { data, isLoading, isError } = useQuery<WebtoonGenresTop3>(
     webtoons.genresTop3(),
     getWebtoonsGenresTop3,
   );
 
-  if (data === undefined)
+  if (isLoading) return <LoadingSpinner />;
+
+  if (data === undefined || isError)
     return <OnError>장르별 웹툰을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   const genreMap = new Map<string, string[]>();
