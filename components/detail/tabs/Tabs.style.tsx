@@ -17,7 +17,7 @@ const Tabs = styled.div`
 const TabsHeader = styled.div`
   display: flex;
   border-radius: 10px;
-  background: rgb(196 196 196 / 20%);
+  background: ${(props) => props.theme.colors.basic.white};
   padding: 10px 10px 10px 2px;
 
   & .active {
@@ -45,8 +45,8 @@ const TabIndicator = styled.div`
   top: 4px;
   left: 6px;
   transition: all 300ms ease-in-out;
-  border-radius: 10px;
-  background: #fff;
+  border-radius: 20px;
+  background: ${(props) => props.theme.colors.grayscale.gray_200};
   width: 22%;
   height: 34px;
 `;

@@ -7,6 +7,10 @@ const webtoons = {
   genresTop3: () => [...webtoons.all, 'genres', 'top3'],
   rising: () => [...webtoons.all, 'rising'],
   recommendation: () => [...webtoons.all, 'recommendation'],
+  joinLeave: (webtoonId: number, status: string) => [
+    ...webtoons.all,
+    'joinLeave',
+  ],
   days: (day: string) => [...webtoons.all, 'days', day],
 };
 

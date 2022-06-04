@@ -13,6 +13,7 @@ import UpDownBtn from './UpDownBtn';
 import useCountdown from '@hooks/useCountdown';
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
 import Toast from './Toast';
+import { usePatchJoinLeaveRecommendationById } from '@apis/webtoons';
 
 function BtnFooter({
   onOpen,
@@ -40,6 +41,12 @@ function BtnFooter({
 
   const onToast = () => {
     setToastStatus(true);
+  };
+
+  const onpatchJoinLeave = (joinLeaveStatus: string) => {
+    // 임시
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { data } = usePatchJoinLeaveRecommendationById(1, '');
   };
 
   const [hours, minutes, seconds] = useCountdown(countDownFormatter());

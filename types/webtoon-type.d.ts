@@ -29,6 +29,13 @@ export interface Webtoon {
 
 export type ChartStatus = 'UP' | 'DOWN' | 'STALE' | '';
 
+export interface WebtoonJoinLeaveRecommendation {
+  isJoined: boolean;
+  isLeaved: boolean;
+  joinCount: number;
+  leaveCount: number;
+}
+
 export interface WebtoonCategory {
   webtoonGenreId: number;
   genreCategory: string;

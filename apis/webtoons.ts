@@ -9,6 +9,7 @@ import {
   WebtoonRecommendation,
   WebtoonGenresTop3,
   Webtoon,
+  WebtoonJoinLeaveRecommendation,
 } from '@_types/webtoon-type';
 import { Graph } from '@_types/chart-type';
 
@@ -139,6 +140,26 @@ const useGetGraphScore = (webtoonId: number, chartType: string) => {
   );
 };
 
+const getJoinLeaveRecommendationById = async (
+  webtoonId: number,
+  status: string,
+) => {
+  return await api
+    .patch(`recommendations/${webtoonId}?status=${status}`)
+    .then((res) => res.data)
+    .catch((e) => console.log(e));
+};
+
+const usePatchJoinLeaveRecommendationById = (
+  webtoonId: number,
+  status: string,
+) => {
+  return useQuery<WebtoonJoinLeaveRecommendation>(
+    webtoons.joinLeave(webtoonId, status),
+    () => getJoinLeaveRecommendationById(webtoonId, status),
+  );
+};
+
 export {
   getWebtoons,
   useGetWebtoons,
@@ -158,4 +179,6 @@ export {
   useGetWebtoonsByDay,
   getGraphScore,
   useGetGraphScore,
+  getJoinLeaveRecommendationById,
+  usePatchJoinLeaveRecommendationById,
 };
