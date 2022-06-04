@@ -64,7 +64,9 @@ function setOption(
             color:
               status == 'UP'
                 ? themes.colors.chart.point_up_0
-                : themes.colors.chart.point_down_0,
+                : status == 'DOWN'
+                ? themes.colors.chart.point_down_0
+                : themes.colors.chart.point_none_0,
           },
         ]),
         lineStyle: {
@@ -73,6 +75,42 @@ function setOption(
         },
         areaStyle: {},
         markPoint: {
+          data: [
+            {
+              name: '최고',
+              type: 'max',
+            },
+            {
+              name: '최저',
+              type: 'min',
+            },
+            {
+              name: '첫지점',
+              valueDim: 'x',
+              type: 'min',
+              label: {
+                show: false,
+              },
+              symbol: 'circle',
+              symbolSize: 5,
+              itemStyle: {
+                color: getChartStatusFactory(status || 'STALE', 100),
+              },
+            },
+            {
+              name: '마지막지점',
+              valueIndex: 0,
+              type: 'max',
+              label: {
+                show: false,
+              },
+              symbol: 'circle',
+              symbolSize: 5,
+              itemStyle: {
+                color: getChartStatusFactory(status || 'STALE', 100),
+              },
+            },
+          ],
           label: {
             show: true,
             color: '#767676',
@@ -114,20 +152,20 @@ function setOption(
         const obj: Position = {
           top: 0,
         };
-        obj['left'] = pos[0] - 50;
+        obj['left'] = pos[0] - 40;
         //obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 5;
         return obj;
       },
-      formatter: `${getTodayFormat()} {b0}`,
+      formatter: `{b0}`,
       axisPointer: {
         type: 'line',
         lineStyle: {
           color: '#808591',
           dashOffset: 100,
         },
-        animation: false,
+        animation: true,
       },
-      extraCssText: 'box-shadow: 0 0 0px rgba(0, 0, 0, 0);',
+      extraCssText: 'box-shadow: 0 0 0px rgba(0, 0, 0, 0); z-index: -1;',
     },
     grid: {
       left: '8%',

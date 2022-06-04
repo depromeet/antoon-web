@@ -22,4 +22,9 @@ const user = {
   information: () => [...user.all, 'information'],
 };
 
-export { webtoons, comments, user };
+const graph = {
+  all: ['graph'],
+  lists: (id: number, chartType: string) => [...graph.all, id, chartType],
+};
+
+export { webtoons, comments, graph, user };

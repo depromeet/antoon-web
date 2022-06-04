@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
-import { MouseEventHandler } from 'react';
 import {
   UpDownBtnWrapper,
   UpDownBtnTitle,
@@ -18,18 +18,19 @@ interface Props {
   /**
    * @name 모달
    */
-  onOpen: MouseEventHandler<HTMLElement>;
-  onJoinLeave: any;
+  onOpen: Function;
+  onJoinLeave: Function;
 }
 
 function UpDownBtn(props: Props) {
-  const clickwrapper = () => {
-    props.onJoinLeave;
+  const handleModalClick = () => {
+    props.onJoinLeave(props.upDownStatus);
+    props.onOpen();
   };
 
   return (
     <>
-      <UpDownBtnWrapper status={props.upDownStatus} onClick={props.onOpen}>
+      <UpDownBtnWrapper status={props.upDownStatus} onClick={handleModalClick}>
         <UpDownBtnTitle>
           {props.upDownStatus === 'JOIN' && (
             <span>

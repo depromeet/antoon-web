@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { webtoons } from '@apis/queryKeys';
+import { graph, webtoons } from '@apis/queryKeys';
 import { api } from './api';
 import {
   WebtoonRank,
@@ -10,6 +10,7 @@ import {
   WebtoonGenresTop3,
   Webtoon,
 } from '@_types/webtoon-type';
+import { Graph } from '@_types/chart-type';
 
 const getWebtoons = async () => {
   return await api
@@ -116,6 +117,19 @@ const useGetWebtoonsByDay = (day: string) => {
   );
 };
 
+const getGraphScore = async (webtoonId: number, chartType: string) => {
+  return await api
+    .get(`webtoons/${webtoonId}/graph-scores/${chartType}`)
+    .then((res) => res.data)
+    .catch((e) => console.log(e));
+};
+
+const useGetGraphScore = (webtoonId: number, chartType: string) => {
+  return useQuery<Graph>(graph.lists(webtoonId, chartType), () =>
+    getGraphScore(webtoonId, chartType),
+  );
+};
+
 export {
   getWebtoons,
   useGetWebtoons,
@@ -133,4 +147,6 @@ export {
   useGetWebtoonsRecommendation,
   getWebtoonsByDay,
   useGetWebtoonsByDay,
+  getGraphScore,
+  useGetGraphScore,
 };

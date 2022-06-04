@@ -1,11 +1,12 @@
-import { Webtoon, WebtoonWriter } from '@_types/webtoon-type';
+import { WebtoonWriter, ChartStatus } from '@_types/webtoon-type';
 import Image from 'next/image';
 import Charts from '@components/charts/Charts';
-import { ChartData } from '@_types/chart-type';
 import {
   Category,
   CategoryTitle,
   ChartWrapper,
+  VoteTimeHeader,
+  VoteTime,
   Container,
   Description,
   DescriptionContent,
@@ -32,53 +33,86 @@ import {
   PointTooltip,
   PointUpDown,
   ThumbNailWrapper,
+  VoteTimeContents,
 } from './Detail.style';
 import CategorySlider from '@components/detail/category/CategorySlider';
 import Tabs from '@components/detail/tabs/Tabs';
 import Bar from '@components/bar/Bar';
 import BtnFooter from '@components/detail/button/BtnFooter';
-import { useGetWebtoonById } from '@apis/webtoons';
+import { useGetGraphScore, useGetWebtoonById } from '@apis/webtoons';
 import ErrorBoundary from '@components/ErrorBoundary';
 import OnError from '@components/OnError';
 import { DEFAULT_IMG } from '@constants/icon-constants';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { isEllipsisActive } from 'utils/css-util';
 import Modal from '@components/modal/detail/Modal';
+import { Graph } from '@_types/chart-type';
+import useCountdown from '@hooks/useCountdown';
+import { countDownFormatter } from '@utils/date-util';
+
+type upDownStatusType = {
+  status: ChartStatus;
+  sign: string;
+};
+
+type JoinLeaveStatusType = 'NONE' | 'JOINED' | 'LEAVED';
 
 function Detail({ id }: { id: number }) {
-  const { data, isError } = useGetWebtoonById(id);
+  const { data } = useGetWebtoonById(id);
+
+  const chartData_days = useGetGraphScore(id, 'days').data;
+  const chartData_weekends = useGetGraphScore(id, 'weekends').data;
+  const chartData_months = useGetGraphScore(id, 'months').data;
+  const chartData_three_months = useGetGraphScore(id, 'three-months').data;
+
   const detailSubRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const [chartData, setChartData] = useState<Graph>();
   const [isHide, setIsHide] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [joinLeave, setJoinLeave] = useState('');
   const [isShowTooltip, setIsShowTooltip] = useState(false);
+  const [chartType, setChartType] = useState('days');
+  const [upDownStatus, setUpDownStatus] = useState<upDownStatusType>({
+    status: '',
+    sign: '',
+  });
+
   const DESCRIPTION_MORE_DEFAULT_MARGIN = 40;
 
-  /**
-   * @name 차트
-   * @mock {테스트데이터-아직MOCK입니다}
-   */
-  const chartData: ChartData = {
-    label: 'daily',
-    timeseries: {
-      '00:00': 3.12,
-      '04:00': 2.72,
-      '08:00': 5.73,
-      '12:00': 8.92,
-      '16:00': 6.71,
-      '20:00': 9.99,
-      '24:00': 7.73,
-    },
+  const getChartParameter = () => {
+    switch (chartType) {
+      case 'days':
+        setChartData(chartData_days);
+        break;
+      case 'weekends':
+        setChartData(chartData_weekends);
+        break;
+      case 'months':
+        setChartData(chartData_months);
+        break;
+      case 'three-months':
+        setChartData(chartData_three_months);
+        break;
+      default:
+        setChartData(chartData_days);
+    }
   };
+  const [hours, minutes, seconds] = useCountdown(countDownFormatter());
 
   useEffect(() => {
     if (descriptionRef.current && descriptionRef.current.clientHeight > 0) {
       !isEllipsisActive(descriptionRef.current) && setIsHide(true);
     }
+    if (data?.scoreGapPercent) {
+      setUpDownStatus(calculateUpDownStatus);
+    }
+    if (chartType && chartData_days) {
+      getChartParameter();
+    }
   });
 
-  if (isError || !data)
+  if (!data || !chartData_days)
     return <OnError> 웹툰정보를 불러오지 못하고 있어요😭😭😭</OnError>;
 
   const handleMoreBtnClick = () => {
@@ -133,37 +167,64 @@ function Detail({ id }: { id: number }) {
     }
   };
 
+  const calculateUpDownStatus: upDownStatusType =
+    data?.scoreGapPercent > 0
+      ? { status: 'UP', sign: '+' }
+      : data?.scoreGapPercent < 0
+      ? { status: 'DOWN', sign: '-' }
+      : { status: 'STALE', sign: '' };
+
+  const handleTabChange = (e: string) => {
+    setChartType(e);
+    getChartParameter();
+  };
+
   return (
     <ErrorBoundary message="웹툰정보를 불러오지 못하고 있어요 😭😭😭">
       <DetailWrapper>
         <Container>
+          <VoteTimeHeader>
+            <VoteTimeContents>
+              투표 마감까지{' '}
+              <VoteTime upDown={upDownStatus.status}>
+                {hours}시간 : {minutes}분 : {seconds}초{' '}
+              </VoteTime>
+              남음
+            </VoteTimeContents>
+          </VoteTimeHeader>
           <DetailContents>
             <DetailMain>
               <MainWrapper>
                 <MainHeader>
                   <PlatformHeader platform={data.platform}>
                     <Platform>
-                      <PlatformImg platform={data.platform}></PlatformImg>
+                      <PlatformImg
+                        platform={data.platform}
+                        onClick={() => (window.location.href = data.webtoonUrl)}
+                      ></PlatformImg>
                       {data.platformDescription} 바로가기&gt;
                     </Platform>
                   </PlatformHeader>
                   <MainTitle>{data.title}</MainTitle>
-                  <MainScore upDown={'UP' || ''}>
+                  <MainScore upDown={upDownStatus.status}>
                     <Point>
-                      998점
+                      {data.score}점
                       <PointTooltip>
                         <InfoBtn onClick={handleTooltipClick}></InfoBtn>
                         <InfoContent isShow={isShowTooltip}></InfoContent>
                       </PointTooltip>
                     </Point>
                     <PointUpDown>
-                      {'+' || ''}
-                      5점<PointPercentage>(14%)</PointPercentage>
+                      {upDownStatus.sign}
+                      0점
+                      <PointPercentage>
+                        ({data.scoreGapPercent}%)
+                      </PointPercentage>
                     </PointUpDown>
                   </MainScore>
                 </MainHeader>
                 <ThumbNailWrapper>
-                  <MainThumbnail upDown={'UP' || ''}>
+                  <MainThumbnail upDown={upDownStatus.status}>
                     <MainThumbnailImg>
                       <Image
                         src={data.thumbnail || DEFAULT_IMG.THUMBNAIL}
@@ -177,12 +238,12 @@ function Detail({ id }: { id: number }) {
                 </ThumbNailWrapper>
                 <ChartWrapper>
                   <Charts
-                    chartData={chartData}
-                    forceUpdate={false}
-                    status={'UP' || 'NONE'}
+                    chartData={chartData || chartData_days}
+                    forceUpdate={true}
+                    status={upDownStatus.status}
                   />
                 </ChartWrapper>
-                <Tabs />
+                <Tabs onTabChange={handleTabChange} />
               </MainWrapper>
             </DetailMain>
             <Bar />
@@ -221,14 +282,15 @@ function Detail({ id }: { id: number }) {
           </DetailContents>
           <BtnFooter
             onOpen={() => setIsModalOpen(true)}
-            onJoinLeave={() => {
-              setIsModalOpen(true), setJoinLeave('JOIN');
-            }}
+            onJoinLeave={setJoinLeave}
+            joinLeaveStatus={'NONE'}
+            joinCount={data.joinCount || 0}
+            leaveCount={data.leaveCount || 0}
           />
         </Container>
         <Modal
           title={data.title}
-          joinLeave={'JOIN'}
+          joinLeave={joinLeave}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
