@@ -18,9 +18,10 @@ import { default as RealTimeChartScoreChangeIcon } from '@assets/icons/ScoreChan
 import { useGetWebtoonsRanks } from '@apis/webtoons';
 import OnError from '@components/OnError';
 import ErrorBoundary from '@components/ErrorBoundary';
+import LoadingSpinner from '@components/spinner/LoadingSpinner';
 
 function RealTimeChart() {
-  const { data } = useGetWebtoonsRanks();
+  const { data, isLoading, isError } = useGetWebtoonsRanks();
 
   const [isSSR, setIsSSR] = useState(true);
 
@@ -28,7 +29,9 @@ function RealTimeChart() {
     setIsSSR(false);
   }, []);
 
-  if (data === undefined)
+  if (isLoading) return <LoadingSpinner />;
+
+  if (data === undefined || isError)
     return <OnError>랭킹을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
