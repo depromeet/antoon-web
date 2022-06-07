@@ -49,13 +49,12 @@ import Modal from '@components/modal/detail/Modal';
 import { Graph } from '@_types/chart-type';
 import useCountdown from '@hooks/useCountdown';
 import { countDownFormatter } from '@utils/date-util';
+import LoadingSpinner from '@components/spinner/LoadingSpinner';
 
 type upDownStatusType = {
   status: ChartStatus;
   sign: string;
 };
-
-type JoinLeaveStatusType = 'NONE' | 'JOINED' | 'LEAVED';
 
 function Detail({ id }: { id: number }) {
   const { data } = useGetWebtoonById(id);
@@ -113,7 +112,11 @@ function Detail({ id }: { id: number }) {
   });
 
   if (!data || !chartData_days)
-    return <OnError> 웹툰정보를 불러오지 못하고 있어요😭😭😭</OnError>;
+    return (
+      <OnError>
+        <LoadingSpinner></LoadingSpinner>
+      </OnError>
+    );
 
   const handleMoreBtnClick = () => {
     if (descriptionRef.current && detailSubRef.current) {
@@ -216,7 +219,7 @@ function Detail({ id }: { id: number }) {
                     </Point>
                     <PointUpDown>
                       {upDownStatus.sign}
-                      0점
+                      {data.scoreGap}점
                       <PointPercentage>
                         ({data.scoreGapPercent}%)
                       </PointPercentage>
@@ -233,7 +236,9 @@ function Detail({ id }: { id: number }) {
                         height={1000}
                       />
                     </MainThumbnailImg>
-                    <MainThumbnailRanking>12위</MainThumbnailRanking>
+                    <MainThumbnailRanking>
+                      {data.ranking || '-'}위
+                    </MainThumbnailRanking>
                   </MainThumbnail>
                 </ThumbNailWrapper>
                 <ChartWrapper>
@@ -283,7 +288,7 @@ function Detail({ id }: { id: number }) {
           <BtnFooter
             onOpen={() => setIsModalOpen(true)}
             onJoinLeave={setJoinLeave}
-            joinLeaveStatus={'JOIN'}
+            joinLeaveStatus={'NONE'}
             joinCount={data.joinCount || 0}
             leaveCount={data.leaveCount || 0}
           />

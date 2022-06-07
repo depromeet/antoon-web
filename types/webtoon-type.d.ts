@@ -7,6 +7,14 @@ export enum PlatformEnum {
   LEZHIN = '레진코믹스',
   ETC = '기타',
 }
+
+export type RecommendationStatus =
+  | 'NONE'
+  | 'JOINED'
+  | 'LEAVED'
+  | 'JOIN'
+  | 'LEAVE';
+
 export interface Webtoon {
   webtoondId: number;
   title: string;
@@ -24,7 +32,10 @@ export interface Webtoon {
   joinCount: number;
   leaveCount: number;
   score: number;
+  scoreGap: number;
   scoreGapPercent: number;
+  recommendationStatus: RecommendationStatus;
+  ranking?: number;
 }
 
 export type ChartStatus = 'UP' | 'DOWN' | 'STALE' | '';

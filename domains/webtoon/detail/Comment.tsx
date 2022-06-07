@@ -20,9 +20,15 @@ import OnError from '@components/OnError';
 import ErrorBoundary from '@components/ErrorBoundary';
 
 import { IComment } from '@_types/comments-type';
+import { useEffect, useState } from 'react';
 
 function Comment({ id }: { id: number }) {
+  const [comment, setComment] = useState([]);
   const { data: comments, isError } = useGetCommentsById(id);
+
+  useEffect(() => {
+    setComment(comments);
+  }, [comment]);
 
   if (isError) return <OnError>댓글을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
@@ -30,7 +36,7 @@ function Comment({ id }: { id: number }) {
     <ErrorBoundary message="댓글을 불러오지 못하고 있어요 😭😭😭">
       <CommentListWrap>
         <Title>개미들의 행진 {comments?.data.length}</Title>
-        <CommentTextInput length={comments?.data.length} />
+        <CommentTextInput length={comments?.data.length} webtoonId={id} />
         {comments?.data.map((comment: IComment) => {
           return (
             <CommentWrap key={comment.discussionId}>

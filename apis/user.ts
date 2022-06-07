@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { user } from './queryKeys';
-import { api } from './api';
+import { api, auth_api } from './api';
 
 const getToken = async (refreshToken: string) => {
   return await api
@@ -24,7 +24,7 @@ const useGetToken = (refreshToken: string) => {
 };
 
 const getUserInformation = async () => {
-  return await api
+  return await auth_api
     .get('users')
     .then((res) => res.data)
     .catch((e) => console.log(e));
