@@ -1,4 +1,8 @@
-import { WebtoonWriter, ChartStatus } from '@_types/webtoon-type';
+import {
+  WebtoonWriter,
+  ChartStatus,
+  WebtoonJoinLeaveRecommendation,
+} from '@_types/webtoon-type';
 import Image from 'next/image';
 import Charts from '@components/charts/Charts';
 import {
@@ -50,6 +54,7 @@ import { Graph } from '@_types/chart-type';
 import useCountdown from '@hooks/useCountdown';
 import { countDownFormatter } from '@utils/date-util';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
+import { number } from 'echarts';
 
 type upDownStatusType = {
   status: ChartStatus;
@@ -76,6 +81,8 @@ function Detail({ id }: { id: number }) {
     status: '',
     sign: '',
   });
+  const [recommends, setRecommends] =
+    useState<WebtoonJoinLeaveRecommendation>();
 
   const DESCRIPTION_MORE_DEFAULT_MARGIN = 40;
 
@@ -103,8 +110,14 @@ function Detail({ id }: { id: number }) {
     if (descriptionRef.current && descriptionRef.current.clientHeight > 0) {
       !isEllipsisActive(descriptionRef.current) && setIsHide(true);
     }
-    if (data?.scoreGapPercent) {
+    if (data?.scoreGapPercent && data) {
       setUpDownStatus(calculateUpDownStatus);
+      setRecommends({
+        isJoined: true,
+        isLeaved: false,
+        joinCount: data.joinCount,
+        leaveCount: data.leaveCount,
+      });
     }
     if (chartType && chartData_days) {
       getChartParameter();
@@ -289,14 +302,16 @@ function Detail({ id }: { id: number }) {
             onOpen={() => setIsModalOpen(true)}
             onJoinLeave={setJoinLeave}
             joinLeaveStatus={'NONE'}
-            joinCount={data.joinCount || 0}
-            leaveCount={data.leaveCount || 0}
+            joinCount={recommends?.joinCount || 0}
+            leaveCount={recommends?.leaveCount || 0}
           />
         </Container>
         <Modal
+          webtoonId={data.webtoondId}
           title={data.title}
           joinLeave={joinLeave}
           isOpen={isModalOpen}
+          onRecommendSet={setRecommends}
           onClose={() => setIsModalOpen(false)}
         />
       </DetailWrapper>

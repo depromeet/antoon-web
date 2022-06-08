@@ -8,7 +8,13 @@ import {
   ProfileName,
   SubmitButton,
 } from '@components/detail/commentTextInput/CommentTextInput.style';
-import { MouseEventHandler, useCallback, useRef, useState } from 'react';
+import {
+  MouseEventHandler,
+  useCallback,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import { useGetUserInformation } from '@apis/user';
 import { usePostCommentsById } from '@apis/comments';
@@ -25,6 +31,7 @@ function CommentTextInput(props: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [focused, setFocused] = useState(false);
   const [content, setContent] = useState('');
+
   const {
     isLoading,
     isSuccess,

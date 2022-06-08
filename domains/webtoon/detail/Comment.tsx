@@ -23,21 +23,21 @@ import { IComment } from '@_types/comments-type';
 import { useEffect, useState } from 'react';
 
 function Comment({ id }: { id: number }) {
-  const [comment, setComment] = useState([]);
-  const { data: comments, isError } = useGetCommentsById(id);
+  const [comments, setComments] = useState<IComment[]>([]);
+  const { data: t, isError } = useGetCommentsById(id);
 
   useEffect(() => {
-    setComment(comments);
-  }, [comment]);
+    if (t) setComments(t.data);
+  }, [comments]);
 
   if (isError) return <OnError>댓글을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
     <ErrorBoundary message="댓글을 불러오지 못하고 있어요 😭😭😭">
       <CommentListWrap>
-        <Title>개미들의 행진 {comments?.data.length}</Title>
-        <CommentTextInput length={comments?.data.length} webtoonId={id} />
-        {comments?.data.map((comment: IComment) => {
+        <Title>개미들의 행진 {comments?.length}</Title>
+        <CommentTextInput length={comments?.length} webtoonId={id} />
+        {comments?.map((comment: IComment) => {
           return (
             <CommentWrap key={comment.discussionId}>
               <UserProfile src={comment.imageUrl} width="32" height="32" />
