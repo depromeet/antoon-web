@@ -95,7 +95,12 @@ function Genres() {
 
   if (isLoading) return <LoadingSpinner />;
 
-  if (data === undefined || isError)
+  if (
+    data === undefined ||
+    !Array.isArray(data?.webtoons) ||
+    data?.webtoons?.length === 0 ||
+    isError
+  )
     return <OnError>장르별 웹툰을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   const genreMap = new Map<string, string[]>();
