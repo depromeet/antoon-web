@@ -27,7 +27,7 @@ function WeeklyWebtoons(props: Props) {
     isError,
   } = useGetWebtoonsByDay(selectedDay);
 
-  if ((isError || !Array.isArray(webtoons?.data)) && !isLoading)
+  if (isError || (webtoons?.data.length === 0 && !isLoading))
     return <OnError>요일별 웹툰을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
