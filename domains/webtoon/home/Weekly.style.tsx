@@ -17,7 +17,9 @@ type DaySelectButtonProps = {
 };
 
 const DaySelectButton = styled.button<DaySelectButtonProps>`
-  transition: all 300ms ease-in-out;
+  transition-duration: 200ms;
+  transition-property: background-color, color;
+  transition-timing-function: ease;
   border-radius: 24px;
   background-color: ${(props) =>
     props.selected ? props.theme.colors.grayscale.gray_800 : 'unset'};
