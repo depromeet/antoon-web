@@ -23,7 +23,7 @@ function Rising() {
 
   if (isLoading) return <LoadingSpinner />;
 
-  if (data === undefined || isError)
+  if (data === undefined || data?.webtoons.length === 0 || isError)
     return <OnError>상승중인 웹툰을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
