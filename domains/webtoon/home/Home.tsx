@@ -10,23 +10,21 @@ import {
   HomeBannerContainer,
   HomeBannerWrapper,
   HomeRealtimeChartWrapper,
-  HomeRealtimeChartTitleWrapper,
   HomeSectionWrapper,
   HomeSectionSubTitle,
-  HomeSectionTitleWithTimeWrapper,
   HomeSectionTitle,
-  HomeSectionTitleWithTime,
   HomeRecommendationWrapper,
   HomeRecommendationBackground,
   HomeWeeklyWrapper,
 } from './Home.style';
-import RealTimeChart from './RealTimeChart';
+import RealTimeChart from './realTimeChart/RealTimeChart';
 import Genres from './Genres';
 import Rising from './Rising';
 import Recommendation from './Recommendation';
 import Weekly from './Weekly';
 import HomePageBanner from '@assets/banners/HomePageBanner';
 import GoToRideButton from '@components/button/GoToRideBtn';
+import RealTimeChartTitle from './realTimeChart/RealTimeChartTitle';
 
 function Home() {
   const RealTimeChartRef = useRef<HTMLDivElement>(null);
@@ -54,13 +52,7 @@ function Home() {
         </HomeTopTitleWrapper>
       </HomeTopWrapper>
       <HomeRealtimeChartWrapper id="realtime-chart">
-        <HomeRealtimeChartTitleWrapper>
-          <HomeSectionSubTitle>다같이 영차영차!</HomeSectionSubTitle>
-          <HomeSectionTitleWithTimeWrapper>
-            <HomeSectionTitle>실시간 차트</HomeSectionTitle>
-            <HomeSectionTitleWithTime>14:00 기준</HomeSectionTitleWithTime>
-          </HomeSectionTitleWithTimeWrapper>
-        </HomeRealtimeChartTitleWrapper>
+        <RealTimeChartTitle />
         <Carousel ref={RealTimeChartRef}>
           <RealTimeChart />
         </Carousel>

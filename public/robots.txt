@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Disallow: /user/*
+
+# Host
+Host: https://antoon.fun
+
+# Sitemaps
+Sitemap: https://antoon.fun/sitemap.xml
