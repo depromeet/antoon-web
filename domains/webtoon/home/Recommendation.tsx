@@ -24,7 +24,12 @@ function Recommendation() {
 
   if (isLoading) return <LoadingSpinner />;
 
-  if (data?.webtoons === undefined || isError)
+  if (
+    data === undefined ||
+    !Array.isArray(data?.webtoons) ||
+    data?.webtoons?.length === 0 ||
+    isError
+  )
     return <OnError>연령별 웹툰을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
