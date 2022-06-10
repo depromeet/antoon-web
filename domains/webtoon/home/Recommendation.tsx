@@ -24,7 +24,7 @@ function Recommendation() {
 
   if (isLoading) return <LoadingSpinner />;
 
-  if (data === undefined || isError)
+  if (data?.webtoons === undefined || isError)
     return <OnError>연령별 웹툰을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
