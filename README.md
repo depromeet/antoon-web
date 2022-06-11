@@ -6,8 +6,8 @@
     <br />
     <p align="center">
         <a href="https://antoon.fun/" target="_blank" rel="noreferrer noopener">View Demo</a> ·
-        <a href="https://github.com/depromeet/11th_7team_web/issues" target="_blank" rel="noreferrer noopener">Report Bug</a> ·
-        <a href="https://github.com/depromeet/11th_7team_web/issues" target="_blank" rel="noreferrer noopener">Request Feature</a>
+        <a href="https://github.com/depromeet/antoon_web/issues" target="_blank" rel="noreferrer noopener">Report Bug</a> ·
+        <a href="https://github.com/depromeet/antoon_web/issues" target="_blank" rel="noreferrer noopener">Request Feature</a>
     </p>
 </p>
 
