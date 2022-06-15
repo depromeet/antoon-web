@@ -8,19 +8,47 @@ import {
   ProfileName,
   SubmitButton,
 } from '@components/detail/commentTextInput/CommentTextInput.style';
-import { useCallback, useRef, useState } from 'react';
+import {
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import Image from 'next/image';
+import { useGetUserInformation } from '@apis/user';
+import { usePostCommentsById } from '@apis/comments';
+import LoadingSpinner from '@components/spinner/LoadingSpinner';
 
 interface Props {
   length: number;
+  webtoonId: number;
 }
 
 function CommentTextInput(props: Props) {
+  const { data: user, isError } = useGetUserInformation();
   const MAX_LENGTH_CONTENT = 300;
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [focused, setFocused] = useState(false);
   const [content, setContent] = useState('');
+  const [isOver, setIsOver] = useState(false);
+
+  const {
+    isLoading,
+    isSuccess,
+    error,
+    mutate: postData,
+  } = usePostCommentsById(props.webtoonId, content);
+
+  useEffect(() => {
+    if (content.length >= MAX_LENGTH_CONTENT && textareaRef.current?.focus())
+      setIsOver(true);
+    else {
+      setIsOver(false);
+    }
+  }, [content]);
 
   const placeHolderText =
     Number(props.length) > 0
@@ -43,32 +71,53 @@ function CommentTextInput(props: Props) {
     setFocused(true);
   };
 
+  const onSubmitReply = () => {
+    try {
+      postData();
+      setContent('');
+      setFocused(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
-    <CommentTextInputWrapper>
-      <ProfileWrapper isShow={focused}>
-        <Profile>
-          <Image
-            src="https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png"
-            alt="프로필"
-            width={20}
-            height={20}
-          />
-          <ProfileName>{'ae-혜린개미'}</ProfileName>
-        </Profile>
-        <ContentCheckArea>
-          {content.length} / {MAX_LENGTH_CONTENT}
-        </ContentCheckArea>
-      </ProfileWrapper>
-      <TextAreaWrapper>
-        <TextArea
-          ref={textareaRef}
-          placeholder={placeHolderText}
-          onFocus={focusHandler}
-          value={content}
-          onChange={(e) => ContentCheckHandler(e.target.value)}
-        />
-        <SubmitButton isShow={focused}>등록</SubmitButton>
-      </TextAreaWrapper>
+    <CommentTextInputWrapper isOver={isOver}>
+      {user && (
+        <>
+          <ProfileWrapper isShow={focused}>
+            <Profile>
+              <Image
+                src={user.imageUrl}
+                alt={user.name}
+                width={20}
+                height={20}
+              />
+              <ProfileName>{user.name}</ProfileName>
+            </Profile>
+            <ContentCheckArea>
+              {content.length} / {MAX_LENGTH_CONTENT}
+            </ContentCheckArea>
+          </ProfileWrapper>
+          <TextAreaWrapper>
+            {isLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <TextArea
+                ref={textareaRef}
+                placeholder={placeHolderText}
+                onFocus={focusHandler}
+                value={content}
+                onChange={(e) => ContentCheckHandler(e.target.value)}
+              />
+            )}
+            <SubmitButton isShow={focused} onClick={onSubmitReply}>
+              등록
+            </SubmitButton>
+          </TextAreaWrapper>
+        </>
+      )}
+      {!user && <TextAreaWrapper>로그인이 필요합니다.</TextAreaWrapper>}
     </CommentTextInputWrapper>
   );
 }

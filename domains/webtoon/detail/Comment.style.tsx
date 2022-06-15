@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const CommentListWrap = styled.div`
-  min-height: 30rem;
+  min-height: 60rem;
 `;
 
 const Title = styled.p`

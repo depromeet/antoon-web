@@ -1,6 +1,6 @@
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { graph, webtoons } from '@apis/queryKeys';
-import { api } from './api';
+import { api, auth_api } from './api';
 import {
   WebtoonRank,
   WebtoonGenres,
@@ -144,7 +144,7 @@ const getJoinLeaveRecommendationById = async (
   webtoonId: number,
   status: string,
 ) => {
-  return await api
+  return await auth_api
     .patch(`recommendations/${webtoonId}?status=${status}`)
     .then((res) => res.data)
     .catch((e) => console.log(e));
@@ -154,7 +154,7 @@ const usePatchJoinLeaveRecommendationById = (
   webtoonId: number,
   status: string,
 ) => {
-  return useQuery<WebtoonJoinLeaveRecommendation>(
+  return useMutation<WebtoonJoinLeaveRecommendation>(
     webtoons.joinLeave(webtoonId, status),
     () => getJoinLeaveRecommendationById(webtoonId, status),
   );

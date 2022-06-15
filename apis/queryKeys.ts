@@ -17,6 +17,12 @@ const webtoons = {
 const comments = {
   all: ['comments'],
   lists: (id: number) => [...comments.all, 'lists', id],
+  create: (id: number, content: string) => [
+    ...comments.all,
+    'create',
+    id,
+    content,
+  ],
   isLiked: (id: number) => [...comments.all, 'isLiked', id],
 };
 
