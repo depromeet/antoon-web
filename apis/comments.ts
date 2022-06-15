@@ -1,6 +1,6 @@
-import { useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { comments } from './queryKeys';
-import { api } from './api';
+import { api, auth_api } from './api';
 
 const getCommentsById = async (id: number) => {
   return await api
@@ -26,9 +26,29 @@ const usePutCommentsLikedById = (id: number) => {
   });
 };
 
+const postCommentsById = async (id: number, content: string) => {
+  return await auth_api
+    .post(`webtoons/${id}/discussions`, { content: content })
+    .then((res) => res.data)
+    .catch((e) => console.log(e));
+};
+
+const usePostCommentsById = (id: number, content: string) => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    comments.create(id, content),
+    () => postCommentsById(id, content),
+    {
+      onSuccess: () => queryClient.invalidateQueries(comments.lists(id)),
+    },
+  );
+};
+
 export {
   getCommentsById,
   useGetCommentsById,
   getCommentsLikedById,
   usePutCommentsLikedById,
+  postCommentsById,
+  usePostCommentsById,
 };

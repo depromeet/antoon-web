@@ -1,4 +1,8 @@
-import { WebtoonWriter, ChartStatus } from '@_types/webtoon-type';
+import {
+  WebtoonWriter,
+  ChartStatus,
+  WebtoonJoinLeaveRecommendation,
+} from '@_types/webtoon-type';
 import Image from 'next/image';
 import Charts from '@components/charts/Charts';
 import {
@@ -49,16 +53,15 @@ import Modal from '@components/modal/detail/Modal';
 import { Graph } from '@_types/chart-type';
 import useCountdown from '@hooks/useCountdown';
 import { countDownFormatter } from '@utils/date-util';
+import LoadingSpinner from '@components/spinner/LoadingSpinner';
 
 type upDownStatusType = {
   status: ChartStatus;
   sign: string;
 };
 
-type JoinLeaveStatusType = 'NONE' | 'JOINED' | 'LEAVED';
-
 function Detail({ id }: { id: number }) {
-  const { data } = useGetWebtoonById(id);
+  const { data, isLoading } = useGetWebtoonById(id);
 
   const chartData_days = useGetGraphScore(id, 'days').data;
   const chartData_weekends = useGetGraphScore(id, 'weekends').data;
@@ -77,6 +80,8 @@ function Detail({ id }: { id: number }) {
     status: '',
     sign: '',
   });
+  const [recommends, setRecommends] =
+    useState<WebtoonJoinLeaveRecommendation>();
 
   const DESCRIPTION_MORE_DEFAULT_MARGIN = 40;
 
@@ -104,16 +109,23 @@ function Detail({ id }: { id: number }) {
     if (descriptionRef.current && descriptionRef.current.clientHeight > 0) {
       !isEllipsisActive(descriptionRef.current) && setIsHide(true);
     }
-    if (data?.scoreGapPercent) {
+    if (data?.scoreGapPercent && data) {
       setUpDownStatus(calculateUpDownStatus);
+      setRecommends({
+        recommendationStatus: data.recommendationStatus,
+        joinCount: data.joinCount,
+        leaveCount: data.leaveCount,
+      });
     }
     if (chartType && chartData_days) {
       getChartParameter();
     }
-  });
+  }, []);
 
-  if (!data || !chartData_days)
-    return <OnError> 웹툰정보를 불러오지 못하고 있어요😭😭😭</OnError>;
+  if (isLoading && !data) {
+    return <LoadingSpinner />;
+  } else if (!data || !chartData_days)
+    return <OnError>웹툰정보를 불러오지 못하고 있어요😭😭😭</OnError>;
 
   const handleMoreBtnClick = () => {
     if (descriptionRef.current && detailSubRef.current) {
@@ -216,7 +228,7 @@ function Detail({ id }: { id: number }) {
                     </Point>
                     <PointUpDown>
                       {upDownStatus.sign}
-                      0점
+                      {data.scoreGap}점
                       <PointPercentage>
                         ({data.scoreGapPercent}%)
                       </PointPercentage>
@@ -233,7 +245,9 @@ function Detail({ id }: { id: number }) {
                         height={1000}
                       />
                     </MainThumbnailImg>
-                    <MainThumbnailRanking>12위</MainThumbnailRanking>
+                    <MainThumbnailRanking>
+                      {data.ranking || '-'}위
+                    </MainThumbnailRanking>
                   </MainThumbnail>
                 </ThumbNailWrapper>
                 <ChartWrapper>
@@ -283,15 +297,17 @@ function Detail({ id }: { id: number }) {
           <BtnFooter
             onOpen={() => setIsModalOpen(true)}
             onJoinLeave={setJoinLeave}
-            joinLeaveStatus={'JOIN'}
-            joinCount={data.joinCount || 0}
-            leaveCount={data.leaveCount || 0}
+            joinLeaveStatus={recommends?.recommendationStatus || 'NONE'}
+            joinCount={recommends?.joinCount || 0}
+            leaveCount={recommends?.leaveCount || 0}
           />
         </Container>
         <Modal
+          webtoonId={data.webtoondId}
           title={data.title}
           joinLeave={joinLeave}
           isOpen={isModalOpen}
+          onRecommendSet={setRecommends}
           onClose={() => setIsModalOpen(false)}
         />
       </DetailWrapper>

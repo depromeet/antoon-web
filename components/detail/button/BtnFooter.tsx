@@ -13,7 +13,7 @@ import UpDownBtn from './UpDownBtn';
 import useCountdown from '@hooks/useCountdown';
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
 import Toast from './Toast';
-import { usePatchJoinLeaveRecommendationById } from '@apis/webtoons';
+import { RecommendationStatus } from '@_types/webtoon-type';
 
 function BtnFooter({
   onOpen,
@@ -25,7 +25,7 @@ function BtnFooter({
   onOpen: MouseEventHandler<HTMLButtonElement>;
   // eslint-disable-next-line @typescript-eslint/ban-types
   onJoinLeave: Function;
-  joinLeaveStatus: string;
+  joinLeaveStatus: RecommendationStatus;
   joinCount: number;
   leaveCount: number;
 }) {
@@ -41,12 +41,6 @@ function BtnFooter({
 
   const onToast = () => {
     setToastStatus(true);
-  };
-
-  const onpatchJoinLeave = (joinLeaveStatus: string) => {
-    // 임시
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { data } = usePatchJoinLeaveRecommendationById(1, '');
   };
 
   const [hours, minutes, seconds] = useCountdown(countDownFormatter());
@@ -70,17 +64,18 @@ function BtnFooter({
       {joinLeaveStatus === 'NONE' && (
         <>
           <UpDownBtn
-            upDownStatus="JOIN"
+            upDownStatus={'JOIN'}
             upDownUser={joinCount}
             onOpen={onOpen}
             onJoinLeave={onJoinLeave}
           />
           <UpDownBtn
-            upDownStatus="LEAVE"
-            upDownUser={leaveCount}
+            upDownStatus={'LEAVE'}
+            upDownUser={joinCount}
             onOpen={onOpen}
             onJoinLeave={onJoinLeave}
           />
+          ;
         </>
       )}
       {joinLeaveStatus !== 'NONE' && (
