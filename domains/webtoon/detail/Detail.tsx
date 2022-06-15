@@ -54,7 +54,6 @@ import { Graph } from '@_types/chart-type';
 import useCountdown from '@hooks/useCountdown';
 import { countDownFormatter } from '@utils/date-util';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
-import { number } from 'echarts';
 
 type upDownStatusType = {
   status: ChartStatus;
@@ -62,7 +61,7 @@ type upDownStatusType = {
 };
 
 function Detail({ id }: { id: number }) {
-  const { data } = useGetWebtoonById(id);
+  const { data, isLoading } = useGetWebtoonById(id);
 
   const chartData_days = useGetGraphScore(id, 'days').data;
   const chartData_weekends = useGetGraphScore(id, 'weekends').data;
@@ -113,8 +112,7 @@ function Detail({ id }: { id: number }) {
     if (data?.scoreGapPercent && data) {
       setUpDownStatus(calculateUpDownStatus);
       setRecommends({
-        isJoined: true,
-        isLeaved: false,
+        recommendationStatus: data.recommendationStatus,
         joinCount: data.joinCount,
         leaveCount: data.leaveCount,
       });
@@ -122,14 +120,12 @@ function Detail({ id }: { id: number }) {
     if (chartType && chartData_days) {
       getChartParameter();
     }
-  });
+  }, []);
 
-  if (!data || !chartData_days)
-    return (
-      <OnError>
-        <LoadingSpinner></LoadingSpinner>
-      </OnError>
-    );
+  if (isLoading && !data) {
+    return <LoadingSpinner />;
+  } else if (!data || !chartData_days)
+    return <OnError>웹툰정보를 불러오지 못하고 있어요😭😭😭</OnError>;
 
   const handleMoreBtnClick = () => {
     if (descriptionRef.current && detailSubRef.current) {
@@ -301,7 +297,7 @@ function Detail({ id }: { id: number }) {
           <BtnFooter
             onOpen={() => setIsModalOpen(true)}
             onJoinLeave={setJoinLeave}
-            joinLeaveStatus={'NONE'}
+            joinLeaveStatus={recommends?.recommendationStatus || 'NONE'}
             joinCount={recommends?.joinCount || 0}
             leaveCount={recommends?.leaveCount || 0}
           />

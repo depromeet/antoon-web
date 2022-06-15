@@ -41,8 +41,7 @@ export interface Webtoon {
 export type ChartStatus = 'UP' | 'DOWN' | 'STALE' | '';
 
 export interface WebtoonJoinLeaveRecommendation {
-  isJoined: boolean;
-  isLeaved: boolean;
+  recommendationStatus: RecommendationStatus;
   joinCount: number;
   leaveCount: number;
 }

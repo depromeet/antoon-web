@@ -54,7 +54,6 @@ function Modal({
   const handleJoinLeaveClick = () => {
     try {
       const t = postData();
-      console.log(t);
       onRecommendSet(t);
     } catch (e) {
       console.log(e);

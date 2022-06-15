@@ -11,6 +11,7 @@ import {
 import {
   MouseEventHandler,
   useCallback,
+  useEffect,
   useReducer,
   useRef,
   useState,
@@ -18,6 +19,7 @@ import {
 import Image from 'next/image';
 import { useGetUserInformation } from '@apis/user';
 import { usePostCommentsById } from '@apis/comments';
+import LoadingSpinner from '@components/spinner/LoadingSpinner';
 
 interface Props {
   length: number;
@@ -31,6 +33,7 @@ function CommentTextInput(props: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [focused, setFocused] = useState(false);
   const [content, setContent] = useState('');
+  const [isOver, setIsOver] = useState(false);
 
   const {
     isLoading,
@@ -38,6 +41,14 @@ function CommentTextInput(props: Props) {
     error,
     mutate: postData,
   } = usePostCommentsById(props.webtoonId, content);
+
+  useEffect(() => {
+    if (content.length >= MAX_LENGTH_CONTENT && textareaRef.current?.focus())
+      setIsOver(true);
+    else {
+      setIsOver(false);
+    }
+  }, [content]);
 
   const placeHolderText =
     Number(props.length) > 0
@@ -63,13 +74,15 @@ function CommentTextInput(props: Props) {
   const onSubmitReply = () => {
     try {
       postData();
+      setContent('');
+      setFocused(false);
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <CommentTextInputWrapper>
+    <CommentTextInputWrapper isOver={isOver}>
       {user && (
         <>
           <ProfileWrapper isShow={focused}>
@@ -87,20 +100,24 @@ function CommentTextInput(props: Props) {
             </ContentCheckArea>
           </ProfileWrapper>
           <TextAreaWrapper>
-            <TextArea
-              ref={textareaRef}
-              placeholder={placeHolderText}
-              onFocus={focusHandler}
-              value={content}
-              onChange={(e) => ContentCheckHandler(e.target.value)}
-            />
+            {isLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <TextArea
+                ref={textareaRef}
+                placeholder={placeHolderText}
+                onFocus={focusHandler}
+                value={content}
+                onChange={(e) => ContentCheckHandler(e.target.value)}
+              />
+            )}
             <SubmitButton isShow={focused} onClick={onSubmitReply}>
               등록
             </SubmitButton>
           </TextAreaWrapper>
         </>
       )}
-      {!user && <div>로그인이 필요합니다.</div>}
+      {!user && <TextAreaWrapper>로그인이 필요합니다.</TextAreaWrapper>}
     </CommentTextInputWrapper>
   );
 }

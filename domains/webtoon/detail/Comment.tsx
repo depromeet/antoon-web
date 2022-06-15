@@ -23,12 +23,12 @@ import { IComment } from '@_types/comments-type';
 import { useEffect, useState } from 'react';
 
 function Comment({ id }: { id: number }) {
-  const [comments, setComments] = useState<IComment[]>([]);
   const { data: t, isError } = useGetCommentsById(id);
+  const [comments, setComments] = useState<IComment[]>([]);
 
   useEffect(() => {
     if (t) setComments(t.data);
-  }, [comments]);
+  }, [t, comments]);
 
   if (isError) return <OnError>댓글을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
@@ -37,24 +37,25 @@ function Comment({ id }: { id: number }) {
       <CommentListWrap>
         <Title>개미들의 행진 {comments?.length}</Title>
         <CommentTextInput length={comments?.length} webtoonId={id} />
-        {comments?.map((comment: IComment) => {
-          return (
-            <CommentWrap key={comment.discussionId}>
-              <UserProfile src={comment.imageUrl} width="32" height="32" />
-              <MainWrap>
-                <UserInfo>
-                  <Name>{comment.nickname}</Name>
-                  <TimeStamp>몇 분 전일까요?</TimeStamp>
-                </UserInfo>
-                <Content>{comment.content}</Content>
-                <FavoriteWrap>
-                  <FavoriteBtn isFavoriteChecked={comment.isUserLike} />
-                  <Favorite>{comment.likeCount}</Favorite>
-                </FavoriteWrap>
-              </MainWrap>
-            </CommentWrap>
-          );
-        })}
+        {comments &&
+          comments?.map((comment: IComment) => {
+            return (
+              <CommentWrap key={comment.discussionId}>
+                <UserProfile src={comment.imageUrl} width="32" height="32" />
+                <MainWrap>
+                  <UserInfo>
+                    <Name>{comment.nickname}</Name>
+                    <TimeStamp>몇 분 전일까요?</TimeStamp>
+                  </UserInfo>
+                  <Content>{comment.content}</Content>
+                  <FavoriteWrap>
+                    <FavoriteBtn isFavoriteChecked={comment.isUserLike} />
+                    <Favorite>{comment.likeCount}</Favorite>
+                  </FavoriteWrap>
+                </MainWrap>
+              </CommentWrap>
+            );
+          })}
       </CommentListWrap>
     </ErrorBoundary>
   );

@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { comments } from './queryKeys';
 import { api, auth_api } from './api';
 
@@ -34,8 +34,13 @@ const postCommentsById = async (id: number, content: string) => {
 };
 
 const usePostCommentsById = (id: number, content: string) => {
-  return useMutation(comments.create(id, content), () =>
-    postCommentsById(id, content),
+  const queryClient = useQueryClient();
+  return useMutation(
+    comments.create(id, content),
+    () => postCommentsById(id, content),
+    {
+      onSuccess: () => queryClient.invalidateQueries(comments.lists(id)),
+    },
   );
 };
 
