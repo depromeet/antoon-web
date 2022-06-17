@@ -35,6 +35,9 @@ class ErrorBoundary extends Component<Props, State> {
 const ErrorMessage = styled.div`
   display: flex;
   justify-content: center;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 700;
 `;
 
 export default ErrorBoundary;
