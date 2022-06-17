@@ -27,9 +27,12 @@ const comments = {
 };
 
 const user = {
-  all: ['userInfo'],
+  all: ['user'],
   tokens: (refreshToken: string) => [...user.all, 'tokens', refreshToken],
+  delete: (refreshToken: string) => [...user.all, 'delete', refreshToken],
   information: () => [...user.all, 'information'],
+  updateName: (userName: string) => [...user.all, 'update', userName],
+  updateImg: (userImg: string) => [...user.all, 'update', userImg],
 };
 
 const graph = {
