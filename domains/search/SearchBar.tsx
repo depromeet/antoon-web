@@ -15,7 +15,7 @@ function SearchBar({
   searchInput,
   onChangeInput,
   onKeyDownEnter,
-  resetInput,
+  onResetInput,
   setSearchResults,
 }: any) {
   const router = useRouter();
@@ -41,7 +41,7 @@ function SearchBar({
             onKeyDown={onKeyDownEnter}
             placeholder="웹툰 제목을 입력해주세요."
           />
-          <DeleteIcon resetInput={resetInput} />
+          <DeleteIcon onResetInput={onResetInput} />
         </SearchBarWrap>
       </RightWrap>
     </SearchBarHeaderWrap>
