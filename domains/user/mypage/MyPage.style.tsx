@@ -7,6 +7,12 @@ const MyPageWrap = styled.div`
   margin: 1.6rem auto 0;
 `;
 
+const UserProfileForm = styled.form``;
+
+const UserProfileInput = styled.input`
+  display: none;
+`;
+
 const Menu = styled.div`
   width: 100%;
   font-size: 1.6rem;
@@ -36,4 +42,12 @@ const LogOutBtn = styled.button`
   font-weight: 600;
 `;
 
-export { MyPageWrap, Menu, SettingText, PolicyLink, LogOutBtn };
+export {
+  MyPageWrap,
+  UserProfileForm,
+  UserProfileInput,
+  Menu,
+  SettingText,
+  PolicyLink,
+  LogOutBtn,
+};

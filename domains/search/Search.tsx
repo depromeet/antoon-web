@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
 
-import { api } from '@apis/api';
+import { instance } from '@apis/api';
 
 import autoComplete from 'utils/autoComplete';
 
@@ -29,7 +29,7 @@ function Search({ webtoons }: { webtoons: [] }) {
     [setSearchInput],
   );
 
-  const resetInput = useCallback(() => {
+  const onResetInput = useCallback(() => {
     setSearchInput('');
   }, []);
 
@@ -49,7 +49,7 @@ function Search({ webtoons }: { webtoons: [] }) {
   const onKeyDownEnter = async (e: any) => {
     if (e.key == 'Enter' && searchLists.length > 0) {
       try {
-        const keywordResults = await api.post(`webtoons/search`, {
+        const keywordResults = await instance().post(`webtoons/search`, {
           webtoons: searchLists,
         });
 
@@ -71,7 +71,7 @@ function Search({ webtoons }: { webtoons: [] }) {
         searchInput={searchInput}
         onChangeInput={onChangeInput}
         onKeyDownEnter={onKeyDownEnter}
-        resetInput={resetInput}
+        onResetInput={onResetInput}
         setSearchResults={setSearchResults}
       />
       {searchInput == '' ? (

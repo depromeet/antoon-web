@@ -1,7 +1,7 @@
 import SearchIcon from '@assets/icons/SearchIcon';
 import { useRouter } from 'next/router';
 
-import { api } from '@apis/api';
+import { instance } from '@apis/api';
 
 import { AutoCompleteListWrap, AutoCompleteList } from './AutoComplet.style';
 
@@ -18,7 +18,7 @@ function AutoCompletList({
 
   const onClickAutoCompleteList = async () => {
     try {
-      const keywordResults = await api.post(`webtoons/search`, {
+      const keywordResults = await instance().post(`webtoons/search`, {
         webtoons: [autoCompleteList.id],
       });
 

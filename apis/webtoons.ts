@@ -1,6 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { graph, webtoons } from '@apis/queryKeys';
-import { api, auth_api } from './api';
+import { instance } from './api';
 import {
   WebtoonRank,
   WebtoonGenres,
@@ -14,7 +14,7 @@ import {
 import { Graph } from '@_types/chart-type';
 
 const getWebtoons = async () => {
-  return await api
+  return await instance()
     .get('webtoons')
     .then((res) => res.data)
     .catch((e) => console.log(e));
@@ -25,7 +25,7 @@ const useGetWebtoons = () => {
 };
 
 const getWebtoonById = async (webtoonId: number) => {
-  return await api
+  return await instance()
     .get(`webtoons/${webtoonId}`)
     .then((res) => res.data)
     .catch((e) => console.log(e));
@@ -38,7 +38,7 @@ const useGetWebtoonById = (webtoonId: number) => {
 };
 
 const getWebtoonsRanks = async () => {
-  return await api
+  return await instance()
     .get('top-ranks')
     .then((res) => res.data)
     .catch((e) => {
@@ -52,7 +52,7 @@ const useGetWebtoonsRanks = () => {
 };
 
 const getWebtoonsRising = async () => {
-  return await api
+  return await instance()
     .get('webtoons/top-upper')
     .then((res) => res.data)
     .catch((e) => {
@@ -66,7 +66,7 @@ const useGetWebtoonsRising = () => {
 };
 
 const getWebtoonsGenres = async () => {
-  return await api
+  return await instance()
     .get('webtoons/genres')
     .then((res) => res.data)
     .catch((e) => {
@@ -80,7 +80,7 @@ const useGetWebtoonsGenres = () => {
 };
 
 const getWebtoonsRecommendation = async () => {
-  return await api
+  return await instance()
     .get('webtoons/ages')
     .then((res) => res.data)
     .catch((e) => {
@@ -96,7 +96,7 @@ const useGetWebtoonsRecommendation = () => {
 };
 
 const getWebtoonsGenresTop3 = async () => {
-  return await api
+  return await instance()
     .get('webtoons/genres/top3')
     .then((res) => res.data)
     .catch((e) => {
@@ -112,7 +112,7 @@ const useGetWebtoonsGenresTop3 = () => {
 };
 
 const getWebtoonsByDay = async (day: string) => {
-  return await api
+  return await instance()
     .get(`webtoons/days/${day}`)
     .then((res) => res.data)
     .catch((e) => {
@@ -128,7 +128,7 @@ const useGetWebtoonsByDay = (day: string) => {
 };
 
 const getGraphScore = async (webtoonId: number, chartType: string) => {
-  return await api
+  return await instance()
     .get(`webtoons/${webtoonId}/graph-scores/${chartType}`)
     .then((res) => res.data)
     .catch((e) => console.log(e));
@@ -144,7 +144,7 @@ const getJoinLeaveRecommendationById = async (
   webtoonId: number,
   status: string,
 ) => {
-  return await auth_api
+  return await instance()
     .patch(`recommendations/${webtoonId}?status=${status}`)
     .then((res) => res.data)
     .catch((e) => console.log(e));
