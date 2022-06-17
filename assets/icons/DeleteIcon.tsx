@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import styled from '@emotion/styled';
 
-const DeleteIcon = ({ resetInput }: { resetInput: () => void }) => {
+const DeleteIcon = ({ onResetInput }: { onResetInput: () => void }) => {
   return (
-    <DeleteWrap onClick={resetInput}>
+    <DeleteWrap onClick={onResetInput}>
       <svg
         width="20"
         height="20"
