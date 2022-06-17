@@ -1,46 +1,101 @@
-import Link from 'next/link';
-import { getCookie } from 'cookies-next';
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useState, ChangeEvent } from 'react';
+import { useRouter } from 'next/router';
+import { getCookie, removeCookies } from 'cookies-next';
 
-import { api } from '@apis/api';
-import { useGetUserInformation } from '@apis/user';
+import {
+  useGetUserInformation,
+  usePostUserLogOut,
+  usePatchUserImg,
+} from '@apis/user';
 
 import MyPageBanner from '@assets/banners/MyPageBanner';
 import ChebronRightIcon from '@assets/icons/ChebronRightIcon';
-
 import ProfileDefaultImg from '@assets/images/ProfileDefaultImg';
+
 import UserProfile from '@components/image/UserProfile';
 import UserName from './UserName';
 import CustomHr from '@components/line/CustomHr';
+import OnError from '@components/OnError';
+import ErrorBoundary from '@components/ErrorBoundary';
 
 import {
   MyPageWrap,
+  UserProfileForm,
+  UserProfileInput,
   Menu,
   SettingText,
   PolicyLink,
   LogOutBtn,
 } from './MyPage.style';
 
-import OnError from '@components/OnError';
-import ErrorBoundary from '@components/ErrorBoundary';
-
 function MyPage() {
-  const accessToken = getCookie('Access');
-  api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+  const router = useRouter();
+
+  const refreshToken = getCookie('Refresh') as string;
+
+  const onClickLogOut = (refreshToken: string) => {
+    usePostUserLogOut(refreshToken);
+    removeCookies('Access', { path: '/', domain: 'localhost' });
+    removeCookies('Refresh', { path: '/', domain: 'localhost' });
+    router.push('/');
+  };
 
   const { data: user, isError } = useGetUserInformation();
 
+  const [userImg, setUserImg] = useState<string>();
+
+  const { error, mutate } = usePatchUserImg(String(userImg));
+
+  const uploadImg = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const reader = new FileReader();
+      const file = e.target.files[0];
+
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setUserImg(String(reader.result));
+        mutate(reader.result as unknown as void);
+      };
+    }
+  };
+
   if (isError)
     return <OnError>사용자 정보를 불러오지 못하고 있어요 😭😭😭</OnError>;
+
+  if (error)
+    return <OnError>프로필 이미지 수정 중 오류가 발생했어요 😭😭😭</OnError>;
 
   return (
     <ErrorBoundary message="사용자 정보를 불러오지 못하고 있어요 😭😭😭">
       <MyPageWrap>
         {user ? (
-          <UserProfile src={user.imageUrl} width="80" height="80" />
+          <UserProfileForm>
+            <UserProfileInput
+              id="user-profile-input"
+              type="file"
+              name="image"
+              accept="image/*"
+              onChange={uploadImg}
+            />
+            <label htmlFor="user-profile-input">
+              {userImg ? (
+                <UserProfile src={userImg} width="80" height="80" />
+              ) : (
+                <UserProfile src={user.imageUrl} width="80" height="80" />
+              )}
+            </label>
+          </UserProfileForm>
         ) : (
-          <ProfileDefaultImg width="80" height="80" />
+          <UserProfileForm>
+            <ProfileDefaultImg width="80" height="80" />
+          </UserProfileForm>
         )}
-        {user && <UserName name={user.name} />}
+        {user ? (
+          <UserName name={user.name} />
+        ) : (
+          <UserName name="일하는일개미" />
+        )}
         <MyPageBanner />
         <Menu>
           <CustomHr margin="2.4rem 0 1.6rem -2.4rem" />
@@ -64,14 +119,10 @@ function MyPage() {
             <ChebronRightIcon />
           </PolicyLink>
           <CustomHr margin="2.4rem 0 1.6rem -2.4rem" />
-          <Link href="/user/signin" passHref>
-            <a>
-              <LogOutBtn>
-                <span> 로그아웃</span>
-                <ChebronRightIcon />
-              </LogOutBtn>
-            </a>
-          </Link>
+          <LogOutBtn onClick={() => onClickLogOut(refreshToken)}>
+            <span>로그아웃</span>
+            <ChebronRightIcon />
+          </LogOutBtn>
         </Menu>
       </MyPageWrap>
     </ErrorBoundary>
