@@ -5,8 +5,6 @@ import { useEffect } from 'react';
 import { setCookies } from 'cookies-next';
 import { Mixpanel } from 'mixpanel';
 
-import { api } from '@apis/api';
-
 import KakaoLoginImg from '@assets/images/KakaoLoginImg';
 import ChebronRightIcon from '@assets/icons/ChebronRightIcon';
 
@@ -62,11 +60,17 @@ export async function getServerSideProps({
   const accessToken = authArr && authArr[2];
   const refreshToken = authArr && authArr[4];
 
-  api.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-  setCookies('Access', accessToken, { req, res, maxAge: 60 * 60 * 24 * 60 });
-  setCookies('Refresh', refreshToken, { req, res, maxAge: 60 * 60 * 24 * 60 });
+  accessToken &&
+    setCookies('Access', accessToken, { req, res, maxAge: 60 * 60 * 24 * 60 });
 
-  if (status === 'signup') {
+  refreshToken &&
+    setCookies('Refresh', refreshToken, {
+      req,
+      res,
+      maxAge: 60 * 60 * 24 * 60,
+    });
+
+  if (status === 'SIGNUP') {
     return {
       redirect: {
         destination: '/user/signup/policy',
@@ -75,7 +79,7 @@ export async function getServerSideProps({
     };
   }
 
-  if (status === 'success') {
+  if (status === 'SUCCESS') {
     return {
       redirect: {
         destination: '/',

@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { comments } from './queryKeys';
-import { api, auth_api } from './api';
+import { instance } from './api';
 
 const getCommentsById = async (id: number) => {
-  return await api
+  return await instance()
     .get(`webtoons/${id}/discussions`)
     .then((res) => res.data)
     .catch((e) => console.log(e));
@@ -14,7 +14,7 @@ const useGetCommentsById = (id: number) => {
 };
 
 const getCommentsLikedById = async (id: number) => {
-  return await api
+  return await instance()
     .put(`webtoons/discussions/${id}/likes`)
     .then((res) => res.data)
     .catch((e) => console.log(e));
@@ -27,7 +27,7 @@ const usePutCommentsLikedById = (id: number) => {
 };
 
 const postCommentsById = async (id: number, content: string) => {
-  return await auth_api
+  return await instance()
     .post(`webtoons/${id}/discussions`, { content: content })
     .then((res) => res.data)
     .catch((e) => console.log(e));
