@@ -51,7 +51,7 @@ const usePostUserLogOut = (refreshToken: string) => {
 
 const patchUserName = async (userName: string) => {
   return await instance()
-    .patch('users/name', {
+    .patch('users/names', {
       name: userName,
     })
     .catch((e) => console.log(e));
@@ -83,6 +83,7 @@ export {
   useGetUserInformation,
   usePostToken,
   usePostUserLogOut,
+  patchUserName,
   usePatchUserName,
   usePatchUserImg,
 };
