@@ -23,6 +23,13 @@ const comments = {
     id,
     content,
   ],
+  patch: (id: number, content: string) => [
+    ...comments.all,
+    'patch',
+    id,
+    content,
+  ],
+  delete: (id: number) => [...comments.all, 'delete', id],
   isLiked: (id: number) => [...comments.all, 'isLiked', id],
 };
 
@@ -31,6 +38,7 @@ const user = {
   tokens: (refreshToken: string) => [...user.all, 'tokens', refreshToken],
   delete: (refreshToken: string) => [...user.all, 'delete', refreshToken],
   information: () => [...user.all, 'information'],
+  logout: (refreshToken: string) => [...user.all, 'logout', refreshToken],
   updateName: (userName: string) => [...user.all, 'update', userName],
   updateImg: (userImg: string) => [...user.all, 'update', userImg],
 };

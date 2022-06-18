@@ -46,7 +46,9 @@ const postUserLogOut = async (refreshToken: string) => {
 };
 
 const usePostUserLogOut = (refreshToken: string) => {
-  return useQuery(user.information(), () => postUserLogOut(refreshToken));
+  return useMutation(user.logout(refreshToken), () =>
+    postUserLogOut(refreshToken),
+  );
 };
 
 const patchUserName = async (userName: string) => {

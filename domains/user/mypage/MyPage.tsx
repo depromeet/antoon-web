@@ -34,8 +34,10 @@ function MyPage() {
 
   const refreshToken = getCookie('Refresh') as string;
 
+  const { mutate: mutateLogOut } = usePostUserLogOut(refreshToken);
+
   const onClickLogOut = (refreshToken: string) => {
-    usePostUserLogOut(refreshToken);
+    mutateLogOut(refreshToken as unknown as void);
     removeCookies('Access', { path: '/', domain: 'localhost' });
     removeCookies('Refresh', { path: '/', domain: 'localhost' });
     router.push('/');
@@ -45,7 +47,7 @@ function MyPage() {
 
   const [userImg, setUserImg] = useState<string>();
 
-  const { error, mutate } = usePatchUserImg(String(userImg));
+  const { mutate: mutatePatchUserImg } = usePatchUserImg(String(userImg));
 
   const uploadImg = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -55,16 +57,13 @@ function MyPage() {
       reader.readAsDataURL(file);
       reader.onloadend = () => {
         setUserImg(String(reader.result));
-        mutate(reader.result as unknown as void);
+        mutatePatchUserImg(reader.result as unknown as void);
       };
     }
   };
 
   if (isError)
     return <OnError>사용자 정보를 불러오지 못하고 있어요 😭😭😭</OnError>;
-
-  if (error)
-    return <OnError>프로필 이미지 수정 중 오류가 발생했어요 😭😭😭</OnError>;
 
   return (
     <ErrorBoundary message="사용자 정보를 불러오지 못하고 있어요 😭😭😭">
