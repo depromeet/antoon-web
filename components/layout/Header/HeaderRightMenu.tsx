@@ -1,13 +1,14 @@
 import Link from 'next/link';
 
 import SearchIcon from '@assets/icons/SearchIcon';
+import ProfileDefaultImg from '@assets/images/ProfileDefaultImg';
 import ShareIcon from '@assets/icons/ShareIcon';
 
 import UserProfile from '@components/image/UserProfile';
 
 import { RightWrap, MenuWrap } from './HeaderRightMenu.style';
 
-import ProfileDefaultImg from '@assets/images/ProfileDefaultImg';
+import { useGetUserInformation } from '@apis/user';
 
 function HeaderRightMenu({
   rightBtn,
@@ -16,6 +17,10 @@ function HeaderRightMenu({
   rightBtn?: string;
   imageUrl?: string;
 }) {
+  const { data: user } = useGetUserInformation();
+
+  const userProfileImg = user?.imageUrl;
+
   return (
     <RightWrap>
       {rightBtn === 'menu' ? (
@@ -25,6 +30,22 @@ function HeaderRightMenu({
               <SearchIcon />
             </a>
           </Link>
+          {userProfileImg ? (
+            <Link href="/user/mypage" passHref>
+              <a>
+                <UserProfile src={userProfileImg} width="24" height="24" />
+              </a>
+            </Link>
+          ) : (
+            <Link href="/user/signin" passHref>
+              <a>
+                <ProfileDefaultImg width="24" height="24" />
+              </a>
+            </Link>
+          )}
+        </MenuWrap>
+      ) : rightBtn === 'profile' ? (
+        <>
           {imageUrl ? (
             <Link href="/user/mypage" passHref>
               <a>
@@ -38,7 +59,7 @@ function HeaderRightMenu({
               </a>
             </Link>
           )}
-        </MenuWrap>
+        </>
       ) : rightBtn === 'share' ? (
         <ShareIcon />
       ) : (

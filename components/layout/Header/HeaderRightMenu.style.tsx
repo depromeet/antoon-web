@@ -13,7 +13,7 @@ const MenuWrap = styled.div`
     margin: 0 1.6rem 0 0;
   }
 
-  a:nth-child(2) {
+  a:nth-of-type(2) {
     max-width: 2.4rem;
   }
 `;
