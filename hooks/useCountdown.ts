@@ -1,8 +1,14 @@
-import { getReturnValues } from '@utils/date-util';
+import {
+  countDownFormatter,
+  getDateFormatter,
+  getReturnValues,
+} from '@utils/date-util';
 import { useEffect, useState } from 'react';
 
-function useCountdown(targetDate: Date) {
-  const countDownDate = targetDate.getTime();
+function useCountdown(targetDate = '') {
+  const countDownDate = targetDate
+    ? getDateFormatter(targetDate)
+    : countDownFormatter().getTime();
 
   const [countDown, setCountDown] = useState(
     countDownDate - new Date().getTime(),

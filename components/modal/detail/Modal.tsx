@@ -1,5 +1,4 @@
 import { usePatchJoinLeaveRecommendationById } from '@apis/webtoons';
-import themes from '@styles/themes/themes';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {

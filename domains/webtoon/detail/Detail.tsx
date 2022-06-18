@@ -103,7 +103,7 @@ function Detail({ id }: { id: number }) {
         setChartData(chartData_days);
     }
   };
-  const [hours, minutes, seconds] = useCountdown(countDownFormatter());
+  const [hours, minutes, seconds] = useCountdown();
 
   useEffect(() => {
     if (descriptionRef.current && descriptionRef.current.clientHeight > 0) {
