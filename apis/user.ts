@@ -31,24 +31,14 @@ const useGetUserInformation = () => {
   return useQuery(user.information(), () => getUserInformation());
 };
 
-const postUserLogOut = async (refreshToken: string) => {
+const postUserLogOut = async () => {
   return await instance()
-    .post(
-      'auth/logout',
-      {},
-      {
-        headers: {
-          Refresh: refreshToken,
-        },
-      },
-    )
+    .post('auth/logout')
     .catch((e) => console.log(e));
 };
 
-const usePostUserLogOut = (refreshToken: string) => {
-  return useMutation(user.logout(refreshToken), () =>
-    postUserLogOut(refreshToken),
-  );
+const usePostUserLogOut = () => {
+  return useMutation(user.logout(), () => postUserLogOut());
 };
 
 const patchUserName = async (userName: string) => {

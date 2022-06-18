@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useState, ChangeEvent } from 'react';
 import { useRouter } from 'next/router';
-import { getCookie, removeCookies } from 'cookies-next';
+import { removeCookies } from 'cookies-next';
 
 import {
   useGetUserInformation,
@@ -32,12 +32,10 @@ import {
 function MyPage() {
   const router = useRouter();
 
-  const refreshToken = getCookie('Refresh') as string;
+  const { mutate: mutateLogOut } = usePostUserLogOut();
 
-  const { mutate: mutateLogOut } = usePostUserLogOut(refreshToken);
-
-  const onClickLogOut = (refreshToken: string) => {
-    mutateLogOut(refreshToken as unknown as void);
+  const onClickLogOut = () => {
+    mutateLogOut();
     removeCookies('Access', { path: '/', domain: 'localhost' });
     removeCookies('Refresh', { path: '/', domain: 'localhost' });
     router.push('/');
@@ -118,7 +116,7 @@ function MyPage() {
             <ChebronRightIcon />
           </PolicyLink>
           <CustomHr margin="2.4rem 0 1.6rem -2.4rem" />
-          <LogOutBtn onClick={() => onClickLogOut(refreshToken)}>
+          <LogOutBtn onClick={() => onClickLogOut()}>
             <span>로그아웃</span>
             <ChebronRightIcon />
           </LogOutBtn>

@@ -38,7 +38,7 @@ const user = {
   tokens: (refreshToken: string) => [...user.all, 'tokens', refreshToken],
   delete: (refreshToken: string) => [...user.all, 'delete', refreshToken],
   information: () => [...user.all, 'information'],
-  logout: (refreshToken: string) => [...user.all, 'logout', refreshToken],
+  logout: () => [...user.all, 'logout'],
   updateName: (userName: string) => [...user.all, 'update', userName],
   updateImg: (userImg: string) => [...user.all, 'update', userImg],
 };
