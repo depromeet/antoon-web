@@ -5,7 +5,6 @@ import Header from '@components/layout/Header/Header';
 import VoteDetail from '@domains/community/topic/VoteDetail';
 import Comment from '@domains/webtoon/detail/Comment';
 import { GetServerSideProps } from 'next';
-import { useGetUserInformation } from '@apis/user';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query } = context;
@@ -29,15 +28,9 @@ function TopicABVote({ id }: Prop) {
     });
   }, [id]);
 
-  const { data: user } = useGetUserInformation();
-
   return (
     <>
-      {user ? (
-        <Header rightBtn="menu" imageUrl={user.imageUrl} />
-      ) : (
-        <Header rightBtn="menu" />
-      )}
+      <Header rightBtn="profile" />
       <VoteDetail id={Number(id)} />
       <Comment id={Number(id)} />
     </>
