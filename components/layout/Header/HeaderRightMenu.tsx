@@ -10,11 +10,13 @@ import { RightWrap, MenuWrap } from './HeaderRightMenu.style';
 
 import { useGetUserInformation } from '@apis/user';
 
+type RightBtn = 'menu' | 'profile' | 'share' | undefined;
+
 function HeaderRightMenu({
   rightBtn,
   imageUrl,
 }: {
-  rightBtn?: string;
+  rightBtn?: RightBtn;
   imageUrl?: string;
 }) {
   const { data: user } = useGetUserInformation();

@@ -5,7 +5,9 @@ import BackIcon from '@assets/icons/BackIcon';
 
 import { LeftWrap } from './HeaderLeftMenu.style';
 
-function HeaderLeftMenu({ leftBtn }: { leftBtn?: string }) {
+type LeftBtn = 'logo' | undefined;
+
+function HeaderLeftMenu({ leftBtn }: { leftBtn?: LeftBtn }) {
   const router = useRouter();
 
   return (
