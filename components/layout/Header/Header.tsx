@@ -5,10 +5,13 @@ import HeaderRightMenu from './HeaderRightMenu';
 
 import { HeaderWrap, Title } from './Header.style';
 
+type LeftBtn = 'logo' | undefined;
+type RightBtn = 'menu' | 'profile' | 'share' | undefined;
+
 type HeaderProps = {
-  leftBtn?: string;
+  leftBtn?: LeftBtn;
   title?: string;
-  rightBtn?: string;
+  rightBtn?: RightBtn;
   imageUrl?: string;
 };
 

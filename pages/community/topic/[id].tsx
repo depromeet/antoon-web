@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Mixpanel } from 'mixpanel';
 
 import Header from '@components/layout/Header/Header';
-import Detail from '@domains/webtoon/detail/Detail';
+import VoteDetail from '@domains/community/topic/VoteDetail';
 import Comment from '@domains/webtoon/detail/Comment';
 import { GetServerSideProps } from 'next';
 
@@ -20,21 +20,21 @@ interface Prop {
   id: number;
 }
 
-function WebtoonDetail({ id }: Prop) {
+function TopicABVote({ id }: Prop) {
   useEffect(() => {
     Mixpanel.track('페이지 진입', {
-      page: '웹툰 상세 페이지',
-      webtoonId: id,
+      page: 'A/B 투표 상세 페이지',
+      voteId: id,
     });
   }, [id]);
 
   return (
     <>
-      <Header />
-      <Detail id={Number(id)} />
+      <Header rightBtn="profile" />
+      <VoteDetail id={Number(id)} />
       <Comment id={Number(id)} />
     </>
   );
 }
 
-export default WebtoonDetail;
+export default TopicABVote;
