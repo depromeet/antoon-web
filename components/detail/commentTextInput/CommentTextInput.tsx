@@ -20,6 +20,7 @@ import Image from 'next/image';
 import { useGetUserInformation } from '@apis/user';
 import { usePostCommentsById } from '@apis/comments';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
+import OnError from '@components/OnError';
 
 interface Props {
   length: number;
@@ -81,6 +82,8 @@ function CommentTextInput(props: Props) {
     }
   };
 
+  if (isError) return <OnError>로그인이 필요합니다.</OnError>;
+
   return (
     <CommentTextInputWrapper isOver={isOver}>
       {user && (
@@ -117,7 +120,7 @@ function CommentTextInput(props: Props) {
           </TextAreaWrapper>
         </>
       )}
-      {!user && <TextAreaWrapper>로그인이 필요합니다.</TextAreaWrapper>}
+      {}
     </CommentTextInputWrapper>
   );
 }

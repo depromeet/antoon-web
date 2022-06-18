@@ -1,4 +1,3 @@
-import { webtoons } from '@apis/queryKeys';
 export type PlatformType = 'NAVER' | 'KAKAO' | 'LEZHIN' | 'ETC';
 
 export enum PlatformEnum {
@@ -16,7 +15,7 @@ export type RecommendationStatus =
   | 'LEAVE';
 
 export interface Webtoon {
-  webtoondId: number;
+  webtoonId: number;
   title: string;
   content: string;
   webtoonUrl: string;

@@ -303,7 +303,7 @@ function Detail({ id }: { id: number }) {
           />
         </Container>
         <Modal
-          webtoonId={data.webtoondId}
+          webtoonId={data.webtoonId}
           title={data.title}
           joinLeave={joinLeave}
           isOpen={isModalOpen}
