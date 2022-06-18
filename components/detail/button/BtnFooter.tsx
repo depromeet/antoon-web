@@ -41,14 +41,11 @@ function BtnFooter({
   const onToast = () => {
     setToastStatus(true);
   };
-  const [hours, minutes, seconds] = useCountdown();
 
   return (
     <BtnWrapper>
       <FilterBlur></FilterBlur>
-      {!ToastStatus && !isSSR && (
-        <TimeCounter hours={hours} minutes={minutes} seconds={seconds} />
-      )}
+      {!ToastStatus && !isSSR && <TimeCounter />}
       {ToastStatus && (
         <Toast
           joinLeaveStatus={joinLeaveStatus}

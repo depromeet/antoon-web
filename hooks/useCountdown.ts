@@ -18,9 +18,8 @@ function useCountdown(targetDate = '') {
     const interval = setInterval(() => {
       setCountDown(countDownDate - new Date().getTime());
     }, 1000);
-
     return () => clearInterval(interval);
-  }, []);
+  });
 
   return getReturnValues(countDown);
 }

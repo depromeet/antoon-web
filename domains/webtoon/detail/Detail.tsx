@@ -52,7 +52,6 @@ import { isEllipsisActive } from 'utils/css-util';
 import Modal from '@components/modal/detail/Modal';
 import { Graph } from '@_types/chart-type';
 import useCountdown from '@hooks/useCountdown';
-import { countDownFormatter } from '@utils/date-util';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
 
 type upDownStatusType = {
@@ -103,7 +102,7 @@ function Detail({ id }: { id: number }) {
         setChartData(chartData_days);
     }
   };
-  const [hours, minutes, seconds] = useCountdown();
+  const [days, hours, minutes, seconds] = useCountdown();
 
   useEffect(() => {
     if (descriptionRef.current && descriptionRef.current.clientHeight > 0) {
