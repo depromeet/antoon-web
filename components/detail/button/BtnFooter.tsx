@@ -3,17 +3,16 @@ import { MouseEventHandler, useEffect, useState } from 'react';
 import {
   BtnWrapper,
   FilterBlur,
-  StockTimer,
-  TimerCount,
   UpDownBlockInfo,
   UpDownBlockTitle,
   UpDownBlockWrapper,
 } from './BtnFooter.style';
 import UpDownBtn from './UpDownBtn';
-import useCountdown from '@hooks/useCountdown';
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
 import Toast from './Toast';
 import { RecommendationStatus } from '@_types/webtoon-type';
+import TimeCounter from '@components/timecounter/TimeCounter';
+import useCountdown from '@hooks/useCountdown';
 
 function BtnFooter({
   onOpen,
@@ -43,18 +42,10 @@ function BtnFooter({
     setToastStatus(true);
   };
 
-  const [hours, minutes, seconds] = useCountdown(countDownFormatter());
   return (
     <BtnWrapper>
       <FilterBlur></FilterBlur>
-      {!ToastStatus && (
-        <StockTimer>
-          <TimerCount>
-            {!isSSR &&
-              `투표 종료까지 시간 ${hours}시간: ${minutes}분 : ${seconds}초 남음`}
-          </TimerCount>
-        </StockTimer>
-      )}
+      {!ToastStatus && !isSSR && <TimeCounter />}
       {ToastStatus && (
         <Toast
           joinLeaveStatus={joinLeaveStatus}
