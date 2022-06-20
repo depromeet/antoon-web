@@ -10,15 +10,19 @@ const VoteHeaderWrapper = styled.article`
 `;
 const VoteTitle = styled.h2`
   padding-top: 10px;
+  padding-right: 30px;
   padding-left: 30px;
   font-size: 16px;
   font-weight: 700;
 `;
-const VoteTag = styled.div`
+const VoteTag = styled.div<{ category: string }>`
   display: flex;
   padding-top: 20px;
   padding-left: 30px;
-  color: ${(props) => props.theme.colors.chart.point_up_100};
+  color: ${(props) =>
+    props.category === 'ab'
+      ? props.theme.colors.chart.point_up_100
+      : props.theme.colors.chart.point_down_100};
   font-size: 11px;
   font-weight: 600;
 `;
