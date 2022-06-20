@@ -1,4 +1,3 @@
-import { countDownFormatter } from '@utils/date-util';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import {
   BtnWrapper,
@@ -12,7 +11,6 @@ import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
 import Toast from './Toast';
 import { RecommendationStatus } from '@_types/webtoon-type';
 import TimeCounter from '@components/timecounter/TimeCounter';
-import useCountdown from '@hooks/useCountdown';
 
 function BtnFooter({
   onOpen,

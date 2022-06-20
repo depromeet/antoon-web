@@ -11,8 +11,8 @@ function VoteDetail({ id }: { id: number }) {
   //const { data, isLoading } = useGetVoteById(id);
   const data: Vote = {
     voteId: 1,
-    voteCategory: 'ab',
-    title: '이경우, 강효민 둘이 싸우면 누가 이길까?',
+    voteCategory: 'choice',
+    title: '주영, 자림 커플은 이대로 헤어질까? 그러면 어떻게 되징 2줄',
     tags: ['연애혁명', '소녀심판'],
     votingEndTime: '2022-06-30T14:00:45',
     voteItems: [
@@ -25,6 +25,12 @@ function VoteDetail({ id }: { id: number }) {
       {
         id: 2,
         content: '무조건 이 경우가 이긴다2.',
+        imageUrl:
+          'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
+      },
+      {
+        id: 3,
+        content: '무조건 이 경우가 이긴다3.',
         imageUrl:
           'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
       },
