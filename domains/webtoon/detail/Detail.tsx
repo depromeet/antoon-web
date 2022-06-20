@@ -149,6 +149,7 @@ function Detail({ id }: { id: number }) {
         .reduce((acc, cur) => `${acc},${cur.day}`, '')
         .substring(1),
     };
+    if (normalPublishedday.day == 'null') return '없음';
 
     switch (data.publishDays.length) {
       case 0:

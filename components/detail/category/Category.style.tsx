@@ -4,16 +4,20 @@ import 'slick-carousel/slick/slick-theme.css';
 
 const SliderWrapper = styled.div`
   & .slick-slide {
-    margin: 0 3px;
+    padding: 0 4px;
   }
 
   & .slick-list {
+    margin: 0 0.1rem;
+
     & .slick-track {
-      width: 500% !important;
+      width: 300% !important;
     }
   }
 `;
-const CategoryCardWrapper = styled.div``;
+const CategoryCardWrapper = styled.div`
+  width: 100%;
+`;
 
 const CategorySliderCard = styled.div`
   position: relative;
@@ -29,7 +33,6 @@ const CategoryTitle = styled.p`
   margin-top: 12px;
   margin-left: 14px;
   color: ${(props) => props.theme.colors.grayscale.gray_800};
-  font-family: Pretendard;
   font-size: 12px;
 `;
 
