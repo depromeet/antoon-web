@@ -1,4 +1,4 @@
-import CheckIcon from '@assets/icons/CheckIcon';
+import { CheckIcon } from '@assets/icons/CheckIcon';
 import { VoteItem } from '@_types/vote-type';
 import { MouseEventHandler } from 'react';
 
