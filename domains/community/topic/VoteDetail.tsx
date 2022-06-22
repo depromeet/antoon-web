@@ -1,6 +1,6 @@
 import ErrorBoundary from '@components/ErrorBoundary';
 import Modal from '@components/modal/vote/Modal';
-import { Vote } from '@_types/vote-type';
+import { Vote, VoteResult } from '@_types/vote-type';
 import { useState } from 'react';
 import ABVote from './ABVote';
 import ChoiceVote from './ChoiceVote';
@@ -11,7 +11,7 @@ function VoteDetail({ id }: { id: number }) {
   //const { data, isLoading } = useGetVoteById(id);
   const data: Vote = {
     voteId: 1,
-    voteCategory: 'choice',
+    voteCategory: 'ab',
     title: '주영, 자림 커플은 이대로 헤어질까? 그러면 어떻게 되징 2줄',
     tags: ['연애혁명', '소녀심판'],
     votingEndTime: '2022-06-30T14:00:45',
@@ -28,15 +28,17 @@ function VoteDetail({ id }: { id: number }) {
         imageUrl:
           'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
       },
+      /* 초이스
       {
         id: 3,
         content: '무조건 이 경우가 이긴다3.',
         imageUrl:
           'https://blog.kakaocdn.net/dn/bSAMGD/btqGbrklfgR/vuBgYTfwQP0Cq2ZW0G3ZXK/img.png',
       },
+      */
     ],
     joinCount: 12345,
-    voteStatus: false,
+    voteStatus: true,
   };
 
   return (
