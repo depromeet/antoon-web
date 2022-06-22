@@ -195,15 +195,6 @@ function Detail({ id }: { id: number }) {
     <ErrorBoundary message="웹툰정보를 불러오지 못하고 있어요 😭😭😭">
       <DetailWrapper>
         <Container>
-          <VoteTimeHeader>
-            <VoteTimeContents>
-              투표 마감까지{' '}
-              <VoteTime upDown={upDownStatus.status}>
-                {hours}시간 : {minutes}분 : {seconds}초{' '}
-              </VoteTime>
-              남음
-            </VoteTimeContents>
-          </VoteTimeHeader>
           <DetailContents>
             <DetailMain>
               <MainWrapper>
