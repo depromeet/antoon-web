@@ -1,8 +1,8 @@
+import SubTitle from '@components/SubTitle';
+import Title from '@components/Title';
 import {
   HomeRealtimeChartTitleWrapper,
-  HomeSectionSubTitle,
   HomeSectionTitleWithTimeWrapper,
-  HomeSectionTitle,
   HomeSectionTitleWithTime,
 } from '../Home.style';
 
@@ -11,9 +11,9 @@ function RealTimeChartTitle() {
 
   return (
     <HomeRealtimeChartTitleWrapper>
-      <HomeSectionSubTitle>다같이 영차영차!</HomeSectionSubTitle>
+      <SubTitle type="normal">다같이 영차영차!</SubTitle>
       <HomeSectionTitleWithTimeWrapper>
-        <HomeSectionTitle>실시간 차트</HomeSectionTitle>
+        <Title type="normal">실시간 차트</Title>
         <HomeSectionTitleWithTime>{updatedTime} 기준</HomeSectionTitleWithTime>
       </HomeSectionTitleWithTimeWrapper>
     </HomeRealtimeChartTitleWrapper>
