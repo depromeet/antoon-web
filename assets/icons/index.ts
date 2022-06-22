@@ -5,3 +5,4 @@ export { ReactComponent as CheckLine } from './check_circle_line.svg';
 export { ReactComponent as AntCoinIcon } from './antcoin.svg';
 export { ReactComponent as AntCoinSmallIcon } from './antcoin_sm.svg';
 export { ReactComponent as CrownIcon } from './crown.svg';
+export { ReactComponent as TooltipIcon } from './tooltip.svg';
