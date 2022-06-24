@@ -39,7 +39,7 @@ const useGetWebtoonById = (webtoonId: number) => {
 
 const getWebtoonsRanks = async () => {
   return await instance()
-    .get('top-ranks')
+    .get('top-ranks/webtoons')
     .then((res) => res.data)
     .catch((e) => {
       console.log(e);
