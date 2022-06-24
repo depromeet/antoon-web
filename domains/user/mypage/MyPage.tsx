@@ -36,8 +36,8 @@ function MyPage() {
 
   const onClickLogOut = () => {
     mutateLogOut();
-    removeCookies('Access', { path: '/', domain: '.antoon.fun' });
-    removeCookies('Refresh', { path: '/', domain: '.antoon.fun' });
+    removeCookies('Access', { path: '/', domain: 'antoon.fun' });
+    removeCookies('Refresh', { path: '/', domain: 'antoon.fun' });
     router.push('/');
   };
 
