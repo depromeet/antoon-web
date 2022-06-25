@@ -1,5 +1,5 @@
 import { ArrowRight, CheckFill, CheckLine } from '@assets/icons';
-import { all } from '@pages/user/signup/Policy';
+import { all } from '@pages/user/signup/policy';
 import { Dispatch, SetStateAction } from 'react';
 import {
   CheckboxWrapper,
