@@ -1,5 +1,5 @@
 import { CheckRightIcon } from '@assets/icons/CheckIcon';
-import { VoteItem } from '@_types/vote-type';
+import { VoteItem, VoteResultItem } from '@_types/vote-type';
 import { MouseEventHandler } from 'react';
 
 import {
@@ -8,6 +8,10 @@ import {
   ChoiceVoteContent,
   ChoiceVoteType,
   ChoiceVoteFilter,
+  ChoiceVoteResultPercent,
+  ChoiceVoteResultVoter,
+  ChoiceWinnerType,
+  ChoiceVoteResult,
 } from './ChoiceVoteItem.style';
 
 interface Props {
@@ -15,22 +19,49 @@ interface Props {
   data: VoteItem;
   active: boolean;
   onActive: MouseEventHandler<HTMLElement>;
+  isEnd: boolean;
+  result?: VoteResultItem;
 }
 
 function ChoiceVoteItem(props: Props) {
-  const { type, active, onActive, data } = props;
+  const { type, active, onActive, data, isEnd, result } = props;
+
+  const isWinner = () => {
+    return result?.winner || false;
+  };
 
   return (
     <ChoiceVoteItemWrapper onClick={onActive}>
-      {active ? (
+      {isEnd && result ? (
         <>
-          <ChoiceVoteFilter /> <CheckRightIcon />
+          <ChoiceVoteFilter
+            isEnd={isEnd}
+            isWinner={isWinner()}
+            dataWidth={result.voteRate}
+          />
+          <ChoiceVoteResult isEnd={isEnd}>
+            <ChoiceVoteResultPercent isWinner={isWinner()}>
+              {result.voteRate}%
+            </ChoiceVoteResultPercent>
+            <ChoiceVoteResultVoter>
+              {result.voteCount} 개미
+            </ChoiceVoteResultVoter>
+          </ChoiceVoteResult>
         </>
       ) : (
-        ''
+        active && (
+          <>
+            <ChoiceVoteFilter isEnd={isEnd} isWinner={false} dataWidth={100} />
+            <CheckRightIcon />
+          </>
+        )
       )}
-      <ChoiceVoteContentWrapper>
-        <ChoiceVoteType>{type}</ChoiceVoteType>
+      <ChoiceVoteContentWrapper isEnd={isEnd}>
+        {isWinner() ? (
+          <ChoiceWinnerType>✓</ChoiceWinnerType>
+        ) : (
+          <ChoiceVoteType>{type}</ChoiceVoteType>
+        )}
         <ChoiceVoteContent>{data.content}</ChoiceVoteContent>
       </ChoiceVoteContentWrapper>
     </ChoiceVoteItemWrapper>
