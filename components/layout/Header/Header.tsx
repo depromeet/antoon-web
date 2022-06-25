@@ -10,11 +10,17 @@ type HeaderRight = '검색' | '공유하기' | '없음';
 
 type HeaderProps = {
   headerLeft: HeaderLeft;
-  headerTitle?: string;
+  headerTitle?: string | undefined;
+  headerColor?: string | undefined;
   headerRight: HeaderRight;
 };
 
-function Header({ headerLeft, headerTitle, headerRight }: HeaderProps) {
+function Header({
+  headerLeft,
+  headerTitle,
+  headerColor,
+  headerRight,
+}: HeaderProps) {
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
@@ -22,10 +28,10 @@ function Header({ headerLeft, headerTitle, headerRight }: HeaderProps) {
   }, []);
 
   return (
-    <HeaderWrap>
+    <HeaderWrap headerColor={headerColor}>
       {!isSSR && (
         <>
-          <HeaderLeftMenu headerLeft={headerLeft} />
+          <HeaderLeftMenu headerLeft={headerLeft} headerColor={headerColor} />
           {headerTitle && <Title>{headerTitle}</Title>}
           <HeaderRightMenu headerRight={headerRight} />
         </>

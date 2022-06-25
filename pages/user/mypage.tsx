@@ -31,9 +31,9 @@ function MyPage() {
       {!isSSR && (
         <>
           <Header
-            headerLeft="로고"
+            headerLeft="없음"
             headerTitle="마이페이지"
-            headerRight="검색"
+            headerRight="없음"
           />
           {accessToken ? <MyPageWrap /> : <DefaultMyPage />}
           <Menu>

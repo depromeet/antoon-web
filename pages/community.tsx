@@ -24,7 +24,7 @@ function Community() {
 
   return (
     <>
-      <Header headerTitle="커뮤니티" headerLeft="뒤로가기" headerRight="없음" />
+      <Header headerTitle="커뮤니티" headerLeft="없음" headerRight="검색" />
       <HomeRealtimeChartWrapper>
         <RealTimeChartTitle />
         <Carousel>

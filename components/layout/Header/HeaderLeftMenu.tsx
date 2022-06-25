@@ -7,8 +7,16 @@ import { LeftWrap } from './HeaderLeftMenu.style';
 
 type HeaderLeft = '로고' | '뒤로가기' | '없음';
 
-function HeaderLeftMenu({ headerLeft }: { headerLeft: HeaderLeft }) {
+function HeaderLeftMenu({
+  headerLeft,
+  headerColor,
+}: {
+  headerLeft: HeaderLeft;
+  headerColor?: string;
+}) {
   const router = useRouter();
+
+  const isHeaderPainted = headerColor ? true : false;
 
   return (
     <LeftWrap>
@@ -18,7 +26,7 @@ function HeaderLeftMenu({ headerLeft }: { headerLeft: HeaderLeft }) {
         </button>
       ) : headerLeft === '뒤로가기' ? (
         <button onClick={() => router.back()}>
-          <BackIcon />
+          {isHeaderPainted ? <BackIcon fill="#ffffff" /> : <BackIcon />}
         </button>
       ) : headerLeft === '없음' ? (
         <></>

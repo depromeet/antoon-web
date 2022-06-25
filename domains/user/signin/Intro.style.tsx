@@ -1,18 +1,26 @@
 import styled from '@emotion/styled';
 
 const IntroMainWrap = styled.div`
-  position: relative;
-  margin: 0 0 6.9rem;
+  text-align: center;
+`;
+
+const SignInImgWrap = styled.div`
+  margin: 5.6rem 0 0;
 `;
 
 const IntroMain = styled.p`
-  position: absolute;
-  z-index: 10;
-  margin: 2rem 0 0 2.4rem;
-  text-align: left;
-  line-height: 3.264rem;
-  font-size: 2.4rem;
-  font-weight: 800;
+  margin: 3.239rem 0 0;
+  color: ${(props) => props.theme.colors.grayscale.gray_100};
+  font-size: 2rem;
+  font-weight: 600;
 `;
 
-export { IntroMainWrap, IntroMain };
+const IntroDetail = styled.p`
+  margin: 1.2rem 0 0;
+  line-height: 2.1rem;
+  color: ${(props) => props.theme.colors.grayscale.gray_200};
+  font-size: 1.4rem;
+  font-weight: 500;
+`;
+
+export { IntroMainWrap, SignInImgWrap, IntroMain, IntroDetail };

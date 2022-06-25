@@ -33,6 +33,11 @@ function Layout({ children }: { children: React.ReactNode }) {
       setIsHome(false);
       setIsCommunity(false);
       setIsMyPage(true);
+    } else {
+      setIsFooter(false);
+      setIsHome(false);
+      setIsCommunity(false);
+      setIsMyPage(false);
     }
   }, [router.pathname]);
 
