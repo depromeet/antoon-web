@@ -5,17 +5,16 @@ import HeaderRightMenu from './HeaderRightMenu';
 
 import { HeaderWrap, Title } from './Header.style';
 
-type LeftBtn = 'logo' | undefined;
-type RightBtn = 'menu' | 'profile' | 'share' | undefined;
+type HeaderLeft = '로고' | '뒤로가기' | '없음';
+type HeaderRight = '검색' | '공유하기' | '없음';
 
 type HeaderProps = {
-  leftBtn?: LeftBtn;
-  title?: string;
-  rightBtn?: RightBtn;
-  imageUrl?: string;
+  headerLeft: HeaderLeft;
+  headerTitle?: string;
+  headerRight: HeaderRight;
 };
 
-function Header({ leftBtn, title, rightBtn, imageUrl }: HeaderProps) {
+function Header({ headerLeft, headerTitle, headerRight }: HeaderProps) {
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
@@ -26,9 +25,9 @@ function Header({ leftBtn, title, rightBtn, imageUrl }: HeaderProps) {
     <HeaderWrap>
       {!isSSR && (
         <>
-          <HeaderLeftMenu leftBtn={leftBtn} />
-          {title && <Title>{title}</Title>}
-          <HeaderRightMenu rightBtn={rightBtn} imageUrl={imageUrl} />
+          <HeaderLeftMenu headerLeft={headerLeft} />
+          {headerTitle && <Title>{headerTitle}</Title>}
+          <HeaderRightMenu headerRight={headerRight} />
         </>
       )}
     </HeaderWrap>

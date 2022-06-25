@@ -5,21 +5,25 @@ import BackIcon from '@assets/icons/BackIcon';
 
 import { LeftWrap } from './HeaderLeftMenu.style';
 
-type LeftBtn = 'logo' | undefined;
+type HeaderLeft = '로고' | '뒤로가기' | '없음';
 
-function HeaderLeftMenu({ leftBtn }: { leftBtn?: LeftBtn }) {
+function HeaderLeftMenu({ headerLeft }: { headerLeft: HeaderLeft }) {
   const router = useRouter();
 
   return (
     <LeftWrap>
-      {leftBtn === 'logo' ? (
+      {headerLeft === '로고' ? (
         <button onClick={() => router.reload()}>
           <LogoIcon />
         </button>
-      ) : (
+      ) : headerLeft === '뒤로가기' ? (
         <button onClick={() => router.back()}>
           <BackIcon />
         </button>
+      ) : headerLeft === '없음' ? (
+        <></>
+      ) : (
+        <></>
       )}
     </LeftWrap>
   );

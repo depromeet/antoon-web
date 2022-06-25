@@ -30,7 +30,7 @@ function TopicABVote({ id }: Prop) {
 
   return (
     <>
-      <Header rightBtn="profile" />
+      <Header headerLeft="뒤로가기" headerRight="없음" />
       <VoteDetail id={Number(id)} />
       <Comment id={Number(id)} />
     </>

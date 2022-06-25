@@ -30,7 +30,11 @@ function MyPage() {
     <>
       {!isSSR && (
         <>
-          <Header title="마이페이지" />
+          <Header
+            headerLeft="로고"
+            headerTitle="마이페이지"
+            headerRight="검색"
+          />
           {accessToken ? <MyPageWrap /> : <DefaultMyPage />}
           <Menu>
             <MyPageMenu />

@@ -21,26 +21,27 @@ function UserData({ profile }: IProfile) {
     <UserDataWrap>
       <UserProfileDataWrap>
         {profile ? (
-          <UserProfile src={profile.imageUrl} width="56" height="56" />
+          <>
+            <UserProfile src={profile.imageUrl} width="56" height="56" />
+            <UserName>{profile.name}</UserName>
+            <button
+              onClick={() => {
+                router.push('/user/mypage/edit');
+              }}
+            >
+              <ChebronRightIcon />
+            </button>
+          </>
         ) : (
-          <ProfileDefaultImg width="56" height="56" />
-        )}
-        {profile ? (
-          <UserName>{profile.name}</UserName>
-        ) : (
-          <UserDefaultName>
-            로그인을 하시면
-            <br />더 많은 기능을 이용할 수 있어요!
-          </UserDefaultName>
+          <>
+            <ProfileDefaultImg width="56" height="56" />
+            <UserDefaultName>
+              로그인을 하시면
+              <br />더 많은 기능을 이용할 수 있어요!
+            </UserDefaultName>
+          </>
         )}
       </UserProfileDataWrap>
-      <button
-        onClick={() => {
-          router.push('/user/mypage/edit');
-        }}
-      >
-        <ChebronRightIcon />
-      </button>
     </UserDataWrap>
   );
 }

@@ -31,7 +31,11 @@ function Edit() {
 
   return (
     <>
-      <Header title="프로필 수정" />
+      <Header
+        headerLeft="뒤로가기"
+        headerTitle="프로필 수정"
+        headerRight="없음"
+      />
       <EditImg user={user} />
       <EditName user={user} />
     </>

@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Header leftBtn="logo" rightBtn="menu" />
+      <Header headerLeft="로고" headerRight="검색" />
       <Modal />
       <_Home />
       <FloatingBtn />
