@@ -1,22 +1,9 @@
 import styled from '@emotion/styled';
 
-const EditNameWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`;
-
-const EditWrap = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-`;
-
 const InputWrap = styled.div`
   display: flex;
   position: relative;
   align-items: center;
-  margin: 1.6rem 0 0;
   width: 100%;
 `;
 
@@ -58,9 +45,6 @@ const CountInput = styled.div<{ status: boolean }>`
 `;
 
 const EditBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 5rem 0 0;
   border-radius: 1rem;
   background-color: ${(props) => props.theme.colors.basic.black};
@@ -71,13 +55,4 @@ const EditBtn = styled.button`
   font-weight: 600;
 `;
 
-export {
-  EditNameWrap,
-  EditWrap,
-  InputWrap,
-  NameInput,
-  CountWrap,
-  CountInput,
-  Warning,
-  EditBtn,
-};
+export { InputWrap, NameInput, CountWrap, CountInput, Warning, EditBtn };
