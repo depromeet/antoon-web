@@ -24,6 +24,11 @@ const global = css`
     font-weight: 400;
   }
 
+  html,
+  body {
+    height: 100%;
+  }
+
   a {
     margin: 0;
     background: transparent;
