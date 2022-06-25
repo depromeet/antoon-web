@@ -6,16 +6,4 @@ const RightWrap = styled.div`
   width: 100%;
 `;
 
-const MenuWrap = styled.div`
-  display: flex;
-
-  svg {
-    margin: 0 1.6rem 0 0;
-  }
-
-  a:nth-of-type(2) {
-    max-width: 2.4rem;
-  }
-`;
-
-export { RightWrap, MenuWrap };
+export { RightWrap };

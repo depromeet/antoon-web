@@ -1,69 +1,25 @@
 import Link from 'next/link';
 
 import SearchIcon from '@assets/icons/SearchIcon';
-import ProfileDefaultImg from '@assets/images/ProfileDefaultImg';
 import ShareIcon from '@assets/icons/ShareIcon';
 
-import UserProfile from '@components/image/UserProfile';
+import { RightWrap } from './HeaderRightMenu.style';
 
-import { RightWrap, MenuWrap } from './HeaderRightMenu.style';
+type HeaderRight = '검색' | '공유하기' | '없음';
 
-import { useGetUserInformation } from '@apis/user';
-
-type RightBtn = 'menu' | 'profile' | 'share' | undefined;
-
-function HeaderRightMenu({
-  rightBtn,
-  imageUrl,
-}: {
-  rightBtn?: RightBtn;
-  imageUrl?: string;
-}) {
-  const { data: user } = useGetUserInformation();
-
-  const userProfileImg = user?.imageUrl;
-
+function HeaderRightMenu({ headerRight }: { headerRight: HeaderRight }) {
   return (
     <RightWrap>
-      {rightBtn === 'menu' ? (
-        <MenuWrap>
-          <Link href="/search" passHref>
-            <a>
-              <SearchIcon />
-            </a>
-          </Link>
-          {userProfileImg ? (
-            <Link href="/user/mypage" passHref>
-              <a>
-                <UserProfile src={userProfileImg} width="24" height="24" />
-              </a>
-            </Link>
-          ) : (
-            <Link href="/user/signin" passHref>
-              <a>
-                <ProfileDefaultImg width="24" height="24" />
-              </a>
-            </Link>
-          )}
-        </MenuWrap>
-      ) : rightBtn === 'profile' ? (
-        <>
-          {imageUrl ? (
-            <Link href="/user/mypage" passHref>
-              <a>
-                <UserProfile src={imageUrl} width="24" height="24" />
-              </a>
-            </Link>
-          ) : (
-            <Link href="/user/signin" passHref>
-              <a>
-                <ProfileDefaultImg width="24" height="24" />
-              </a>
-            </Link>
-          )}
-        </>
-      ) : rightBtn === 'share' ? (
+      {headerRight === '검색' ? (
+        <Link href="/search" passHref>
+          <a>
+            <SearchIcon />
+          </a>
+        </Link>
+      ) : headerRight === '공유하기' ? (
         <ShareIcon />
+      ) : headerRight === '없음' ? (
+        <></>
       ) : (
         <></>
       )}
