@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const HeaderWrap = styled.header<{ headerColor: string }>`
+const HeaderWrap = styled.header<{ headerColor: string | undefined }>`
   display: flex;
   position: sticky;
   top: 0;
