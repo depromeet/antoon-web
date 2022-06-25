@@ -9,8 +9,6 @@ import {
   Category,
   CategoryTitle,
   ChartWrapper,
-  VoteTimeHeader,
-  VoteTime,
   Container,
   Description,
   DescriptionContent,
@@ -37,7 +35,6 @@ import {
   PointTooltip,
   PointUpDown,
   ThumbNailWrapper,
-  VoteTimeContents,
 } from './Detail.style';
 import CategorySlider from '@components/detail/category/CategorySlider';
 import Tabs from '@components/detail/tabs/Tabs';
@@ -53,6 +50,7 @@ import Modal from '@components/modal/detail/Modal';
 import { Graph } from '@_types/chart-type';
 import useCountdown from '@hooks/useCountdown';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
+import { TooltipIcon } from '@assets/icons';
 
 type upDownStatusType = {
   status: ChartStatus;
@@ -102,7 +100,6 @@ function Detail({ id }: { id: number }) {
         setChartData(chartData_days);
     }
   };
-  const [days, hours, minutes, seconds] = useCountdown();
 
   useEffect(() => {
     if (descriptionRef.current && descriptionRef.current.clientHeight > 0) {
@@ -195,15 +192,6 @@ function Detail({ id }: { id: number }) {
     <ErrorBoundary message="웹툰정보를 불러오지 못하고 있어요 😭😭😭">
       <DetailWrapper>
         <Container>
-          <VoteTimeHeader>
-            <VoteTimeContents>
-              투표 마감까지{' '}
-              <VoteTime upDown={upDownStatus.status}>
-                {hours}시간 : {minutes}분 : {seconds}초{' '}
-              </VoteTime>
-              남음
-            </VoteTimeContents>
-          </VoteTimeHeader>
           <DetailContents>
             <DetailMain>
               <MainWrapper>
@@ -223,7 +211,9 @@ function Detail({ id }: { id: number }) {
                       {data.score}점
                       <PointTooltip>
                         <InfoBtn onClick={handleTooltipClick}></InfoBtn>
-                        <InfoContent isShow={isShowTooltip}></InfoContent>
+                        <InfoContent isShow={isShowTooltip}>
+                          <TooltipIcon />
+                        </InfoContent>
                       </PointTooltip>
                     </Point>
                     <PointUpDown>

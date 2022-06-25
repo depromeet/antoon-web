@@ -3,7 +3,7 @@ import ABVoteItem from '@components/vote/ABVoteItem';
 import VoteHeader from '@components/vote/VoteHeader';
 import { getToLocaleString } from '@utils/num-util';
 
-import { Vote, VoteItem } from '@_types/vote-type';
+import { Vote, VoteItem, VoteResult } from '@_types/vote-type';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import {
   ABVoteWrapper,
@@ -11,6 +11,28 @@ import {
   ABVoteForm,
   VoteJoinCount,
 } from './ABVote.style';
+
+//데이터 있는 경우 mock
+const voteResultMock: VoteResult = {
+  voteItems: [
+    {
+      id: 1,
+      voteCount: 24,
+      voteRate: 66.6,
+      winner: true,
+    },
+    {
+      id: 2,
+      voteCount: 12,
+      voteRate: 33.3,
+      winner: false,
+    },
+  ],
+  joinCount: 36,
+};
+
+// 데이터 없는 경우 mock
+//const voteResultMock: VoteResult | undefined = undefined;
 
 function ABVote({
   data,
@@ -48,6 +70,10 @@ function ABVote({
                   data={item}
                   key={item.id}
                   onActive={() => activeHandler(item.id)}
+                  isEnd={data.voteStatus}
+                  result={voteResultMock?.voteItems.find(
+                    (v) => v.id === item.id,
+                  )}
                 ></ABVoteItem>
               );
             })}

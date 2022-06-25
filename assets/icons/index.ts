@@ -7,3 +7,5 @@ export { ReactComponent as AntCoinSmallIcon } from './antcoin_sm.svg';
 export { ReactComponent as ProfileImgEdit } from './profile_img_edit.svg';
 export { ReactComponent as MyPageCoin } from './mypage_coin.svg';
 export { ReactComponent as CoinStatusArrow } from './coin_status_arrow.svg';
+export { ReactComponent as CrownIcon } from './crown.svg';
+export { ReactComponent as TooltipIcon } from './tooltip.svg';

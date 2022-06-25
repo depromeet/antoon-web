@@ -67,31 +67,6 @@ const MainTitle = styled.h2`
   -webkit-box-orient: vertical;
 `;
 
-const VoteTimeHeader = styled.div`
-  margin-bottom: 10px;
-  border-radius: 10px;
-  background: ${(props) => props.theme.colors.grayscale.gray_200};
-  padding: 13px 10px;
-  width: 100%;
-  height: 40px;
-  text-align: center;
-`;
-
-const VoteTimeContents = styled.p`
-  color: ${(props) => props.theme.colors.basic.black};
-  font-size: 13px;
-  font-weight: 700;
-`;
-
-const VoteTime = styled.span<{ upDown: string }>`
-  color: ${(props) =>
-    props?.upDown === 'UP'
-      ? props.theme.colors.secondary.red
-      : props?.upDown === 'DOWN'
-      ? props.theme.colors.secondary.blue
-      : props.theme.colors.chart.point_none_100};
-`;
-
 const PlatformHeader = styled.div<{ platform: string }>`
   display: inline-block;
   align-items: center;
@@ -358,9 +333,6 @@ export {
   Container,
   DetailContents,
   DetailMain,
-  VoteTimeHeader,
-  VoteTimeContents,
-  VoteTime,
   PlatformHeader,
   PlatformImg,
   Platform,
