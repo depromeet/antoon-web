@@ -7,4 +7,5 @@ export interface IComment {
   imageUrl: string;
   likeCount: number;
   isUserLike: boolean;
+  time: string;
 }
