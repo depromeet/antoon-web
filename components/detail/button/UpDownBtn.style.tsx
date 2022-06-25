@@ -12,7 +12,7 @@ const UpDownBtnWrapper = styled.div<{ status: string }>`
       : props.theme.colors.chart.point_down_100};
   padding-top: 7px;
   width: 43vw;
-  max-width: 320px;
+  max-width: 200px;
   height: 56px;
   vertical-align: middle;
   text-align: center;

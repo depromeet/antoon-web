@@ -1,45 +1,61 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { comments } from './queryKeys';
 import { instance } from './api';
+import { CommentType } from '@_types/comments-type';
 
-const getCommentsById = async (id: number) => {
+const getCommentsById = async (commentType: CommentType, id: number) => {
   return await instance()
-    .get(`webtoons/${id}/discussions`)
+    .get(`${commentType}/${id}/discussions`)
     .then((res) => res.data)
     .catch((e) => console.log(e));
 };
 
-const useGetCommentsById = (id: number) => {
-  return useQuery(comments.lists(id), () => getCommentsById(id));
+const useGetCommentsById = (commentType: CommentType, id: number) => {
+  return useQuery(comments.lists(commentType, id), () =>
+    getCommentsById(commentType, id),
+  );
 };
 
-const getCommentsLikedById = async (id: number) => {
+const getCommentsLikedById = async (commentType: CommentType, id: number) => {
   return await instance()
-    .put(`webtoons/discussions/${id}/likes`)
+    .put(`${commentType}/discussions/${id}/likes`)
     .then((res) => res.data)
     .catch((e) => console.log(e));
 };
 
-const usePutCommentsLikedById = (id: number) => {
-  return useQuery(comments.isLiked(id), () => getCommentsLikedById(id), {
-    enabled: false,
-  });
+const usePutCommentsLikedById = (commentType: CommentType, id: number) => {
+  return useQuery(
+    comments.isLiked(commentType, id),
+    () => getCommentsLikedById(commentType, id),
+    {
+      enabled: false,
+    },
+  );
 };
 
-const postCommentsById = async (id: number, content: string) => {
+const postCommentsById = async (
+  commentType: CommentType,
+  id: number,
+  content: string,
+) => {
   return await instance()
-    .post(`webtoons/${id}/discussions`, { content: content })
+    .post(`${commentType}/${id}/discussions`, { content: content })
     .then((res) => res.data)
     .catch((e) => console.log(e));
 };
 
-const usePostCommentsById = (id: number, content: string) => {
+const usePostCommentsById = (
+  commentType: CommentType,
+  id: number,
+  content: string,
+) => {
   const queryClient = useQueryClient();
   return useMutation(
-    comments.create(id, content),
-    () => postCommentsById(id, content),
+    comments.create(commentType, id, content),
+    () => postCommentsById(commentType, id, content),
     {
-      onSuccess: () => queryClient.invalidateQueries(comments.lists(id)),
+      onSuccess: () =>
+        queryClient.invalidateQueries(comments.lists(commentType, id)),
     },
   );
 };

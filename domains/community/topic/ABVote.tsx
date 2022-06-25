@@ -13,26 +13,27 @@ import {
 } from './ABVote.style';
 
 //데이터 있는 경우 mock
+/*
 const voteResultMock: VoteResult = {
-  voteItems: [
+  candidates: [
     {
       id: 1,
-      voteCount: 24,
-      voteRate: 66.6,
+      votingCount: 24,
+      votingCountRate: 66.6,
       winner: true,
     },
     {
       id: 2,
-      voteCount: 12,
-      voteRate: 33.3,
+      votingCount: 12,
+      votingCountRate: 33.3,
       winner: false,
     },
   ],
   joinCount: 36,
 };
-
+*/
 // 데이터 없는 경우 mock
-//const voteResultMock: VoteResult | undefined = undefined;
+const voteResultMock: VoteResult | undefined = undefined;
 
 function ABVote({
   data,
@@ -62,7 +63,7 @@ function ABVote({
         <>
           <VoteHeader data={data}></VoteHeader>
           <ABVoteItems>
-            {data.voteItems.map((item: VoteItem, i) => {
+            {data.candidates.map((item: VoteItem, i) => {
               return (
                 <ABVoteItem
                   active={votingId === item.id ? true : false}
@@ -70,8 +71,8 @@ function ABVote({
                   data={item}
                   key={item.id}
                   onActive={() => activeHandler(item.id)}
-                  isEnd={data.voteStatus}
-                  result={voteResultMock?.voteItems.find(
+                  isEnd={data.topicVoteStatus}
+                  result={voteResultMock?.candidates.find(
                     (v) => v.id === item.id,
                   )}
                 ></ABVoteItem>
@@ -79,7 +80,10 @@ function ABVote({
             })}
           </ABVoteItems>
           <ABVoteForm>
-            <VoteBtn voteStatus={data.voteStatus} onOpen={onOpen}></VoteBtn>
+            <VoteBtn
+              voteStatus={data.topicVoteStatus}
+              onOpen={onOpen}
+            ></VoteBtn>
             <VoteJoinCount>
               {getToLocaleString(data.joinCount)} 개미 참여 중
             </VoteJoinCount>

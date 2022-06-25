@@ -1,5 +1,5 @@
 export type TopicCategory = 'RANKS' | 'LATEST' | 'CLOSES';
-export type TopicCategoryType = 'AB' | 'CHOICE';
+export type TopicCategoryType = 'ab' | 'choice';
 
 export interface AllTopicsByCategory {
   topics: Topic[];

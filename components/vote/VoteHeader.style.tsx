@@ -22,7 +22,7 @@ const VoteTag = styled.div<{ category: string }>`
   padding-top: 20px;
   padding-left: 30px;
   color: ${(props) =>
-    props.category === 'AB'
+    props.category === 'ab'
       ? props.theme.colors.chart.point_up_100
       : props.theme.colors.chart.point_down_100};
   font-weight: 500;

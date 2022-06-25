@@ -40,7 +40,7 @@ function ABVoteItem(props: Props) {
           <ABVoteFilter
             isEnd={isEnd}
             isWinner={isWinner()}
-            dataWidth={result.voteRate}
+            dataWidth={result.votingCountRate}
           />
           <ABVoteResult isEnd={isEnd}>
             {isWinner() && (
@@ -49,15 +49,15 @@ function ABVoteItem(props: Props) {
               </ABVoteWinnerMark>
             )}
             <ABVoteResultPercent isWinner={isWinner()}>
-              {result.voteRate}%
+              {result.votingCountRate}%
             </ABVoteResultPercent>
-            <ABVoteResultVoter>{result.voteCount} 개미</ABVoteResultVoter>
+            <ABVoteResultVoter>{result.votingCount} 개미</ABVoteResultVoter>
           </ABVoteResult>
         </>
       ) : (
         active && (
           <>
-            <ABVoteFilter isEnd={isEnd} isWinner={false} dataWidth={100} />{' '}
+            <ABVoteFilter isEnd={isEnd} isWinner={false} dataWidth={100} />
             <CheckIcon />
           </>
         )

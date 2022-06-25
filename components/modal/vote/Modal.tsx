@@ -22,7 +22,7 @@ import {
 createPortal;
 
 interface Props {
-  voteId: number;
+  topicId: number;
   isOpen: boolean;
   onClose: MouseEventHandler<HTMLElement>;
 }
@@ -30,7 +30,7 @@ interface Props {
 function Modal(props: Props) {
   const [portal, setPortal] = useState<HTMLElement | null>(null);
   const [mount, setMount] = useState(false);
-  const { voteId, isOpen, onClose } = props;
+  const { topicId, isOpen, onClose } = props;
 
   useEffect(() => {
     setMount(true);
@@ -38,7 +38,7 @@ function Modal(props: Props) {
   }, []);
 
   const handleVoteClick = () => {
-    console.log('post기능 테스트' + voteId);
+    console.log('post기능 테스트' + topicId);
   };
 
   return mount

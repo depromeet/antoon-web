@@ -11,7 +11,7 @@ import {
 } from './VoteHeader.style';
 
 function VoteHeader({ data }: { data: Vote }) {
-  const [days, hours, minutes, seconds] = useCountdown(data.votingEndTime);
+  const [days, hours, minutes, seconds] = useCountdown(data.topicVoteEndTime);
 
   return (
     <VoteHeaderWrapper>
