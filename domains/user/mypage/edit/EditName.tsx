@@ -8,8 +8,6 @@ import { useState, useCallback, useEffect } from 'react';
 import { usePatchUserName } from '@apis/user';
 
 import {
-  EditNameWrap,
-  EditWrap,
   InputWrap,
   NameInput,
   CountWrap,
@@ -18,11 +16,17 @@ import {
   EditBtn,
 } from './EditName.style';
 
-function EditName() {
+import { IUser } from '@_types/user-type';
+
+function EditName({ user }: IUser) {
   const router = useRouter();
 
   const [name, setName] = useState('');
   const [isMaxLength, setIsMaxLength] = useState(false);
+
+  useEffect(() => {
+    if (user) setName(user.name);
+  }, [user]);
 
   const onChangeInput = useCallback(
     (e) => {
@@ -58,26 +62,25 @@ function EditName() {
   }, [name]);
 
   return (
-    <EditNameWrap>
-      <EditWrap>
-        <InputWrap>
-          <NameInput
-            value={name}
-            onChange={onChangeInput}
-            onKeyDown={onKeyDownEnter}
-            placeholder="닉네임을 입력해주세요."
-            status={isMaxLength}
-            maxLength={20}
-          />
-          <DeleteIcon onResetInput={onResetInput} />
-        </InputWrap>
-        <CountWrap>
-          <Warning status={isMaxLength}>최대 20자까지 입력 가능합니다.</Warning>
-          <CountInput status={isMaxLength}>{name.length}/20</CountInput>
-        </CountWrap>
-      </EditWrap>
+    <>
+      <InputWrap>
+        <NameInput
+          value={name}
+          onChange={onChangeInput}
+          onKeyDown={onKeyDownEnter}
+          placeholder="닉네임을 입력해주세요."
+          status={isMaxLength}
+          maxLength={20}
+          autoFocus
+        />
+        {name && <DeleteIcon onResetInput={onResetInput} />}
+      </InputWrap>
+      <CountWrap>
+        <Warning status={isMaxLength}>최대 20자까지 입력 가능합니다.</Warning>
+        <CountInput status={isMaxLength}>{name.length}/20</CountInput>
+      </CountWrap>
       <EditBtn onClick={onClickEditName}>수정하기</EditBtn>
-    </EditNameWrap>
+    </>
   );
 }
 
