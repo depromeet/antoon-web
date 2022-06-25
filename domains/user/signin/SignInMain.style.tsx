@@ -12,12 +12,14 @@ const SignInWrap = styled.div`
   background-size: cover;
   width: calc(100% + 4.8rem);
   height: calc(100vh - 5.6rem);
-  background-position-y: 15rem;
+  background-position-y: 10rem;
 `;
 
 const BtnWrap = styled.div`
+  display: flex;
   position: absolute;
   bottom: 10%;
+  flex-direction: column;
   margin: 0 0 1.2rem;
   text-align: center;
 
@@ -26,4 +28,12 @@ const BtnWrap = styled.div`
   }
 `;
 
-export { SignInWrap, BtnWrap };
+const Text = styled.p`
+  opacity: 0.6;
+  margin: 0 0 1.6rem;
+  color: ${(props) => props.theme.colors.basic.white};
+  font-size: 1.6rem;
+  font-weight: 500;
+`;
+
+export { SignInWrap, BtnWrap, Text };
