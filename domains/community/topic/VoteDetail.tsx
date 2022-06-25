@@ -12,7 +12,7 @@ function VoteDetail({ id }: { id: number }) {
   //const { data, isLoading } = useGetTopicsById(id);
   const data: Vote = {
     topicId: 1,
-    voteCategory: 'ab',
+    voteCategory: 'AB',
     title: '주영, 자림 커플은 이대로 헤어질까? 그러면 어떻게 되징 2줄',
     tags: ['연애혁명', '소녀심판'],
     topicVoteEndTime: '2022-06-30T14:00:45',
@@ -53,7 +53,7 @@ function VoteDetail({ id }: { id: number }) {
   return (
     <ErrorBoundary message="투표정보를 불러오지 못하고 있어요 😭😭😭">
       <VoteDetailWrapper>
-        {data.voteCategory === 'ab' ? (
+        {data.voteCategory === 'AB' ? (
           <ABVote data={data} onOpen={() => setIsModalOpen(true)} />
         ) : (
           <ChoiceVote data={data} onOpen={() => setIsModalOpen(true)} />
