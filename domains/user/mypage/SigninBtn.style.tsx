@@ -1,12 +1,7 @@
 import styled from '@emotion/styled';
 
-const DefaultMyPageWrap = styled.div`
-  width: 100%;
-`;
-
 const SigninWrap = styled.div`
-  position: fixed;
-  bottom: 0;
+  margin: 10rem 0 0;
   width: 100%;
   text-align: center;
 `;
@@ -20,4 +15,4 @@ const SigninButton = styled.button`
   color: ${(props) => props.theme.colors.basic.white};
 `;
 
-export { DefaultMyPageWrap, SigninWrap, SigninButton };
+export { SigninWrap, SigninButton };
