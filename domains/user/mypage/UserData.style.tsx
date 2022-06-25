@@ -5,6 +5,11 @@ const UserDataWrap = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+
+  button {
+    width: 2.4rem;
+    height: 2.3rem;
+  }
 `;
 
 const UserName = styled.div`
