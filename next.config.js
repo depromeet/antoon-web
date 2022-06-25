@@ -12,6 +12,7 @@ const nextConfig = {
       'dn-img-page.kakao.com',
       'shared-comic.pstatic.net',
       'colorate.azurewebsites.net',
+      'images.unsplash.com',
       'antoon-api-bucket.s3.ap-northeast-2.amazonaws.com',
     ],
   },

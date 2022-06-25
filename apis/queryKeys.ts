@@ -1,3 +1,5 @@
+import { TopicCategory } from '@_types/topics-type';
+
 const webtoons = {
   all: ['webtoons'],
   lists: () => [...webtoons.all, 'lists'],
@@ -48,4 +50,9 @@ const graph = {
   lists: (id: number, chartType: string) => [...graph.all, id, chartType],
 };
 
-export { webtoons, comments, graph, user };
+const topics = {
+  all: ['topics'],
+  category: (category: TopicCategory) => [...topics.all, 'category', category],
+};
+
+export { webtoons, comments, graph, user, topics };

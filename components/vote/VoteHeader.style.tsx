@@ -17,14 +17,15 @@ const VoteTitle = styled.h2`
 `;
 const VoteTag = styled.div<{ category: string }>`
   display: flex;
+  gap: 0.4rem;
+  align-items: center;
   padding-top: 20px;
   padding-left: 30px;
   color: ${(props) =>
-    props.category === 'ab'
+    props.category === 'AB'
       ? props.theme.colors.chart.point_up_100
       : props.theme.colors.chart.point_down_100};
-  font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 const VoteEndTimer = styled.p`
