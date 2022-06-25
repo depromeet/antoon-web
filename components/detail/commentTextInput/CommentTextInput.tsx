@@ -50,7 +50,7 @@ function CommentTextInput(props: Props) {
 
   const placeHolderText =
     Number(props.length) > 0
-      ? `${props.length + 1}번째 행진에 동참해 보세요!`
+      ? `${Number(props.length) + 1}번째 행진에 동참해 보세요!`
       : '첫 번째 행진에 동참해 보세요!';
 
   const ContentCheckHandler = useCallback(
