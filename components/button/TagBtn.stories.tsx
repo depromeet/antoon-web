@@ -8,11 +8,12 @@ export default {
 } as ComponentMeta<typeof TagBtn>;
 
 const Template: ComponentStory<typeof TagBtn> = (args) => (
-  <TagBtn>{args.children}</TagBtn>
+  <TagBtn selected={args.selected}>{args.children}</TagBtn>
 );
 
 export const 태그_버튼 = Template.bind({});
 
 태그_버튼.args = {
   children: '인기순',
+  selected: true,
 };
