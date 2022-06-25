@@ -10,7 +10,11 @@ import GoogleLoginImg from '@assets/images/GoogleLoginImg';
 import Header from '@components/layout/Header/Header';
 import Intro from '@domains/user/signin/Intro';
 
-import { SignInWrap, BtnWrap } from '@domains/user/signin/SignInMain.style';
+import {
+  SignInWrap,
+  BtnWrap,
+  Text,
+} from '@domains/user/signin/SignInMain.style';
 
 function SignIn() {
   const KAKAO_SIGNIN_URL = 'https://api.antoon.fun/oauth2/authorization/kakao';
@@ -35,10 +39,11 @@ function SignIn() {
 
   return (
     <>
-      <Header headerLeft="뒤로가기" headerRight="없음" />
+      <Header headerLeft="뒤로가기" headerRight="없음" headerColor="#1C1C1C" />
       <SignInWrap>
         <Intro />
         <BtnWrap>
+          <Text>간편하게 SNS로 로그인</Text>
           <button onClick={onClickKakaoSignIn}>
             <KakaoLoginImg />
           </button>
