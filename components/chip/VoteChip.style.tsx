@@ -1,17 +1,14 @@
 import styled from '@emotion/styled';
 
 const VoteChipWrapper = styled.p<{ color: string }>`
-  margin-right: 5px;
+  display: inline-flex;
+  align-items: center;
   border-radius: 30px;
   background-color: ${({ color }) => color};
-  width: 40px;
-  height: auto;
-  text-align: center;
-`;
-const VoteChipContent = styled.span`
+  padding: 0 0.8rem;
+  line-height: 1.5;
   color: ${(props) => props.theme.colors.basic.white};
-  font-size: 11px;
-  font-weight: 400;
+  font-weight: 500;
 `;
 
-export { VoteChipWrapper, VoteChipContent };
+export { VoteChipWrapper };

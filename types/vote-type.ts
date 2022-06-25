@@ -1,4 +1,4 @@
-export type VoteType = 'ab' | 'choice';
+export type VoteType = 'AB' | 'CHOICE';
 
 export interface Vote {
   voteId: number;

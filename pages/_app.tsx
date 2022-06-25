@@ -60,8 +60,8 @@ function MyApp({ Component, pageProps }: any) {
               </Layout>
             </ThemeProvider>
           </RecoilRoot>
-          <ReactQueryDevtools initialIsOpen={false} />
         </Hydrate>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   );
