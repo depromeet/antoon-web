@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 import { useEffect } from 'react';
@@ -6,15 +5,17 @@ import { setCookies } from 'cookies-next';
 import { Mixpanel } from 'mixpanel';
 
 import KakaoLoginImg from '@assets/images/KakaoLoginImg';
-import ChebronRightIcon from '@assets/icons/ChebronRightIcon';
+import GoogleLoginImg from '@assets/images/GoogleLoginImg';
 
 import Header from '@components/layout/Header/Header';
 import Intro from '@domains/user/signin/Intro';
 
-import { SignInWrap, GoToMain } from '@domains/user/signin/SignInMain.style';
+import { SignInWrap, BtnWrap } from '@domains/user/signin/SignInMain.style';
 
 function SignIn() {
   const KAKAO_SIGNIN_URL = 'https://api.antoon.fun/oauth2/authorization/kakao';
+  const GOOGLE_SIGNIN_URL =
+    'https://api.antoon.fun/oauth2/authorization/google';
 
   const router = useRouter();
 
@@ -28,21 +29,23 @@ function SignIn() {
     router.push(KAKAO_SIGNIN_URL);
   };
 
+  const onClickGoogleSignIn = () => {
+    router.push(GOOGLE_SIGNIN_URL);
+  };
+
   return (
     <>
       <Header headerLeft="뒤로가기" headerRight="없음" />
       <SignInWrap>
         <Intro />
-        <button onClick={onClickKakaoSignIn}>
-          <KakaoLoginImg />
-        </button>
-        <Link href="/" passHref>
-          <a>
-            <GoToMain>
-              <span>개미는툰툰 둘러보기</span> <ChebronRightIcon />
-            </GoToMain>
-          </a>
-        </Link>
+        <BtnWrap>
+          <button onClick={onClickKakaoSignIn}>
+            <KakaoLoginImg />
+          </button>
+          <button onClick={onClickGoogleSignIn}>
+            <GoogleLoginImg />
+          </button>
+        </BtnWrap>
       </SignInWrap>
     </>
   );
