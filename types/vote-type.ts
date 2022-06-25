@@ -2,7 +2,7 @@ export type VoteType = 'AB' | 'CHOICE';
 
 export interface Vote {
   topicId: number;
-  voteCategory: VoteType;
+  topicCategory: VoteType;
   title: string;
   tags: string[];
   topicVoteEndTime: string;

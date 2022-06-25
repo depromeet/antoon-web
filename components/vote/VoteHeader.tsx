@@ -15,8 +15,8 @@ function VoteHeader({ data }: { data: Vote }) {
 
   return (
     <VoteHeaderWrapper>
-      <VoteTag category={data.voteCategory}>
-        <VoteChip category={data.voteCategory} />
+      <VoteTag category={data.topicCategory}>
+        <VoteChip category={data.topicCategory} />
         {data.tags.reduce((pre, cur) => `${pre + ' #' + cur}`, '')}
       </VoteTag>
       <VoteTitle>{data.title}</VoteTitle>
