@@ -30,7 +30,7 @@ function SignIn() {
 
   return (
     <>
-      <Header />
+      <Header headerLeft="뒤로가기" headerRight="없음" />
       <SignInWrap>
         <Intro />
         <button onClick={onClickKakaoSignIn}>

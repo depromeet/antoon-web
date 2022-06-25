@@ -48,7 +48,7 @@ function Policy() {
 
   return (
     <>
-      <Header />
+      <Header headerLeft="뒤로가기" headerRight="없음" />
       <LogoBig style={{ margin: '2.4rem 0' }} />
       <DescriptionMain>
         개미는툰툰에
