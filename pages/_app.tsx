@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from '@emotion/react';
@@ -51,14 +51,16 @@ function MyApp({ Component, pageProps }: any) {
         }}
       />
       <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
-          <ThemeProvider theme={themes}>
-            <GlobalStyle />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </ThemeProvider>
-        </RecoilRoot>
+        <Hydrate state={pageProps.dehydratedState}>
+          <RecoilRoot>
+            <ThemeProvider theme={themes}>
+              <GlobalStyle />
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </ThemeProvider>
+          </RecoilRoot>
+        </Hydrate>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
