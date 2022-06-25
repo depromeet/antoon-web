@@ -1,10 +1,10 @@
-import { all } from '@pages/user/signup/Policy';
+import { all } from '@pages/user/signup/policy';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Checkbox from './Checkbox';
 
 export default {
-  title: 'Components/User/Signup/Policy/Checkbox',
+  title: 'Components/User/signup/policy/Checkbox',
   component: Checkbox,
 } as ComponentMeta<typeof Checkbox>;
 
