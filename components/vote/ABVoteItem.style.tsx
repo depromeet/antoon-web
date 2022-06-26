@@ -4,10 +4,7 @@ const ABVoteItemWrapper = styled.div<{ isWinner: boolean }>`
   position: relative;
   margin-top: 20px;
   border-radius: 20px;
-  background-color: ${(props) =>
-    props.isWinner
-      ? props.theme.colors.chart.point_up_100
-      : props.theme.colors.grayscale.gray_200};
+  background-color: ${(props) => props.theme.colors.grayscale.gray_200};
   width: 100%;
   height: 100%;
 `;
@@ -33,6 +30,7 @@ const ABVoteFilter = styled.div<{
   background-color: ${(props) => props.theme.colors.chart.point_up_100};
   cursor: pointer;
   width: ${(props) => props.dataWidth}%;
+  min-width: 4%;
   height: ${(props) => (props.isEnd ? '160px' : '100%;')};
   text-align: center;
   -webkit-tap-highlight-color: transparent;
@@ -50,6 +48,11 @@ const ABVoteImg = styled.div<{ imageSrc: string }>`
 `;
 const ABVoteContentWrapper = styled.div<{ isEnd: boolean; isWinner: boolean }>`
   z-index: ${(props) => (props.isEnd ? 3 : 0)};
+  border-radius: 0 0 20px 20px;
+  background-color: ${(props) =>
+    props.isWinner
+      ? props.theme.colors.chart.point_up_100
+      : props.theme.colors.grayscale.gray_200};
   padding: 15px;
   height: 50px;
   color: ${(props) => (props.isWinner ? props.theme.colors.basic.white : '')};

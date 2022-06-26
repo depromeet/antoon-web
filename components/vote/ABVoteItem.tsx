@@ -32,15 +32,15 @@ function ABVoteItem(props: Props) {
   const isWinner = () => {
     return result?.winner || false;
   };
-
+  console.log(props);
   return (
     <ABVoteItemWrapper onClick={onActive} isWinner={isWinner()}>
-      {isEnd && result ? (
+      {isEnd ? (
         <>
           <ABVoteFilter
             isEnd={isEnd}
             isWinner={isWinner()}
-            dataWidth={result.votingCountRate}
+            dataWidth={result?.votingCountRate || 0}
           />
           <ABVoteResult isEnd={isEnd}>
             {isWinner() && (
@@ -49,9 +49,9 @@ function ABVoteItem(props: Props) {
               </ABVoteWinnerMark>
             )}
             <ABVoteResultPercent isWinner={isWinner()}>
-              {result.votingCountRate}%
+              {result?.votingCountRate}%
             </ABVoteResultPercent>
-            <ABVoteResultVoter>{result.votingCount} 개미</ABVoteResultVoter>
+            <ABVoteResultVoter>{result?.votingCount} 개미</ABVoteResultVoter>
           </ABVoteResult>
         </>
       ) : (

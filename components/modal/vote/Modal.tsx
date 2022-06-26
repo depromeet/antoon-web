@@ -1,3 +1,5 @@
+import { usePostTopicsById } from '@apis/topics';
+import { useGetUserInformation } from '@apis/user';
 import { AntCoinIcon, AntCoinSmallIcon } from '@assets/icons';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -23,14 +25,24 @@ createPortal;
 
 interface Props {
   topicId: number;
+  candidateId: number;
   isOpen: boolean;
-  onClose: MouseEventHandler<HTMLElement>;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onClose: Function;
 }
 
 function Modal(props: Props) {
+  const { data: user } = useGetUserInformation();
   const [portal, setPortal] = useState<HTMLElement | null>(null);
   const [mount, setMount] = useState(false);
-  const { topicId, isOpen, onClose } = props;
+  const {
+    isLoading,
+    isSuccess,
+    error,
+    mutate: postData,
+  } = usePostTopicsById(props.candidateId);
+
+  const { candidateId, isOpen, onClose } = props;
 
   useEffect(() => {
     setMount(true);
@@ -38,7 +50,12 @@ function Modal(props: Props) {
   }, []);
 
   const handleVoteClick = () => {
-    console.log('post기능 테스트' + topicId);
+    try {
+      postData();
+      onClose(false);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return mount
@@ -46,7 +63,7 @@ function Modal(props: Props) {
         <>
           {isOpen && (
             <ModalContainer>
-              <ModalOverlay onClick={onClose}></ModalOverlay>
+              <ModalOverlay onClick={onClose(false)}></ModalOverlay>
               <ModalContent>
                 <ModalHeader>
                   <ModalLogo>
@@ -66,7 +83,7 @@ function Modal(props: Props) {
                   </ModalMyCoin>
                 </ModalCoin>
                 <ModalBtns>
-                  <ModalClose onClick={onClose}>안할래요</ModalClose>
+                  <ModalClose onClick={onClose(false)}>안할래요</ModalClose>
                   <ModalFunc onClick={handleVoteClick}>투표할래요</ModalFunc>
                 </ModalBtns>
               </ModalContent>
