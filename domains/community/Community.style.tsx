@@ -6,7 +6,7 @@ const RecommendationTitleWrapper = styled.div`
 `;
 
 const AllTopicSection = styled.section`
-  padding-top: 0.6rem;
+  padding-top: 3rem;
   padding-bottom: 1.4rem;
 `;
 
