@@ -36,6 +36,10 @@ const Btn = styled.button<{ selected: boolean }>`
       color: ${(props) => props.theme.colors.basic.white};
     }
   }
+
+  @media (max-width: 300px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export default TagBtn;
