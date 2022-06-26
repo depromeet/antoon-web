@@ -33,6 +33,7 @@ const DefaultBadgeName = styled.span`
 `;
 
 const BadgeInfo = styled.button`
+  color: ${(props) => props.theme.colors.grayscale.gray_800};
   font-size: 1.2rem;
   font-weight: 500;
 `;
