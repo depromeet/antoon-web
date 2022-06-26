@@ -33,7 +33,10 @@ function Header({
         <>
           <HeaderLeftMenu headerLeft={headerLeft} headerColor={headerColor} />
           {headerTitle && <Title>{headerTitle}</Title>}
-          <HeaderRightMenu headerRight={headerRight} />
+          <HeaderRightMenu
+            headerRight={headerRight}
+            headerColor={headerColor}
+          />
         </>
       )}
     </HeaderWrap>

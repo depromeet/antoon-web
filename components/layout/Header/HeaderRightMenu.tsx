@@ -7,7 +7,15 @@ import { RightWrap } from './HeaderRightMenu.style';
 
 type HeaderRight = '검색' | '공유하기' | '없음';
 
-function HeaderRightMenu({ headerRight }: { headerRight: HeaderRight }) {
+function HeaderRightMenu({
+  headerRight,
+  headerColor,
+}: {
+  headerRight: HeaderRight;
+  headerColor?: string;
+}) {
+  const isHeaderPainted = headerColor ? true : false;
+
   return (
     <RightWrap>
       {headerRight === '검색' ? (
@@ -17,7 +25,9 @@ function HeaderRightMenu({ headerRight }: { headerRight: HeaderRight }) {
           </a>
         </Link>
       ) : headerRight === '공유하기' ? (
-        <ShareIcon />
+        <button>
+          {isHeaderPainted ? <ShareIcon fill="#ffffff" /> : <ShareIcon />}
+        </button>
       ) : headerRight === '없음' ? (
         <></>
       ) : (
