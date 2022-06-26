@@ -144,8 +144,7 @@ function setOption(
         const obj: Position = {
           top: 0,
         };
-        obj['left'] = pos[0] - size.viewSize[0] / 9;
-        //obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 5;
+        obj['left'] = pos[0] - size.viewSize[0] / 13;
         return obj;
       },
       formatter: `{b0}`,

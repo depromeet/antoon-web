@@ -2,6 +2,7 @@ import {
   WebtoonWriter,
   ChartStatus,
   WebtoonJoinLeaveRecommendation,
+  WebtoonJoinLeaveRespoonse,
 } from '@_types/webtoon-type';
 import Image from 'next/image';
 import Charts from '@components/charts/Charts';
@@ -76,8 +77,7 @@ function Detail({ id }: { id: number }) {
     status: '',
     sign: '',
   });
-  const [recommends, setRecommends] =
-    useState<WebtoonJoinLeaveRecommendation>();
+  const [recommends, setRecommends] = useState<WebtoonJoinLeaveRespoonse>();
 
   const DESCRIPTION_MORE_DEFAULT_MARGIN = 40;
 
@@ -107,15 +107,16 @@ function Detail({ id }: { id: number }) {
     if (data?.scoreGapPercent && data) {
       setUpDownStatus(calculateUpDownStatus);
       setRecommends({
-        recommendationStatus: data.recommendationStatus,
+        status: data.recommendationStatus,
         joinCount: data.joinCount,
         leaveCount: data.leaveCount,
+        getCoin: false,
       });
     }
     if (chartType && chartData_days) {
       getChartParameter();
     }
-  }, []);
+  });
 
   if (isLoading && !data) {
     return <LoadingSpinner />;
@@ -180,7 +181,7 @@ function Detail({ id }: { id: number }) {
       ? { status: 'UP', sign: '+' }
       : data?.scoreGapPercent < 0
       ? { status: 'DOWN', sign: '-' }
-      : { status: 'STALE', sign: '' };
+      : { status: 'MAINTAIN', sign: '' };
 
   const handleTabChange = (e: string) => {
     setChartType(e);
@@ -196,16 +197,13 @@ function Detail({ id }: { id: number }) {
               <MainWrapper>
                 <MainHeader>
                   <PlatformHeader platform={data.platform}>
-                    <Platform>
-                      <PlatformImg
-                        platform={data.platform}
-                        onClick={() => (window.location.href = data.webtoonUrl)}
-                      ></PlatformImg>
+                    <Platform onClick={() => window.open(data.webtoonUrl)}>
+                      <PlatformImg platform={data.platform}></PlatformImg>
                       {data.platformDescription} 바로가기&gt;
                     </Platform>
                   </PlatformHeader>
                   <MainTitle>{data.title}</MainTitle>
-                  <MainScore upDown={upDownStatus.status}>
+                  <MainScore upDown={upDownStatus?.status}>
                     <Point>
                       {data.score}점
                       <PointTooltip>
@@ -216,7 +214,7 @@ function Detail({ id }: { id: number }) {
                       </PointTooltip>
                     </Point>
                     <PointUpDown>
-                      {upDownStatus.sign}
+                      {upDownStatus?.sign}
                       {data.scoreGap}점
                       <PointPercentage>
                         ({data.scoreGapPercent}%)
@@ -225,7 +223,7 @@ function Detail({ id }: { id: number }) {
                   </MainScore>
                 </MainHeader>
                 <ThumbNailWrapper>
-                  <MainThumbnail upDown={upDownStatus.status}>
+                  <MainThumbnail upDown={upDownStatus?.status}>
                     <MainThumbnailImg>
                       <Image
                         src={data.thumbnail || DEFAULT_IMG.THUMBNAIL}
@@ -241,9 +239,10 @@ function Detail({ id }: { id: number }) {
                 </ThumbNailWrapper>
                 <ChartWrapper>
                   <Charts
-                    chartData={chartData || chartData_days}
-                    forceUpdate={true}
-                    status={upDownStatus.status}
+                    chartData={chartData}
+                    forceUpdate={false}
+                    status={upDownStatus?.status}
+                    chartType={chartType}
                   />
                 </ChartWrapper>
                 <Tabs onTabChange={handleTabChange} />
@@ -286,7 +285,7 @@ function Detail({ id }: { id: number }) {
           <BtnFooter
             onOpen={() => setIsModalOpen(true)}
             onJoinLeave={setJoinLeave}
-            joinLeaveStatus={recommends?.recommendationStatus || 'NONE'}
+            joinLeaveStatus={recommends?.status || 'NONE'}
             joinCount={recommends?.joinCount || 0}
             leaveCount={recommends?.leaveCount || 0}
           />
@@ -297,7 +296,7 @@ function Detail({ id }: { id: number }) {
           joinLeave={joinLeave}
           isOpen={isModalOpen}
           onRecommendSet={setRecommends}
-          onClose={() => setIsModalOpen(false)}
+          onClose={setIsModalOpen}
         />
       </DetailWrapper>
     </ErrorBoundary>

@@ -2,6 +2,7 @@ import { useGetCommentsById } from '@apis/comments';
 
 import {
   CommentListWrap,
+  CommentNoWrap,
   Title,
   CommentWrap,
   MainWrap,
@@ -47,7 +48,7 @@ function Comment({
           id={id}
           commentType={commentType}
         />
-        {comments &&
+        {comments?.length > 0 ? (
           comments?.map((comment: IComment) => {
             return (
               <CommentWrap key={comment.discussionId}>
@@ -65,7 +66,10 @@ function Comment({
                 </MainWrap>
               </CommentWrap>
             );
-          })}
+          })
+        ) : (
+          <CommentNoWrap>댓글이 없습니다 😭</CommentNoWrap>
+        )}
       </CommentListWrap>
     </ErrorBoundary>
   );

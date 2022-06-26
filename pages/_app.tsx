@@ -11,6 +11,7 @@ import GlobalStyle from '@styles/GlobalStyle';
 import Layout from '@components/layout/Layout';
 import useSmoothScroll from '@hooks/useSmoothScroll';
 import Script from 'next/script';
+import ToastList from '@components/toast/ToastList';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function MyApp({ Component, pageProps }: any) {
@@ -55,6 +56,7 @@ function MyApp({ Component, pageProps }: any) {
           <RecoilRoot>
             <ThemeProvider theme={themes}>
               <GlobalStyle />
+              <ToastList />
               <Layout>
                 <Component {...pageProps} />
               </Layout>

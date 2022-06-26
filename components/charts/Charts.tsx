@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactECharts from './composables/ECharts';
 import { ChartContainer, ChartWrapper } from './composables/Charts.style';
 import { Graph } from '@_types/chart-type';
@@ -10,6 +10,7 @@ interface Props {
   chartData?: Graph;
   forceUpdate?: boolean;
   status?: ChartStatus;
+  chartType: string;
 }
 
 interface xAxisType {
@@ -17,11 +18,11 @@ interface xAxisType {
   xAxisData: number[];
 }
 
-function Charts({ chartData, forceUpdate, status }: Props) {
+function Charts({ chartData, forceUpdate, status, chartType }: Props) {
   const xAxis: xAxisType = { xAxisKey: [], xAxisData: [] };
 
   chartData?.graphScores.forEach((e, i) => {
-    xAxis.xAxisKey[i] = calculateDateTimeFomramtter(e.snapshotTime);
+    xAxis.xAxisKey[i] = calculateDateTimeFomramtter(e.snapshotTime, chartType);
     xAxis.xAxisData[i] = e.graphScore;
   });
 

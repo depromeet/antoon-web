@@ -8,9 +8,9 @@ import {
 } from './BtnFooter.style';
 import UpDownBtn from './UpDownBtn';
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
-import Toast from './Toast';
 import { RecommendationStatus } from '@_types/webtoon-type';
 import TimeCounter from '@components/timecounter/TimeCounter';
+import { useToast } from '@hooks/useToast';
 
 function BtnFooter({
   onOpen,
@@ -27,29 +27,17 @@ function BtnFooter({
   leaveCount: number;
 }) {
   const [isSSR, setIsSSR] = useState(true);
-  const [ToastStatus, setToastStatus] = useState(false);
+  const { fireToast } = useToast();
 
   useEffect(() => {
     setIsSSR(false);
-    if (ToastStatus) {
-      setTimeout(() => setToastStatus(false), 1500);
-    }
-  }, [ToastStatus]);
-
-  const onToast = () => {
-    setToastStatus(true);
-  };
+  }, []);
 
   return (
     <BtnWrapper>
       <FilterBlur></FilterBlur>
-      {!ToastStatus && !isSSR && <TimeCounter />}
-      {ToastStatus && (
-        <Toast
-          joinLeaveStatus={joinLeaveStatus}
-          toastAnimation={ToastStatus}
-        ></Toast>
-      )}
+      {!isSSR && <TimeCounter />}
+
       {joinLeaveStatus === 'NONE' && (
         <>
           <UpDownBtn
@@ -69,7 +57,12 @@ function BtnFooter({
       )}
       {joinLeaveStatus !== 'NONE' && (
         <>
-          <UpDownBlockWrapper status={joinLeaveStatus} onClick={onToast}>
+          <UpDownBlockWrapper
+            status={joinLeaveStatus}
+            onClick={() =>
+              fireToast({ content: '안녕', joinLeaveStatus: 'JOINED' })
+            }
+          >
             <UpDownBlockTitle>
               {joinLeaveStatus === 'JOINED' ? (
                 <>

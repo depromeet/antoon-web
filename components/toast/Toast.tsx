@@ -1,5 +1,7 @@
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
+import { Toast } from '@stores/toast';
 import themes from '@styles/themes/themes';
+import { useEffect, useState } from 'react';
 import {
   ToastMessageWrapper,
   ToastMessage,
@@ -7,14 +9,19 @@ import {
   ToastCheckMark,
 } from './Toast.style';
 
-interface Props {
-  joinLeaveStatus: string;
-  toastAnimation: boolean;
-}
+function Toast(props: Toast) {
+  const { content, bottom, duration, joinLeaveStatus } = props;
+  const [isClosing, setIsClosing] = useState(false);
 
-function Toast(props: Props) {
+  useEffect(() => {
+    const setExistTimeout = setTimeout(() => {
+      setIsClosing(true);
+      clearTimeout(setExistTimeout);
+    }, duration ?? 1000);
+  });
+
   return (
-    <ToastMessageWrapper toastAnimation={props.toastAnimation}>
+    <ToastMessageWrapper bottom={bottom} isClosing={isClosing}>
       <ToastMessage status={props.joinLeaveStatus}>
         {props.joinLeaveStatus === 'JOIN' ? (
           <>

@@ -24,7 +24,7 @@ function TimeCounter({ endTime }: { endTime: string }) {
     <StockTimer>
       <TimerCount>
         {!isHide
-          ? `투표 종료까지 시간 ${hours}시간 : ${minutes}분 : ${seconds}초 남음`
+          ? `투표 종료까지 ${hours}시간 : ${minutes}분 : ${seconds}초 남음`
           : '투표 종료'}
       </TimerCount>
     </StockTimer>

@@ -37,12 +37,19 @@ export interface Webtoon {
   ranking?: number;
 }
 
-export type ChartStatus = 'UP' | 'DOWN' | 'STALE' | '';
+export type ChartStatus = 'UP' | 'DOWN' | 'STALE' | 'MAINTAIN' | '';
 
 export interface WebtoonJoinLeaveRecommendation {
   recommendationStatus: RecommendationStatus;
   joinCount: number;
   leaveCount: number;
+}
+
+export interface WebtoonJoinLeaveRespoonse {
+  joinCount: number;
+  leaveCount: number;
+  status: RecommendationStatus;
+  getCoin: boolean;
 }
 
 export interface WebtoonCategory {

@@ -15,6 +15,7 @@
         "@styles/*": ["styles/*"],
         "@_types/*": ["types/*"],
         "@utils/*": ["utils/*"],
+        "@stores/*": ["stores/*"],
       }
     }
 }

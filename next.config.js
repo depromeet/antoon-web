@@ -13,6 +13,7 @@ const nextConfig = {
       'shared-comic.pstatic.net',
       'colorate.azurewebsites.net',
       'antoon-api-bucket.s3.ap-northeast-2.amazonaws.com',
+      'www.easylaw.go.kr',
     ],
   },
   reactStrictMode: true,
