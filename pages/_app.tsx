@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: any) {
       }),
   );
 
-  useSmoothScroll();
+  // useSmoothScroll();
 
   return (
     <>

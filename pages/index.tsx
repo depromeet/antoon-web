@@ -1,11 +1,12 @@
 import type { NextPage } from 'next';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Mixpanel } from 'mixpanel';
 
 import Header from '@components/layout/Header/Header';
 import Modal from '@components/modal/onboard/Modal';
 import { default as _Home } from '@domains/webtoon/home/Home';
 import FloatingBtn from '@components/button/FloatingBtn';
+import CoinModal from '@domains/user/signup/modal/CoinModal';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -14,8 +15,18 @@ const Home: NextPage = () => {
     });
   }, []);
 
+  const [modalStatus, setModalStatus] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('antoon-signup-status') === 'SIGNUP')
+      setModalStatus(true);
+  }, []);
+
   return (
     <>
+      {modalStatus && (
+        <CoinModal modalStatus={modalStatus} setModalStatus={setModalStatus} />
+      )}
       <Header headerLeft="로고" headerRight="검색" />
       <Modal />
       <_Home />

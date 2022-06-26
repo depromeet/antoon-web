@@ -12,7 +12,7 @@ const SignInWrap = styled.div`
   background-size: cover;
   width: calc(100% + 4.8rem);
   height: calc(100vh - 5.6rem);
-  background-position-y: 10rem;
+  background-position-y: 13rem;
 `;
 
 const BtnWrap = styled.div`
