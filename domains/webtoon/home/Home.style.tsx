@@ -3,6 +3,10 @@ import styled from '@emotion/styled';
 const HomeContainer = styled.main``;
 
 const HomeTopWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
   padding-top: 0.8rem;
 `;
 

@@ -24,6 +24,12 @@ import SubTitle from '@components/SubTitle';
 import { RecommendationTitleWrapper } from '@domains/community/Community.style';
 import TopicCards from '@domains/community/topic/TopicCards';
 import Title from '@components/Title';
+import TopicBanners from './TopicBanners';
+import {
+  IndicatorContainer,
+  IndicatorWrapper,
+} from '@components/modal/onboard/Modal.style';
+import StepIndicator from '@assets/icons/StepIndicator';
 
 function Home() {
   const RealTimeChartRef = useRef<HTMLDivElement>(null);
@@ -39,10 +45,18 @@ function Home() {
   return (
     <HomeContainer>
       <HomeTopWrapper>
-        <HomeTopTitleWrapper>
-          <HomeTopSubTitle>열심히일하는일개미님</HomeTopSubTitle>
-          <HomeTopTitle>오늘은 어떤 웹툰에 탑승할까요?</HomeTopTitle>
-        </HomeTopTitleWrapper>
+        <TopicBanners />
+        <IndicatorContainer>
+          <IndicatorWrapper onClick={() => onStep('first')} currentStep={true}>
+            <StepIndicator active={true} />
+          </IndicatorWrapper>
+          <IndicatorWrapper onClick={() => onStep('second')}>
+            <StepIndicator />
+          </IndicatorWrapper>
+          <IndicatorWrapper onClick={() => onStep('third')}>
+            <StepIndicator />
+          </IndicatorWrapper>
+        </IndicatorContainer>
       </HomeTopWrapper>
       <HomeRealtimeChartWrapper id="realtime-chart">
         <RealTimeChartTitle />
