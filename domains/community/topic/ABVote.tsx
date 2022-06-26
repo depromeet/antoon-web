@@ -80,10 +80,7 @@ function ABVote({
             })}
           </ABVoteItems>
           <ABVoteForm>
-            <VoteBtn
-              voteStatus={data.topicVoteStatus}
-              onOpen={onOpen}
-            ></VoteBtn>
+            <VoteBtn voteStatus={data.topicVoteStatus} onOpen={onOpen} />
             <VoteJoinCount>
               {getToLocaleString(data.joinCount)} 개미 참여 중
             </VoteJoinCount>
