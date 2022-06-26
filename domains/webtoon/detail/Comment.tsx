@@ -19,12 +19,18 @@ import CommentTextInput from '@components/detail/commentTextInput/CommentTextInp
 import OnError from '@components/OnError';
 import ErrorBoundary from '@components/ErrorBoundary';
 
-import { IComment } from '@_types/comments-type';
+import { CommentType, Comments, IComment } from '@_types/comments-type';
 import { useEffect, useState } from 'react';
 
-function Comment({ id }: { id: number }) {
-  const { data: t, isError } = useGetCommentsById(id);
-  const [comments, setComments] = useState<IComment[]>([]);
+function Comment({
+  commentType,
+  id,
+}: {
+  commentType: CommentType;
+  id: number;
+}) {
+  const { data: t, isError } = useGetCommentsById(commentType, id);
+  const [comments, setComments] = useState<Comments>([]);
 
   useEffect(() => {
     if (t) setComments(t.data);
@@ -34,9 +40,13 @@ function Comment({ id }: { id: number }) {
 
   return (
     <ErrorBoundary message="댓글을 불러오지 못하고 있어요 😭😭😭">
-      <CommentListWrap>
+      <CommentListWrap commentType={commentType}>
         <Title>개미들의 행진 {comments?.length}</Title>
-        <CommentTextInput length={comments?.length} webtoonId={id} />
+        <CommentTextInput
+          length={comments?.length}
+          id={id}
+          commentType={commentType}
+        />
         {comments &&
           comments?.map((comment: IComment) => {
             return (

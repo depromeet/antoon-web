@@ -12,32 +12,33 @@ import {
 } from './ChoiceVote.style';
 
 //데이터 있는 경우 mock
+/*
 const voteResultMock: VoteResult = {
-  voteItems: [
+  candidates: [
     {
       id: 1,
-      voteCount: 24,
-      voteRate: 66.6,
+      votingCount: 24,
+      votingCountRate: 66.6,
       winner: true,
     },
     {
       id: 2,
-      voteCount: 12,
-      voteRate: 22.2,
+      votingCount: 12,
+      votingCountRate: 22.2,
       winner: false,
     },
     {
       id: 3,
-      voteCount: 6,
-      voteRate: 11.2,
+      votingCount: 6,
+      votingCountRate: 11.2,
       winner: false,
     },
   ],
   joinCount: 36,
 };
-
+*/
 // 데이터 없는 경우 mock
-//const voteResultMock: VoteResult | undefined = undefined;
+const voteResultMock: VoteResult | undefined = undefined;
 
 function ChoiceVote({
   data,
@@ -67,7 +68,7 @@ function ChoiceVote({
         <>
           <VoteHeader data={data}></VoteHeader>
           <ChoiceVoteItems>
-            {data.voteItems.map((item: VoteItem, i) => {
+            {data.candidates.map((item: VoteItem, i) => {
               return (
                 <ChoiceVoteItem
                   active={votingId === item.id ? true : false}
@@ -75,8 +76,8 @@ function ChoiceVote({
                   data={item}
                   key={item.id}
                   onActive={() => activeHandler(item.id)}
-                  isEnd={data.voteStatus}
-                  result={voteResultMock?.voteItems.find(
+                  isEnd={data.topicVoteStatus}
+                  result={voteResultMock?.candidates.find(
                     (v) => v.id === item.id,
                   )}
                 ></ChoiceVoteItem>
@@ -84,7 +85,10 @@ function ChoiceVote({
             })}
           </ChoiceVoteItems>
           <ChoiceVoteForm>
-            <VoteBtn voteStatus={data.voteStatus} onOpen={onOpen}></VoteBtn>
+            <VoteBtn
+              voteStatus={data.topicVoteStatus}
+              onOpen={onOpen}
+            ></VoteBtn>
             <VoteJoinCount>
               {getToLocaleString(data.joinCount)} 개미 참여 중
             </VoteJoinCount>

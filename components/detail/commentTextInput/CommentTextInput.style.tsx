@@ -6,10 +6,10 @@ const CommentTextInputWrapper = styled.div<{ isOver: boolean }>`
   border: ${(props) =>
     props.isOver ? `1px solid ${props.theme.colors.chart.point_up_100}` : ''};
   border-radius: 10px;
-  background: ${(props) => props.theme.colors.primary.gray_200};
+  background: ${(props) => props.theme.colors.primary.gray_300};
   padding-top: 5px;
   padding-bottom: 0;
-  padding-left: 10px;
+  padding-left: 5px;
   width: 100%;
   height: auto;
 `;
@@ -55,7 +55,7 @@ const TextArea = styled.textarea`
   outline: none;
   border: none;
   border-radius: 10px;
-  background: ${(props) => props.theme.colors.primary.gray_200};
+  background: ${(props) => props.theme.colors.primary.gray_300};
   padding: 10px;
   width: 100%;
   height: 38px;

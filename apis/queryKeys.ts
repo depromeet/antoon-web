@@ -1,4 +1,5 @@
 import { TopicCategory } from '@_types/topics-type';
+import { CommentType } from '@_types/comments-type';
 
 const webtoons = {
   all: ['webtoons'],
@@ -16,23 +17,43 @@ const webtoons = {
   days: (day: string) => [...webtoons.all, 'days', day],
 };
 
+const topics = {
+  all: ['topics'],
+  category: (category: TopicCategory) => [...topics.all, 'category', category],
+  lists: () => [...topics.all, 'topics'],
+  list: (id: number) => [...topics.lists(), id],
+  post: (id: number) => [...topics.list(id), 'patch', id],
+};
+
 const comments = {
   all: ['comments'],
-  lists: (id: number) => [...comments.all, 'lists', id],
-  create: (id: number, content: string) => [
+  lists: (commentType: CommentType, id: number) => [
+    ...comments.all,
+    'lists',
+    id,
+  ],
+  create: (commentType: CommentType, id: number, content: string) => [
     ...comments.all,
     'create',
     id,
     content,
   ],
-  patch: (id: number, content: string) => [
+  patch: (commentType: CommentType, id: number, content: string) => [
     ...comments.all,
     'patch',
     id,
     content,
   ],
-  delete: (id: number) => [...comments.all, 'delete', id],
-  isLiked: (id: number) => [...comments.all, 'isLiked', id],
+  delete: (commentType: CommentType, id: number) => [
+    ...comments.all,
+    'delete',
+    id,
+  ],
+  isLiked: (commentType: CommentType, id: number) => [
+    ...comments.all,
+    'isLiked',
+    id,
+  ],
 };
 
 const user = {
@@ -48,11 +69,6 @@ const user = {
 const graph = {
   all: ['graph'],
   lists: (id: number, chartType: string) => [...graph.all, id, chartType],
-};
-
-const topics = {
-  all: ['topics'],
-  category: (category: TopicCategory) => [...topics.all, 'category', category],
 };
 
 export { webtoons, comments, graph, user, topics };

@@ -1,6 +1,12 @@
 import styled from '@emotion/styled';
+import { CommentType } from '@_types/comments-type';
 
-const CommentListWrap = styled.div`
+const CommentListWrap = styled.div<{ commentType: CommentType }>`
+  margin: 24px -24px;
+  background: ${(props) =>
+    props.commentType == 'topics' && props.theme.colors.grayscale.gray_100};
+  padding: 10px 48px 24px;
+  width: calc(100% +24 * 2);
   min-height: 60rem;
 `;
 

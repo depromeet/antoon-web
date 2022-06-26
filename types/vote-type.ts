@@ -1,30 +1,30 @@
 export type VoteType = 'AB' | 'CHOICE';
 
 export interface Vote {
-  voteId: number;
-  voteCategory: VoteType;
+  topicId: number;
+  topicCategory: VoteType;
   title: string;
   tags: string[];
-  votingEndTime: string;
-  voteItems: VoteItem[];
+  topicVoteEndTime: string;
+  candidates: VoteItem[];
   joinCount: number;
-  voteStatus: boolean;
+  topicVoteStatus: boolean;
 }
 
-export interface VoteItem {
-  id: number;
+export interface VoteItem extends VoteResultItem {
+  topicId: number;
   content: string;
   imageUrl: string;
 }
 
 export interface VoteResult {
-  voteItems: VoteResultItem[];
+  candidates: VoteResultItem[];
   joinCount: number;
 }
 
 export interface VoteResultItem {
   id: number;
-  voteCount: number;
-  voteRate: number;
+  votingCount: number;
+  votingCountRate: number;
   winner: boolean;
 }

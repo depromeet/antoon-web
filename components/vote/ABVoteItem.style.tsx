@@ -25,7 +25,7 @@ const ABVoteFilter = styled.div<{
   opacity: 0.5;
   z-index: 2;
   border-radius: ${(props) =>
-    props.dataWidth >= 90
+    props.isEnd && props.dataWidth >= 90
       ? '20px 20px 0 0'
       : props.isEnd
       ? '20px 0 0 0'

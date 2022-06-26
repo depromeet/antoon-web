@@ -48,7 +48,6 @@ import { useEffect, useRef, useState } from 'react';
 import { isEllipsisActive } from 'utils/css-util';
 import Modal from '@components/modal/detail/Modal';
 import { Graph } from '@_types/chart-type';
-import useCountdown from '@hooks/useCountdown';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import { TooltipIcon } from '@assets/icons';
 

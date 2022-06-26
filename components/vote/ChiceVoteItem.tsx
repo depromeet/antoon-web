@@ -37,14 +37,14 @@ function ChoiceVoteItem(props: Props) {
           <ChoiceVoteFilter
             isEnd={isEnd}
             isWinner={isWinner()}
-            dataWidth={result.voteRate}
+            dataWidth={result.votingCountRate}
           />
           <ChoiceVoteResult isEnd={isEnd}>
             <ChoiceVoteResultPercent isWinner={isWinner()}>
-              {result.voteRate}%
+              {result.votingCountRate}%
             </ChoiceVoteResultPercent>
             <ChoiceVoteResultVoter>
-              {result.voteCount} 개미
+              {result.votingCount} 개미
             </ChoiceVoteResultVoter>
           </ChoiceVoteResult>
         </>

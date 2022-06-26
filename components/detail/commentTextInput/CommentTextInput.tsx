@@ -8,23 +8,18 @@ import {
   ProfileName,
   SubmitButton,
 } from '@components/detail/commentTextInput/CommentTextInput.style';
-import {
-  MouseEventHandler,
-  useCallback,
-  useEffect,
-  useReducer,
-  useRef,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useGetUserInformation } from '@apis/user';
 import { usePostCommentsById } from '@apis/comments';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import OnError from '@components/OnError';
+import { CommentType } from '@_types/comments-type';
 
 interface Props {
   length: number;
-  webtoonId: number;
+  id: number;
+  commentType: CommentType;
 }
 
 function CommentTextInput(props: Props) {
@@ -41,7 +36,7 @@ function CommentTextInput(props: Props) {
     isSuccess,
     error,
     mutate: postData,
-  } = usePostCommentsById(props.webtoonId, content);
+  } = usePostCommentsById(props.commentType, props.id, content);
 
   useEffect(() => {
     if (content.length >= MAX_LENGTH_CONTENT && textareaRef.current?.focus())
@@ -120,7 +115,6 @@ function CommentTextInput(props: Props) {
           </TextAreaWrapper>
         </>
       )}
-      {}
     </CommentTextInputWrapper>
   );
 }

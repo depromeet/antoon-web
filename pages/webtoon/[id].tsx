@@ -32,7 +32,7 @@ function WebtoonDetail({ id }: Prop) {
     <>
       <Header headerLeft="뒤로가기" headerRight="공유하기" />
       <Detail id={Number(id)} />
-      <Comment id={Number(id)} />
+      <Comment commentType={'webtoons'} id={Number(id)} />
     </>
   );
 }

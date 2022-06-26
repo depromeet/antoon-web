@@ -7,7 +7,7 @@ const ModalOverlay = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: 101;
   background-color: rgb(0 0 0 / 70%);
 `;
 const ModalHeader = styled.div`
@@ -37,7 +37,7 @@ const ModalContent = styled.div`
   background-color: ${(props) => props.theme.colors.basic.white};
   padding: 20px 40px 40px;
   width: 84%;
-  max-width: 708px;
+  max-width: 430px;
   height: auto;
   text-align: center;
 `;
