@@ -20,6 +20,25 @@ import {
 } from './UserBadge.style';
 
 function UserBadge({ coin, badge }: { coin: number; badge: string }) {
+  const [badgeName, setBadgeName] = useState('');
+
+  const getBadgeLevel = useCallback((badge) => {
+    switch (badge) {
+      case 'LEVEL_ONE':
+        return setBadgeName('거지개미');
+      case 'LEVEL_TWO':
+        return setBadgeName('일개미');
+      case 'LEVEL_THREE':
+        return setBadgeName('여왕개미');
+      default:
+        return setBadgeName('로그인을 하시면 등급을 받을 수 있어요');
+    }
+  }, []);
+
+  useEffect(() => {
+    getBadgeLevel(badge);
+  }, [badge, getBadgeLevel]);
+
   const [nextBadge, setNextBadge] = useState({
     name: '',
     textStatusWidth: '',
@@ -27,8 +46,8 @@ function UserBadge({ coin, badge }: { coin: number; badge: string }) {
   });
 
   const getNextBadge = useCallback(
-    (badge) => {
-      switch (badge) {
+    (badgeName) => {
+      switch (badgeName) {
         case '거지개미':
           return setNextBadge({
             name: '일개미',
@@ -59,16 +78,16 @@ function UserBadge({ coin, badge }: { coin: number; badge: string }) {
   );
 
   useEffect(() => {
-    getNextBadge(badge);
-  }, [badge, getNextBadge]);
+    getNextBadge(badgeName);
+  }, [badgeName, getNextBadge]);
 
   return (
     <BadgeWrap>
       <UpperWrap>
         <UserBadgeDataWrap>
-          <UserBadgeIcon badge={badge} />
-          {badge.length < 5 ? (
-            <BadgeName>{badge}</BadgeName>
+          <UserBadgeIcon badge={badgeName} />
+          {badgeName.length < 5 ? (
+            <BadgeName>{badgeName}</BadgeName>
           ) : (
             <DefaultBadgeName>등급이 아직 없어요</DefaultBadgeName>
           )}
@@ -86,7 +105,7 @@ function UserBadge({ coin, badge }: { coin: number; badge: string }) {
           <CoinStatusBar width={nextBadge.progressWidth} />
         </ProgressBar>
         <BadgeStatusWrap>
-          <BadgeStatus>{badge}</BadgeStatus>
+          <BadgeStatus>{badgeName}</BadgeStatus>
           <BadgeStatus>{nextBadge.name}</BadgeStatus>
         </BadgeStatusWrap>
       </LowerWrap>
