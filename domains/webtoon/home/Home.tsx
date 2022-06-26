@@ -47,13 +47,16 @@ function Home() {
       <HomeTopWrapper>
         <TopicBanners />
         <IndicatorContainer>
-          <IndicatorWrapper onClick={() => onStep('first')} currentStep={true}>
+          <IndicatorWrapper>
             <StepIndicator active={true} />
           </IndicatorWrapper>
-          <IndicatorWrapper onClick={() => onStep('second')}>
+          <IndicatorWrapper>
             <StepIndicator />
           </IndicatorWrapper>
-          <IndicatorWrapper onClick={() => onStep('third')}>
+          <IndicatorWrapper>
+            <StepIndicator />
+          </IndicatorWrapper>
+          <IndicatorWrapper>
             <StepIndicator />
           </IndicatorWrapper>
         </IndicatorContainer>
