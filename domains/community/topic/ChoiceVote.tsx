@@ -11,41 +11,15 @@ import {
   VoteJoinCount,
 } from './ChoiceVote.style';
 
-//데이터 있는 경우 mock
-/*
-const voteResultMock: VoteResult = {
-  candidates: [
-    {
-      id: 1,
-      votingCount: 24,
-      votingCountRate: 66.6,
-      winner: true,
-    },
-    {
-      id: 2,
-      votingCount: 12,
-      votingCountRate: 22.2,
-      winner: false,
-    },
-    {
-      id: 3,
-      votingCount: 6,
-      votingCountRate: 11.2,
-      winner: false,
-    },
-  ],
-  joinCount: 36,
-};
-*/
-// 데이터 없는 경우 mock
-const voteResultMock: VoteResult | undefined = undefined;
-
 function ChoiceVote({
   data,
   onOpen,
+  onSelect,
 }: {
   data: Vote;
   onOpen: MouseEventHandler<HTMLButtonElement>;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onSelect: Function;
 }) {
   const [votingId, setVotingId] = useState<number>(-1);
   const [isSSR, setIsSSR] = useState(true);
@@ -60,6 +34,7 @@ function ChoiceVote({
 
   const activeHandler = (id: number) => {
     setVotingId(id);
+    onSelect(id);
   };
 
   return (
@@ -68,7 +43,7 @@ function ChoiceVote({
         <>
           <VoteHeader data={data}></VoteHeader>
           <ChoiceVoteItems>
-            {data.candidates.map((item: VoteItem, i) => {
+            {data?.candidates.map((item: VoteItem, i) => {
               return (
                 <ChoiceVoteItem
                   active={votingId === item.id ? true : false}
@@ -77,9 +52,7 @@ function ChoiceVote({
                   key={item.id}
                   onActive={() => activeHandler(item.id)}
                   isEnd={data.topicVoteStatus}
-                  result={voteResultMock?.candidates.find(
-                    (v) => v.id === item.id,
-                  )}
+                  result={data?.candidates.find((v) => v.id === item.id)}
                 ></ChoiceVoteItem>
               );
             })}
