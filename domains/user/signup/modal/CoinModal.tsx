@@ -21,8 +21,10 @@ import {
 } from './CoinModal.style';
 
 function CoinModal({
+  modalStatus,
   setModalStatus,
 }: {
+  modalStatus: boolean;
   setModalStatus: Dispatch<SetStateAction<boolean>>;
 }) {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -60,6 +62,22 @@ function CoinModal({
     setModalStatus(false);
     localStorage.removeItem('antoon-signup-status');
   };
+
+  useEffect(() => {
+    if (modalStatus) {
+      document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+
+      return () => {
+        const scrollY = document.body.style.top;
+        document.body.style.cssText = '';
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      };
+    }
+  }, [modalStatus]);
 
   return (
     <Background ref={modalRef}>
