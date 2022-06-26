@@ -9,3 +9,4 @@ export { ReactComponent as MyPageCoin } from './mypage_coin.svg';
 export { ReactComponent as CoinStatusArrow } from './coin_status_arrow.svg';
 export { ReactComponent as CrownIcon } from './crown.svg';
 export { ReactComponent as TooltipIcon } from './tooltip.svg';
+export { ReactComponent as SignupCoinIntroduce } from './signup_coin_introduce.svg';
