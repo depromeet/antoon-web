@@ -63,8 +63,7 @@ function Modal({
     if (data) {
       onRecommendSet(data);
       fireToast({ joinLeaveStatus: joinLeave });
-    }
-    if (error) {
+    } else if (error) {
       fireToast({ joinLeaveStatus: joinLeave == 'JOIN' ? 'JOINED' : 'LEAVED' });
     }
   }, [data, error]);

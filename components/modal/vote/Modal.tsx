@@ -40,6 +40,7 @@ function Modal(props: Props) {
     isLoading,
     isSuccess,
     error,
+    data,
     mutate: postData,
   } = usePostTopicsById(props.candidateId);
 
@@ -49,17 +50,20 @@ function Modal(props: Props) {
   useEffect(() => {
     setMount(true);
     setPortal(document.getElementById('onboard-modal'));
-  }, []);
+    if (data) {
+      fireToast({ joinLeaveStatus: 'VOTING' });
+    } else if (error) {
+      fireToast({ joinLeaveStatus: 'VOTED' });
+    }
+  }, [data]);
 
   const handleVoteClick = () => {
     try {
       if (candidateId <= 0) fireToast({ joinLeaveStatus: 'VOTE-NO-SELECT' });
       postData();
       onClose(false);
-      fireToast({ joinLeaveStatus: 'VOTING' });
     } catch (e) {
       console.log(e);
-      fireToast({ joinLeaveStatus: 'VOTED' });
     }
   };
 
