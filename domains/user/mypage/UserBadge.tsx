@@ -3,6 +3,8 @@ import { useState, useEffect, useCallback } from 'react';
 import UserBadgeIcon from '@assets/icons/UserBadgeIcon';
 import { CoinStatusArrow } from '@assets/icons';
 
+import BadgeInfoModal from './BadgeInfoModal';
+
 import {
   BadgeWrap,
   UpperWrap,
@@ -81,35 +83,44 @@ function UserBadge({ coin, badge }: { coin: number; badge: string }) {
     getNextBadge(badgeName);
   }, [badgeName, getNextBadge]);
 
-  return (
-    <BadgeWrap>
-      <UpperWrap>
-        <UserBadgeDataWrap>
-          <UserBadgeIcon badge={badgeName} />
-          {badgeName.length < 5 ? (
-            <BadgeName>{badgeName}</BadgeName>
-          ) : (
-            <DefaultBadgeName>등급이 아직 없어요</DefaultBadgeName>
-          )}
-        </UserBadgeDataWrap>
-        <BadgeInfo>등급 보기</BadgeInfo>
-      </UpperWrap>
+  const [modalStatus, setModalStatus] = useState(false);
 
-      <LowerWrap width={nextBadge.textStatusWidth}>
-        <CoinStatusWrap width={nextBadge.textStatusWidth}>
-          <CoinStatus>
-            {coin}ANT <CoinStatusArrow />
-          </CoinStatus>
-        </CoinStatusWrap>
-        <ProgressBar>
-          <CoinStatusBar width={nextBadge.progressWidth} />
-        </ProgressBar>
-        <BadgeStatusWrap>
-          <BadgeStatus>{badgeName}</BadgeStatus>
-          <BadgeStatus>{nextBadge.name}</BadgeStatus>
-        </BadgeStatusWrap>
-      </LowerWrap>
-    </BadgeWrap>
+  const onClickOpen = () => {
+    setModalStatus(true);
+  };
+
+  return (
+    <>
+      {modalStatus && <BadgeInfoModal setModalStatus={setModalStatus} />}
+      <BadgeWrap>
+        <UpperWrap>
+          <UserBadgeDataWrap>
+            <UserBadgeIcon badge={badgeName} />
+            {badgeName.length < 5 ? (
+              <BadgeName>{badgeName}</BadgeName>
+            ) : (
+              <DefaultBadgeName>등급이 아직 없어요</DefaultBadgeName>
+            )}
+          </UserBadgeDataWrap>
+          <BadgeInfo onClick={onClickOpen}>등급 보기</BadgeInfo>
+        </UpperWrap>
+
+        <LowerWrap width={nextBadge.textStatusWidth}>
+          <CoinStatusWrap width={nextBadge.textStatusWidth}>
+            <CoinStatus>
+              {coin}ANT <CoinStatusArrow />
+            </CoinStatus>
+          </CoinStatusWrap>
+          <ProgressBar>
+            <CoinStatusBar width={nextBadge.progressWidth} />
+          </ProgressBar>
+          <BadgeStatusWrap>
+            <BadgeStatus>{badgeName}</BadgeStatus>
+            <BadgeStatus>{nextBadge.name}</BadgeStatus>
+          </BadgeStatusWrap>
+        </LowerWrap>
+      </BadgeWrap>
+    </>
   );
 }
 
