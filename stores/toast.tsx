@@ -1,3 +1,4 @@
+import { RecommendationStatus } from '@_types/webtoon-type';
 import { atom } from 'recoil';
 
 export interface Toast {
@@ -5,8 +6,14 @@ export interface Toast {
   content?: string;
   duration?: number;
   bottom?: number;
-  joinLeaveStatus: string;
+  joinLeaveStatus: ToastStatusType;
 }
+
+export type ToastStatusType =
+  | RecommendationStatus
+  | 'VOTE-NO-SELECT'
+  | 'VOTING'
+  | 'VOTED';
 
 export const toastState = atom<Toast[]>({
   key: 'toastState',

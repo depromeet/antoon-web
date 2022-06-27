@@ -1,3 +1,4 @@
+import { AlertLine } from '@assets/icons';
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
 import { Toast } from '@stores/toast';
 import themes from '@styles/themes/themes';
@@ -10,7 +11,7 @@ import {
 } from './Toast.style';
 
 function Toast(props: Toast) {
-  const { content, bottom, duration, joinLeaveStatus } = props;
+  const { bottom, duration, joinLeaveStatus } = props;
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
@@ -22,8 +23,8 @@ function Toast(props: Toast) {
 
   return (
     <ToastMessageWrapper bottom={bottom} isClosing={isClosing}>
-      <ToastMessage status={props.joinLeaveStatus}>
-        {props.joinLeaveStatus === 'JOIN' ? (
+      <ToastMessage status={joinLeaveStatus}>
+        {joinLeaveStatus === 'JOIN' && (
           <>
             <StockUpIcon
               fill={themes.colors.secondary.red}
@@ -31,7 +32,8 @@ function Toast(props: Toast) {
             />
             <ToastMessageContent>툰툰 탑승 완료!</ToastMessageContent>
           </>
-        ) : props.joinLeaveStatus === 'LEAVE' ? (
+        )}
+        {joinLeaveStatus === 'LEAVE' && (
           <>
             <StockDownIcon
               fill={themes.colors.secondary.blue}
@@ -39,10 +41,23 @@ function Toast(props: Toast) {
             />
             <ToastMessageContent>툰툰 하차 완료!</ToastMessageContent>
           </>
-        ) : (
+        )}
+        {(joinLeaveStatus === 'JOINED' || joinLeaveStatus === 'LEAVED') && (
           <>
-            <ToastCheckMark status={props.joinLeaveStatus}> ✓ </ToastCheckMark>
+            <ToastCheckMark status={joinLeaveStatus}> ✓ </ToastCheckMark>
             내일 다시 투표할 수 있어요!
+          </>
+        )}
+        {joinLeaveStatus === 'VOTING' && <> ✓ 투표를 완료했어요!🗳</>}
+        {joinLeaveStatus === 'VOTED' && (
+          <>
+            <AlertLine /> 이미 투표를 완료했어요.
+          </>
+        )}
+        {joinLeaveStatus === 'VOTE-NO-SELECT' && (
+          <>
+            <AlertLine />
+            선택항목을 골라주세요.
           </>
         )}
       </ToastMessage>

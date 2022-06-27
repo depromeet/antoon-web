@@ -80,7 +80,9 @@ function CommentTextInput(props: Props) {
   if (isError) return <OnError>로그인이 필요합니다.</OnError>;
 
   return (
-    <CommentTextInputWrapper isOver={isOver}>
+    <CommentTextInputWrapper
+      isOver={content.length >= MAX_LENGTH_CONTENT ? true : false}
+    >
       {user && (
         <>
           <ProfileWrapper isShow={focused}>

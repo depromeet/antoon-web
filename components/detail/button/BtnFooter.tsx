@@ -59,9 +59,7 @@ function BtnFooter({
         <>
           <UpDownBlockWrapper
             status={joinLeaveStatus}
-            onClick={() =>
-              fireToast({ content: '안녕', joinLeaveStatus: 'JOINED' })
-            }
+            onClick={() => fireToast({ joinLeaveStatus: joinLeaveStatus })}
           >
             <UpDownBlockTitle>
               {joinLeaveStatus === 'JOINED' ? (

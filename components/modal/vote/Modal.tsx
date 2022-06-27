@@ -1,6 +1,7 @@
 import { usePostTopicsById } from '@apis/topics';
 import { useGetUserInformation } from '@apis/user';
 import { AntCoinIcon, AntCoinSmallIcon } from '@assets/icons';
+import { useToast } from '@hooks/useToast';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
@@ -42,6 +43,7 @@ function Modal(props: Props) {
     mutate: postData,
   } = usePostTopicsById(props.candidateId);
 
+  const { fireToast } = useToast();
   const { candidateId, isOpen, onClose } = props;
 
   useEffect(() => {
@@ -51,10 +53,13 @@ function Modal(props: Props) {
 
   const handleVoteClick = () => {
     try {
+      if (candidateId <= 0) fireToast({ joinLeaveStatus: 'VOTE-NO-SELECT' });
       postData();
       onClose(false);
+      fireToast({ joinLeaveStatus: 'VOTING' });
     } catch (e) {
       console.log(e);
+      fireToast({ joinLeaveStatus: 'VOTED' });
     }
   };
 
@@ -79,7 +84,7 @@ function Modal(props: Props) {
                   <ModalCoinText>보유코인</ModalCoinText>
                   <ModalMyCoin>
                     <AntCoinSmallIcon />
-                    <MyCoinReserve>2300</MyCoinReserve>
+                    <MyCoinReserve>{user.wallet}</MyCoinReserve>
                   </ModalMyCoin>
                 </ModalCoin>
                 <ModalBtns>
