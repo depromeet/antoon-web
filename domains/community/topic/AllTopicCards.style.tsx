@@ -10,16 +10,17 @@ const AllTopicCardContainer = styled.div`
 const AllTopicCardWrapper = styled.div`
   display: flex;
   gap: 1.2rem;
+  height: 7.2rem;
 `;
 
 const AllTopicCardImageContainer = styled.div`
-  width: 7.2rem;
-  height: 7.2rem;
+  min-width: 7.2rem;
+  min-height: 7.2rem;
 `;
 
 const AllTopicCardSecondImage = styled.div`
   position: relative;
-  bottom: 2.8rem;
+  bottom: 2.2rem;
   left: 2.6rem;
   border: solid ${(props) => props.theme.colors.basic.white};
   border-radius: 10rem;
@@ -33,7 +34,6 @@ const AllTopicCardContentContainer = styled.div`
 `;
 
 const AllTopicCardTitle = styled.div`
-  width: 22.8rem;
   height: 4rem;
   font-size: 1.4rem;
   font-weight: 600;
