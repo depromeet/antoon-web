@@ -1,7 +1,7 @@
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 
-const appearSlowly = keyframes`
+const fadein = keyframes`
     from {
       opacity:0.2;
     }
@@ -11,19 +11,30 @@ const appearSlowly = keyframes`
     }
 `;
 
-const ToastMessageWrapper = styled.div<{ toastAnimation: boolean }>`
+const fadeout = keyframes`
+    from {
+      opacity:1;
+    }
+      
+    to {
+      opacity:0;
+    }
+`;
+
+const ToastMessageWrapper = styled.div<{ bottom?: number; isClosing: boolean }>`
   position: absolute;
+  bottom: ${({ bottom }) => bottom ?? 15}vh;
   transition: all 0.5s;
   opacity: 0.8;
-  margin: 0 20px;
+  margin-left: 5%;
   border-radius: 10px;
   background: ${(props) => props.theme.colors.basic.black};
   padding: 12px;
   padding-left: 20px;
-  width: 85%;
-  max-width: 470px;
+  width: 78vw;
+  max-width: 380px;
   height: 40px;
-  animation: ${appearSlowly} 1.5s;
+  animation: 0.8s forwards ${({ isClosing }) => (isClosing ? fadeout : fadein)};
   vertical-align: middle;
   text-align: left;
 `;

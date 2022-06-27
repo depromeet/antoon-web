@@ -2,14 +2,19 @@ import styled from '@emotion/styled';
 import { CommentType } from '@_types/comments-type';
 
 const CommentListWrap = styled.div<{ commentType: CommentType }>`
-  margin: 24px -24px;
+  margin: 12px -24px;
   background: ${(props) =>
     props.commentType == 'topics' && props.theme.colors.grayscale.gray_100};
   padding: 10px 48px 24px;
   width: calc(100% +24 * 2);
   min-height: 60rem;
 `;
-
+const CommentNoWrap = styled.section`
+  margin-top: 50%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+`;
 const Title = styled.p`
   margin: 2.4rem 0;
   font-size: 2rem;
@@ -18,6 +23,10 @@ const Title = styled.p`
 
 const CommentWrap = styled.div`
   display: flex;
+
+  &:last-child {
+    margin-bottom: 160px;
+  }
 `;
 
 const MainWrap = styled.div`
@@ -60,6 +69,7 @@ const Favorite = styled.span`
 
 export {
   CommentListWrap,
+  CommentNoWrap,
   Title,
   CommentWrap,
   MainWrap,

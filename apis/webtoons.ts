@@ -1,5 +1,5 @@
-import { useMutation, useQuery } from 'react-query';
-import { graph, webtoons } from '@apis/queryKeys';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
+import { graph, topics, webtoons } from '@apis/queryKeys';
 import { instance } from './api';
 import {
   WebtoonRank,
@@ -10,6 +10,7 @@ import {
   WebtoonGenresTop3,
   Webtoon,
   WebtoonJoinLeaveRecommendation,
+  WebtoonJoinLeaveRespoonse,
 } from '@_types/webtoon-type';
 import { Graph } from '@_types/chart-type';
 
@@ -154,9 +155,15 @@ const usePatchJoinLeaveRecommendationById = (
   webtoonId: number,
   status: string,
 ) => {
-  return useMutation<WebtoonJoinLeaveRecommendation>(
+  const queryClient = useQueryClient();
+  return useMutation<WebtoonJoinLeaveRespoonse>(
     webtoons.joinLeave(webtoonId, status),
     () => getJoinLeaveRecommendationById(webtoonId, status),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(webtoons.joinLeave(webtoonId, status));
+      },
+    },
   );
 };
 

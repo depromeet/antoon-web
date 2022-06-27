@@ -7,7 +7,7 @@ const StockTimer = styled.div`
   opacity: 0.98;
   border-radius: 15px;
   background: ${(props) => props.theme.colors.grayscale.gray_900};
-  width: 60vw;
+  width: 50vw;
   max-width: 330px;
   height: 35px;
 `;

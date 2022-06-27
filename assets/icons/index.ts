@@ -4,6 +4,7 @@ export { ReactComponent as CheckFill } from './check_circle_filled.svg';
 export { ReactComponent as CheckLine } from './check_circle_line.svg';
 export { ReactComponent as AntCoinIcon } from './antcoin.svg';
 export { ReactComponent as AntCoinSmallIcon } from './antcoin_sm.svg';
+export { ReactComponent as AntCoinBigIcon } from './antcoin_bg.svg';
 export { ReactComponent as ProfileImgEdit } from './profile_img_edit.svg';
 export { ReactComponent as MyPageCoin } from './mypage_coin.svg';
 export { ReactComponent as CoinStatusArrow } from './coin_status_arrow.svg';

@@ -24,6 +24,7 @@ const FilterBlur = styled.div`
 
 const UpDownBlockWrapper = styled.div<{ status: string }>`
   position: relative;
+  margin: 0 24px;
   margin-top: 50px;
   margin-bottom: 20px;
   border-radius: 15px;
@@ -32,8 +33,8 @@ const UpDownBlockWrapper = styled.div<{ status: string }>`
       ? props.theme.colors.chart.point_up_100
       : props.theme.colors.chart.point_down_100};
   padding-top: 7px;
-  width: 86vw;
-  max-width: 475px;
+  width: 80vw;
+  max-width: 440px;
   height: 56px;
   vertical-align: middle;
   text-align: center;
