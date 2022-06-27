@@ -8,6 +8,7 @@ const HomeTopWrapper = styled.section`
   gap: 2rem;
   align-items: center;
   padding-top: 0.8rem;
+  overflow-x: clip;
 `;
 
 const HomeTopTitleWrapper = styled.div`

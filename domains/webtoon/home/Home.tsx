@@ -4,9 +4,6 @@ import useCarousel from '@hooks/useCarousel';
 import {
   HomeContainer,
   HomeTopWrapper,
-  HomeTopTitleWrapper,
-  HomeTopSubTitle,
-  HomeTopTitle,
   HomeRealtimeChartWrapper,
   HomeSectionWrapper,
   HomeSectionSubTitle,
@@ -25,11 +22,6 @@ import { RecommendationTitleWrapper } from '@domains/community/Community.style';
 import TopicCards from '@domains/community/topic/TopicCards';
 import Title from '@components/Title';
 import TopicBanners from './TopicBanners';
-import {
-  IndicatorContainer,
-  IndicatorWrapper,
-} from '@components/modal/onboard/Modal.style';
-import StepIndicator from '@assets/icons/StepIndicator';
 
 function Home() {
   const RealTimeChartRef = useRef<HTMLDivElement>(null);
@@ -46,20 +38,6 @@ function Home() {
     <HomeContainer>
       <HomeTopWrapper>
         <TopicBanners />
-        <IndicatorContainer>
-          <IndicatorWrapper>
-            <StepIndicator active={true} />
-          </IndicatorWrapper>
-          <IndicatorWrapper>
-            <StepIndicator />
-          </IndicatorWrapper>
-          <IndicatorWrapper>
-            <StepIndicator />
-          </IndicatorWrapper>
-          <IndicatorWrapper>
-            <StepIndicator />
-          </IndicatorWrapper>
-        </IndicatorContainer>
       </HomeTopWrapper>
       <HomeRealtimeChartWrapper id="realtime-chart">
         <RealTimeChartTitle />
