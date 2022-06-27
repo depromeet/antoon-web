@@ -3,6 +3,10 @@ import styled from '@emotion/styled';
 const HomeContainer = styled.main``;
 
 const HomeTopWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
   padding-top: 0.8rem;
 `;
 
@@ -84,7 +88,7 @@ const HomeSectionTitleWithTime = styled.span`
 
 const HomeRecommendationWrapper = styled.section`
   margin: 0 -2.4rem;
-  padding: 3rem 0;
+  padding: 2.4rem 0 0.2rem;
 `;
 
 const HomeRecommendationBackground = styled.div`
@@ -93,7 +97,9 @@ const HomeRecommendationBackground = styled.div`
   padding-right: 0;
 `;
 
-const HomeWeeklyWrapper = styled.section``;
+const HomeWeeklyWrapper = styled.section`
+  padding-top: 3.2rem;
+`;
 
 export {
   HomeContainer,
