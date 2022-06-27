@@ -9,7 +9,9 @@ function SigninBtn() {
     <SigninWrap>
       <MyPageBanner />
       <Link href="/user/signin" passHref>
-        <SigninButton>로그인</SigninButton>
+        <a>
+          <SigninButton>로그인</SigninButton>
+        </a>
       </Link>
     </SigninWrap>
   );

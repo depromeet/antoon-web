@@ -3,6 +3,8 @@ import { useState, useEffect, useCallback } from 'react';
 import UserBadgeIcon from '@assets/icons/UserBadgeIcon';
 import { CoinStatusArrow } from '@assets/icons';
 
+import BadgeInfoModal from './BadgeInfoModal';
+
 import {
   BadgeWrap,
   UpperWrap,
@@ -20,6 +22,25 @@ import {
 } from './UserBadge.style';
 
 function UserBadge({ coin, badge }: { coin: number; badge: string }) {
+  const [badgeName, setBadgeName] = useState('');
+
+  const getBadgeLevel = useCallback((badge) => {
+    switch (badge) {
+      case 'LEVEL_ONE':
+        return setBadgeName('거지개미');
+      case 'LEVEL_TWO':
+        return setBadgeName('일개미');
+      case 'LEVEL_THREE':
+        return setBadgeName('여왕개미');
+      default:
+        return setBadgeName('로그인을 하시면 등급을 받을 수 있어요');
+    }
+  }, []);
+
+  useEffect(() => {
+    getBadgeLevel(badge);
+  }, [badge, getBadgeLevel]);
+
   const [nextBadge, setNextBadge] = useState({
     name: '',
     textStatusWidth: '',
@@ -27,8 +48,8 @@ function UserBadge({ coin, badge }: { coin: number; badge: string }) {
   });
 
   const getNextBadge = useCallback(
-    (badge) => {
-      switch (badge) {
+    (badgeName) => {
+      switch (badgeName) {
         case '거지개미':
           return setNextBadge({
             name: '일개미',
@@ -59,38 +80,47 @@ function UserBadge({ coin, badge }: { coin: number; badge: string }) {
   );
 
   useEffect(() => {
-    getNextBadge(badge);
-  }, [badge, getNextBadge]);
+    getNextBadge(badgeName);
+  }, [badgeName, getNextBadge]);
+
+  const [modalStatus, setModalStatus] = useState(false);
+
+  const onClickOpen = () => {
+    setModalStatus(true);
+  };
 
   return (
-    <BadgeWrap>
-      <UpperWrap>
-        <UserBadgeDataWrap>
-          <UserBadgeIcon badge={badge} />
-          {badge.length < 5 ? (
-            <BadgeName>{badge}</BadgeName>
-          ) : (
-            <DefaultBadgeName>등급이 아직 없어요</DefaultBadgeName>
-          )}
-        </UserBadgeDataWrap>
-        <BadgeInfo>등급 보기</BadgeInfo>
-      </UpperWrap>
+    <>
+      {modalStatus && <BadgeInfoModal setModalStatus={setModalStatus} />}
+      <BadgeWrap>
+        <UpperWrap>
+          <UserBadgeDataWrap>
+            <UserBadgeIcon badge={badgeName} />
+            {badgeName.length < 5 ? (
+              <BadgeName>{badgeName}</BadgeName>
+            ) : (
+              <DefaultBadgeName>등급이 아직 없어요</DefaultBadgeName>
+            )}
+          </UserBadgeDataWrap>
+          <BadgeInfo onClick={onClickOpen}>등급 보기</BadgeInfo>
+        </UpperWrap>
 
-      <LowerWrap width={nextBadge.textStatusWidth}>
-        <CoinStatusWrap width={nextBadge.textStatusWidth}>
-          <CoinStatus>
-            {coin}ANT <CoinStatusArrow />
-          </CoinStatus>
-        </CoinStatusWrap>
-        <ProgressBar>
-          <CoinStatusBar width={nextBadge.progressWidth} />
-        </ProgressBar>
-        <BadgeStatusWrap>
-          <BadgeStatus>{badge}</BadgeStatus>
-          <BadgeStatus>{nextBadge.name}</BadgeStatus>
-        </BadgeStatusWrap>
-      </LowerWrap>
-    </BadgeWrap>
+        <LowerWrap width={nextBadge.textStatusWidth}>
+          <CoinStatusWrap width={nextBadge.textStatusWidth}>
+            <CoinStatus>
+              {coin}ANT <CoinStatusArrow />
+            </CoinStatus>
+          </CoinStatusWrap>
+          <ProgressBar>
+            <CoinStatusBar width={nextBadge.progressWidth} />
+          </ProgressBar>
+          <BadgeStatusWrap>
+            <BadgeStatus>{badgeName}</BadgeStatus>
+            <BadgeStatus>{nextBadge.name}</BadgeStatus>
+          </BadgeStatusWrap>
+        </LowerWrap>
+      </BadgeWrap>
+    </>
   );
 }
 

@@ -4,6 +4,8 @@ export interface IUser {
     email: string;
     imageUrl: string;
     age: number;
+    coinRank: string;
+    wallet: number;
   };
 }
 

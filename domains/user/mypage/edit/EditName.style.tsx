@@ -45,7 +45,7 @@ const CountInput = styled.div<{ status: boolean }>`
 `;
 
 const EditBtn = styled.button`
-  margin: 5rem 0 0;
+  margin: 2rem 0 0;
   border-radius: 1rem;
   background-color: ${(props) => props.theme.colors.basic.black};
   width: 100%;

@@ -56,7 +56,7 @@ function Comment({
                 <MainWrap>
                   <UserInfo>
                     <Name>{comment.nickname}</Name>
-                    <TimeStamp>몇 분 전일까요?</TimeStamp>
+                    <TimeStamp>{comment.time}</TimeStamp>
                   </UserInfo>
                   <Content>{comment.content}</Content>
                   <FavoriteWrap>
