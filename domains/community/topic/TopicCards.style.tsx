@@ -17,12 +17,14 @@ const TopicCardsWrapper = styled.section<{ bgColor: string }>`
 `;
 
 const TopicCardHashtag = styled.div`
-  padding-bottom: 0.8rem;
+  padding-bottom: 0.4rem;
   font-weight: 500;
 `;
 
 const TopicCardTitle = styled.div`
-  padding-bottom: 1.6rem;
+  margin-bottom: 1.6rem;
+  height: 4rem;
+  line-height: 1.4;
   font-size: 1.4rem;
   font-weight: bold;
 `;

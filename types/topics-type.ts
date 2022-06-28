@@ -13,3 +13,14 @@ export interface Topic {
   joinCount: number;
   thumbnails: string[];
 }
+
+export interface TopicChoices {
+  choiceTopics: Choices[];
+}
+
+export interface Choices {
+  topicId: number;
+  title: string;
+  tags: string[];
+  joinCount: number;
+}

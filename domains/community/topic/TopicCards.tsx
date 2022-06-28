@@ -1,4 +1,7 @@
+import { useGetTopicsChoices } from '@apis/topics';
 import Carousel from '@components/carousel/Carousel';
+import OnError from '@components/OnError';
+import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import React, { useRef } from 'react';
 import {
   TopicCardContainer,
@@ -57,14 +60,32 @@ const colors = [
 function TopicCards() {
   const topicCardRef = useRef<HTMLDivElement>(null);
 
+  const { data, isLoading, isError } = useGetTopicsChoices();
+
+  console.log(data);
+
+  if (isLoading) return <LoadingSpinner />;
+
+  if (
+    data === undefined ||
+    !Array.isArray(data?.choiceTopics) ||
+    data?.choiceTopics?.length === 0 ||
+    isError
+  )
+    return <OnError>개미들의 선택을 불러오지 못하고 있어요 😭😭😭</OnError>;
+
   return (
     <Carousel ref={topicCardRef}>
       <TopicCardContainer>
-        {data.map((item, idx) => (
-          <TopicCardsWrapper key={idx} bgColor={colors[idx]}>
-            <TopicCardHashtag>{item.hashTag}</TopicCardHashtag>
-            <TopicCardTitle>{item.title}</TopicCardTitle>
-            <TopicCardJoinedCounts>32,623 개미 참여중</TopicCardJoinedCounts>
+        {data.choiceTopics.map((topic, idx) => (
+          <TopicCardsWrapper key={topic.topicId} bgColor={colors[idx]}>
+            <TopicCardHashtag>
+              {topic.tags.map((topic) => `#${topic} `)}
+            </TopicCardHashtag>
+            <TopicCardTitle>{topic.title}</TopicCardTitle>
+            <TopicCardJoinedCounts>
+              {topic.joinCount} 개미 참여중
+            </TopicCardJoinedCounts>
           </TopicCardsWrapper>
         ))}
       </TopicCardContainer>
