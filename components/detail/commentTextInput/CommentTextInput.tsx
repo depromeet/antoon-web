@@ -7,6 +7,7 @@ import {
   Profile,
   ProfileName,
   SubmitButton,
+  ContentCheckMsg,
 } from '@components/detail/commentTextInput/CommentTextInput.style';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -61,7 +62,7 @@ function CommentTextInput(props: Props) {
   const focusHandler = () => {
     if (!focused && textareaRef.current != null) {
       textareaRef.current.style.height = `${
-        textareaRef.current.offsetHeight * 4
+        textareaRef.current.offsetHeight * 6
       }px`;
     }
     setFocused(true);
@@ -77,12 +78,14 @@ function CommentTextInput(props: Props) {
     }
   };
 
+  const getIsOver = () => {
+    return content.length >= MAX_LENGTH_CONTENT ? true : false;
+  };
+
   if (isError) return <OnError>로그인이 필요합니다.</OnError>;
 
   return (
-    <CommentTextInputWrapper
-      isOver={content.length >= MAX_LENGTH_CONTENT ? true : false}
-    >
+    <CommentTextInputWrapper isOver={getIsOver()}>
       {user && (
         <>
           <ProfileWrapper isShow={focused}>
@@ -95,7 +98,10 @@ function CommentTextInput(props: Props) {
               />
               <ProfileName>{user.name}</ProfileName>
             </Profile>
-            <ContentCheckArea>
+            <ContentCheckMsg isOver={getIsOver()}>
+              최대 300자까지 입력 가능합니다.
+            </ContentCheckMsg>
+            <ContentCheckArea isOver={getIsOver()}>
               {content.length} / {MAX_LENGTH_CONTENT}
             </ContentCheckArea>
           </ProfileWrapper>
@@ -109,6 +115,7 @@ function CommentTextInput(props: Props) {
                 onFocus={focusHandler}
                 value={content}
                 onChange={(e) => ContentCheckHandler(e.target.value)}
+                isShow={focused}
               />
             )}
             <SubmitButton isShow={focused} onClick={onSubmitReply}>

@@ -10,6 +10,7 @@ const UpDownBtnWrapper = styled.div<{ status: string }>`
     props.status == 'JOIN'
       ? props.theme.colors.chart.point_up_100
       : props.theme.colors.chart.point_down_100};
+  cursor: pointer;
   padding-top: 7px;
   width: 43vw;
   max-width: 200px;
@@ -29,7 +30,9 @@ const UpDownBtnTitle = styled.div`
 `;
 
 const UpDownBtnSub = styled.div`
-  position: flex;
+  position: absolute;
+  bottom: 5px;
+  left: 35%;
   color: #fff;
   font-family: Pretendard;
   font-size: 10px;
