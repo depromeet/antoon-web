@@ -161,7 +161,7 @@ const usePatchJoinLeaveRecommendationById = (
     () => getJoinLeaveRecommendationById(webtoonId, status),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(webtoons.joinLeave(webtoonId, status));
+        queryClient.getQueriesData(webtoons.joinLeave(webtoonId, status));
       },
     },
   );

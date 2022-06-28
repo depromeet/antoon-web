@@ -16,7 +16,7 @@ function ToastList() {
 
 const StToastList = styled.div`
   position: fixed;
-  bottom: 0;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;

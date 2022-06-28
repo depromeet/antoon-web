@@ -4,20 +4,24 @@ import styled from '@emotion/styled';
 const fadein = keyframes`
     from {
       opacity:0.2;
+      transform: translateY(100%);
     }
       
     to {
       opacity:1;
+      transform: translateY(0%);
     }
 `;
 
 const fadeout = keyframes`
     from {
       opacity:1;
+      transform: translateY(0%);
     }
       
     to {
       opacity:0;
+      transform: translateY(100%);
     }
 `;
 

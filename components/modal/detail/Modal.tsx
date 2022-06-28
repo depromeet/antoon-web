@@ -2,6 +2,7 @@
 import { useGetUserInformation } from '@apis/user';
 import { usePatchJoinLeaveRecommendationById } from '@apis/webtoons';
 import { AntCoinBigIcon, AntCoinSmallIcon } from '@assets/icons';
+import { useToast } from '@hooks/useToast';
 import { WebtoonJoinLeaveRespoonse } from '@_types/webtoon-type';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -38,13 +39,14 @@ function Modal({
   webtoonId: number;
   title: string;
   isOpen: boolean;
-  joinLeave: string;
+  joinLeave: joinLeaveType;
   onClose: Function;
   onRecommendSet: Function;
 }) {
   const { data: user } = useGetUserInformation();
   const [portal, setPortal] = useState<HTMLElement | null>(null);
   const [mount, setMount] = useState(false);
+
   const {
     isLoading,
     isSuccess,
@@ -53,11 +55,18 @@ function Modal({
     mutate: postData,
   } = usePatchJoinLeaveRecommendationById(webtoonId, joinLeave);
 
+  const { fireToast } = useToast();
+
   useEffect(() => {
     setMount(true);
     setPortal(document.getElementById('onboard-modal'));
-    if (data) onRecommendSet(data);
-  });
+    if (data) {
+      onRecommendSet(data);
+      fireToast({ joinLeaveStatus: joinLeave });
+    } else if (error) {
+      fireToast({ joinLeaveStatus: joinLeave == 'JOIN' ? 'JOINED' : 'LEAVED' });
+    }
+  }, [data, error]);
 
   const calcuteJoinLeaveStatus = () => {
     return joinLeave === 'JOIN' ? '탑승' : '하차';
@@ -101,7 +110,7 @@ function Modal({
                   <ModalCoinText>보유코인</ModalCoinText>
                   <ModalMyCoin>
                     <AntCoinSmallIcon />
-                    <MyCoinReserve>2300</MyCoinReserve>
+                    <MyCoinReserve>{user.wallet}</MyCoinReserve>
                   </ModalMyCoin>
                 </ModalCoin>
                 <ModalClose onClick={modalClose}>아니요</ModalClose>

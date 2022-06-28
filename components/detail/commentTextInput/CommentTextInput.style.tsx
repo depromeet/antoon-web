@@ -3,8 +3,9 @@ import styled from '@emotion/styled';
 const CommentTextInputWrapper = styled.div<{ isOver: boolean }>`
   position: relative;
   margin-bottom: 20px;
-  border: ${(props) =>
-    props.isOver ? `1px solid ${props.theme.colors.chart.point_up_100}` : ''};
+  border: 1px solid
+    ${(props) =>
+      props.isOver ? props.theme.colors.chart.point_up_100 : 'none'};
   border-radius: 10px;
   background: ${(props) => props.theme.colors.primary.gray_300};
   padding-top: 5px;
