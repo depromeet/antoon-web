@@ -8,6 +8,7 @@ import {
   ProfileName,
   SubmitButton,
   ContentCheckMsg,
+  NoLoginTextArea,
 } from '@components/detail/commentTextInput/CommentTextInput.style';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -78,6 +79,10 @@ function CommentTextInput(props: Props) {
     }
   };
 
+  const goLoginPage = () => {
+    window.location.replace('/user/signin');
+  };
+
   const getIsOver = () => {
     return content.length >= MAX_LENGTH_CONTENT ? true : false;
   };
@@ -86,7 +91,7 @@ function CommentTextInput(props: Props) {
 
   return (
     <CommentTextInputWrapper isOver={getIsOver()}>
-      {user && (
+      {user ? (
         <>
           <ProfileWrapper isShow={focused}>
             <Profile>
@@ -123,6 +128,10 @@ function CommentTextInput(props: Props) {
             </SubmitButton>
           </TextAreaWrapper>
         </>
+      ) : (
+        <NoLoginTextArea onClick={goLoginPage}>
+          로그인 후 댓글을 작성해 주세요
+        </NoLoginTextArea>
       )}
     </CommentTextInputWrapper>
   );

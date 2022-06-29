@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
+import { useGetUserInformation } from '@apis/user';
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
+import { useToast } from '@hooks/useToast';
 import {
   UpDownBtnWrapper,
   UpDownBtnTitle,
@@ -23,7 +25,14 @@ interface Props {
 }
 
 function UpDownBtn(props: Props) {
+  const { data: user } = useGetUserInformation();
+  const { fireToast } = useToast();
+
   const handleModalClick = () => {
+    if (!user) {
+      fireToast({ joinLeaveStatus: 'NO-LOGIN' });
+      return;
+    }
     props.onJoinLeave(props.upDownStatus);
     props.onOpen();
   };

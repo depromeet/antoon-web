@@ -109,6 +109,21 @@ const SubmitButton = styled.button<{ isShow: boolean }>`
   }
 `;
 
+const NoLoginTextArea = styled.div`
+  margin-top: 25px;
+  cursor: pointer;
+  height: 50px;
+  text-align: center;
+  color: ${(props) => props.theme.colors.grayscale.gray_600};
+  font-size: 12px;
+  font-weight: 700;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    color: ${(props) => props.theme.colors.grayscale.gray_800};
+  }
+`;
+
 export {
   CommentTextInputWrapper,
   TextAreaWrapper,
@@ -119,4 +134,5 @@ export {
   ContentCheckArea,
   SubmitButton,
   ContentCheckMsg,
+  NoLoginTextArea,
 };

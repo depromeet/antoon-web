@@ -63,6 +63,12 @@ function Toast(props: Toast) {
             <ToastMessageContent>선택항목을 골라주세요.</ToastMessageContent>
           </>
         )}
+        {joinLeaveStatus === 'NO-LOGIN' && (
+          <>
+            <AlertMark />
+            <ToastMessageContent>로그인 후 이용가능합니다.</ToastMessageContent>
+          </>
+        )}
       </ToastMessage>
     </ToastMessageWrapper>
   );
