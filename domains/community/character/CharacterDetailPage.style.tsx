@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 const CharacterDetailPageWrap = styled.div`
   position: relative;
+  margin-bottom: 40px;
   width: 100%;
 `;
 
