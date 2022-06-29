@@ -1,5 +1,5 @@
 <p align="center">
-    <h1 align="center" style="opacity: 0.8;color:#FE4E16;font-weight:700;">ANTOON</h1>
+    <h1 align="center" style="opacity: 0.8;color:OrangeRed;font-weight:700;">ANTOON</h1>
     <p align="center"><span style="opacity: 0.8;font-size:15px;font-weight:700;">개미는 오늘도 열심히 툰툰!</span></p>
     <p align="center" style="margin-top:-18px;"><span style="font-size:11px;font-weight:700;">디프만 1팀 최강 FE</span> </p>
     <div style="text-align:center;" align="center">
@@ -7,7 +7,7 @@
     </div>
     <br />
 </p>
-<div style="border:1px solid #FE4E16; height:1px; width: 100%; margin:20px 0;"> </div>
+<div style="border:1px solid OrangeRed; height:1px; width: 100%; margin:20px 0;"> </div>
 
 
 ### 프로젝트 소개 🐛
@@ -46,7 +46,7 @@
 <br />
 <br />
 
-<div style="border:1px solid #FE4E16; height:1px; width: 100%; margin:20px 0;"> </div>
+<div style="border:1px solid OrangeRed; height:1px; width: 100%; margin:20px 0;"> </div>
 
 ### 프로젝트 소개 🐛
 
@@ -54,7 +54,7 @@
 
 ![structure](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBtw3P%2FbtrCkJ73j67%2Ft6adhcpbKkjKsMnei1UhlK%2Fimg.png)
 
-<div style="border:1px solid #FE4E16; height:1px; width: 100%; margin:20px 0;"> </div>
+<div style="border:1px solid OrangeRed; height:1px; width: 100%; margin:20px 0;"> </div>
 
 ### 🌐 서비스 주소
 - [Antoon Web](https://antoon.fun/)
