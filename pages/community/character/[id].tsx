@@ -15,11 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-interface Prop {
-  id: number;
-}
-
-function CharacterDetailPage({ id }: Prop) {
+function CharacterDetailPage({ id }: { id: number }) {
   useEffect(() => {
     Mixpanel.track('페이지 진입', {
       page: '인물/커플 투표 상세 페이지',
