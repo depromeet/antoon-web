@@ -46,7 +46,7 @@ function CommunityRanksCards(props: Props) {
     isError: webtoonIsError,
   } = useGetWebtoonsRanks();
 
-  const { data, isLoading, isError } = useGetCharacterRanksByCategory(
+  const { data, isLoading, isError, error } = useGetCharacterRanksByCategory(
     categoryType[category] as CharacterType,
   );
 
@@ -59,6 +59,7 @@ function CommunityRanksCards(props: Props) {
   if (isLoading || webtoonIsLoading) return <LoadingSpinner />;
 
   if (
+    (data?.request.status as unknown as number) >= 400 ||
     data?.couples?.length === 0 ||
     webtoons?.webtoons?.length === 0 ||
     isError ||
