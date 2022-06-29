@@ -20,7 +20,11 @@ const webtoons = {
 
 const topics = {
   all: ['topics'],
-  category: (category: TopicCategory) => [...topics.all, 'category', category],
+  category: (category: TopicCategory, page: number) => [
+    ...topics.all,
+    'category',
+    category,
+  ],
   lists: () => [...topics.all, 'topics'],
   list: (id: number) => [...topics.lists(), id],
   post: (id: number) => [...topics.list(id), 'patch', id],

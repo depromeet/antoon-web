@@ -7,9 +7,12 @@ import {
   TopicChoices,
 } from '@_types/topics-type';
 
-const getAllTopicsByCategory = async (category: TopicCategory) => {
+const getAllTopicsByCategory = async (
+  category: TopicCategory,
+  page: number,
+) => {
   return await instance()
-    .get(`topics/${category}`)
+    .get(`topics/${category}`, { params: { page, size: 5 } })
     .then((res) => res.data)
     .catch((e) => {
       console.log(e);
@@ -17,9 +20,9 @@ const getAllTopicsByCategory = async (category: TopicCategory) => {
     });
 };
 
-const useGetAllTopicsByCategory = (category: TopicCategory) => {
-  return useQuery<AllTopicsByCategory>(topics.category(category), () =>
-    getAllTopicsByCategory(category),
+const useGetAllTopicsByCategory = (category: TopicCategory, page = 0) => {
+  return useQuery<AllTopicsByCategory>(topics.category(category, page), () =>
+    getAllTopicsByCategory(category, page),
   );
 };
 

@@ -3,6 +3,12 @@ export type TopicCategoryType = 'AB' | 'CHOICE';
 
 export interface AllTopicsByCategory {
   data: Topic[];
+  firstPage: boolean;
+  lastPage: boolean;
+  page: number;
+  size: number;
+  totalElements: number;
+  totalPages: number;
 }
 
 export interface Topic {
