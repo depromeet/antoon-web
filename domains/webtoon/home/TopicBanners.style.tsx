@@ -1,5 +1,22 @@
 import styled from '@emotion/styled';
 
+const TopicBannerContainer = styled.div`
+  width: calc(29.6rem * 3 + 1.6rem * 3);
+
+  .slick-dots li {
+    margin: 0;
+  }
+
+  .slick-track > div {
+    margin-right: 1.6rem;
+    width: 29.6rem !important;
+  }
+
+  .slick-slide div {
+    outline: none;
+  }
+`;
+
 const TopicBanner = styled.div`
   border-radius: 1.6rem;
   background-color: ${(props) => props.theme.colors.grayscale.gray_200};
@@ -20,4 +37,9 @@ const TopicContentTopWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export { TopicBanner, TopicContentWrapper, TopicContentTopWrapper };
+export {
+  TopicBannerContainer,
+  TopicBanner,
+  TopicContentWrapper,
+  TopicContentTopWrapper,
+};

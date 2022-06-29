@@ -15,6 +15,7 @@ const webtoons = {
     'joinLeave',
   ],
   days: (day: string) => [...webtoons.all, 'days', day],
+  characters: (category: any) => [...topics.all, 'characters', category],
 };
 
 const topics = {
@@ -23,6 +24,7 @@ const topics = {
   lists: () => [...topics.all, 'topics'],
   list: (id: number) => [...topics.lists(), id],
   post: (id: number) => [...topics.list(id), 'patch', id],
+  choices: () => [...topics.all, 'choices'],
 };
 
 const comments = {

@@ -1,7 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { topics } from '@apis/queryKeys';
 import { instance } from './api';
-import { AllTopicsByCategory, TopicCategory } from '@_types/topics-type';
+import {
+  AllTopicsByCategory,
+  TopicCategory,
+  TopicChoices,
+} from '@_types/topics-type';
 
 const getAllTopicsByCategory = async (category: TopicCategory) => {
   return await instance()
@@ -44,9 +48,25 @@ const usePostTopicsById = (id: number) => {
   });
 };
 
+const getTopicsChoices = async () => {
+  return await instance()
+    .get(`topics/choices`)
+    .then((res) => res.data)
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
+};
+
+const useGetTopicsChoices = () => {
+  return useQuery<TopicChoices>(topics.choices(), () => getTopicsChoices());
+};
+
 export {
   useGetTopicsById,
   usePostTopicsById,
   getAllTopicsByCategory,
   useGetAllTopicsByCategory,
+  getTopicsChoices,
+  useGetTopicsChoices,
 };

@@ -150,3 +150,18 @@ export interface WebtoonSearch {
   score: number;
   scoreGapPercent: number;
 }
+
+export type CharacterType = 'PERSONA' | 'COUPLE';
+
+export interface WebtoonsCharacters {
+  couples: Characters[];
+}
+
+export interface Characters {
+  id: number;
+  title: string;
+  names: string;
+  thumbnails: string[];
+  coinAmount: number;
+  isJoined: boolean;
+}

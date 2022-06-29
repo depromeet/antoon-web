@@ -16,12 +16,18 @@ const RealTimeChartCardWrapper = styled.a`
   justify-content: space-between;
   border-radius: 5px;
   padding: 0.8rem 0.8rem 0.8rem 1rem;
+  height: 6.8rem;
 
   @media (hover: hover) and (pointer: fine) {
     :hover {
       background-color: ${(props) => props.theme.colors.primary.gray_200};
     }
   }
+`;
+
+const RealTimeChartContentContainer = styled.div`
+  display: flex;
+  gap: 1.2rem;
 `;
 
 const RealTimeChartCard = styled(Image)`
@@ -68,11 +74,15 @@ const RealTimeChartScoreChange = styled.div<RealTimeChartScoreChangeProps>`
   }};
 `;
 
-const RealTimeChartInformationWrapper = styled.div`
+const RealTimeChartInformationWrapper = styled.div<{ isRankPage?: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 135px;
+  width: 13.5rem;
+
+  @media (max-width: 300px) {
+    width: ${(props) => (props.isRankPage ? '8.5rem' : '13.5rem')};
+  }
 `;
 
 const RealTimeChartTitle = styled.div`
@@ -98,9 +108,19 @@ const RealTimeChartScoreWrapper = styled.div`
 `;
 
 const RealTimeChartScore = styled.div`
+  display: flex;
+  gap: 0.2rem;
+  align-items: baseline;
+  justify-content: end;
   text-align: end;
   font-size: 1.6rem;
   font-weight: 600;
+`;
+
+const RealTimeChartScoreUnit = styled.div`
+  text-align: end;
+  font-size: 1.2rem;
+  font-weight: 500;
 `;
 
 type RealTimeChartScoreChangePercentProps = {
@@ -132,6 +152,7 @@ const RealTimeChartScoreChangePercent = styled.div<RealTimeChartScoreChangePerce
 export {
   RealTimeChartContainer,
   RealTimeChartCardWrapper,
+  RealTimeChartContentContainer,
   RealTimeChartCard,
   RealTimeChartRankingWrapper,
   RealTimeChartRanking,
@@ -142,5 +163,6 @@ export {
   RealTimeChartAuthor,
   RealTimeChartScoreWrapper,
   RealTimeChartScore,
+  RealTimeChartScoreUnit,
   RealTimeChartScoreChangePercent,
 };

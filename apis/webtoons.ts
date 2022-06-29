@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query';
-import { graph, topics, webtoons } from '@apis/queryKeys';
+import { graph, webtoons } from '@apis/queryKeys';
 import { instance } from './api';
 import {
   WebtoonRank,
@@ -11,6 +11,8 @@ import {
   Webtoon,
   WebtoonJoinLeaveRecommendation,
   WebtoonJoinLeaveRespoonse,
+  CharacterType,
+  WebtoonsCharacters,
 } from '@_types/webtoon-type';
 import { Graph } from '@_types/chart-type';
 
@@ -167,6 +169,26 @@ const usePatchJoinLeaveRecommendationById = (
   );
 };
 
+const getCharacterRanksByCategory = async (category: CharacterType) => {
+  return await instance()
+    .get(`top-ranks/characters?type=${category}`)
+    .then((res) => res.data)
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
+};
+
+const useGetCharacterRanksByCategory = (category: CharacterType) => {
+  return useQuery<WebtoonsCharacters>(
+    webtoons.characters(category),
+    () => getCharacterRanksByCategory(category),
+    {
+      enabled: category === 'COUPLE' || category === 'PERSONA',
+    },
+  );
+};
+
 export {
   getWebtoons,
   useGetWebtoons,
@@ -188,4 +210,6 @@ export {
   useGetGraphScore,
   getJoinLeaveRecommendationById,
   usePatchJoinLeaveRecommendationById,
+  getCharacterRanksByCategory,
+  useGetCharacterRanksByCategory,
 };

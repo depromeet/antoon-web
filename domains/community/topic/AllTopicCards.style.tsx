@@ -4,7 +4,6 @@ const AllTopicCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  margin-top: 1.6rem;
 `;
 
 const AllTopicCardWrapper = styled.div`

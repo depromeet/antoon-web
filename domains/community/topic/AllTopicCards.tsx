@@ -5,7 +5,7 @@ import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import { VoteTag } from '@components/vote/VoteHeader.style';
 import { TopicCategory } from '@_types/topics-type';
 import Image from 'next/image';
-import { categoryType, categoryTypeKey } from '../AllTopics';
+import { categoryType, categoryTypeKey } from '@domains/community/AllTopics';
 import {
   AllTopicCardWrapper,
   AllTopicCardContentContainer,
@@ -14,13 +14,13 @@ import {
   AllTopicCardTitle,
   AllTopicJoinCount,
   AllTopicCardContainer,
-} from './AllTopicCards.style';
+} from '@domains/community/topic/AllTopicCards.style';
 
 type Props = {
   category: categoryTypeKey;
 };
 
-function AllTopicCard(props: Props) {
+function AllTopicCards(props: Props) {
   const { category } = props;
 
   const { data, isLoading, isError } = useGetAllTopicsByCategory(
@@ -31,15 +31,15 @@ function AllTopicCard(props: Props) {
 
   if (
     data === undefined ||
-    !Array.isArray(data?.topics) ||
-    data?.topics?.length === 0 ||
+    !Array.isArray(data?.data) ||
+    data?.data?.length === 0 ||
     isError
   )
     return <OnError>모든 토픽을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
     <AllTopicCardContainer>
-      {data?.topics.map((topic) => (
+      {data?.data.map((topic) => (
         <AllTopicCardWrapper key={topic.topicId}>
           {topic.thumbnails.length === 1 && (
             <Image
@@ -89,4 +89,4 @@ function AllTopicCard(props: Props) {
   );
 }
 
-export default AllTopicCard;
+export default AllTopicCards;
