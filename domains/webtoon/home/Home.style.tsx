@@ -82,8 +82,8 @@ const HomeSectionTitle = styled.header`
   font-weight: bold;
 `;
 
-const HomeRanksTitleWrapper = styled.div`
-  min-width: 9.1rem;
+const HomeRanksTitleWrapper = styled.div<{ isRankPage?: boolean }>`
+  min-width: ${(props) => (props.isRankPage ? '12.8rem' : '9.1rem')};
 `;
 
 const HomeTimeAndRanksWrapper = styled.div`
@@ -98,7 +98,7 @@ const HomeSectionTitleWithTime = styled.span`
   font-size: 1.2rem;
 `;
 
-const HomeWatchAllRanks = styled.div`
+const HomeWatchAllRanks = styled.a`
   color: ${(props) => props.theme.colors.grayscale.gray_600};
   font-size: 1.4rem;
   font-weight: 500;

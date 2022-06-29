@@ -1,4 +1,4 @@
-import { ReactChild } from 'react';
+import { ReactNode } from 'react';
 import styled from '@emotion/styled';
 
 type Type = 'small' | 'normal' | 'big';
@@ -20,7 +20,7 @@ const Text = styled.h1<{ type: Type }>`
 
 type Props = {
   type: Type;
-  children: ReactChild;
+  children: ReactNode;
 };
 
 function Title(props: Props) {

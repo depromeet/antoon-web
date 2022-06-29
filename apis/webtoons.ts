@@ -180,8 +180,12 @@ const getCharacterRanksByCategory = async (category: CharacterType) => {
 };
 
 const useGetCharacterRanksByCategory = (category: CharacterType) => {
-  return useQuery<WebtoonsCharacters>(webtoons.characters(category), () =>
-    getCharacterRanksByCategory(category),
+  return useQuery<WebtoonsCharacters>(
+    webtoons.characters(category),
+    () => getCharacterRanksByCategory(category),
+    {
+      enabled: category === 'COUPLE' || category === 'PERSONA',
+    },
   );
 };
 

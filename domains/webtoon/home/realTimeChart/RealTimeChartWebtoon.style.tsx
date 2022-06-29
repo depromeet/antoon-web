@@ -25,6 +25,11 @@ const RealTimeChartCardWrapper = styled.a`
   }
 `;
 
+const RealTimeChartContentContainer = styled.div`
+  display: flex;
+  gap: 1.2rem;
+`;
+
 const RealTimeChartCard = styled(Image)`
   border-radius: 10px;
   background-color: ${(props) => props.theme.colors.primary.gray_300};
@@ -69,11 +74,15 @@ const RealTimeChartScoreChange = styled.div<RealTimeChartScoreChangeProps>`
   }};
 `;
 
-const RealTimeChartInformationWrapper = styled.div`
+const RealTimeChartInformationWrapper = styled.div<{ isRankPage?: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 135px;
+  width: 13.5rem;
+
+  @media (max-width: 300px) {
+    width: ${(props) => (props.isRankPage ? '8.5rem' : '13.5rem')};
+  }
 `;
 
 const RealTimeChartTitle = styled.div`
@@ -143,6 +152,7 @@ const RealTimeChartScoreChangePercent = styled.div<RealTimeChartScoreChangePerce
 export {
   RealTimeChartContainer,
   RealTimeChartCardWrapper,
+  RealTimeChartContentContainer,
   RealTimeChartCard,
   RealTimeChartRankingWrapper,
   RealTimeChartRanking,
