@@ -9,7 +9,7 @@ import {
 } from '@domains/webtoon/home/Home.style';
 import RealTimeChartTitle from '@domains/webtoon/home/realTimeChart/RealTimeChartTitle';
 import Carousel from '@components/carousel/Carousel';
-import RealTimeChart from '@domains/webtoon/home/realTimeChart/RealTimeChartWebtoon';
+import RealTimeChart from '@domains/webtoon/home/realTimeChart/RealTimeChart';
 import Title from '@components/Title';
 import SubTitle from '@components/SubTitle';
 import { RecommendationTitleWrapper } from '@domains/community/Community.style';
@@ -26,10 +26,7 @@ function Community() {
     <>
       <Header headerTitle="커뮤니티" headerLeft="없음" headerRight="검색" />
       <HomeRealtimeChartWrapper>
-        <RealTimeChartTitle />
-        <Carousel>
-          <RealTimeChart />
-        </Carousel>
+        <RealTimeChart page="community" />
       </HomeRealtimeChartWrapper>
       <HomeRecommendationWrapper>
         <HomeRecommendationBackground>

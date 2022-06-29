@@ -15,8 +15,16 @@ export const categoryType = {
 
 export type categoryTypeKey = keyof typeof categoryType;
 
-function RealTimeChart() {
-  const [category, setCategory] = useState<categoryTypeKey>('웹툰');
+type Props = {
+  page: 'home' | 'community';
+};
+
+function RealTimeChart(props: Props) {
+  const { page } = props;
+
+  const [category, setCategory] = useState<categoryTypeKey>(
+    page === 'home' ? '웹툰' : '인물',
+  );
   const RealTimeChartRef = useRef<HTMLDivElement>(null);
 
   useCarousel(RealTimeChartRef);
@@ -29,9 +37,11 @@ function RealTimeChart() {
     <>
       <RealTimeChartTitle />
       <HomeRanksTagButtonsContainer>
-        <TagBtn onClick={onSelectCategory} selected={category === '웹툰'}>
-          웹툰
-        </TagBtn>
+        {page === 'home' && (
+          <TagBtn onClick={onSelectCategory} selected={category === '웹툰'}>
+            웹툰
+          </TagBtn>
+        )}
         <TagBtn onClick={onSelectCategory} selected={category === '인물'}>
           인물
         </TagBtn>

@@ -37,7 +37,7 @@ function Home() {
         <TopicBanners />
       </HomeTopWrapper>
       <HomeRealtimeChartWrapper>
-        <RealTimeChart />
+        <RealTimeChart page="home" />
       </HomeRealtimeChartWrapper>
       <HomeRecommendationWrapper>
         <HomeRecommendationBackground>
