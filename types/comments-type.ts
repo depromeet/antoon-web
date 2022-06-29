@@ -18,4 +18,4 @@ export interface IComment {
   time: string;
 }
 
-export type CommentType = 'webtoons' | 'topics';
+export type CommentType = 'webtoons' | 'topics' | 'characters';
