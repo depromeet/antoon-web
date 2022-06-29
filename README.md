@@ -3,10 +3,12 @@
     <p align="center"><span style="opacity: 0.8;font-size:15px;font-weight:700;">개미는 오늘도 열심히 툰툰!</span></p>
     <p align="center" style="margin-top:-18px;"><span style="font-size:11px;font-weight:700;">디프만 1팀 최강 FE</span> </p>
     <div style="text-align:center;" align="center">
-        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FFa78O%2FbtrCj2UoVBO%2FZUHk6kjNAFQoa6paO3AGl1%2Fimg.png" alt="antoon" width="600px" >
+        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FFa78O%2FbtrCj2UoVBO%2FZUHk6kjNAFQoa6paO3AGl1%2Fimg.png" alt="antoon" width="600px"  >
     </div>
     <br />
 </p>
+<div style="border:1px solid #FE4E16; height:1px; width: 100%; margin:20px 0;"> </div>
+
 
 ### 프로젝트 소개 🐛
 ```
@@ -44,13 +46,15 @@
 <br />
 <br />
 
-### 프로젝트 소개 🐛
+<div style="border:1px solid #FE4E16; height:1px; width: 100%; margin:20px 0;"> </div>
 
----
+### 프로젝트 소개 🐛
 
 ![tech-stack](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FQipuw%2FbtrCj3FLvfC%2FLqI9dYrcxbice5MuVS11B1%2Fimg.png)
 
 ![structure](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBtw3P%2FbtrCkJ73j67%2Ft6adhcpbKkjKsMnei1UhlK%2Fimg.png)
+
+<div style="border:1px solid #FE4E16; height:1px; width: 100%; margin:20px 0;"> </div>
 
 ### 🌐 서비스 주소
 - [Antoon Web](https://antoon.fun/)
