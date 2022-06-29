@@ -7,7 +7,7 @@
     </div>
     <br />
 </p>
-<div style="border:1px solid OrangeRed; height:1px; width: 100%; margin:20px 0;"> </div>
+<p style="border:1px solid OrangeRed; height:1px; width: 1000px; margin:20px 0;"> </ㅔ>
 
 
 ### 프로젝트 소개 🐛
@@ -46,7 +46,7 @@
 <br />
 <br />
 
-<div style="border:1px solid OrangeRed; height:1px; width: 100%; margin:20px 0;"> </div>
+<p style="border:1px solid OrangeRed; height:1px; width: 1000px; margin:20px auto;"> </p>
 
 ### 프로젝트 소개 🐛
 
@@ -54,7 +54,7 @@
 
 ![structure](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBtw3P%2FbtrCkJ73j67%2Ft6adhcpbKkjKsMnei1UhlK%2Fimg.png)
 
-<div style="border:1px solid OrangeRed; height:1px; width: 100%; margin:20px 0;"> </div>
+<p style="border:1px solid OrangeRed; height:1px; width: 1000px; margin:20px auto;"> </p>
 
 ### 🌐 서비스 주소
 - [Antoon Web](https://antoon.fun/)
