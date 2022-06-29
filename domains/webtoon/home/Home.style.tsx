@@ -52,6 +52,7 @@ const HomeRealtimeChartWrapper = styled.section`
 `;
 
 const HomeRealtimeChartTitleWrapper = styled.section`
+  margin-top: 8.2rem;
   padding-left: 0.8rem;
 `;
 

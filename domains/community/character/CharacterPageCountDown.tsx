@@ -5,7 +5,7 @@ import useCountdown from '@hooks/useCountdown';
 import { TimerWrap } from './CharacterPageCountDown.style';
 
 function CharacterPageCountDown({ endTime }: { endTime: string }) {
-  const [hours, minutes, seconds] = useCountdown(endTime);
+  const [days, hours, minutes, seconds] = useCountdown(endTime);
 
   const [isHide, setIsHide] = useState(false);
 
