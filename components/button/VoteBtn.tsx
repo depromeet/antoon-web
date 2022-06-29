@@ -1,3 +1,4 @@
+import { useGetUserInformation } from '@apis/user';
 import { useToast } from '@hooks/useToast';
 import { MouseEventHandler } from 'react';
 import { VoteBtnWrapper } from './VoteBtn.style';
@@ -10,9 +11,11 @@ function VoteBtn({
   // eslint-disable-next-line @typescript-eslint/ban-types
   onOpen: Function;
 }) {
+  const { data: user } = useGetUserInformation();
   const { fireToast } = useToast();
   const onVoted = () => {
-    fireToast({ joinLeaveStatus: 'VOTED' });
+    if (!user) fireToast({ joinLeaveStatus: 'NO-LOGIN' });
+    else fireToast({ joinLeaveStatus: 'VOTED' });
   };
 
   const modalOpen = () => {

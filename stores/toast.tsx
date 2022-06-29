@@ -13,7 +13,8 @@ export type ToastStatusType =
   | RecommendationStatus
   | 'VOTE-NO-SELECT'
   | 'VOTING'
-  | 'VOTED';
+  | 'VOTED'
+  | 'NO-LOGIN';
 
 export const toastState = atom<Toast[]>({
   key: 'toastState',
