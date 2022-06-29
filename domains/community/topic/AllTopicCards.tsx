@@ -6,6 +6,8 @@ import { VoteTag } from '@components/vote/VoteHeader.style';
 import { TopicCategory } from '@_types/topics-type';
 import Image from 'next/image';
 import { categoryType, categoryTypeKey } from '@domains/community/AllTopics';
+import { useEffect, useState } from 'react';
+
 import {
   AllTopicCardWrapper,
   AllTopicCardContentContainer,
@@ -22,10 +24,21 @@ type Props = {
 
 function AllTopicCards(props: Props) {
   const { category } = props;
+  const [cate, setCate] = useState(category);
+  const [page, setPage] = useState(0);
 
   const { data, isLoading, isError } = useGetAllTopicsByCategory(
     categoryType[category] as TopicCategory,
+    page,
   );
+
+  useEffect(() => {
+    if (cate) {
+      setPage(0);
+    } else if (!data?.lastPage) {
+      setPage(page + 1);
+    }
+  }, [data, category]);
 
   if (isLoading) return <LoadingSpinner />;
 
