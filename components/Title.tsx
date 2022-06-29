@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 type Type = 'small' | 'normal' | 'big';
 
 const Text = styled.h1<{ type: Type }>`
+  line-height: 1.4;
   font-size: ${(props) => {
     switch (props.type) {
       case 'small':

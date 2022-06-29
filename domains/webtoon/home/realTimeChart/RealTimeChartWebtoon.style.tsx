@@ -16,6 +16,7 @@ const RealTimeChartCardWrapper = styled.a`
   justify-content: space-between;
   border-radius: 5px;
   padding: 0.8rem 0.8rem 0.8rem 1rem;
+  height: 6.8rem;
 
   @media (hover: hover) and (pointer: fine) {
     :hover {
@@ -98,9 +99,19 @@ const RealTimeChartScoreWrapper = styled.div`
 `;
 
 const RealTimeChartScore = styled.div`
+  display: flex;
+  gap: 0.2rem;
+  align-items: baseline;
+  justify-content: end;
   text-align: end;
   font-size: 1.6rem;
   font-weight: 600;
+`;
+
+const RealTimeChartScoreUnit = styled.div`
+  text-align: end;
+  font-size: 1.2rem;
+  font-weight: 500;
 `;
 
 type RealTimeChartScoreChangePercentProps = {
@@ -142,5 +153,6 @@ export {
   RealTimeChartAuthor,
   RealTimeChartScoreWrapper,
   RealTimeChartScore,
+  RealTimeChartScoreUnit,
   RealTimeChartScoreChangePercent,
 };

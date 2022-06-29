@@ -2,7 +2,7 @@ export type TopicCategory = 'RANKS' | 'LATEST' | 'CLOSES';
 export type TopicCategoryType = 'AB' | 'CHOICE';
 
 export interface AllTopicsByCategory {
-  topics: Topic[];
+  data: Topic[];
 }
 
 export interface Topic {

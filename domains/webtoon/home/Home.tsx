@@ -12,24 +12,21 @@ import {
   HomeRecommendationBackground,
   HomeWeeklyWrapper,
 } from './Home.style';
-import RealTimeChart from './realTimeChart/RealTimeChart';
 import Genres from './Genres';
 import Rising from './Rising';
 import Weekly from './Weekly';
-import RealTimeChartTitle from './realTimeChart/RealTimeChartTitle';
 import SubTitle from '@components/SubTitle';
 import { RecommendationTitleWrapper } from '@domains/community/Community.style';
 import TopicCards from '@domains/community/topic/TopicCards';
 import Title from '@components/Title';
 import TopicBanners from './TopicBanners';
+import RealTimeChart from './realTimeChart/RealTimeChart';
 
 function Home() {
-  const RealTimeChartRef = useRef<HTMLDivElement>(null);
   const GenresRef = useRef<HTMLDivElement>(null);
   const RisingRef = useRef<HTMLDivElement>(null);
   const RecommendationRef = useRef<HTMLDivElement>(null);
 
-  useCarousel(RealTimeChartRef);
   useCarousel(GenresRef);
   useCarousel(RisingRef);
   useCarousel(RecommendationRef);
@@ -39,11 +36,8 @@ function Home() {
       <HomeTopWrapper>
         <TopicBanners />
       </HomeTopWrapper>
-      <HomeRealtimeChartWrapper id="realtime-chart">
-        <RealTimeChartTitle />
-        <Carousel ref={RealTimeChartRef}>
-          <RealTimeChart />
-        </Carousel>
+      <HomeRealtimeChartWrapper>
+        <RealTimeChart />
       </HomeRealtimeChartWrapper>
       <HomeRecommendationWrapper>
         <HomeRecommendationBackground>

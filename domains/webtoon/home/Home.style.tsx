@@ -67,8 +67,9 @@ const HomeSectionSubTitle = styled.small`
 
 const HomeSectionTitleWithTimeWrapper = styled.div`
   display: flex;
+  gap: 0.8rem;
   align-items: baseline;
-  padding: 0.6rem 0 1.6rem;
+  padding: 0.6rem 2.4rem 1.2rem 0;
 
   > header {
     padding: unset;
@@ -81,10 +82,33 @@ const HomeSectionTitle = styled.header`
   font-weight: bold;
 `;
 
+const HomeRanksTitleWrapper = styled.div`
+  min-width: 9.1rem;
+`;
+
+const HomeTimeAndRanksWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
 const HomeSectionTitleWithTime = styled.span`
-  padding-left: 0.6rem;
   color: ${(props) => props.theme.colors.grayscale.gray_500};
   font-size: 1.2rem;
+`;
+
+const HomeWatchAllRanks = styled.div`
+  color: ${(props) => props.theme.colors.grayscale.gray_600};
+  font-size: 1.4rem;
+  font-weight: 500;
+`;
+
+const HomeRanksTagButtonsContainer = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  padding-bottom: 0.8rem;
+  padding-left: 0.8rem;
 `;
 
 const HomeRecommendationWrapper = styled.section`
@@ -115,8 +139,12 @@ export {
   HomeSectionWrapper,
   HomeSectionSubTitle,
   HomeSectionTitleWithTimeWrapper,
+  HomeWatchAllRanks,
   HomeSectionTitle,
+  HomeRanksTitleWrapper,
+  HomeTimeAndRanksWrapper,
   HomeSectionTitleWithTime,
+  HomeRanksTagButtonsContainer,
   HomeRecommendationWrapper,
   HomeRecommendationBackground,
   HomeWeeklyWrapper,

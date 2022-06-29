@@ -31,15 +31,15 @@ function AllTopicCard(props: Props) {
 
   if (
     data === undefined ||
-    !Array.isArray(data?.topics) ||
-    data?.topics?.length === 0 ||
+    !Array.isArray(data?.data) ||
+    data?.data?.length === 0 ||
     isError
   )
     return <OnError>모든 토픽을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
     <AllTopicCardContainer>
-      {data?.topics.map((topic) => (
+      {data?.data.map((topic) => (
         <AllTopicCardWrapper key={topic.topicId}>
           {topic.thumbnails.length === 1 && (
             <Image

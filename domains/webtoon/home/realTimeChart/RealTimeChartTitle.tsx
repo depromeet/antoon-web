@@ -4,6 +4,9 @@ import {
   HomeRealtimeChartTitleWrapper,
   HomeSectionTitleWithTimeWrapper,
   HomeSectionTitleWithTime,
+  HomeWatchAllRanks,
+  HomeTimeAndRanksWrapper,
+  HomeRanksTitleWrapper,
 } from '../Home.style';
 
 function RealTimeChartTitle() {
@@ -13,8 +16,15 @@ function RealTimeChartTitle() {
     <HomeRealtimeChartTitleWrapper>
       <SubTitle type="normal">다같이 영차영차!</SubTitle>
       <HomeSectionTitleWithTimeWrapper>
-        <Title type="normal">실시간 차트</Title>
-        <HomeSectionTitleWithTime>{updatedTime} 기준</HomeSectionTitleWithTime>
+        <HomeRanksTitleWrapper>
+          <Title type="normal">실시간 차트</Title>
+        </HomeRanksTitleWrapper>
+        <HomeTimeAndRanksWrapper>
+          <HomeSectionTitleWithTime>
+            {updatedTime} 기준
+          </HomeSectionTitleWithTime>
+          <HomeWatchAllRanks>전체보기</HomeWatchAllRanks>
+        </HomeTimeAndRanksWrapper>
       </HomeSectionTitleWithTimeWrapper>
     </HomeRealtimeChartTitleWrapper>
   );
