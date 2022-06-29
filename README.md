@@ -2,7 +2,9 @@
     <h1 align="center" style="opacity: 0.8;color:#FE4E16;font-weight:700;">ANTOON</h1>
     <p align="center"><span style="opacity: 0.8;font-size:15px;font-weight:700;">개미는 오늘도 열심히 툰툰!</span></p>
     <p align="center" style="margin-top:-18px;"><span style="font-size:11px;font-weight:700;">디프만 1팀 최강 FE</span> </p>
-    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FFa78O%2FbtrCj2UoVBO%2FZUHk6kjNAFQoa6paO3AGl1%2Fimg.png" alt="antoon" width="600px" style="position:relative; left:50%; margin-left: -300px;">
+    <div style="text-align:center;">
+        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FFa78O%2FbtrCj2UoVBO%2FZUHk6kjNAFQoa6paO3AGl1%2Fimg.png" alt="antoon" width="600px" >
+    </div>
     <br />
 </p>
 
