@@ -17,6 +17,7 @@ import {
   AllTopicJoinCount,
   AllTopicCardContainer,
 } from '@domains/community/topic/AllTopicCards.style';
+import Link from 'next/link';
 
 type Props = {
   category: categoryTypeKey;
@@ -51,54 +52,62 @@ function AllTopicCards(props: Props) {
     return <OnError>모든 토픽을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
-    <AllTopicCardContainer>
-      {data?.data.map((topic) => (
-        <AllTopicCardWrapper key={topic.topicId}>
-          {topic.thumbnails.length === 1 && (
-            <Image
-              src={
-                'https://antoon-api-bucket.s3.ap-northeast-2.amazonaws.com/ANT_DEFAULT/blue.png'
-              }
-              alt={topic.title}
-              width={72}
-              height={72}
-            />
-          )}
-          {topic.thumbnails.length === 2 && (
-            <AllTopicCardImageContainer>
-              <Image
-                src={
-                  'https://antoon-api-bucket.s3.ap-northeast-2.amazonaws.com/ANT_DEFAULT/blue.png'
-                }
-                alt={topic.title}
-                width={44}
-                height={44}
-              />
-              <AllTopicCardSecondImage>
+    <>
+      <AllTopicCardContainer>
+        {data?.data.map((topic) => (
+          <Link
+            href={`/community/topic/${topic.topicId}`}
+            key={topic.topicId}
+            passHref
+          >
+            <AllTopicCardWrapper>
+              {topic.thumbnails.length === 1 && (
                 <Image
                   src={
-                    'https://antoon-api-bucket.s3.ap-northeast-2.amazonaws.com/ANT_DEFAULT/yellow.png'
+                    'https://antoon-api-bucket.s3.ap-northeast-2.amazonaws.com/ANT_DEFAULT/blue.png'
                   }
                   alt={topic.title}
-                  width={44}
-                  height={44}
+                  width={72}
+                  height={72}
                 />
-              </AllTopicCardSecondImage>
-            </AllTopicCardImageContainer>
-          )}
-          <AllTopicCardContentContainer>
-            <VoteTag category={topic.topicCategory} style={{ padding: 0 }}>
-              <VoteChip category={topic.topicCategory} />
-              {topic.tags}
-            </VoteTag>
-            <AllTopicCardTitle>{topic.title}</AllTopicCardTitle>
-            <AllTopicJoinCount>
-              {topic.joinCount} 개미 참여 중
-            </AllTopicJoinCount>
-          </AllTopicCardContentContainer>
-        </AllTopicCardWrapper>
-      ))}
-    </AllTopicCardContainer>
+              )}
+              {topic.thumbnails.length === 2 && (
+                <AllTopicCardImageContainer>
+                  <Image
+                    src={
+                      'https://antoon-api-bucket.s3.ap-northeast-2.amazonaws.com/ANT_DEFAULT/blue.png'
+                    }
+                    alt={topic.title}
+                    width={44}
+                    height={44}
+                  />
+                  <AllTopicCardSecondImage>
+                    <Image
+                      src={
+                        'https://antoon-api-bucket.s3.ap-northeast-2.amazonaws.com/ANT_DEFAULT/yellow.png'
+                      }
+                      alt={topic.title}
+                      width={44}
+                      height={44}
+                    />
+                  </AllTopicCardSecondImage>
+                </AllTopicCardImageContainer>
+              )}
+              <AllTopicCardContentContainer>
+                <VoteTag category={topic.topicCategory} style={{ padding: 0 }}>
+                  <VoteChip category={topic.topicCategory} />
+                  {topic.tags}
+                </VoteTag>
+                <AllTopicCardTitle>{topic.title}</AllTopicCardTitle>
+                <AllTopicJoinCount>
+                  {topic.joinCount} 개미 참여 중
+                </AllTopicJoinCount>
+              </AllTopicCardContentContainer>
+            </AllTopicCardWrapper>
+          </Link>
+        ))}
+      </AllTopicCardContainer>
+    </>
   );
 }
 

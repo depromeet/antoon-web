@@ -1,3 +1,5 @@
+import { AxiosError } from 'axios';
+
 export type PlatformType = 'NAVER' | 'KAKAO' | 'LEZHIN' | 'ETC';
 
 export enum PlatformEnum {
@@ -155,6 +157,7 @@ export type CharacterType = 'PERSONA' | 'COUPLE';
 
 export interface WebtoonsCharacters {
   couples: Characters[];
+  request: AxiosError;
 }
 
 export interface Characters {

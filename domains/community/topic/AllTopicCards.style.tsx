@@ -6,7 +6,7 @@ const AllTopicCardContainer = styled.div`
   gap: 1.2rem;
 `;
 
-const AllTopicCardWrapper = styled.div`
+const AllTopicCardWrapper = styled.a`
   display: flex;
   gap: 1.2rem;
   height: 7.2rem;
