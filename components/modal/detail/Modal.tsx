@@ -25,7 +25,7 @@ import {
 
 createPortal;
 
-type joinLeaveType = 'JOIN' | 'LEAVE';
+export type joinLeaveType = 'JOIN' | 'LEAVE';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 function Modal({
@@ -46,7 +46,7 @@ function Modal({
   const { data: user } = useGetUserInformation();
   const [portal, setPortal] = useState<HTMLElement | null>(null);
   const [mount, setMount] = useState(false);
-
+  const isVoting = false;
   const {
     isLoading,
     isSuccess,
@@ -60,6 +60,7 @@ function Modal({
   useEffect(() => {
     setMount(true);
     setPortal(document.getElementById('onboard-modal'));
+
     if (data) {
       onRecommendSet(data);
       fireToast({ joinLeaveStatus: joinLeave });

@@ -2,7 +2,7 @@ import { usePostTopicsById } from '@apis/topics';
 import { useGetUserInformation } from '@apis/user';
 import { AntCoinIcon, AntCoinSmallIcon } from '@assets/icons';
 import { useToast } from '@hooks/useToast';
-import { MouseEventHandler, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
   ModalClose,
@@ -55,7 +55,7 @@ function Modal(props: Props) {
     } else if (error) {
       fireToast({ joinLeaveStatus: 'VOTED' });
     }
-  }, [data]);
+  }, [data, error, fireToast]);
 
   const handleVoteClick = () => {
     try {
@@ -67,12 +67,16 @@ function Modal(props: Props) {
     }
   };
 
+  const modalClose = () => {
+    onClose(false);
+  };
+
   return mount
     ? createPortal(
         <>
           {isOpen && (
             <ModalContainer>
-              <ModalOverlay onClick={onClose(false)}></ModalOverlay>
+              <ModalOverlay onClick={modalClose}></ModalOverlay>
               <ModalContent>
                 <ModalHeader>
                   <ModalLogo>
@@ -92,7 +96,7 @@ function Modal(props: Props) {
                   </ModalMyCoin>
                 </ModalCoin>
                 <ModalBtns>
-                  <ModalClose onClick={onClose(false)}>안할래요</ModalClose>
+                  <ModalClose onClick={modalClose}>안할래요</ModalClose>
                   <ModalFunc onClick={handleVoteClick}>투표할래요</ModalFunc>
                 </ModalBtns>
               </ModalContent>

@@ -1,4 +1,3 @@
-import { AlertLine } from '@assets/icons';
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
 import { Toast } from '@stores/toast';
 import themes from '@styles/themes/themes';
@@ -8,6 +7,7 @@ import {
   ToastMessage,
   ToastMessageContent,
   ToastCheckMark,
+  AlertMark,
 } from './Toast.style';
 
 function Toast(props: Toast) {
@@ -48,16 +48,19 @@ function Toast(props: Toast) {
             내일 다시 투표할 수 있어요!
           </>
         )}
-        {joinLeaveStatus === 'VOTING' && <> ✓ 투표를 완료했어요!🗳</>}
+        {joinLeaveStatus === 'VOTING' && (
+          <>✓ &nbsp;&nbsp; 투표를 완료했어요!🗳</>
+        )}
         {joinLeaveStatus === 'VOTED' && (
           <>
-            <AlertLine /> 이미 투표를 완료했어요.
+            <AlertMark />
+            <ToastMessageContent>이미 투표를 완료했어요.</ToastMessageContent>
           </>
         )}
         {joinLeaveStatus === 'VOTE-NO-SELECT' && (
           <>
-            <AlertLine />
-            선택항목을 골라주세요.
+            <AlertMark />
+            <ToastMessageContent>선택항목을 골라주세요.</ToastMessageContent>
           </>
         )}
       </ToastMessage>

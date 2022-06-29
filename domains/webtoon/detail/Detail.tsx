@@ -1,7 +1,6 @@
 import {
   WebtoonWriter,
   ChartStatus,
-  WebtoonJoinLeaveRecommendation,
   WebtoonJoinLeaveRespoonse,
 } from '@_types/webtoon-type';
 import Image from 'next/image';
@@ -47,7 +46,7 @@ import OnError from '@components/OnError';
 import { DEFAULT_IMG } from '@constants/icon-constants';
 import { useEffect, useRef, useState } from 'react';
 import { isEllipsisActive } from 'utils/css-util';
-import Modal from '@components/modal/detail/Modal';
+import Modal, { joinLeaveType } from '@components/modal/detail/Modal';
 import { Graph } from '@_types/chart-type';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import { TooltipIcon } from '@assets/icons';
@@ -70,7 +69,7 @@ function Detail({ id }: { id: number }) {
   const [chartData, setChartData] = useState<Graph>();
   const [isHide, setIsHide] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [joinLeave, setJoinLeave] = useState('');
+  const [joinLeave, setJoinLeave] = useState<joinLeaveType>('JOIN');
   const [isShowTooltip, setIsShowTooltip] = useState(false);
   const [chartType, setChartType] = useState('days');
   const [upDownStatus, setUpDownStatus] = useState<upDownStatusType>({

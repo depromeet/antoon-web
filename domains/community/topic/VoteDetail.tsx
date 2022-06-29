@@ -9,7 +9,7 @@ import ChoiceVote from './ChoiceVote';
 import { VoteDetailWrapper } from './VoteDetail.style';
 
 function VoteDetail({ id }: { id: number }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { data, isLoading } = useGetTopicsById(id);
   const [candidateId, setCandidateId] = useState(-1);
 

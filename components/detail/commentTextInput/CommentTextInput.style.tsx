@@ -2,10 +2,12 @@ import styled from '@emotion/styled';
 
 const CommentTextInputWrapper = styled.div<{ isOver: boolean }>`
   position: relative;
-  margin-bottom: 20px;
-  border: 1px solid
+  margin-bottom: 40px;
+  border: 1.5px solid
     ${(props) =>
-      props.isOver ? props.theme.colors.chart.point_up_100 : 'none'};
+      props.isOver
+        ? props.theme.colors.chart.point_up_100
+        : props.theme.colors.primary.gray_300};
   border-radius: 10px;
   background: ${(props) => props.theme.colors.primary.gray_300};
   padding-top: 5px;
@@ -40,18 +42,30 @@ const ProfileName = styled.p`
   font-weight: 700;
 `;
 
-const ContentCheckArea = styled.p`
+const ContentCheckArea = styled.p<{ isOver: boolean }>`
   position: absolute;
-  top: 16px;
-  right: 16px;
-  color: ${(props) => props.theme.colors.grayscale.gray_700};
+  right: 20px;
+  bottom: -25px;
+  color: ${(props) =>
+    props.isOver
+      ? props.theme.colors.chart.point_up_100
+      : props.theme.colors.grayscale.gray_700};
   font-size: 12px;
   font-weight: 400;
 `;
 
+const ContentCheckMsg = styled.p<{ isOver: boolean }>`
+  position: absolute;
+  bottom: -25px;
+  left: 10px;
+  opacity: ${(props) => (props.isOver ? 1 : 0)};
+  color: ${(props) => props.theme.colors.chart.point_up_100};
+  font-size: 12px;
+`;
+
 const TextAreaWrapper = styled.div``;
 
-const TextArea = styled.textarea`
+const TextArea = styled.textarea<{ isShow: boolean }>`
   transition: height 0.5s ease;
   outline: none;
   border: none;
@@ -89,7 +103,8 @@ const SubmitButton = styled.button<{ isShow: boolean }>`
   font-style: normal;
   -webkit-tap-highlight-color: transparent;
 
-  &:focus {
+  &:focus,
+  :hover {
     background: ${(props) => props.theme.colors.grayscale.gray_800};
   }
 `;
@@ -103,4 +118,5 @@ export {
   ProfileName,
   ContentCheckArea,
   SubmitButton,
+  ContentCheckMsg,
 };

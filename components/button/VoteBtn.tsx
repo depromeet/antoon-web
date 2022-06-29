@@ -7,15 +7,21 @@ function VoteBtn({
   onOpen,
 }: {
   voteStatus: boolean;
-  onOpen: MouseEventHandler<HTMLButtonElement>;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onOpen: Function;
 }) {
   const { fireToast } = useToast();
   const onVoted = () => {
     fireToast({ joinLeaveStatus: 'VOTED' });
   };
+
+  const modalOpen = () => {
+    onOpen();
+  };
+
   return (
     <VoteBtnWrapper
-      onClick={!voteStatus ? onOpen : onVoted}
+      onClick={!voteStatus ? modalOpen : onVoted}
       voteStatus={voteStatus}
     >
       {voteStatus ? '투표완료' : '투표하기'}

@@ -77,6 +77,19 @@ const ToastMessageContent = styled.span`
   position: absolute;
   top: 13px;
   margin-bottom: 20px;
+  margin-left: 20px;
+`;
+
+const AlertMark = styled.span`
+  position: absolute;
+  top: 13px;
+  opacity: 1;
+  margin-bottom: 20px;
+  /* stylelint-disable-next-line */
+  background: url('/images/alert_line.png') no-repeat 50% 50%;
+  background-size: cover;
+  width: 16px;
+  height: 16px;
 `;
 
 export {
@@ -84,4 +97,5 @@ export {
   ToastMessage,
   ToastCheckMark,
   ToastMessageContent,
+  AlertMark,
 };

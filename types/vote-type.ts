@@ -8,7 +8,14 @@ export interface Vote {
   topicVoteEndTime: string;
   candidates: VoteItem[];
   joinCount: number;
+  /**
+   * @name 본인투표여부
+   */
   topicVoteStatus: boolean;
+  /**
+   * @name 투표종료여부
+   */
+  topicCloseStatus: boolean;
 }
 
 export interface VoteItem extends VoteResultItem {
