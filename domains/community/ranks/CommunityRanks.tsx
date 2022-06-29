@@ -4,6 +4,8 @@ import { categoryTypeKey } from '@domains/webtoon/home/realTimeChart/RealTimeCha
 import TagBtn from '@components/button/TagBtn';
 import RealTimeChartTitle from '@domains/webtoon/home/realTimeChart/RealTimeChartTitle';
 import CommunityRanksCards from '@domains/community/ranks/CommunityRanksCards';
+import { TimeCounterWrap } from './CommunityRanks.style';
+import CharacterPageCountDown from '../character/CharacterPageCountDown';
 
 function CommunityRanks() {
   const [category, setCategory] = useState<categoryTypeKey>('웹툰');
@@ -25,6 +27,9 @@ function CommunityRanks() {
           커플
         </TagBtn>
       </HomeRanksTagButtonsContainer>
+      <TimeCounterWrap>
+        <CharacterPageCountDown endTime={''} />
+      </TimeCounterWrap>
       <RealTimeChartTitle isRankPage />
       <CommunityRanksCards category={category} />
     </>
