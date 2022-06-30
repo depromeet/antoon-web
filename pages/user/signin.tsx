@@ -84,7 +84,7 @@ export async function getServerSideProps({
       res,
       maxAge: 60 * 60 * 1 * 1,
     });
-    
+
     return {
       redirect: {
         destination: '/user/signup/policy',
