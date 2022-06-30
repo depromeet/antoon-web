@@ -7,6 +7,7 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react';
+import { removeCookies } from 'cookies-next';
 
 import { useGetUserInformation } from '@apis/user';
 
@@ -41,7 +42,7 @@ function CoinModal({
         !innerModalRef.current!.contains(event.target)
       ) {
         setModalStatus(false);
-        sessionStorage.removeItem('antoon-signup-status');
+        removeCookies('antoon-signup-status');
       } else {
         setModalStatus(true);
       }
@@ -60,7 +61,7 @@ function CoinModal({
 
   const onClickStart = () => {
     setModalStatus(false);
-    sessionStorage.removeItem('antoon-signup-status');
+    removeCookies('antoon-signup-status');
   };
 
   useEffect(() => {

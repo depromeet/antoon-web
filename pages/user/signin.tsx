@@ -88,7 +88,11 @@ export async function getServerSideProps({
   }
 
   if (status === 'SUCCESS') {
-    sessionStorage.setItem('antoon-signup-status', 'SIGNUP');
+    setCookies('antoon-signup-status', 'SIGNUP', {
+      req,
+      res,
+      maxAge: 60 * 60 * 1 * 1,
+    });
 
     return {
       redirect: {
