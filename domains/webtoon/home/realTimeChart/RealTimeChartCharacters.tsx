@@ -75,7 +75,7 @@ function RealTimeChartCharacters(props: Props) {
           return (
             <RealTimeChartCardWrapper
               key={character.id}
-              href={`community/character/${character.id}`}
+              href={`community/character/${character.id}?category=${category}`}
             >
               {character.thumbnails.length === 1 && (
                 <RealTimeChartCard

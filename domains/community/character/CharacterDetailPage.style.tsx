@@ -8,16 +8,17 @@ const CharacterDetailPageWrap = styled.div`
 
 const BackgroundColor = styled.div<{ backgroundColor: string }>`
   margin: 0 -2.4rem;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) =>
+    props.backgroundColor && `#${props.backgroundColor}`};
   height: 10rem;
 `;
 
-const CharacterProfileImg = styled.div`
+const CharacterProfileImg = styled.div<{ src: string }>`
   position: absolute;
   top: 0;
   z-index: 10;
   border-radius: 0.8rem;
-  background-image: url('/images/character_detail_page_mock_profile.png');
+  background-image: ${(props) => `url(${props.src}) `};
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -59,7 +60,7 @@ const TotalCoinAmount = styled.div`
 const WebtoonInfoWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 1.6rem 0 0;
+  margin: 1.6rem 0 5.6rem;
   border: 0.1rem solid ${(props) => props.theme.colors.grayscale.gray_300};
   border-radius: 1.2rem;
   cursor: pointer;
@@ -72,10 +73,10 @@ const WebtoonThumbnailWrap = styled.div`
   display: flex;
 `;
 
-const WebtoonThumbnail = styled.div`
+const WebtoonThumbnail = styled.div<{ src: string }>`
   margin: 0 1.2rem 0 0;
   border-radius: 0.8rem;
-  background-image: url('/images/character_detail_page_mock_thumbnail.png');
+  background-image: ${(props) => `url(${props.src}) `};
   background-repeat: no-repeat;
   background-size: cover;
   width: 4.8rem;
@@ -105,15 +106,6 @@ const WebtoonScore = styled.div`
 const IconWrap = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const WebtoonContent = styled.div`
-  opacity: 0.8;
-  margin: 1.6rem 0 5.6rem;
-  line-height: 1.96rem;
-  color: ${(props) => props.theme.colors.grayscale.gray_900};
-  font-size: 1.4rem;
-  font-weight: 400;
 `;
 
 const JoinBtn = styled.div`
@@ -158,7 +150,6 @@ export {
   WebtoonTitle,
   WebtoonScore,
   IconWrap,
-  WebtoonContent,
   JoinBtn,
   TotalJoinCount,
 };
