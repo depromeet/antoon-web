@@ -10,7 +10,7 @@ const Menu = styled.div`
   position: relative;
   width: 100%;
   height: calc(100% - 46px);
-  min-height: 36rem;
+  min-height: 43rem;
   font-size: 1.6rem;
   font-weight: 600;
 `;
