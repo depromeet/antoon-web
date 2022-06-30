@@ -14,8 +14,9 @@ const RealTimeChartCardWrapper = styled.a`
   display: flex;
   gap: 1.2rem;
   justify-content: space-between;
+  margin: 0 -0.8rem;
   border-radius: 5px;
-  padding: 0.8rem 0.8rem 0.8rem 1rem;
+  padding: 0.8rem;
   height: 6.8rem;
 
   @media (hover: hover) and (pointer: fine) {
