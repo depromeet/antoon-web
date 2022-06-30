@@ -41,7 +41,7 @@ function WeeklyWebtoons(props: Props) {
               <Skeleton height="1.25rem" />
             </SkeleteonWrapper>
           ))}
-        {webtoons?.data.map((webtoon) => (
+        {webtoons?.data?.map((webtoon) => (
           <WeeklyCardWrapper
             key={webtoon.webtoonId}
             href={`/webtoon/${webtoon.webtoonId}`}
