@@ -41,31 +41,24 @@ function AllTopicCards(props: Props) {
     }
   }, [data, category]);
 
-  if (isLoading)
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          width: '100%',
-          paddingLeft: '2.4rem',
-        }}
-      >
-        <LoadingSpinner />
-      </div>
-    );
-
-  if (
-    data === undefined ||
-    !Array.isArray(data?.data) ||
-    data?.data?.length === 0 ||
-    isError
-  )
+  if (data?.data?.length === 0 || isError)
     return <OnError>모든 토픽을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
     <>
       <AllTopicCardContainer>
+        {isLoading && (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+              paddingLeft: '2.4rem',
+            }}
+          >
+            <LoadingSpinner />
+          </div>
+        )}
         {data?.data.map((topic) => (
           <Link
             href={`/community/topic/${topic.topicId}`}
