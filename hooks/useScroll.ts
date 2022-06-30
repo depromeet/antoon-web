@@ -4,7 +4,7 @@ function useScroll() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   function listener() {
-    setIsScrolled(window.pageYOffset > 100);
+    setIsScrolled(window.pageYOffset >= 100);
   }
 
   useEffect(() => {

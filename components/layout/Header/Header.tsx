@@ -32,7 +32,7 @@ function Header({
   const isScrolled = useScroll();
 
   return (
-    <HeaderWrap headerColor={isScrolled ? '#FFFFFF' : headerColor}>
+    <HeaderWrap headerColor={isScrolled ? 'FFFFFF' : headerColor}>
       {!isSSR && (
         <>
           <HeaderLeftMenu headerLeft={headerLeft} headerColor={headerColor} />
