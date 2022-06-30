@@ -41,7 +41,19 @@ function AllTopicCards(props: Props) {
     }
   }, [data, category]);
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading)
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%',
+          paddingLeft: '2.4rem',
+        }}
+      >
+        <LoadingSpinner />
+      </div>
+    );
 
   if (
     data === undefined ||
