@@ -19,16 +19,12 @@ function HeaderRightMenu({
 }) {
   const [isHeaderPainted, setIsHeaderPainted] = useState(false);
 
-  useEffect(() => {
-    if (headerColor) setIsHeaderPainted(true);
-  }, [headerColor]);
-
   const isScrolled = useScroll();
 
   useEffect(() => {
-    if (isScrolled) setIsHeaderPainted(false);
-    else setIsHeaderPainted(true);
-  }, [isScrolled]);
+    if (headerColor && !isScrolled) setIsHeaderPainted(true);
+    else setIsHeaderPainted(false);
+  }, [headerColor, isScrolled]);
 
   return (
     <RightWrap>
