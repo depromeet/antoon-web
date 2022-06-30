@@ -10,7 +10,7 @@ const MainWrap = styled.div<{ isFooter: boolean }>`
 
 const FooterWrap = styled.div`
   display: flex;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   align-items: center;
   z-index: 100;
