@@ -27,6 +27,7 @@ const global = css`
   html,
   body {
     height: 100%;
+    overflow: hidden;
   }
 
   a {
