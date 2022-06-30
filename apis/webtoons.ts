@@ -13,6 +13,7 @@ import {
   WebtoonJoinLeaveRespoonse,
   CharacterType,
   WebtoonsCharacters,
+  CharacterInfo,
 } from '@_types/webtoon-type';
 import { Graph } from '@_types/chart-type';
 
@@ -189,6 +190,26 @@ const useGetCharacterRanksByCategory = (category: CharacterType) => {
   );
 };
 
+const getCharacterInfo = async (id: number, category: CharacterType) => {
+  return await instance()
+    .get(`characters/${id}?type=${category}`)
+    .then((res) => res.data)
+    .catch((e) => {
+      console.log(e);
+      return e;
+    });
+};
+
+const useGetCharacterInfo = (id: number, category: CharacterType) => {
+  return useQuery<CharacterInfo>(
+    webtoons.charactersInfo(id, category),
+    () => getCharacterInfo(id, category),
+    {
+      enabled: category === 'COUPLE' || category === 'PERSONA',
+    },
+  );
+};
+
 export {
   getWebtoons,
   useGetWebtoons,
@@ -212,4 +233,5 @@ export {
   usePatchJoinLeaveRecommendationById,
   getCharacterRanksByCategory,
   useGetCharacterRanksByCategory,
+  useGetCharacterInfo,
 };
