@@ -24,7 +24,7 @@ function VoteBtn({
 
   return (
     <VoteBtnWrapper
-      onClick={!voteStatus ? modalOpen : onVoted}
+      onClick={!voteStatus && user ? modalOpen : onVoted}
       voteStatus={voteStatus}
     >
       {voteStatus ? '투표완료' : '투표하기'}
