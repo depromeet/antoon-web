@@ -53,7 +53,6 @@ const HomeRealtimeChartWrapper = styled.section`
 
 const HomeRealtimeChartTitleWrapper = styled.section`
   margin-top: 8.2rem;
-  padding-left: 0.8rem;
 `;
 
 const HomeSectionWrapper = styled.section`
@@ -109,7 +108,6 @@ const HomeRanksTagButtonsContainer = styled.div`
   display: flex;
   gap: 0.8rem;
   padding-bottom: 1.6rem;
-  padding-left: 0.8rem;
 `;
 
 const HomeRecommendationWrapper = styled.section`
