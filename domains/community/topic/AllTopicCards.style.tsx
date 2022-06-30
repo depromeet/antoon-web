@@ -15,7 +15,6 @@ const AllTopicCardWrapper = styled.a`
 
 const AllTopicCardImageContainer = styled.div`
   min-width: 7.2rem;
-  min-height: 7.2rem;
 `;
 
 const AllTopicCardSecondImage = styled.div`
