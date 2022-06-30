@@ -98,7 +98,7 @@ function Modal({
                   <ModalLogo>
                     <AntCoinBigIcon />
                   </ModalLogo>
-                  <ModalHeaderTitle>+ 10코인</ModalHeaderTitle>
+                  <ModalHeaderTitle>+ 1코인</ModalHeaderTitle>
                 </ModalHeader>
                 <ModalTitle>
                   {title}에 <br />

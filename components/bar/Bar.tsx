@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const Bar = styled.div`
   position: absolute;
   left: 0;
-  border-bottom: 8px solid #f1f1f1;
+  border-bottom: 8px solid ${(props) => props.theme.colors.grayscale.gray_300};
   width: 100%;
 `;
 
