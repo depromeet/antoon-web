@@ -19,7 +19,7 @@ const StToastList = styled.div`
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 90;
   padding: 24px;
   width: 100vw;
   max-width: 470px;

@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import HeaderLeftMenu from './HeaderLeftMenu';
 import HeaderRightMenu from './HeaderRightMenu';
 
+import useScroll from '@hooks/useScroll';
+
 import { HeaderWrap, Title } from './Header.style';
 
 type HeaderLeft = '로고' | '뒤로가기' | '없음';
@@ -27,8 +29,10 @@ function Header({
     setIsSSR(false);
   }, []);
 
+  const isScrolled = useScroll();
+
   return (
-    <HeaderWrap headerColor={headerColor}>
+    <HeaderWrap headerColor={isScrolled ? '#FFFFFF' : headerColor}>
       {!isSSR && (
         <>
           <HeaderLeftMenu headerLeft={headerLeft} headerColor={headerColor} />

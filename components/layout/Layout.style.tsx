@@ -5,7 +5,7 @@ const MainWrap = styled.div<{ isFooter: boolean }>`
   background-color: ${(props) => props.theme.colors.basic.white};
   padding: 0 2.4rem;
   width: min(480px, 100%);
-  min-height: ${(props) => (props.isFooter ? 'calc(100vh - 5.6rem)' : '100vh')};
+  min-height: ${(props) => (props.isFooter ? 'calc(100vh - 8rem)' : '100vh')};
 `;
 
 const FooterWrap = styled.div`
@@ -13,11 +13,13 @@ const FooterWrap = styled.div`
   position: sticky;
   bottom: 0;
   align-items: center;
+  z-index: 100;
   margin: 0 auto;
   border-top: 0.2rem solid ${(props) => props.theme.colors.grayscale.gray_100};
   background-color: ${(props) => props.theme.colors.basic.white};
+  padding: 0 0 2.4rem;
   width: min(480px, 100%);
-  height: 5.6rem;
+  height: 8rem;
 `;
 
 const BtnWrap = styled.div`

@@ -64,8 +64,8 @@ function UserBadge({ coin, badge }: { coin: number; badge: string }) {
           });
         case '여왕개미':
           return setNextBadge({
-            name: '🎉',
-            textStatusWidth: '102%',
+            name: '최고 등급 달성 🎉',
+            textStatusWidth: '104%',
             progressWidth: '100%',
           });
         case '로그인을 하시면 등급을 받을 수 있어요':
@@ -91,7 +91,12 @@ function UserBadge({ coin, badge }: { coin: number; badge: string }) {
 
   return (
     <>
-      {modalStatus && <BadgeInfoModal setModalStatus={setModalStatus} />}
+      {modalStatus && (
+        <BadgeInfoModal
+          modalStatus={modalStatus}
+          setModalStatus={setModalStatus}
+        />
+      )}
       <BadgeWrap>
         <UpperWrap>
           <UserBadgeDataWrap>

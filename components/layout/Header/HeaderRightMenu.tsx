@@ -1,7 +1,10 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import SearchIcon from '@assets/icons/SearchIcon';
 import ShareIcon from '@assets/icons/ShareIcon';
+
+import useScroll from '@hooks/useScroll';
 
 import { RightWrap } from './HeaderRightMenu.style';
 
@@ -14,7 +17,18 @@ function HeaderRightMenu({
   headerRight: HeaderRight;
   headerColor?: string;
 }) {
-  const isHeaderPainted = headerColor ? true : false;
+  const [isHeaderPainted, setIsHeaderPainted] = useState(false);
+
+  useEffect(() => {
+    if (headerColor) setIsHeaderPainted(true);
+  }, [headerColor]);
+
+  const isScrolled = useScroll();
+
+  useEffect(() => {
+    if (isScrolled) setIsHeaderPainted(false);
+    else setIsHeaderPainted(true);
+  }, [isScrolled]);
 
   return (
     <RightWrap>

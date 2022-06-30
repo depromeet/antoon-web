@@ -15,3 +15,4 @@ export { ReactComponent as BadgeLevelOne } from './badge_level_1.svg';
 export { ReactComponent as BadgeLevelTwo } from './badge_level_2.svg';
 export { ReactComponent as BadgeLevelThree } from './badge_level_3.svg';
 export { ReactComponent as ModalClose } from './modal_close.svg';
+export { ReactComponent as EmailIcon } from './email.svg';

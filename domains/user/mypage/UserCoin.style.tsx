@@ -7,7 +7,7 @@ const UserCoinWrap = styled.div`
   margin: 1.6rem 0 0;
   border-radius: 0.8rem;
   background-color: ${(props) => props.theme.colors.secondary.red};
-  padding: 1.3rem 1.6rem;
+  padding: 1.3rem 2rem;
   width: 100%;
   height: 7rem;
   color: ${(props) => props.theme.colors.basic.white};

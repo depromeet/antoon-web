@@ -40,7 +40,7 @@
 </div>
 
 <div style="text-align:center;" align="center">
-    <img src="./public/main.gif" alt="antoon" style="width: 150%; border-radius:20px;width:800px;">
+    <img src="https://blog.kakaocdn.net/dn/xOYbJ/btrF2M9ju89/aE2lJL8d8kd5rw811Ayf6K/img.gif" alt="antoon" style="width: 150%; border-radius:20px;width:800px;">
 </div>
     
 <br />
