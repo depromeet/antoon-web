@@ -1,7 +1,10 @@
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import LogoIcon from '@assets/icons/LogoIcon';
 import BackIcon from '@assets/icons/BackIcon';
+
+import useScroll from '@hooks/useScroll';
 
 import { LeftWrap } from './HeaderLeftMenu.style';
 
@@ -16,7 +19,18 @@ function HeaderLeftMenu({
 }) {
   const router = useRouter();
 
-  const isHeaderPainted = headerColor ? true : false;
+  const [isHeaderPainted, setIsHeaderPainted] = useState(false);
+
+  useEffect(() => {
+    if (headerColor) setIsHeaderPainted(true);
+  }, [headerColor]);
+
+  const isScrolled = useScroll();
+
+  useEffect(() => {
+    if (isScrolled) setIsHeaderPainted(false);
+    else setIsHeaderPainted(true);
+  }, [isScrolled]);
 
   return (
     <LeftWrap>
