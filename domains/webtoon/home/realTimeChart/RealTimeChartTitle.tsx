@@ -20,7 +20,7 @@ function RealTimeChartTitle(props: Props) {
   const updatedTime = `${new Date().getHours()}:00`;
 
   return (
-    <HomeRealtimeChartTitleWrapper style={{ marginTop: '2rem' }}>
+    <HomeRealtimeChartTitleWrapper style={{ marginTop: '2.4rem' }}>
       <SubTitle type="normal">다같이 영차영차!</SubTitle>
       <HomeSectionTitleWithTimeWrapper>
         <HomeRanksTitleWrapper isRankPage={isRankPage}>

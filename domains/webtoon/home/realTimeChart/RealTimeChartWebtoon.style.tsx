@@ -5,7 +5,7 @@ const RealTimeChartContainer = styled.div`
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-auto-flow: column;
-  gap: 0 0.8rem;
+  gap: 0 1.6rem;
   padding-right: 1.6rem;
   height: 204px;
 `;
