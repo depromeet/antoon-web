@@ -59,7 +59,7 @@ function CommunityRanksCards(props: Props) {
   if (isLoading || webtoonIsLoading) return <LoadingSpinner />;
 
   if (
-    (data?.request.status as unknown as number) >= 400 ||
+    (data?.request?.status as unknown as number) >= 400 ||
     data?.couples?.length === 0 ||
     webtoons?.webtoons?.length === 0 ||
     isError ||
@@ -85,6 +85,7 @@ function CommunityRanksCards(props: Props) {
                   width={52}
                   height={52}
                   layout="fixed"
+                  objectFit="cover"
                 />
                 <RealTimeChartRankingWrapper>
                   <RealTimeChartRanking>{idx + 1}</RealTimeChartRanking>
@@ -169,6 +170,7 @@ function CommunityRanksCards(props: Props) {
                   width={52}
                   height={52}
                   layout="fixed"
+                  objectFit="cover"
                   style={{ borderRadius: 100 }}
                 />
               )}
@@ -181,6 +183,7 @@ function CommunityRanksCards(props: Props) {
                     width={32}
                     height={32}
                     layout="fixed"
+                    objectFit="cover"
                     style={{ borderRadius: 100 }}
                   />
                   <AllTopicCardSecondImage>
@@ -190,6 +193,7 @@ function CommunityRanksCards(props: Props) {
                       width={32}
                       height={32}
                       layout="fixed"
+                      objectFit="cover"
                       style={{ borderRadius: 100 }}
                     />
                   </AllTopicCardSecondImage>

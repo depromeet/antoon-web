@@ -44,7 +44,19 @@ function RealTimeChartCharacters(props: Props) {
     setIsSSR(false);
   }, []);
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading)
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%',
+          paddingLeft: '1rem',
+        }}
+      >
+        <LoadingSpinner />
+      </div>
+    );
 
   if (
     data === undefined ||
@@ -72,6 +84,7 @@ function RealTimeChartCharacters(props: Props) {
                   width={52}
                   height={52}
                   layout="fixed"
+                  objectFit="cover"
                   style={{ borderRadius: 100 }}
                 />
               )}
@@ -84,6 +97,7 @@ function RealTimeChartCharacters(props: Props) {
                     width={32}
                     height={32}
                     layout="fixed"
+                    objectFit="cover"
                     style={{ borderRadius: 100 }}
                   />
                   <AllTopicCardSecondImage>
@@ -93,6 +107,7 @@ function RealTimeChartCharacters(props: Props) {
                       width={32}
                       height={32}
                       layout="fixed"
+                      objectFit="cover"
                       style={{ borderRadius: 100 }}
                     />
                   </AllTopicCardSecondImage>

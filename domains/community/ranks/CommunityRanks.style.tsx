@@ -1,11 +1,8 @@
 import styled from '@emotion/styled';
 
 const TimeCounterWrap = styled.div`
-  position: absolute;
-  top: 112px;
-  left: 50%;
-  z-index: 101;
-  margin-left: -120px;
+  display: flex;
+  justify-content: center;
 `;
 
 export { TimeCounterWrap };
