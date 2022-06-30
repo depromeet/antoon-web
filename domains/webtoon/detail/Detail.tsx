@@ -204,7 +204,7 @@ function Detail({ id }: { id: number }) {
                   <MainTitle>{data.title}</MainTitle>
                   <MainScore upDown={upDownStatus?.status}>
                     <Point>
-                      {data.score} Ant
+                      {data.score} ANT
                       <PointTooltip>
                         <InfoBtn onClick={handleTooltipClick}></InfoBtn>
                         <InfoContent isShow={isShowTooltip}>
@@ -214,7 +214,7 @@ function Detail({ id }: { id: number }) {
                     </Point>
                     <PointUpDown>
                       {upDownStatus?.sign}
-                      {data.scoreGap} Ant
+                      {data.scoreGap} ANT
                       <PointPercentage>
                         ({data.scoreGapPercent}%)
                       </PointPercentage>
