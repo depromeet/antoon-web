@@ -28,8 +28,10 @@ import {
 } from './BadgeInfoModal.style';
 
 function BadgeInfoModal({
+  modalStatus,
   setModalStatus,
 }: {
+  modalStatus: boolean;
   setModalStatus: Dispatch<SetStateAction<boolean>>;
 }) {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -61,6 +63,22 @@ function BadgeInfoModal({
     setModalStatus(false);
   };
 
+  useEffect(() => {
+    if (modalStatus) {
+      document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+
+      return () => {
+        const scrollY = document.body.style.top;
+        document.body.style.cssText = '';
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      };
+    }
+  }, [modalStatus]);
+
   return (
     <Background ref={modalRef}>
       <ModalContainer ref={innerModalRef}>
@@ -85,7 +103,7 @@ function BadgeInfoModal({
         <IntroWrap>
           <Divider />
           <IntroduceText>
-            코인을 얻으면 등급이 상승하고, 코인이 차감되면 등급이 하락합니다.
+            보유 코인수에 따라 실시간으로 등급이 상승 또는 하락됩니다.
           </IntroduceText>
         </IntroWrap>
         <IntroWrap>

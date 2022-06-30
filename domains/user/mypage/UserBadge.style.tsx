@@ -4,7 +4,7 @@ const BadgeWrap = styled.div`
   margin: 1.2rem 0 0;
   border-radius: 0.8rem;
   background-color: ${(props) => props.theme.colors.grayscale.gray_100};
-  padding: 1.2rem 1.6rem;
+  padding: 1.2rem 2rem;
   width: 100%;
 `;
 
