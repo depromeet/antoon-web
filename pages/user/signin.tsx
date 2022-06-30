@@ -88,6 +88,8 @@ export async function getServerSideProps({
   }
 
   if (status === 'SUCCESS') {
+    sessionStorage.setItem('antoon-signup-status', 'SIGNUP');
+
     return {
       redirect: {
         destination: '/',

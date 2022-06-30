@@ -53,13 +53,13 @@ function UserBadge({ coin, badge }: { coin: number; badge: string }) {
         case '거지개미':
           return setNextBadge({
             name: '일개미',
-            textStatusWidth: `${(coin + 1) * 2 + 2}%`,
+            textStatusWidth: `${(coin + 1) * 2 + 3}%`,
             progressWidth: `${(coin + 1) * 2}%`,
           });
         case '일개미':
           return setNextBadge({
             name: '여왕개미',
-            textStatusWidth: `${(coin - 49) * 0.4 + 4}%`,
+            textStatusWidth: `${(coin - 49) * 0.4 + 5}%`,
             progressWidth: `${(coin - 49) * 0.4}%`,
           });
         case '여왕개미':

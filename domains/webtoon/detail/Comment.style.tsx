@@ -5,7 +5,7 @@ const CommentListWrap = styled.div<{ commentType: CommentType }>`
   margin: 12px -24px;
   background: ${(props) =>
     props.commentType != 'webtoons' && props.theme.colors.grayscale.gray_100};
-  padding: 10px 48px 24px;
+  padding: 10px 24px 24px;
   width: calc(100% +24 * 2);
   min-height: 60rem;
 `;
