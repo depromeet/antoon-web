@@ -3,7 +3,7 @@ import ABVoteItem from '@components/vote/ABVoteItem';
 import VoteHeader from '@components/vote/VoteHeader';
 import { getToLocaleString } from '@utils/num-util';
 
-import { Vote, VoteItem, VoteResult } from '@_types/vote-type';
+import { Vote, VoteItem } from '@_types/vote-type';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import {
   ABVoteWrapper,
