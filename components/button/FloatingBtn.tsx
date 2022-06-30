@@ -1,31 +1,33 @@
-import Image from 'next/image';
 import styled from '@emotion/styled';
+import { EmailIcon } from '@assets/icons';
 
 function FloatingBtn() {
   return (
-    <Btn>
-      <a
-        href="https://forms.gle/iRgHM2vVrbKrNAEF8"
-        target="_blank"
-        rel="noreferrer noopener"
-      >
-        <Image
-          src="/images/floating_email_button.png"
-          width="24"
-          height="24"
-          alt="email"
-        />
-      </a>
-    </Btn>
+    <BtnWrap>
+      <Btn>
+        <a
+          href="https://forms.gle/iRgHM2vVrbKrNAEF8"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <EmailIcon />
+        </a>
+      </Btn>
+    </BtnWrap>
   );
 }
-const Btn = styled.button`
+
+const BtnWrap = styled.div`
   position: fixed;
-  right: 0;
-  bottom: 0;
-  margin: 0 2.4rem 1.7rem 0;
+  bottom: 9.2%;
+  width: 43.2rem;
+  text-align: right;
+`;
+
+const Btn = styled.button`
   border-radius: 50%;
-  box-shadow: 0 0.4rem 0.6rem -0.4rem ${(props) => props.theme.colors.grayscale.gray_1000};
+  box-shadow: 0 0.4rem 0.5rem -0.4rem ${(props) => props.theme.colors.grayscale.gray_1000};
+  background-color: ${(props) => props.theme.colors.basic.white};
   width: 5.6rem;
   height: 5.6rem;
 `;
