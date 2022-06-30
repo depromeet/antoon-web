@@ -7,7 +7,7 @@ const BtnWrapper = styled.div`
   left: 0;
   justify-content: center;
   z-index: 10;
-  width: 100vw;
+  width: 100%;
   height: 160px;
 `;
 
