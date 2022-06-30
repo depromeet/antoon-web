@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   const [modalStatus, setModalStatus] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem('antoon-signup-status') === 'SIGNUP')
+    if (sessionStorage.getItem('antoon-signup-status') === 'SIGNUP')
       setModalStatus(true);
   }, []);
 

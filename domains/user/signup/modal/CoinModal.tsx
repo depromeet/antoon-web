@@ -41,7 +41,7 @@ function CoinModal({
         !innerModalRef.current!.contains(event.target)
       ) {
         setModalStatus(false);
-        localStorage.removeItem('antoon-signup-status');
+        sessionStorage.removeItem('antoon-signup-status');
       } else {
         setModalStatus(true);
       }
@@ -60,7 +60,7 @@ function CoinModal({
 
   const onClickStart = () => {
     setModalStatus(false);
-    localStorage.removeItem('antoon-signup-status');
+    sessionStorage.removeItem('antoon-signup-status');
   };
 
   useEffect(() => {
