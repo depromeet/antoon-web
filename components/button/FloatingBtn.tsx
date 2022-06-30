@@ -19,7 +19,7 @@ function FloatingBtn() {
 
 const BtnWrap = styled.div`
   position: fixed;
-  bottom: 9.2%;
+  bottom: 104px;
   width: 43.2rem;
   text-align: right;
 `;
