@@ -79,6 +79,12 @@ export async function getServerSideProps({
     });
 
   if (status === 'SIGNUP') {
+    setCookies('antoon-signup-status', 'SIGNUP', {
+      req,
+      res,
+      maxAge: 60 * 60 * 1 * 1,
+    });
+    
     return {
       redirect: {
         destination: '/user/signup/policy',
@@ -88,12 +94,6 @@ export async function getServerSideProps({
   }
 
   if (status === 'SUCCESS') {
-    setCookies('antoon-signup-status', 'SIGNUP', {
-      req,
-      res,
-      maxAge: 60 * 60 * 1 * 1,
-    });
-
     return {
       redirect: {
         destination: '/',
