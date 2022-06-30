@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
+import { getCookie } from 'cookies-next';
 import { Mixpanel } from 'mixpanel';
 
 import Header from '@components/layout/Header/Header';
@@ -18,8 +19,7 @@ const Home: NextPage = () => {
   const [modalStatus, setModalStatus] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem('antoon-signup-status') === 'SIGNUP')
-      setModalStatus(true);
+    if (getCookie('antoon-signup-status') === 'SIGNUP') setModalStatus(true);
   }, []);
 
   return (
