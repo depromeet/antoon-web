@@ -8,13 +8,17 @@ const MainWrap = styled.div<{ isFooter: boolean }>`
   min-height: ${(props) => (props.isFooter ? 'calc(100vh - 8rem)' : '100vh')};
 `;
 
+const FooterWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const FooterWrap = styled.div`
   display: flex;
   position: fixed;
   bottom: 0;
   align-items: center;
   z-index: 100;
-  margin: 0 auto;
   border-top: 0.2rem solid ${(props) => props.theme.colors.grayscale.gray_100};
   background-color: ${(props) => props.theme.colors.basic.white};
   padding: 0 0 2.4rem;
@@ -39,4 +43,4 @@ const BtnWrap = styled.div`
   }
 `;
 
-export { MainWrap, FooterWrap, BtnWrap };
+export { MainWrap, FooterWrapper, FooterWrap, BtnWrap };

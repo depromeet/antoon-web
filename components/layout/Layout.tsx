@@ -7,7 +7,7 @@ import FooterHomeIcon from '@assets/icons/FooterHomeIcon';
 import FooterCommunityIcon from '@assets/icons/FooterCommunityIcon';
 import FooterMyPageIcon from '@assets/icons/FooterMyPageIcon';
 
-import { MainWrap, FooterWrap, BtnWrap } from './Layout.style';
+import { MainWrap, FooterWrap, BtnWrap, FooterWrapper } from './Layout.style';
 
 function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -45,32 +45,34 @@ function Layout({ children }: { children: React.ReactNode }) {
     <>
       <MainWrap isFooter={isFooter}>{children}</MainWrap>
       {isFooter && (
-        <FooterWrap>
-          <BtnWrap>
-            <Link href="/" passHref>
-              <a>
-                <FooterHomeIcon isHome={isHome} />
-                <span>홈</span>
-              </a>
-            </Link>
-          </BtnWrap>
-          <BtnWrap>
-            <Link href="/community" passHref>
-              <a>
-                <FooterCommunityIcon isCommunity={isCommunity} />
-                <span>커뮤니티</span>
-              </a>
-            </Link>
-          </BtnWrap>
-          <BtnWrap>
-            <Link href="/user/mypage" passHref>
-              <a>
-                <FooterMyPageIcon isMyPage={isMyPage} />
-                <span>마이페이지</span>
-              </a>
-            </Link>
-          </BtnWrap>
-        </FooterWrap>
+        <FooterWrapper>
+          <FooterWrap>
+            <BtnWrap>
+              <Link href="/" passHref>
+                <a>
+                  <FooterHomeIcon isHome={isHome} />
+                  <span>홈</span>
+                </a>
+              </Link>
+            </BtnWrap>
+            <BtnWrap>
+              <Link href="/community" passHref>
+                <a>
+                  <FooterCommunityIcon isCommunity={isCommunity} />
+                  <span>커뮤니티</span>
+                </a>
+              </Link>
+            </BtnWrap>
+            <BtnWrap>
+              <Link href="/user/mypage" passHref>
+                <a>
+                  <FooterMyPageIcon isMyPage={isMyPage} />
+                  <span>마이페이지</span>
+                </a>
+              </Link>
+            </BtnWrap>
+          </FooterWrap>
+        </FooterWrapper>
       )}
     </>
   );
