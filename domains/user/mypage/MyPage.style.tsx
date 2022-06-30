@@ -9,7 +9,7 @@ const MyPageWrap = styled.div`
 const Menu = styled.div`
   position: relative;
   width: 100%;
-  height: calc(100% - 46rem);
+  height: calc(100% - 46px);
   min-height: 36rem;
   font-size: 1.6rem;
   font-weight: 600;
