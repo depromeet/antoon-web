@@ -168,3 +168,18 @@ export interface Characters {
   coinAmount: number;
   isJoined: boolean;
 }
+
+export interface CharacterInfo {
+  backGroundColor: string;
+  characterThumbnail: string;
+  coinAmount: number;
+  id: number;
+  isJoined: boolean;
+  joinedCount: number;
+  name: string;
+  rank: number;
+  score: number;
+  title: string;
+  webtoonId: number;
+  webtoonThumbnail: string;
+}
