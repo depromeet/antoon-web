@@ -84,10 +84,10 @@ const MyCoinReserve = styled.span`
   margin-left: 6px;
 `;
 const ModalClose = styled.button`
-  margin-right: 10px;
+  margin-right: 22px;
   border-radius: 10px;
   background-color: ${(props) => props.theme.colors.grayscale.gray_200};
-  width: 46%;
+  width: 45%;
   height: 15%;
 `;
 const ModalFunc = styled.button<{ joinLeave: string }>`
@@ -96,7 +96,7 @@ const ModalFunc = styled.button<{ joinLeave: string }>`
     props.joinLeave === 'JOIN'
       ? props.theme.colors.chart.point_up_100
       : props.theme.colors.chart.point_down_100};
-  width: 50%;
+  width: 45%;
   height: 15%;
   color: ${(props) => props.theme.colors.basic.white};
 `;
