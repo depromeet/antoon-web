@@ -108,6 +108,20 @@ const IconWrap = styled.div`
   align-items: center;
 `;
 
+const ConfirmBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.2rem auto 0;
+  border-radius: 1rem;
+  background-color: ${(props) => props.theme.colors.grayscale.gray_1000};
+  width: 16.8rem;
+  height: 4.8rem;
+  color: ${(props) => props.theme.colors.basic.white};
+  font-size: 1.6rem;
+  font-weight: 600;
+`;
+
 const JoinBtn = styled.div`
   display: flex;
   align-items: center;
@@ -115,6 +129,7 @@ const JoinBtn = styled.div`
   margin: 1.2rem auto 0;
   border-radius: 1rem;
   background-color: ${(props) => props.theme.colors.secondary.red};
+  cursor: pointer;
   width: 16.8rem;
   height: 4.8rem;
   color: ${(props) => props.theme.colors.basic.white};
@@ -150,6 +165,7 @@ export {
   WebtoonTitle,
   WebtoonScore,
   IconWrap,
+  ConfirmBtn,
   JoinBtn,
   TotalJoinCount,
 };
