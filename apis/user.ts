@@ -58,8 +58,8 @@ const usePatchUserName = (userName: string) => {
 
 const patchUserImg = async (userImg: string) => {
   return await instance()
-    .patch('users/images', {
-      imageUrl: userImg,
+    .patch('users/images', userImg, {
+      headers: { 'Content-Type': 'multipart/form-data' },
     })
     .catch((e) => console.log(e));
 };
