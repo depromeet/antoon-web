@@ -1,3 +1,4 @@
+import { useGetUserInformation } from '@apis/user';
 import { useGetCommentsById } from '@apis/comments';
 
 import {
@@ -30,12 +31,20 @@ function Comment({
   commentType: CommentType;
   id: number;
 }) {
+  const { data: user } = useGetUserInformation();
   const { data: t, isError } = useGetCommentsById(commentType, id);
+
   const [comments, setComments] = useState<Comments>([]);
+  const [isUser, setIsUser] = useState(false);
 
   useEffect(() => {
     if (t) setComments(t.data);
   }, [t, comments]);
+
+  useEffect(() => {
+    if (user) setIsUser(true);
+    else setIsUser(false);
+  }, [user]);
 
   if (isError) return <OnError>댓글을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
@@ -60,7 +69,12 @@ function Comment({
                   </UserInfo>
                   <Content>{comment?.content}</Content>
                   <FavoriteWrap>
-                    <FavoriteBtn isFavoriteChecked={comment.isUserLike} />
+                    <FavoriteBtn
+                      isFavoriteChecked={comment.isUserLike}
+                      type={commentType}
+                      id={comment.discussionId}
+                      isUser={isUser}
+                    />
                     <Favorite>{comment.likeCount}</Favorite>
                   </FavoriteWrap>
                 </MainWrap>

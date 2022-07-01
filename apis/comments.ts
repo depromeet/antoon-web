@@ -16,7 +16,7 @@ const useGetCommentsById = (commentType: CommentType, id: number) => {
   );
 };
 
-const getCommentsLikedById = async (commentType: CommentType, id: number) => {
+const putCommentsLikedById = async (commentType: CommentType, id: number) => {
   return await instance()
     .put(`${commentType}/discussions/${id}/likes`)
     .then((res) => res.data)
@@ -24,11 +24,12 @@ const getCommentsLikedById = async (commentType: CommentType, id: number) => {
 };
 
 const usePutCommentsLikedById = (commentType: CommentType, id: number) => {
-  return useQuery(
+  const queryClient = useQueryClient();
+  return useMutation(
     comments.isLiked(commentType, id),
-    () => getCommentsLikedById(commentType, id),
+    () => putCommentsLikedById(commentType, id),
     {
-      enabled: false,
+      onSuccess: () => queryClient.invalidateQueries('comments'),
     },
   );
 };
@@ -63,7 +64,7 @@ const usePostCommentsById = (
 export {
   getCommentsById,
   useGetCommentsById,
-  getCommentsLikedById,
+  putCommentsLikedById,
   usePutCommentsLikedById,
   postCommentsById,
   usePostCommentsById,
