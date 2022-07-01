@@ -52,7 +52,7 @@ const patchUserName = async (userName: string) => {
 const usePatchUserName = (userName: string) => {
   const queryClient = useQueryClient();
   return useMutation(user.updateName(userName), () => patchUserName(userName), {
-    onSuccess: () => queryClient.invalidateQueries(user.information()),
+    onSuccess: () => queryClient.invalidateQueries('user'),
   });
 };
 
