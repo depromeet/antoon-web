@@ -5,6 +5,7 @@ import { MouseEventHandler } from 'react';
 
 import {
   ABVoteItemWrapper,
+  ABVoteImgWrapper,
   ABVoteImg,
   ABVoteContentWrapper,
   ABVoteContent,
@@ -62,7 +63,7 @@ function ABVoteItem(props: Props) {
           </>
         )
       )}
-      <ABVoteImg imageSrc={data.imageUrl}></ABVoteImg>
+      <ABVoteImg imageSrc={data.imageUrl} />
       <ABVoteContentWrapper isEnd={isEnd} isWinner={isWinner()}>
         {isWinner() ? (
           <ABWinnerType>✓</ABWinnerType>
@@ -74,5 +75,3 @@ function ABVoteItem(props: Props) {
     </ABVoteItemWrapper>
   );
 }
-
-export default ABVoteItem;

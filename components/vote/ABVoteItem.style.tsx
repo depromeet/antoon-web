@@ -35,9 +35,16 @@ const ABVoteFilter = styled.div<{
   text-align: center;
   -webkit-tap-highlight-color: transparent;
 `;
+
 const ABVoteWinnerMark = styled.span`
   position: absolute;
   bottom: 100px;
+`;
+
+const ABVoteImgWrapper = styled.div`
+  border-radius: 20px 20px 0 0;
+  background: ${(props) => props.theme.colors.basic.black};
+  height: 160px;
 `;
 
 const ABVoteImg = styled.div<{ imageSrc: string }>`
@@ -46,6 +53,7 @@ const ABVoteImg = styled.div<{ imageSrc: string }>`
   background-size: cover;
   height: 160px;
 `;
+
 const ABVoteContentWrapper = styled.div<{ isEnd: boolean; isWinner: boolean }>`
   z-index: ${(props) => (props.isEnd ? 3 : 0)};
   border-radius: 0 0 20px 20px;
@@ -114,6 +122,7 @@ const ABWinnerType = styled.span`
 
 export {
   ABVoteItemWrapper,
+  ABVoteImgWrapper,
   ABVoteImg,
   ABVoteWinnerMark,
   ABVoteFilter,
