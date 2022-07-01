@@ -75,3 +75,5 @@ function ABVoteItem(props: Props) {
     </ABVoteItemWrapper>
   );
 }
+
+export default ABVoteItem;
