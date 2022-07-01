@@ -27,7 +27,7 @@ function ChoiceVoteItem(props: Props) {
   const { type, active, onActive, data, isEnd, result } = props;
 
   const isWinner = () => {
-    return result?.winner || false;
+    return (result?.winner && isEnd) || false;
   };
 
   return (
