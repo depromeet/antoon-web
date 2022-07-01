@@ -6,8 +6,11 @@ import { useGetUserInformation } from '@apis/user';
 import { ArrowRight } from '@assets/icons';
 import { StockUpIcon } from '@assets/icons/StockIcon';
 
+import { useToast } from '@hooks/useToast';
+
 import { getToLocaleString } from '@utils/num-util';
 
+import CharacterVoteModal from './CharacterVoteModal';
 import CharacterPageCountDown from './CharacterPageCountDown';
 
 import {
@@ -32,7 +35,6 @@ import {
 } from './CharacterDetailPage.style';
 
 import { CharacterInfo } from '@_types/webtoon-type';
-import CharacterVoteModal from './CharacterVoteModal';
 
 function CharacterDetailPage({ characters }: { characters: CharacterInfo }) {
   const { data: profile } = useGetUserInformation();
@@ -53,8 +55,13 @@ function CharacterDetailPage({ characters }: { characters: CharacterInfo }) {
 
   const [modalStatus, setModalStatus] = useState(false);
 
+  const { fireToast } = useToast();
+
   const onClickModal = () => {
-    setModalStatus(true);
+    if (!profile) {
+      fireToast({ joinLeaveStatus: 'NO-LOGIN' });
+      setModalStatus(false);
+    } else setModalStatus(true);
   };
 
   const onClickWebtoonInfo = () => {

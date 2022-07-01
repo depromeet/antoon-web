@@ -66,7 +66,9 @@ function Toast(props: Toast) {
         {joinLeaveStatus === 'NO-LOGIN' && (
           <>
             <AlertMark />
-            <ToastMessageContent>로그인 후 이용가능합니다.</ToastMessageContent>
+            <ToastMessageContent>
+              로그인 후 이용 가능합니다.
+            </ToastMessageContent>
           </>
         )}
       </ToastMessage>
