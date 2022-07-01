@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
 
 const SigninWrap = styled.div`
-  position: relative;
-  margin-top: 8.4rem;
+  position: fixed;
+  bottom: 80px;
+  margin: 1rem 0 0 -2.4rem;
   background-color: ${(props) => props.theme.colors.basic.white};
-  width: 100%;
+  padding: 0.5rem 2.4rem 2rem;
+  width: min(480px, calc(100%));
   text-align: center;
 `;
 

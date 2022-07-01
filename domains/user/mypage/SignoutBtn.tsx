@@ -1,30 +1,29 @@
-import { useRouter } from 'next/router';
-import { removeCookies } from 'cookies-next';
-
-import { usePostUserLogOut } from '@apis/user';
+import { useState } from 'react';
 
 import ChebronRightIcon from '@assets/icons/ChebronRightIcon';
 
+import SignoutModal from './SignoutModal';
 import CustomHr from '@components/line/CustomHr';
 
 import { SignoutButton } from './SignoutBtn.style';
 
 function SignoutBtn() {
-  const router = useRouter();
+  const [modalStatus, setModalStatus] = useState(false);
 
-  const { mutate: mutateLogOut } = usePostUserLogOut();
-
-  const onClickLogOut = () => {
-    mutateLogOut();
-    removeCookies('Access');
-    removeCookies('Refresh');
-    router.push('/');
+  const onClickModal = () => {
+    setModalStatus(true);
   };
 
   return (
     <>
+      {modalStatus && (
+        <SignoutModal
+          modalStatus={modalStatus}
+          setModalStatus={setModalStatus}
+        />
+      )}
       <CustomHr margin="2.4rem 0 1.6rem -2.4rem" />
-      <SignoutButton onClick={() => onClickLogOut()}>
+      <SignoutButton onClick={() => onClickModal()}>
         <span>로그아웃</span>
         <ChebronRightIcon />
       </SignoutButton>
