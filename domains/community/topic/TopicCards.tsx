@@ -62,8 +62,6 @@ function TopicCards() {
 
   const { data, isLoading, isError } = useGetTopicsChoices();
 
-  console.log(data);
-
   if (isLoading) return <LoadingSpinner />;
 
   if (

@@ -260,7 +260,7 @@ function Detail({ id }: { id: number }) {
                 </Category>
                 <Description>
                   <DescriptionContent ref={descriptionRef}>
-                    {data.content}
+                    {data?.content}
                   </DescriptionContent>
                   <DescriptionMoreBtn
                     className={isHide ? 'hide' : ''}
