@@ -3,7 +3,6 @@ import { useState, ChangeEvent } from 'react';
 import { usePatchUserImg } from '@apis/user';
 
 import ProfileDefaultImg from '@assets/images/ProfileDefaultImg';
-// import { ProfileImgEdit } from '@assets/icons';
 
 import UserProfile from '@components/image/UserProfile';
 
@@ -12,9 +11,11 @@ import { UserProfileForm, UserProfileInput } from './EditImg.style';
 import { IUser } from '@_types/user-type';
 
 function EditImg({ user }: IUser) {
-  const [userImg, setUserImg] = useState<string>();
+  const [userImg, setUserImg] = useState<string>('');
 
-  const { mutate: mutatePatchUserImg } = usePatchUserImg(String(userImg));
+  const formData = new FormData();
+
+  const { mutate: mutatePatchUserImg } = usePatchUserImg(userImg);
 
   const uploadImg = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -22,9 +23,11 @@ function EditImg({ user }: IUser) {
       const file = e.target.files[0];
 
       reader.readAsDataURL(file);
+
       reader.onloadend = () => {
+        formData.append('file', file);
         setUserImg(String(reader.result));
-        mutatePatchUserImg(reader.result as unknown as void);
+        mutatePatchUserImg();
       };
     }
   };
@@ -47,7 +50,6 @@ function EditImg({ user }: IUser) {
           <ProfileDefaultImg width="100" height="100" />
         )}
       </label>
-      {/* <ProfileImgEdit /> */}
     </UserProfileForm>
   );
 }
