@@ -10,6 +10,8 @@ import { usePatchCharacterVoteById } from '@apis/webtoons';
 
 import { AntCoinIcon, AntCoinSmallIcon } from '@assets/icons';
 
+import NotEnoughCoin from '@components/modal/coin/NotEnoughCoin';
+
 import {
   Background,
   ModalContainer,
@@ -90,28 +92,39 @@ function CharacterVoteModal({
     }
   }, [modalStatus]);
 
+  const isEnoughCoin = wallet <= 4 ? false : true;
+
   return (
     <Background ref={modalRef}>
       <ModalContainer ref={innerModalRef}>
-        <ModalHeader>
-          <ModalLogo>
-            <AntCoinIcon />
-          </ModalLogo>
-          <ModalHeaderTitle>5 안트코인</ModalHeaderTitle>
-        </ModalHeader>
-        <ModalTitle>안트코인을 사용해서 탑승하시겠어요?</ModalTitle>
-        <ModalInfo>5안트코인을 사용해서 탑승을 할 수 있어요.</ModalInfo>
-        <ModalCoin>
-          <ModalCoinText>보유코인</ModalCoinText>
-          <ModalMyCoin>
-            <AntCoinSmallIcon />
-            <MyCoinReserve>{wallet}</MyCoinReserve>
-          </ModalMyCoin>
-        </ModalCoin>
-        <ModalBtns>
-          <ModalClose onClick={onClickClose}>안할래요</ModalClose>
-          <ModalFunc onClick={onClickVote}>탑승할래요</ModalFunc>
-        </ModalBtns>
+        {isEnoughCoin ? (
+          <>
+            <ModalHeader>
+              <ModalLogo>
+                <AntCoinIcon />
+              </ModalLogo>
+              <ModalHeaderTitle>5 안트코인</ModalHeaderTitle>
+            </ModalHeader>
+            <ModalTitle>안트코인을 사용해서 탑승하시겠어요?</ModalTitle>
+            <ModalInfo>5안트코인을 사용해서 탑승을 할 수 있어요.</ModalInfo>
+            <ModalCoin>
+              <ModalCoinText>보유코인</ModalCoinText>
+              <ModalMyCoin>
+                <AntCoinSmallIcon />
+                <MyCoinReserve>{wallet}</MyCoinReserve>
+              </ModalMyCoin>
+            </ModalCoin>
+            <ModalBtns>
+              <ModalClose onClick={onClickClose}>안할래요</ModalClose>
+              <ModalFunc onClick={onClickVote}>탑승할래요</ModalFunc>
+            </ModalBtns>
+          </>
+        ) : (
+          <NotEnoughCoin
+            modalStatus={modalStatus}
+            setModalStatus={setModalStatus}
+          />
+        )}
       </ModalContainer>
     </Background>
   );
