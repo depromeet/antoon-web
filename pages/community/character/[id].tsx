@@ -47,7 +47,7 @@ function CharacterDetailPage({
       <>
         <Header
           headerLeft="뒤로가기"
-          headerRight="공유하기"
+          headerRight="없음"
           headerColor={characters?.backGroundColor}
         />
         {characters && <CharacterDetailPageWrap characters={characters} />}
