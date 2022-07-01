@@ -43,6 +43,7 @@ const WeeklyCardContainer = styled.div`
   flex-flow: row wrap;
   gap: 0.4rem;
   justify-content: center;
+  margin: 0 0 8rem;
 `;
 
 const SkeleteonWrapper = styled.div`
