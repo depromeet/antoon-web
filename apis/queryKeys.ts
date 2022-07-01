@@ -16,12 +16,8 @@ const webtoons = {
   ],
   days: (day: string) => [...webtoons.all, 'days', day],
   characters: (category: any) => [...topics.all, 'characters', category],
-  charactersInfo: (id: number, category: any) => [
-    ...topics.all,
-    'characters',
-    id,
-    category,
-  ],
+  charactersInfo: (id: number) => [...topics.all, 'charactersInfo', id],
+  charactersVote: (id: number) => [...topics.all, 'charactersVote', id],
 };
 
 const topics = {

@@ -202,10 +202,28 @@ const getCharacterInfo = async (id: number, category: CharacterType) => {
 
 const useGetCharacterInfo = (id: number, category: CharacterType) => {
   return useQuery<CharacterInfo>(
-    webtoons.charactersInfo(id, category),
+    webtoons.charactersInfo(id),
     () => getCharacterInfo(id, category),
     {
       enabled: category === 'COUPLE' || category === 'PERSONA',
+    },
+  );
+};
+
+const patchCharacterVoteById = async (id: number) => {
+  return await instance()
+    .patch(`characters/${id}`)
+    .then((res) => res.data)
+    .catch((e) => console.log(e));
+};
+
+const usePatchCharacterVoteById = (id: number) => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    webtoons.charactersVote(id),
+    () => patchCharacterVoteById(id),
+    {
+      onSuccess: () => queryClient.invalidateQueries(['topics']),
     },
   );
 };
@@ -234,4 +252,5 @@ export {
   getCharacterRanksByCategory,
   useGetCharacterRanksByCategory,
   useGetCharacterInfo,
+  usePatchCharacterVoteById,
 };
