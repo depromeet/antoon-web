@@ -52,7 +52,6 @@ function BtnFooter({
             onOpen={onOpen}
             onJoinLeave={onJoinLeave}
           />
-          ;
         </>
       )}
       {joinLeaveStatus !== 'NONE' && (

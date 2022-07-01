@@ -23,7 +23,7 @@ const CategorySliderCard = styled.div`
   position: relative;
   margin: 20px 0;
   border-radius: 10px;
-  background: #f1f1f1;
+  background: ${(props) => props.theme.colors.grayscale.gray_100};
   width: 20%;
   height: 30%;
 `;

@@ -6,8 +6,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import VoteChip from '@components/chip/VoteChip';
 import { VoteTag } from '@components/vote/VoteHeader.style';
 import {
-  AllTopicCardTitle,
   AllTopicJoinCount,
+  AllTopicBannerTitle,
 } from '@domains/community/topic/AllTopicCards.style';
 import {
   TopicBannerContainer,
@@ -68,14 +68,14 @@ const TopicBanners = function TopicBanners() {
               <TopicContentWrapper>
                 <TopicContentTopWrapper>
                   <VoteChip category="AB" />
-                  <AllTopicJoinCount>12,476 개미 참여 중</AllTopicJoinCount>
+                  <AllTopicJoinCount>2 개미 참여 중</AllTopicJoinCount>
                 </TopicContentTopWrapper>
                 <VoteTag category="AB" style={{ padding: 0 }}>
                   #연애혁명 #소녀재판
                 </VoteTag>
-                <AllTopicCardTitle>
+                <AllTopicBannerTitle>
                   이경우, 차태석 둘이 싸우면 누가 이길까
-                </AllTopicCardTitle>
+                </AllTopicBannerTitle>
               </TopicContentWrapper>
             </TopicBanner>
           </a>
@@ -96,12 +96,12 @@ const TopicBanners = function TopicBanners() {
               <TopicContentWrapper>
                 <TopicContentTopWrapper>
                   <VoteChip category="CHOICE" />
-                  <AllTopicJoinCount>12,345 개미 참여 중</AllTopicJoinCount>
+                  <AllTopicJoinCount>7 개미 참여 중</AllTopicJoinCount>
                 </TopicContentTopWrapper>
                 <VoteTag category="CHOICE" style={{ padding: 0 }}>
                   #연애혁명
                 </VoteTag>
-                <AllTopicCardTitle>🔒 스포일러 방지</AllTopicCardTitle>
+                <AllTopicBannerTitle>🔒 스포일러 방지</AllTopicBannerTitle>
               </TopicContentWrapper>
             </TopicBanner>
           </a>
@@ -122,12 +122,12 @@ const TopicBanners = function TopicBanners() {
               <TopicContentWrapper>
                 <TopicContentTopWrapper>
                   <VoteChip category="AB" />
-                  <AllTopicJoinCount>12,345 개미 참여 중</AllTopicJoinCount>
+                  <AllTopicJoinCount>6 개미 참여 중</AllTopicJoinCount>
                 </TopicContentTopWrapper>
                 <VoteTag category="AB" style={{ padding: 0 }}>
                   #소녀의 세계
                 </VoteTag>
-                <AllTopicCardTitle>🔒 스포일러 방지</AllTopicCardTitle>
+                <AllTopicBannerTitle>🔒 스포일러 방지</AllTopicBannerTitle>
               </TopicContentWrapper>
             </TopicBanner>
           </a>
@@ -148,14 +148,14 @@ const TopicBanners = function TopicBanners() {
               <TopicContentWrapper>
                 <TopicContentTopWrapper>
                   <VoteChip category="CHOICE" />
-                  <AllTopicJoinCount>12,345 개미 참여 중</AllTopicJoinCount>
+                  <AllTopicJoinCount>3 개미 참여 중</AllTopicJoinCount>
                 </TopicContentTopWrapper>
                 <VoteTag category="CHOICE" style={{ padding: 0 }}>
                   #소녀의 세계
                 </VoteTag>
-                <AllTopicCardTitle>
+                <AllTopicBannerTitle>
                   오리가 직장인이 된다면 어울리는 직업은?
-                </AllTopicCardTitle>
+                </AllTopicBannerTitle>
               </TopicContentWrapper>
             </TopicBanner>
           </a>
