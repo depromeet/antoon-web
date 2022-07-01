@@ -44,10 +44,10 @@ const CountInput = styled.div<{ status: boolean }>`
   font-weight: 500;
 `;
 
-const EditBtn = styled.button`
+const EditBtn = styled.button<{ isError: boolean }>`
   margin: 2rem 0 0;
   border-radius: 1rem;
-  background-color: ${(props) => props.theme.colors.basic.black};
+  background-color: ${(props) => (props.isError ? '#CACFD8' : '#000000')};
   width: 100%;
   height: 4.8rem;
   color: ${(props) => props.theme.colors.basic.white};

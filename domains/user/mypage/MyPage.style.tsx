@@ -15,4 +15,9 @@ const Menu = styled.div`
   font-weight: 600;
 `;
 
-export { MyPageWrap, Menu };
+const ImgWrap = styled.div`
+  margin: 1.6rem 0 2.4rem;
+  text-align: center;
+`;
+
+export { MyPageWrap, Menu, ImgWrap };
