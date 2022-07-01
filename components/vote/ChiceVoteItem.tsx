@@ -62,7 +62,7 @@ function ChoiceVoteItem(props: Props) {
         ) : (
           <ChoiceVoteType>{type}</ChoiceVoteType>
         )}
-        <ChoiceVoteContent>{data.content}</ChoiceVoteContent>
+        <ChoiceVoteContent>{data?.content}</ChoiceVoteContent>
       </ChoiceVoteContentWrapper>
     </ChoiceVoteItemWrapper>
   );

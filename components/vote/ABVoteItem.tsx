@@ -70,7 +70,7 @@ function ABVoteItem(props: Props) {
         ) : (
           <ABVoteType>{type}</ABVoteType>
         )}
-        <ABVoteContent>{data.content}</ABVoteContent>
+        <ABVoteContent>{data?.content}</ABVoteContent>
       </ABVoteContentWrapper>
     </ABVoteItemWrapper>
   );

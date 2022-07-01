@@ -58,7 +58,7 @@ function Comment({
                     <Name>{comment.nickname}</Name>
                     <TimeStamp>{comment.time}</TimeStamp>
                   </UserInfo>
-                  <Content>{comment.content}</Content>
+                  <Content>{comment?.content}</Content>
                   <FavoriteWrap>
                     <FavoriteBtn isFavoriteChecked={comment.isUserLike} />
                     <Favorite>{comment.likeCount}</Favorite>

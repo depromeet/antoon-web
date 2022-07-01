@@ -41,7 +41,12 @@ function AllTopicCards(props: Props) {
     }
   }, [data, category]);
 
-  if (data?.data?.length === 0 || isError)
+  if (
+    data?.request?.status === 0 ||
+    data?.request?.status > 400 ||
+    data?.data?.length === 0 ||
+    isError
+  )
     return <OnError>모든 토픽을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
@@ -59,7 +64,7 @@ function AllTopicCards(props: Props) {
             <LoadingSpinner />
           </div>
         )}
-        {data?.data.map((topic) => (
+        {data?.data?.map((topic) => (
           <Link
             href={`/community/topic/${topic.topicId}`}
             key={topic.topicId}

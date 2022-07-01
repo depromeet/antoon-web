@@ -9,6 +9,7 @@ export interface AllTopicsByCategory {
   size: number;
   totalElements: number;
   totalPages: number;
+  request: AxiosError;
 }
 
 export interface Topic {
