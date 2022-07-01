@@ -38,6 +38,12 @@ const AllTopicCardTitle = styled.div`
   font-weight: 600;
 `;
 
+const AllTopicBannerTitle = styled.div`
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 800;
+`;
+
 const AllTopicJoinCount = styled.div`
   color: ${(props) => props.theme.colors.grayscale.gray_600};
   font-weight: 500;
@@ -50,5 +56,6 @@ export {
   AllTopicCardSecondImage,
   AllTopicCardContentContainer,
   AllTopicCardTitle,
+  AllTopicBannerTitle,
   AllTopicJoinCount,
 };

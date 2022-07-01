@@ -101,7 +101,9 @@ function AllTopicCards(props: Props) {
               <AllTopicCardContentContainer>
                 <VoteTag category={topic.topicCategory} style={{ padding: 0 }}>
                   <VoteChip category={topic.topicCategory} />
-                  {topic.tags}
+                  {topic.tags.map((tag) => (
+                    <div key={tag}>#{tag}</div>
+                  ))}
                 </VoteTag>
                 <AllTopicCardTitle>{topic.title}</AllTopicCardTitle>
                 <AllTopicJoinCount>
