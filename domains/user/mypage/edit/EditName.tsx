@@ -22,7 +22,8 @@ function EditName({ user }: IUser) {
   const router = useRouter();
 
   const [name, setName] = useState('');
-  const [isMaxLength, setIsMaxLength] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorText, setErrorText] = useState(false);
 
   useEffect(() => {
     if (user) setName(user.name);
@@ -30,7 +31,7 @@ function EditName({ user }: IUser) {
 
   const onChangeInput = useCallback(
     (e) => {
-      setName(e.target.value);
+      setName(e.target.value.slice(0, 20));
     },
     [setName],
   );
@@ -39,25 +40,32 @@ function EditName({ user }: IUser) {
     setName('');
   }, []);
 
-  const { mutate } = usePatchUserName(name);
+  const { mutate: mutateName } = usePatchUserName(name);
 
   const onClickEditName = () => {
-    mutate(name as unknown as void);
-    router.push('/user/mypage');
+    if (!isError) {
+      mutateName();
+      router.push('/user/mypage');
+    }
   };
 
   const onKeyDownEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key == 'Enter') {
-      mutate(name as unknown as void);
+    if (e.key == 'Enter' && !isError) {
+      mutateName();
       router.push('/user/mypage');
     }
   };
 
   useEffect(() => {
     if (name.length >= 20) {
-      setIsMaxLength(true);
+      setIsError(true);
+      setErrorText(true);
+    } else if (name.length === 0) {
+      setIsError(true);
+      setErrorText(false);
     } else {
-      setIsMaxLength(false);
+      setIsError(false);
+      setErrorText(false);
     }
   }, [name]);
 
@@ -69,17 +77,18 @@ function EditName({ user }: IUser) {
           onChange={onChangeInput}
           onKeyDown={onKeyDownEnter}
           placeholder="닉네임을 입력해주세요."
-          status={isMaxLength}
-          maxLength={20}
+          status={errorText}
           autoFocus
         />
         {name && <DeleteIcon onResetInput={onResetInput} />}
       </InputWrap>
       <CountWrap>
-        <Warning status={isMaxLength}>최대 20자까지 입력 가능합니다.</Warning>
-        <CountInput status={isMaxLength}>{name.length}/20</CountInput>
+        <Warning status={errorText}>최대 20자까지 입력 가능합니다.</Warning>
+        <CountInput status={errorText}>{name.length}/20</CountInput>
       </CountWrap>
-      <EditBtn onClick={onClickEditName}>수정하기</EditBtn>
+      <EditBtn isError={isError} onClick={onClickEditName}>
+        수정하기
+      </EditBtn>
     </>
   );
 }

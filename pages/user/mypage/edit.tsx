@@ -11,6 +11,7 @@ import Header from '@components/layout/Header/Header';
 import OnError from '@components/OnError';
 import UserProfile from '@components/image/UserProfile';
 import EditName from '@domains/user/mypage/edit/EditName';
+import { ImgWrap } from '@domains/user/mypage/MyPage.style';
 
 function Edit() {
   const router = useRouter();
@@ -38,11 +39,13 @@ function Edit() {
         headerTitle="프로필 수정"
         headerRight="없음"
       />
-      {user ? (
-        <UserProfile src={user.imageUrl} width="100" height="100" />
-      ) : (
-        <ProfileDefaultImg width="100" height="100" />
-      )}
+      <ImgWrap>
+        {user ? (
+          <UserProfile src={user.imageUrl} width="100" height="100" />
+        ) : (
+          <ProfileDefaultImg width="100" height="100" />
+        )}
+      </ImgWrap>
       <EditName user={user} />
     </>
   );
