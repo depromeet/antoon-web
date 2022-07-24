@@ -19,6 +19,7 @@ import UserProfile from '@components/image/UserProfile';
 import FavoriteBtn from '@components/button/FavoriteBtn';
 import CommentTextInput from '@components/detail/commentTextInput/CommentTextInput';
 import OnError from '@components/OnError';
+import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import ErrorBoundary from '@components/ErrorBoundary';
 
 import { CommentType, Comments, IComment } from '@_types/comments-type';
@@ -32,7 +33,7 @@ function Comment({
   id: number;
 }) {
   const { data: user } = useGetUserInformation();
-  const { data: t, isError } = useGetCommentsById(commentType, id);
+  const { data: t, isError, isLoading } = useGetCommentsById(commentType, id);
 
   const [comments, setComments] = useState<Comments>([]);
   const [isUser, setIsUser] = useState(false);
@@ -46,7 +47,14 @@ function Comment({
     else setIsUser(false);
   }, [user]);
 
-  if (isError) return <OnError>댓글을 불러오지 못하고 있어요 😭😭😭</OnError>;
+  if (isLoading)
+    return (
+      <CommentNoWrap>
+        <LoadingSpinner />
+      </CommentNoWrap>
+    );
+  else if (isError)
+    return <OnError>댓글을 불러오지 못하고 있어요 😭😭😭</OnError>;
 
   return (
     <ErrorBoundary message="댓글을 불러오지 못하고 있어요 😭😭😭">

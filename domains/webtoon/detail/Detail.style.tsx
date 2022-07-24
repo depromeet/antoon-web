@@ -7,7 +7,6 @@ const DetailWrapper = styled.div`
   background-size: 100%;
   width: 100%;
   min-width: 320px;
-  overflow-x: hidden;
 `;
 
 const Container = styled.div`

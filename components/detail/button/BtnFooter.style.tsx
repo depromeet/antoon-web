@@ -12,12 +12,10 @@ const BtnWrapper = styled.div`
 `;
 
 const FilterBlur = styled.div`
-  display: flex;
   position: fixed;
-  bottom: 0;
-  left: 0;
   background-color: rgb(255 255 255 / 70%);
-  width: 120%;
+  width: 100%;
+  max-width: 480px;
   height: 180px;
   filter: blur(30px);
 `;

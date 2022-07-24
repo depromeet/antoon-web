@@ -3,18 +3,28 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const SliderWrapper = styled.div`
+  margin: 0 -24px;
+  max-width: 480px;
+
   & .slick-slide {
     padding: 0 4px;
+    &:first-child {
+      padding-left: 24px;
+    }
+    &:last-child {
+      padding-right: 24px;
+    }
   }
 
   & .slick-list {
-    margin: 0 0.1rem;
+    width: 100%;
 
     & .slick-track {
-      width: 300% !important;
+      width: calc(100% + 24 * 2) !important;
     }
   }
 `;
+
 const CategoryCardWrapper = styled.div`
   width: 100%;
 `;

@@ -21,7 +21,7 @@ enum CategoryEnum {
 function CategorySlider(props: CategoryCardColumn) {
   const settings = {
     className: 'center',
-    arrow: false,
+    arrows: false,
     infinite: false,
     centerPadding: '50px',
     slidesToShow: 2.5,
