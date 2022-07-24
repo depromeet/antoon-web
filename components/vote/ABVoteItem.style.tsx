@@ -23,10 +23,10 @@ const ABVoteFilter = styled.div<{
   z-index: 2;
   border-radius: ${(props) =>
     props.isEnd && props.dataWidth >= 90
-      ? '20px 20px 0 0'
+      ? '16px 16px 0 0'
       : props.isEnd
-      ? '20px 0 0 0'
-      : '20px'};
+      ? '16px 0 0 0'
+      : '16px'};
   background-color: ${(props) => props.theme.colors.chart.point_up_100};
   cursor: pointer;
   width: ${(props) => props.dataWidth}%;
@@ -42,21 +42,25 @@ const ABVoteWinnerMark = styled.span`
 `;
 
 const ABVoteImgWrapper = styled.div`
-  border-radius: 20px 20px 0 0;
+  border-radius: 16px 16px 0 0;
   background: ${(props) => props.theme.colors.basic.black};
+  position: absolute;
   height: 160px;
 `;
 
-const ABVoteImg = styled.div<{ imageSrc: string }>`
-  border-radius: 20px 20px 0 0;
-  background: ${(props) => `url(${props.imageSrc}) `};
+const ABVoteImg = styled.div<{ imageSrc: string; isEnd: boolean }>`
+  border-radius: 16px 20px 0 0;
+  background: ${(props) =>
+    props.isEnd
+      ? `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(${props.imageSrc});`
+      : `url(${props.imageSrc});`}
   background-size: cover;
   height: 160px;
 `;
 
 const ABVoteContentWrapper = styled.div<{ isEnd: boolean; isWinner: boolean }>`
   z-index: ${(props) => (props.isEnd ? 3 : 0)};
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 16px 16px;
   background-color: ${(props) =>
     props.isWinner
       ? props.theme.colors.chart.point_up_100

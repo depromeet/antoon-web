@@ -63,7 +63,7 @@ function ABVoteItem(props: Props) {
           </>
         )
       )}
-      <ABVoteImg imageSrc={data.imageUrl} />
+      <ABVoteImg imageSrc={data.imageUrl} isEnd={isEnd} />
       <ABVoteContentWrapper isEnd={isEnd} isWinner={isWinner()}>
         {isWinner() ? (
           <ABWinnerType>✓</ABWinnerType>
