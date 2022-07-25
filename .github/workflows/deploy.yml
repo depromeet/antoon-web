@@ -1,6 +1,6 @@
 name: deploy
 
-on: push
+on: [push, pull_request]
 
 env:
     CACHED_DEPENDENCY_PATH: ${{ github.workspace }}/node_modules
@@ -16,20 +16,17 @@ jobs:
             - name: Checkout current commit (${{ github.sha }})
               uses: actions/checkout@v3
 
-            - name: Compute dependencies hash key
-              id: compute_lockfile_hash
-              run: echo "::set-output name=key::${{ hashFiles('**/yarn.lock') }}"
-
             - name: Restore dependencies
               id: restore_dependencies
               uses: actions/cache@v2
               with:
                   path: ${{ env.CACHED_DEPENDENCY_PATH }}
-                  key: dependencies-${{ steps.compute_lockfile_hash.outputs.key }}
+                  key: dependencies-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
                   restore-keys: |
                       dependencies
+
             - name: Install Dependencies
-              if: steps.restore_dependencies.outputs.cache-hit == 'false'
+              if: steps.restore_dependencies.outputs.cache-hit != 'true'
               run: yarn
             
         outputs:
