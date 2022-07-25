@@ -121,6 +121,8 @@ function Detail({ id }: { id: number }) {
     return <LoadingSpinner />;
   }
 
+  if (!data) return <OnError>웹툰정보를 불러오지 못하고 있어요😭😭😭</OnError>;
+
   const handleMoreBtnClick = () => {
     if (descriptionRef.current && detailSubRef.current) {
       descriptionRef.current.classList.add('show');
