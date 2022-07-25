@@ -119,8 +119,7 @@ function Detail({ id }: { id: number }) {
 
   if (isLoading && !data) {
     return <LoadingSpinner />;
-  } else if (!data || !chartData_days)
-    return <OnError>웹툰정보를 불러오지 못하고 있어요😭😭😭</OnError>;
+  }
 
   const handleMoreBtnClick = () => {
     if (descriptionRef.current && detailSubRef.current) {
