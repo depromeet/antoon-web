@@ -8,9 +8,11 @@ const SliderWrapper = styled.div`
 
   & .slick-slide {
     padding: 0 4px;
+
     &:first-child {
       padding-left: 24px;
     }
+
     &:last-child {
       padding-right: 24px;
     }

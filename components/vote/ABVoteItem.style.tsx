@@ -42,9 +42,9 @@ const ABVoteWinnerMark = styled.span`
 `;
 
 const ABVoteImgWrapper = styled.div`
+  position: absolute;
   border-radius: 16px 16px 0 0;
   background: ${(props) => props.theme.colors.basic.black};
-  position: absolute;
   height: 160px;
 `;
 
@@ -52,8 +52,8 @@ const ABVoteImg = styled.div<{ imageSrc: string; isEnd: boolean }>`
   border-radius: 16px 20px 0 0;
   background: ${(props) =>
     props.isEnd
-      ? `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(${props.imageSrc});`
-      : `url(${props.imageSrc});`}
+      ? `linear-gradient( rgb(0 0 0 / 30%), rgb(0 0 0 / 30%) ), url(${props.imageSrc}) `
+      : `url(${props.imageSrc}) `};
   background-size: cover;
   height: 160px;
 `;
