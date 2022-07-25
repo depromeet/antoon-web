@@ -1,18 +1,32 @@
-import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { comments } from './queryKeys';
 import { instance } from './api';
 import { CommentType } from '@_types/comments-type';
+import { useInfiniteQuery, useMutation, useQueryClient } from 'react-query';
 
-const getCommentsById = async (commentType: CommentType, id: number) => {
-  return await instance()
-    .get(`${commentType}/${id}/discussions`)
+const getCommentsById = async (
+  commentType: CommentType,
+  id: number,
+  pageParam: number,
+) => {
+  const { data, lastPage, totalElements } = await instance()
+    .get(`${commentType}/${id}/discussions?page=${pageParam}&size=10`)
     .then((res) => res.data)
     .catch((e) => console.log(e));
+  return { data, nextPage: pageParam + 1, lastPage, totalElements };
 };
 
-const useGetCommentsById = (commentType: CommentType, id: number) => {
-  return useQuery(comments.lists(commentType, id), () =>
-    getCommentsById(commentType, id),
+const useGetCommentsById = (
+  commentType: CommentType,
+  id: number,
+  pageParam: number,
+) => {
+  return useInfiniteQuery(
+    comments.lists(commentType, id, pageParam),
+    ({ pageParam = 0 }) => getCommentsById(commentType, id, pageParam),
+    {
+      getNextPageParam: (lastPage) =>
+        !lastPage.lastPage ? lastPage.nextPage : undefined,
+    },
   );
 };
 
@@ -56,7 +70,7 @@ const usePostCommentsById = (
     () => postCommentsById(commentType, id, content),
     {
       onSuccess: () =>
-        queryClient.invalidateQueries(comments.lists(commentType, id)),
+        queryClient.invalidateQueries(comments.lists(commentType, id, 0)),
     },
   );
 };
