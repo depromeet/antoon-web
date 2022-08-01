@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { getCookie } from 'cookies-next';
 import { Mixpanel } from 'mixpanel';
+
+import { useGetUserInformation } from '@apis/user';
 
 import Header from '@components/layout/Header/Header';
 import MyPageWrap from '@domains/user/mypage/MyPage';
@@ -18,13 +19,19 @@ function MyPage() {
     });
   }, []);
 
-  const accessToken = getCookie('Access');
-
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
     setIsSSR(false);
   }, []);
+
+  const { data: profile } = useGetUserInformation();
+
+  const [isSignIn, setIsSignIn] = useState(false);
+
+  useEffect(() => {
+    profile && setIsSignIn(true);
+  }, [profile]);
 
   return (
     <>
@@ -35,10 +42,10 @@ function MyPage() {
             headerTitle="마이페이지"
             headerRight="없음"
           />
-          {accessToken ? <MyPageWrap /> : <DefaultMyPage />}
+          {isSignIn ? <MyPageWrap /> : <DefaultMyPage />}
           <Menu>
             <MyPageMenu />
-            {accessToken ? <SignoutBtn /> : <SigninBtn />}
+            {isSignIn ? <SignoutBtn /> : <SigninBtn />}
           </Menu>
         </>
       )}
