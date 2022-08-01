@@ -1,6 +1,6 @@
 name: deploy
 
-on: [push, pull_request]
+on: pull_request
 
 env:
     CACHED_DEPENDENCY_PATH: ${{ github.workspace }}/node_modules
@@ -76,24 +76,10 @@ jobs:
                   restore-keys: |
                       build
             - name: Build DEV bundle
-              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.event_name == 'pull_request'
+              if: steps.restore_bundle.outputs.cache-hit == 'false'
               run: |
                   cat << EOF >> .env
                   ${{ secrets.ENV_DEV }}
-                  EOF
-                  yarn build
-            - name: Build STG bundle
-              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.ref == 'refs/heads/main'
-              run: |
-                  cat << EOF >> .env
-                  ${{ secrets.ENV_STG }}
-                  EOF
-                  yarn build
-            - name: Build PRD bundle
-              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.ref_type == 'tag'
-              run: |
-                  cat << EOF >> .env
-                  ${{ secrets.ENV_PRD }}
                   EOF
                   yarn build
 
@@ -126,28 +112,11 @@ jobs:
             aws-region: us-east-1
 
         - name: Deploy to dev
-          if: github.event_name == 'pull_request'
           run: |
               cat << EOF >> .env
               ${{ secrets.ENV_DEV }}
               EOF
               SENTRY_RELEASE=${{ github.sha }} DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_DEV }} yarn deploy
-
-        - name: Deploy to stg
-          if: github.ref == 'refs/heads/main'
-          run: |
-              cat << EOF >> .env
-              ${{ secrets.ENV_STG }}
-              EOF
-              SENTRY_RELEASE=${{ github.sha }} DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_STG }} yarn deploy
-
-        - name: Deploy to prd 
-          if: github.ref_type == 'tag'
-          run: |
-              cat << EOF >> .env
-              ${{ secrets.ENV_PRD }}
-              EOF
-              SENTRY_RELEASE=${{ github.sha }} DISTRIBUTION_ID=${{ secrets.DISTRIBUTION_ID_PRD }} yarn deploy
 
     job_chromatic:
       name: Deploy to chromatic
