@@ -25,13 +25,7 @@ function MyPage() {
     setIsSSR(false);
   }, []);
 
-  const { data: profile } = useGetUserInformation();
-
-  const [isSignIn, setIsSignIn] = useState(false);
-
-  useEffect(() => {
-    profile && setIsSignIn(true);
-  }, [profile]);
+  const { isSuccess } = useGetUserInformation();
 
   return (
     <>
@@ -42,10 +36,10 @@ function MyPage() {
             headerTitle="마이페이지"
             headerRight="없음"
           />
-          {isSignIn ? <MyPageWrap /> : <DefaultMyPage />}
+          {isSuccess ? <MyPageWrap /> : <DefaultMyPage />}
           <Menu>
             <MyPageMenu />
-            {isSignIn ? <SignoutBtn /> : <SigninBtn />}
+            {isSuccess ? <SignoutBtn /> : <SigninBtn />}
           </Menu>
         </>
       )}
