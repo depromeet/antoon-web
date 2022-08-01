@@ -10,27 +10,27 @@ import {
   UserProfileDataWrap,
   UserName,
   UserDefaultName,
+  EditNameWrap,
 } from './UserData.style';
 
 import { IProfile } from '@_types/user-type';
 
 function UserData({ profile }: IProfile) {
   const router = useRouter();
-
   return (
     <UserDataWrap>
       <UserProfileDataWrap>
         {profile ? (
           <>
             <UserProfile src={profile.imageUrl} width="56" height="56" />
-            <UserName>{profile.name}</UserName>
-            <button
+            <EditNameWrap
               onClick={() => {
                 router.push('/user/mypage/edit');
               }}
             >
+              <UserName>{profile.name}</UserName>
               <ChebronRightIcon />
-            </button>
+            </EditNameWrap>
           </>
         ) : (
           <>
