@@ -1,6 +1,11 @@
 name: deploy
 
-on: push
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
 
 env:
     CACHED_DEPENDENCY_PATH: ${{ github.workspace }}/node_modules
