@@ -31,4 +31,16 @@ const UserProfileDataWrap = styled.div`
   align-items: center;
 `;
 
-export { UserDataWrap, UserName, UserDefaultName, UserProfileDataWrap };
+const EditNameWrap = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+export {
+  UserDataWrap,
+  UserName,
+  UserDefaultName,
+  UserProfileDataWrap,
+  EditNameWrap,
+};
