@@ -6,14 +6,17 @@ const CommentListWrap = styled.div<{ commentType: CommentType }>`
   background: ${(props) =>
     props.commentType != 'webtoons' && props.theme.colors.grayscale.gray_100};
   padding: 10px 24px 24px;
+  padding-bottom: 160px;
   width: calc(100% +24 * 2);
   min-height: 60rem;
 `;
-const CommentNoWrap = styled.section`
-  margin-top: 50%;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 400;
+const CommentNoWrap = styled.div<{ commentType: CommentType }>`
+  margin: 150px -24px;
+  background: ${(props) =>
+    props.commentType != 'webtoons' && props.theme.colors.grayscale.gray_100};
+  padding: 10px 24px 24px;
+  width: calc(100% +24 * 2);
+  min-height: 60rem;
 `;
 const Title = styled.p`
   margin: 2.4rem 0;
