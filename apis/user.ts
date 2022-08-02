@@ -38,7 +38,10 @@ const postUserLogOut = async () => {
 };
 
 const usePostUserLogOut = () => {
-  return useMutation(user.logout(), () => postUserLogOut());
+  const queryClient = useQueryClient();
+  return useMutation(user.logout(), () => postUserLogOut(), {
+    onSuccess: () => queryClient.invalidateQueries('user'),
+  });
 };
 
 const patchUserName = async (userName: string) => {
@@ -67,7 +70,7 @@ const patchUserImg = async (userImg: string) => {
 const usePatchUserImg = (userImg: string) => {
   const queryClient = useQueryClient();
   return useMutation(user.updateImg(userImg), () => patchUserImg(userImg), {
-    onSuccess: () => queryClient.invalidateQueries(user.information()),
+    onSuccess: () => queryClient.invalidateQueries('user'),
   });
 };
 
