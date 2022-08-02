@@ -18,7 +18,7 @@ function FloatingBtn() {
 const BtnWrap = styled.div`
   position: fixed;
   bottom: 75px;
-  width: min(43.2rem, calc(100% - 4.8rem));
+  width: min(414px, calc(100% - 12.8%));
   text-align: right;
 `;
 
