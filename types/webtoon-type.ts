@@ -24,7 +24,7 @@ export interface Webtoon {
   thumbnail: string;
   platform: PlatformType;
   platformDescription: string;
-  status: PUBLISH;
+  status: 'PUBLISH';
   statusDescription: string;
   genres: WebtoonCategory[];
   publishDays: WebtoonPublishDays[];
@@ -83,19 +83,22 @@ export interface WebtoonRank {
   }[];
 }
 
-export type Genre =
-  | '일상'
-  | '개그'
-  | '판타지'
-  | '액션'
-  | '드라마'
-  | '로맨스'
-  | '감성'
-  | '스릴러'
-  | '무협/사극'
-  | '스포츠';
+export const genres = [
+  '일상',
+  '개그',
+  '판타지',
+  '액션',
+  '드라마',
+  '로맨스',
+  '감성',
+  '스릴러',
+  '무협/사극',
+  '스포츠',
+] as const;
 
-// TODO: chagne to real genre types
+export type Genre = typeof genres[number];
+
+// TODO: change to real genre types
 export interface WebtoonGenres {
   genre: Genre;
   thumbnail: string;
