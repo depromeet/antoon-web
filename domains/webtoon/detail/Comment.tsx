@@ -36,7 +36,7 @@ function Comment({
   const { data: user } = useGetUserInformation();
   const { ref, inView } = useInView();
   const {
-    data: t,
+    data: cmmts,
     isError,
     isLoading,
     fetchNextPage,
@@ -46,12 +46,12 @@ function Comment({
   const [isUser, setIsUser] = useState(false);
 
   useEffect(() => {
-    if (inView && t?.pages) {
+    if (inView && cmmts?.pages) {
       fetchNextPage();
     }
     if (user) setIsUser(true);
     else setIsUser(false);
-  }, [t, user, inView, fetchNextPage]);
+  }, [cmmts, user, inView, fetchNextPage]);
 
   if (isLoading)
     return (
@@ -65,14 +65,14 @@ function Comment({
   return (
     <ErrorBoundary message="댓글을 불러오지 못하고 있어요 😭😭😭">
       <CommentListWrap commentType={commentType}>
-        <Title>개미들의 행진 {t?.pages[0].totalElements || 0}</Title>
+        <Title>개미들의 행진 {cmmts?.pages[0].totalElements || 0}</Title>
         <CommentTextInput
-          length={t?.pages[0].totalElements || 0}
+          length={cmmts?.pages[0].totalElements || 0}
           id={id}
           commentType={commentType}
         />
         <>
-          {t?.pages.map((page, index) => {
+          {cmmts?.pages.map((page, index) => {
             return page.data?.map((comment: IComment) => {
               return (
                 <CommentWrap key={comment.discussionId}>
