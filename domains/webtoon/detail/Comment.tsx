@@ -22,6 +22,7 @@ import OnError from '@components/OnError';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import ErrorBoundary from '@components/ErrorBoundary';
 
+import { useInView } from 'react-intersection-observer';
 import { CommentType, Comments, IComment } from '@_types/comments-type';
 import { useEffect, useState } from 'react';
 
@@ -33,23 +34,28 @@ function Comment({
   id: number;
 }) {
   const { data: user } = useGetUserInformation();
-  const { data: t, isError, isLoading } = useGetCommentsById(commentType, id);
+  const { ref, inView } = useInView();
+  const {
+    data: cmmts,
+    isError,
+    isLoading,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useGetCommentsById(commentType, id, 0);
 
-  const [comments, setComments] = useState<Comments>([]);
   const [isUser, setIsUser] = useState(false);
 
   useEffect(() => {
-    if (t) setComments(t.data);
-  }, [t, comments]);
-
-  useEffect(() => {
+    if (inView && cmmts?.pages) {
+      fetchNextPage();
+    }
     if (user) setIsUser(true);
     else setIsUser(false);
-  }, [user]);
+  }, [cmmts, user, inView, fetchNextPage]);
 
   if (isLoading)
     return (
-      <CommentNoWrap>
+      <CommentNoWrap commentType={commentType}>
         <LoadingSpinner />
       </CommentNoWrap>
     );
@@ -59,39 +65,40 @@ function Comment({
   return (
     <ErrorBoundary message="댓글을 불러오지 못하고 있어요 😭😭😭">
       <CommentListWrap commentType={commentType}>
-        <Title>개미들의 행진 {comments?.length}</Title>
+        <Title>개미들의 행진 {cmmts?.pages[0].totalElements || 0}</Title>
         <CommentTextInput
-          length={comments?.length}
+          length={cmmts?.pages[0].totalElements || 0}
           id={id}
           commentType={commentType}
         />
-        {comments?.length > 0 ? (
-          comments?.map((comment: IComment) => {
-            return (
-              <CommentWrap key={comment.discussionId}>
-                <UserProfile src={comment.imageUrl} width="32" height="32" />
-                <MainWrap>
-                  <UserInfo>
-                    <Name>{comment.nickname}</Name>
-                    <TimeStamp>{comment.time}</TimeStamp>
-                  </UserInfo>
-                  <Content>{comment?.content}</Content>
-                  <FavoriteWrap>
-                    <FavoriteBtn
-                      isFavoriteChecked={comment.isUserLike}
-                      type={commentType}
-                      id={comment.discussionId}
-                      isUser={isUser}
-                    />
-                    <Favorite>{comment.likeCount}</Favorite>
-                  </FavoriteWrap>
-                </MainWrap>
-              </CommentWrap>
-            );
-          })
-        ) : (
-          <CommentNoWrap>댓글이 없습니다 😭</CommentNoWrap>
-        )}
+        <>
+          {cmmts?.pages.map((page, index) => {
+            return page.data?.map((comment: IComment) => {
+              return (
+                <CommentWrap key={comment.discussionId}>
+                  <UserProfile src={comment.imageUrl} width="32" height="32" />
+                  <MainWrap>
+                    <UserInfo>
+                      <Name>{comment.nickname}</Name>
+                      <TimeStamp>{comment.time}</TimeStamp>
+                    </UserInfo>
+                    <Content>{comment?.content}</Content>
+                    <FavoriteWrap>
+                      <FavoriteBtn
+                        isFavoriteChecked={comment.isUserLike}
+                        type={commentType}
+                        id={comment.discussionId}
+                        isUser={isUser}
+                      />
+                      <Favorite>{comment.likeCount}</Favorite>
+                    </FavoriteWrap>
+                  </MainWrap>
+                </CommentWrap>
+              );
+            });
+          })}
+        </>
+        {isFetchingNextPage ? <LoadingSpinner /> : <div ref={ref}></div>}
       </CommentListWrap>
     </ErrorBoundary>
   );

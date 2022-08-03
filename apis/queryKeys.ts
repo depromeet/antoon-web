@@ -35,7 +35,7 @@ const topics = {
 
 const comments = {
   all: ['comments'],
-  lists: (commentType: CommentType, id: number) => [
+  lists: (commentType: CommentType, id: number, pageParam: number) => [
     ...comments.all,
     'lists',
     id,
