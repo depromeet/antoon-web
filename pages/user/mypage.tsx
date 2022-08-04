@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getCookie } from 'cookies-next';
 import { Mixpanel } from 'mixpanel';
 
 import { useGetUserInformation } from '@apis/user';
@@ -25,13 +26,15 @@ function MyPage() {
     setIsSSR(false);
   }, []);
 
+  const accessToken = getCookie('Access');
+
   const { data: profile } = useGetUserInformation();
 
   const [isSignIn, setIsSignIn] = useState(false);
 
   useEffect(() => {
-    profile && setIsSignIn(true);
-  }, [profile]);
+    accessToken && profile && setIsSignIn(true);
+  }, [accessToken, profile]);
 
   return (
     <>
