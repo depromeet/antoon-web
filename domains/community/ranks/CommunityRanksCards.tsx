@@ -46,7 +46,7 @@ function CommunityRanksCards(props: Props) {
     isError: webtoonIsError,
   } = useGetWebtoonsRanks();
 
-  const { data, isLoading, isError, error } = useGetCharacterRanksByCategory(
+  const { data, isLoading, isErrorr } = useGetCharacterRanksByCategory(
     categoryType[category] as CharacterType,
   );
 

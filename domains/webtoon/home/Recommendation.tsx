@@ -1,5 +1,4 @@
 import { useQuery } from 'react-query';
-import MoonLoader from 'react-spinners/MoonLoader';
 import { webtoons } from '@apis/queryKeys';
 import { getWebtoonsRecommendation } from '@apis/webtoons';
 import { WebtoonRecommendation } from '@_types/webtoon-type';
