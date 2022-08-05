@@ -9,11 +9,11 @@ import {
   WebtoonRecommendation,
   WebtoonGenresTop3,
   Webtoon,
-  WebtoonJoinLeaveRecommendation,
   WebtoonJoinLeaveRespoonse,
   CharacterType,
   WebtoonsCharacters,
   CharacterInfo,
+  Genre,
 } from '@_types/webtoon-type';
 import { Graph } from '@_types/chart-type';
 
@@ -69,9 +69,9 @@ const useGetWebtoonsRising = () => {
   return useQuery<WebtoonRising>(webtoons.rising(), () => getWebtoonsRising());
 };
 
-const getWebtoonsGenres = async () => {
+const getWebtoonsGenres = async (genre: Genre) => {
   return await instance()
-    .get('webtoons/genres')
+    .get(`webtoons/genres?genre=${genre}`)
     .then((res) => res.data)
     .catch((e) => {
       console.log(e);
@@ -79,8 +79,10 @@ const getWebtoonsGenres = async () => {
     });
 };
 
-const useGetWebtoonsGenres = () => {
-  return useQuery<WebtoonGenres>(webtoons.genres(), () => getWebtoonsGenres());
+const useGetWebtoonsGenres = (genre: Genre) => {
+  return useQuery<WebtoonGenres>(webtoons.genres(genre), () =>
+    getWebtoonsGenres(genre),
+  );
 };
 
 const getWebtoonsRecommendation = async () => {

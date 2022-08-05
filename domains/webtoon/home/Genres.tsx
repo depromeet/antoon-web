@@ -21,19 +21,6 @@ type GenreData = {
   [index: string]: string;
 };
 
-const genre = [
-  '일상',
-  '개그',
-  '판타지',
-  '액션',
-  '드라마',
-  '로맨스',
-  '감성',
-  '스릴러',
-  '무협/사극',
-  '스포츠',
-];
-
 const genres: GenreData[] = [
   {
     name: '일상',
