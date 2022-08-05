@@ -7,7 +7,12 @@ const webtoons = {
   lists: () => [...webtoons.all, 'lists'],
   list: (id: number) => [...webtoons.lists(), id],
   ranks: () => [...webtoons.all, 'ranks'],
-  genres: (genre: Genre) => [...webtoons.all, 'genres', genre],
+  genres: (genre: Genre, pageParam: number) => [
+    ...webtoons.all,
+    'genres',
+    genre,
+    pageParam,
+  ],
   genresTop3: () => [...webtoons.all, 'genres', 'top3'],
   rising: () => [...webtoons.all, 'rising'],
   recommendation: () => [...webtoons.all, 'recommendation'],

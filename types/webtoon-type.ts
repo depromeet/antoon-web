@@ -99,16 +99,14 @@ export const genres = [
 export type Genre = typeof genres[number];
 
 export interface WebtoonGenres {
-  data: {
-    webtoonId: number;
-    title: string;
-    thumbnail: string;
-    graphScore: 577;
-    scoreGap: 0;
-    writers: Array<string>;
-    platform: PlatformType;
-    genre: Genre;
-  }[];
+  webtoonId: number;
+  title: string;
+  thumbnail: string;
+  graphScore: 577;
+  scoreGap: 0;
+  writers: Array<string>;
+  platform: PlatformType;
+  genre: Genre;
 }
 
 export interface WebtoonGenresTop3 {

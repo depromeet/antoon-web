@@ -12,7 +12,8 @@ const WebtoonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 2.4rem;
+  margin-top: 1.8rem;
+  padding-bottom: 1rem;
 `;
 
 const WebtoonCardWrapper = styled.div`
@@ -92,6 +93,12 @@ const WebtoonAuthor = styled.div`
   font-size: 1.2rem;
 `;
 
+const Footer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1.8rem;
+`;
+
 export {
   TagBtnsContainer,
   WebtoonContainer,
@@ -105,4 +112,5 @@ export {
   WebtoonScore,
   WebtoonScoreChangedPercent,
   WebtoonAuthor,
+  Footer,
 };
