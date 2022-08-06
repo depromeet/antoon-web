@@ -2,7 +2,7 @@ import { Head, Html, Main, NextScript } from 'next/document';
 
 function Document() {
   return (
-    <Html>
+    <Html lang="ko">
       <Head>
         <link
           rel="stylesheet"
