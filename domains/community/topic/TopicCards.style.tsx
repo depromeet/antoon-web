@@ -14,6 +14,13 @@ const TopicCardsWrapper = styled.section<{ bgColor: string }>`
   min-width: 24rem;
   height: 12.4rem;
   color: ${(props) => props.theme.colors.basic.white};
+
+  &:hover {
+    transition-duration: 200ms;
+    transition-property: background-color, color;
+    transition-timing-function: ease;
+    opacity: 0.8;
+  }
 `;
 
 const TopicCardHashtag = styled.div`
