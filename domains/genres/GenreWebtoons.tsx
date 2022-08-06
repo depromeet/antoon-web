@@ -40,7 +40,6 @@ function GenreWebtoons() {
 
   const {
     data: genreWebtoons,
-    error,
     status,
     fetchNextPage,
     isFetchingNextPage,
@@ -52,9 +51,11 @@ function GenreWebtoons() {
   useEffect(() => {
     if (!router.isReady) return;
 
-    router.isReady && router.query.genre
-      ? setGenre(router.query.genre as Genre)
-      : setGenre(genres[0]);
+    if (router.isReady) {
+      genres.includes(router.query.genre as Genre)
+        ? setGenre(router.query.genre as Genre)
+        : setGenre(genres[0]);
+    }
   }, [router.isReady, router.query.genre]);
 
   useEffect(() => {
