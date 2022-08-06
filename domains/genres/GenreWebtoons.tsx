@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { useInView } from 'react-intersection-observer';
 
@@ -9,6 +10,7 @@ import { KakaoLogo, NaverLogo } from '@assets/icons';
 import TagBtn from '@components/button/TagBtn';
 import Carousel from '@components/carousel/Carousel';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
+import OnError from '@components/OnError';
 import useCarousel from '@hooks/useCarousel';
 import { Genre, genres, WebtoonGenres } from '@_types/webtoon-type';
 import {
@@ -28,7 +30,9 @@ import {
 } from './GenreWebtoons.style';
 
 function GenreWebtoons() {
-  const [genre, setGenre] = useState<Genre>(genres[0]);
+  const router = useRouter();
+
+  const [genre, setGenre] = useState<Genre | undefined>(undefined);
 
   const tagBtnRef = useRef<HTMLDivElement>(null);
 
@@ -36,12 +40,37 @@ function GenreWebtoons() {
 
   const {
     data: genreWebtoons,
+    error,
     status,
     fetchNextPage,
     isFetchingNextPage,
     hasNextPage,
-  } = useGetWebtoonsGenres(genre, 0);
+  } = useGetWebtoonsGenres(genre ?? genres[0], 0);
+
   const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    router.isReady && router.query.genre
+      ? setGenre(router.query.genre as Genre)
+      : setGenre(genres[0]);
+  }, [router.isReady, router.query.genre]);
+
+  useEffect(() => {
+    if (!tagBtnRef.current) return;
+
+    const selectedTagBtn = Array.from(
+      tagBtnRef.current.children[0].children,
+    ).filter(
+      (child) => child.getAttribute('data-selected') === 'true',
+    )[0] as HTMLButtonElement;
+
+    if (!selectedTagBtn) return;
+
+    tagBtnRef.current.scrollLeft =
+      selectedTagBtn.offsetLeft - tagBtnRef.current.offsetLeft;
+  }, [genre]);
 
   useEffect(() => {
     if (inView && genreWebtoons?.pages) {
@@ -50,6 +79,10 @@ function GenreWebtoons() {
   }, [inView, fetchNextPage, genreWebtoons?.pages]);
 
   function onSelectGenre(e: React.MouseEvent<HTMLButtonElement>) {
+    router.push(`?genre=${e.currentTarget.textContent}`, undefined, {
+      shallow: true,
+    });
+
     setGenre(e.currentTarget.textContent as Genre);
   }
 
@@ -70,9 +103,10 @@ function GenreWebtoons() {
       </Carousel>
       <WebtoonContainer>
         {status === 'loading' && !isFetchingNextPage && <LoadingSpinner />}
+        {status === 'error' && !isFetchingNextPage && (
+          <OnError>웹툰을 불러오지 못하고 있어요 😭😭😭</OnError>
+        )}
         {genreWebtoons?.pages.map((page) => {
-          console.log(page);
-
           return page.data?.map((webtoon: WebtoonGenres) => {
             return (
               <Link
@@ -106,7 +140,7 @@ function GenreWebtoons() {
                     <WebtoonContentWrapper>
                       <WebtoonTitle>{webtoon.title}</WebtoonTitle>
                       <WebtoonScoreWrapper>
-                        <WebtoonScore>989점</WebtoonScore>
+                        <WebtoonScore>{webtoon.graphScore}점</WebtoonScore>
                         <WebtoonScoreChangedPercent
                           scoreChangedStatus={
                             webtoon.scoreGap > 0
@@ -136,7 +170,9 @@ function GenreWebtoons() {
       </WebtoonContainer>
       <Footer>
         {isFetchingNextPage ? <LoadingSpinner /> : <div ref={ref}></div>}
-        {hasNextPage === false && <div>모든 웹툰을 불러왔어요 🎉🎉🎉</div>}
+        {hasNextPage === false && status === 'success' && (
+          <div>모든 웹툰을 불러왔어요 🎉🎉🎉</div>
+        )}
       </Footer>
     </>
   );

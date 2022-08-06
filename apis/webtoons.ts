@@ -91,6 +91,7 @@ const useGetWebtoonsGenres = (genre: Genre, pageParam: number) => {
     ({ pageParam = 0 }) => getWebtoonsGenres(genre, pageParam),
     {
       getPreviousPageParam: (result) => result.firstPage && undefined,
+
       getNextPageParam: (result) =>
         result.lastPage ? undefined : result.nextPage,
     },

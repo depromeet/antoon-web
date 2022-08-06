@@ -20,6 +20,7 @@ const WebtoonCardWrapper = styled.div`
   margin-bottom: 2rem;
   border-radius: 1.2rem;
   padding: 0.6rem;
+  width: 21.6rem;
 
   @media (hover: hover) and (pointer: fine) {
     :hover {
@@ -47,7 +48,6 @@ const WebtoonThumbnail = styled(Image)``;
 const WebtoonContentWrapper = styled.div``;
 
 const WebtoonTitle = styled.div`
-  width: 15rem;
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

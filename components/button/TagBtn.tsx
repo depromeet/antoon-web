@@ -8,7 +8,7 @@ type Props = {
 
 function TagBtn({ children, selected, onClick }: Props) {
   return (
-    <Btn selected={selected} onClick={onClick}>
+    <Btn selected={selected} data-selected={selected} onClick={onClick}>
       {children}
     </Btn>
   );
