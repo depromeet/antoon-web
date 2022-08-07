@@ -1,7 +1,14 @@
-import StepIndicator from '@assets/icons/StepIndicator';
-import { Mixpanel } from 'mixpanel';
-import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
+
+import StepIndicator from '@assets/icons/StepIndicator';
+import {
+  OnBoardingIntroduce01,
+  OnBoardingIntroduce02,
+  OnBoardingIntroduce03,
+  OnBoardingIntroduce04,
+  OnBoardingIntroduce05,
+} from '@assets/images';
+import { Mixpanel } from 'mixpanel';
 import { createPortal } from 'react-dom';
 import {
   Background,
@@ -76,12 +83,7 @@ function Modal() {
   const First = (
     <>
       <ImageWrapper>
-        <Image
-          src="/images/onboarding_introduce_01.png"
-          alt="개미의 탑승/하차는 웹툰 차트에 반영돼요!"
-          width={312}
-          height={200}
-        />
+        <OnBoardingIntroduce01 />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -121,12 +123,7 @@ function Modal() {
   const Second = (
     <>
       <ImageWrapper>
-        <Image
-          src="/images/onboarding_introduce_02.png"
-          alt="투표는 하루에 한번 가능해요."
-          width={312}
-          height={200}
-        />
+        <OnBoardingIntroduce02 />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -167,12 +164,7 @@ function Modal() {
   const Third = (
     <>
       <ImageWrapper>
-        <Image
-          src="/images/onboarding_introduce_03.png"
-          alt="개미들의 행진에 동참해보세요!"
-          width={312}
-          height={200}
-        />
+        <OnBoardingIntroduce03 />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -213,12 +205,7 @@ function Modal() {
   const Fourth = (
     <>
       <ImageWrapper>
-        <Image
-          src="/images/onboarding_introduce_04.png"
-          alt="개미들의 행진에 동참해보세요!"
-          width={312}
-          height={200}
-        />
+        <OnBoardingIntroduce04 />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -259,12 +246,7 @@ function Modal() {
   const Fifth = (
     <>
       <ImageWrapper>
-        <Image
-          src="/images/onboarding_introduce_05.png"
-          alt="개미들의 행진에 동참해보세요!"
-          width={312}
-          height={200}
-        />
+        <OnBoardingIntroduce05 />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
