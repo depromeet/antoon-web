@@ -1,8 +1,11 @@
+import { useRef } from 'react';
+import Link from 'next/link';
+
 import { useGetTopicsChoices } from '@apis/topics';
+
 import Carousel from '@components/carousel/Carousel';
 import OnError from '@components/OnError';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
-import React, { useRef } from 'react';
 import {
   TopicCardContainer,
   TopicCardHashtag,
@@ -10,41 +13,6 @@ import {
   TopicCardsWrapper,
   TopicCardTitle,
 } from './TopicCards.style';
-
-const data = [
-  {
-    hashTag: '#연애혁명',
-    title: '연애혁명의 결말은 해피엔딩일까? 아니면 새드엔딩일까?',
-  },
-  {
-    hashTag: '#연애혁명',
-    title: '연애혁명의 결말은 해피엔딩일까? 아니면 새드엔딩일까?',
-  },
-  {
-    hashTag: '#연애혁명',
-    title: '연애혁명의 결말은 해피엔딩일까? 아니면 새드엔딩일까?',
-  },
-  {
-    hashTag: '#연애혁명',
-    title: '연애혁명의 결말은 해피엔딩일까? 아니면 새드엔딩일까?',
-  },
-  {
-    hashTag: '#연애혁명',
-    title: '연애혁명의 결말은 해피엔딩일까? 아니면 새드엔딩일까?',
-  },
-  {
-    hashTag: '#연애혁명',
-    title: '연애혁명의 결말은 해피엔딩일까? 아니면 새드엔딩일까?',
-  },
-  {
-    hashTag: '#연애혁명',
-    title: '연애혁명의 결말은 해피엔딩일까? 아니면 새드엔딩일까?',
-  },
-  {
-    hashTag: '#연애혁명',
-    title: '연애혁명의 결말은 해피엔딩일까? 아니면 새드엔딩일까?',
-  },
-];
 
 const colors = [
   '#889795',
@@ -76,15 +44,23 @@ function TopicCards() {
     <Carousel ref={topicCardRef}>
       <TopicCardContainer>
         {data.choiceTopics.map((topic, idx) => (
-          <TopicCardsWrapper key={topic.topicId} bgColor={colors[idx]}>
-            <TopicCardHashtag>
-              {topic.tags.map((topic) => `#${topic} `)}
-            </TopicCardHashtag>
-            <TopicCardTitle>{topic.title}</TopicCardTitle>
-            <TopicCardJoinedCounts>
-              {topic.joinCount} 개미 참여중
-            </TopicCardJoinedCounts>
-          </TopicCardsWrapper>
+          <Link
+            key={topic.topicId}
+            href={`/community/topic/${topic.topicId}`}
+            passHref
+          >
+            <a>
+              <TopicCardsWrapper bgColor={colors[idx]}>
+                <TopicCardHashtag>
+                  {topic.tags.map((topic) => `#${topic} `)}
+                </TopicCardHashtag>
+                <TopicCardTitle>{topic.title}</TopicCardTitle>
+                <TopicCardJoinedCounts>
+                  {topic.joinCount} 개미 참여중
+                </TopicCardJoinedCounts>
+              </TopicCardsWrapper>
+            </a>
+          </Link>
         ))}
       </TopicCardContainer>
     </Carousel>
