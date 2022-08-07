@@ -9,28 +9,32 @@ env:
 
 jobs:
     job_install_dependencies:
-        name: Intsall dependencies
+        name: Install dependencies
         runs-on: ubuntu-latest
 
         steps:
             - name: Checkout current commit (${{ github.sha }})
               uses: actions/checkout@v3
 
+            - name: Compute dependencies hash key
+              id: compute_lockfile_hash
+              run: echo "::set-output name=key::${{ hashFiles('**/yarn.lock') }}"
+
             - name: Restore dependencies
               id: restore_dependencies
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
-                  path: ${{ env.CACHED_DEPENDENCY_PATH }}
-                  key: dependencies-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-                  restore-keys: |
-                      dependencies
+                path: ${{ env.CACHED_DEPENDENCY_PATH }}
+                key: dependencies-${{ runner.os }}-yarn-${{ steps.compute_lockfile_hash.outputs.key }}
+                restore-keys: |
+                  dependencies-${{ runner.os }}-yarn-
 
             - name: Install Dependencies
               if: steps.restore_dependencies.outputs.cache-hit != 'true'
               run: yarn
             
         outputs:
-            dependencies_cache_key: dependencies-${{ steps.compute_lockfile_hash.outputs.key }}
+            dependencies_cache_key: dependencies-${{ runner.os }}-yarn-${{ steps.compute_lockfile_hash.outputs.key }}
 
     job_lint:
         name: Lint
@@ -42,7 +46,7 @@ jobs:
               uses: actions/checkout@v3
 
             - name: Check dependencies cache
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                   path: ${{ env.CACHED_DEPENDENCY_PATH }}
                   key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
@@ -62,14 +66,14 @@ jobs:
               uses: actions/checkout@v3
 
             - name: Check dependencies cache
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                   path: ${{ env.CACHED_DEPENDENCY_PATH }}
                   key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
 
             - name: Restore bundle
               id: restore_bundle
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                   path: ${{ env.CACHED_BUILD_PATH }}
                   key: build-${{ env.BUILD_CACHE_KEY }}-${{ github.ref_name }}
@@ -93,13 +97,13 @@ jobs:
           uses: actions/checkout@v3
 
         - name: Check dependencies cache
-          uses: actions/cache@v2
+          uses: actions/cache@v3
           with:
               path: ${{ env.CACHED_DEPENDENCY_PATH }}
               key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
 
         - name: Check bundle cache
-          uses: actions/cache@v2
+          uses: actions/cache@v3
           with:
             path: ${{ env.CACHED_BUILD_PATH }}
             key: build-${{ env.BUILD_CACHE_KEY }}-${{ github.ref_name }}
@@ -132,7 +136,7 @@ jobs:
             fetch-depth: 0
 
         - name: Check dependencies cache
-          uses: actions/cache@v2
+          uses: actions/cache@v3
           with:
               path: ${{ env.CACHED_DEPENDENCY_PATH }}
               key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
