@@ -7,8 +7,6 @@ import {
   HomeRecommendationBackground,
   HomeRecommendationWrapper,
 } from '@domains/webtoon/home/Home.style';
-import RealTimeChartTitle from '@domains/webtoon/home/realTimeChart/RealTimeChartTitle';
-import Carousel from '@components/carousel/Carousel';
 import RealTimeChart from '@domains/webtoon/home/realTimeChart/RealTimeChart';
 import Title from '@components/Title';
 import SubTitle from '@components/SubTitle';

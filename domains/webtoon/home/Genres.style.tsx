@@ -16,6 +16,15 @@ const CarouselBox = styled.div<{ genreName: Genre }>`
   background-color: ${(props) => props.theme.colors.genres[props.genreName]};
   width: 144px;
   height: 115px;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transition-duration: 200ms;
+      transition-property: background-color, color;
+      transition-timing-function: ease;
+      opacity: 0.8;
+    }
+  }
 `;
 
 const GenreContentWrapper = styled.div`

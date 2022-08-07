@@ -4,6 +4,7 @@ import ErrorBoundary from '@components/ErrorBoundary';
 import OnError from '@components/OnError';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import { Genre, WebtoonGenresTop3 } from '@_types/webtoon-type';
+import Link from 'next/link';
 import { useQuery } from 'react-query';
 import {
   GenresWrapper,
@@ -20,19 +21,6 @@ type GenreData = {
   description2: string;
   [index: string]: string;
 };
-
-const genre = [
-  '일상',
-  '개그',
-  '판타지',
-  '액션',
-  '드라마',
-  '로맨스',
-  '감성',
-  '스릴러',
-  '무협/사극',
-  '스포츠',
-];
 
 const genres: GenreData[] = [
   {
@@ -126,25 +114,47 @@ function Genres() {
     <ErrorBoundary message="장르별 웹툰을 불러오지 못하고 있어요 😭😭😭">
       <GenresWrapper>
         {genres.map((genre) => (
-          <CarouselBox key={genre.name} genreName={genre.name}>
-            <GenreContentWrapper>
-              <GenreThumbnailContainer>
-                <div>
-                  <GenreThumbnail src={genre.rank1} width={24} height={24} />
-                </div>
-                {/* TODO: stroke로 피그마와 똑같게 디자인 해야함 */}
-                <div style={{ position: 'relative', left: '-0.5rem' }}>
-                  <GenreThumbnail src={genre.rank2} width={24} height={24} />
-                </div>
-                <div style={{ position: 'relative', left: '-1rem' }}>
-                  <GenreThumbnail src={genre.rank3} width={24} height={24} />
-                </div>
-              </GenreThumbnailContainer>
-              <GenreDescription>
-                {genre.description1} <br /> {genre.description2}
-              </GenreDescription>
-            </GenreContentWrapper>
-          </CarouselBox>
+          <Link href={`/genres?genre=${genre.name}`} key={genre.name} passHref>
+            <a>
+              <CarouselBox genreName={genre.name}>
+                <GenreContentWrapper>
+                  <GenreThumbnailContainer>
+                    <div>
+                      <GenreThumbnail
+                        src={genre.rank1}
+                        width={24}
+                        height={24}
+                        layout="fixed"
+                        objectFit="cover"
+                      />
+                    </div>
+                    {/* TODO: stroke로 피그마와 똑같게 디자인 해야함 */}
+                    <div style={{ position: 'relative', left: '-0.5rem' }}>
+                      <GenreThumbnail
+                        src={genre.rank2}
+                        width={24}
+                        height={24}
+                        layout="fixed"
+                        objectFit="cover"
+                      />
+                    </div>
+                    <div style={{ position: 'relative', left: '-1rem' }}>
+                      <GenreThumbnail
+                        src={genre.rank3}
+                        width={24}
+                        height={24}
+                        layout="fixed"
+                        objectFit="cover"
+                      />
+                    </div>
+                  </GenreThumbnailContainer>
+                  <GenreDescription>
+                    {genre.description1} <br /> {genre.description2}
+                  </GenreDescription>
+                </GenreContentWrapper>
+              </CarouselBox>
+            </a>
+          </Link>
         ))}
       </GenresWrapper>
     </ErrorBoundary>

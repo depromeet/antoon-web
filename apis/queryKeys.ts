@@ -1,12 +1,18 @@
 import { TopicCategory } from '@_types/topics-type';
 import { CommentType } from '@_types/comments-type';
+import { Genre } from '@_types/webtoon-type';
 
 const webtoons = {
   all: ['webtoons'],
   lists: () => [...webtoons.all, 'lists'],
   list: (id: number) => [...webtoons.lists(), id],
   ranks: () => [...webtoons.all, 'ranks'],
-  genres: () => [...webtoons.all, 'genres'],
+  genres: (genre: Genre, pageParam: number) => [
+    ...webtoons.all,
+    'genres',
+    genre,
+    pageParam,
+  ],
   genresTop3: () => [...webtoons.all, 'genres', 'top3'],
   rising: () => [...webtoons.all, 'rising'],
   recommendation: () => [...webtoons.all, 'recommendation'],

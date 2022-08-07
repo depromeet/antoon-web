@@ -17,3 +17,5 @@ export { ReactComponent as BadgeLevelThree } from './badge_level_3.svg';
 export { ReactComponent as ModalClose } from './modal_close.svg';
 export { ReactComponent as EmailIcon } from './email.svg';
 export { ReactComponent as AntCoinBigGrayIcon } from './antcoin_bg_gray.svg';
+export { ReactComponent as NaverLogo } from './naver.svg';
+export { ReactComponent as KakaoLogo } from './kakao.svg';

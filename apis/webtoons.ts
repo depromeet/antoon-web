@@ -1,19 +1,23 @@
-import { useMutation, useQuery, useQueryClient } from 'react-query';
+import {
+  useMutation,
+  useQuery,
+  useQueryClient,
+  useInfiniteQuery,
+} from 'react-query';
 import { graph, webtoons } from '@apis/queryKeys';
 import { instance } from './api';
 import {
   WebtoonRank,
-  WebtoonGenres,
   WebtoonRising,
   WebtoonWeekly,
   WebtoonRecommendation,
   WebtoonGenresTop3,
   Webtoon,
-  WebtoonJoinLeaveRecommendation,
   WebtoonJoinLeaveRespoonse,
   CharacterType,
   WebtoonsCharacters,
   CharacterInfo,
+  Genre,
 } from '@_types/webtoon-type';
 import { Graph } from '@_types/chart-type';
 
@@ -69,18 +73,29 @@ const useGetWebtoonsRising = () => {
   return useQuery<WebtoonRising>(webtoons.rising(), () => getWebtoonsRising());
 };
 
-const getWebtoonsGenres = async () => {
-  return await instance()
-    .get('webtoons/genres')
+const getWebtoonsGenres = async (genre: Genre, pageParam: number) => {
+  const { data, firstPage, lastPage, totalElements } = await instance()
+    .get(`webtoons/genres?page=${pageParam}&genre=${genre}`)
     .then((res) => res.data)
     .catch((e) => {
       console.log(e);
       return e;
     });
+
+  return { data, nextPage: pageParam + 1, firstPage, lastPage, totalElements };
 };
 
-const useGetWebtoonsGenres = () => {
-  return useQuery<WebtoonGenres>(webtoons.genres(), () => getWebtoonsGenres());
+const useGetWebtoonsGenres = (genre: Genre, pageParam: number) => {
+  return useInfiniteQuery(
+    webtoons.genres(genre, pageParam),
+    ({ pageParam = 0 }) => getWebtoonsGenres(genre, pageParam),
+    {
+      getPreviousPageParam: (result) => result.firstPage && undefined,
+
+      getNextPageParam: (result) =>
+        result.lastPage ? undefined : result.nextPage,
+    },
+  );
 };
 
 const getWebtoonsRecommendation = async () => {
