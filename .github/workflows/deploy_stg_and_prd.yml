@@ -29,7 +29,7 @@ jobs:
               id: restore_dependencies
               uses: actions/cache@v3
               with:
-                path: ${{ steps.yarn_cache_dir_path.outputs.dir }}
+                path: ${{ env.CACHED_DEPENDENCY_PATH }}
                 key: dependencies-${{ runner.os }}-yarn-${{ steps.compute_lockfile_hash.outputs.key }}
                 restore-keys: |
                   dependencies-${{ runner.os }}-yarn-
