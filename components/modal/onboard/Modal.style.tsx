@@ -12,6 +12,7 @@ const Background = styled.div`
 `;
 
 const ModalContainer = styled.div`
+  display: flex;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -22,8 +23,13 @@ const ModalContainer = styled.div`
   width: 31.2rem;
   height: 40.9rem;
   max-height: 80%;
+  overflow: hidden;
   text-align: center;
   user-select: none;
+`;
+
+const SectionWrapper = styled.div`
+  min-width: 31.2rem;
 `;
 
 const ImageWrapper = styled.div`
@@ -96,6 +102,7 @@ const StartButton = styled.button`
 export {
   Background,
   ModalContainer,
+  SectionWrapper,
   ImageWrapper,
   DescriptionWrapper,
   DescriptionMain,
