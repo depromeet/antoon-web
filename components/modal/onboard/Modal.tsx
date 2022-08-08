@@ -52,24 +52,37 @@ function Modal() {
 
     if (!modalContainer) return;
 
-    console.log(step);
-    console.log(modalContainerRef.current?.scrollLeft);
-
+    console.log(modalContainer.children[0]);
     switch (step) {
       case 'first':
-        modalContainer.scrollLeft = sectionWidth * 0;
+        modalContainer.scroll({
+          left: sectionWidth * 0,
+          behavior: 'smooth',
+        });
         return;
       case 'second':
-        modalContainer.scrollLeft = sectionWidth * 1;
+        modalContainer.scroll({
+          left: sectionWidth * 1,
+          behavior: 'smooth',
+        });
         return;
       case 'third':
-        modalContainer.scrollLeft = sectionWidth * 2;
+        modalContainer.scroll({
+          left: sectionWidth * 2,
+          behavior: 'smooth',
+        });
         return;
       case 'fourth':
-        modalContainer.scrollLeft = sectionWidth * 3;
+        modalContainer.scroll({
+          left: sectionWidth * 3,
+          behavior: 'smooth',
+        });
         return;
       case 'fifth':
-        modalContainer.scrollLeft = sectionWidth * 4;
+        modalContainer.scroll({
+          left: sectionWidth * 4,
+          behavior: 'smooth',
+        });
         return;
     }
   }, [step]);
@@ -347,7 +360,6 @@ function Modal() {
         <>
           {modalOpen && (
             <Background>
-              {/* <ModalContainer>{renderContent()}</ModalContainer> */}
               <ModalContainer ref={modalContainerRef}>
                 <First />
                 <Second />
