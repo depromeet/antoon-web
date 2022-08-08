@@ -78,9 +78,10 @@ jobs:
                   path: ${{ env.CACHED_BUILD_PATH }}
                   key: build-${{ env.BUILD_CACHE_KEY }}-${{ github.ref_name }}
                   restore-keys: |
-                      build
+                      build-${{ env.BUILD_CACHE_KEY }}-
+
             - name: Build DEV bundle
-              if: steps.restore_bundle.outputs.cache-hit == 'false'
+              if: steps.restore_bundle.outputs.cache-hit != 'true'
               run: |
                   cat << EOF >> .env
                   ${{ secrets.ENV_DEV }}
