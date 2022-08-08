@@ -47,11 +47,11 @@ function CharacterDetailPage({
       <>
         <Header
           headerLeft="뒤로가기"
-          headerRight="없음"
+          headerRight="공유하기"
           headerColor={characters?.backGroundColor}
         />
         {characters && <CharacterDetailPageWrap characters={characters} />}
-        <Comment commentType={'characters'} id={Number(id)} />
+        <Comment commentType="characters" id={Number(id)} />
       </>
     </ErrorBoundary>
   );

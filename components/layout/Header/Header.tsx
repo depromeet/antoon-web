@@ -31,15 +31,25 @@ function Header({
 
   const isScrolled = useScroll();
 
+  const [isHeaderPainted, setIsHeaderPainted] = useState(false);
+
+  useEffect(() => {
+    if (headerColor && !isScrolled) setIsHeaderPainted(true);
+    else setIsHeaderPainted(false);
+  }, [headerColor, isScrolled]);
+
   return (
     <HeaderWrap headerColor={isScrolled ? 'FFFFFF' : headerColor}>
       {!isSSR && (
         <>
-          <HeaderLeftMenu headerLeft={headerLeft} headerColor={headerColor} />
+          <HeaderLeftMenu
+            headerLeft={headerLeft}
+            isHeaderPainted={isHeaderPainted}
+          />
           {headerTitle && <Title>{headerTitle}</Title>}
           <HeaderRightMenu
             headerRight={headerRight}
-            headerColor={headerColor}
+            isHeaderPainted={isHeaderPainted}
           />
         </>
       )}
