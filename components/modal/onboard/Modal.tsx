@@ -89,6 +89,7 @@ function Modal() {
         <Image
           src={onboard_01}
           alt="개미의 탑승/하차는 웹툰 차트에 반영돼요!"
+          priority
         />
       </ImageWrapper>
       <DescriptionWrapper>
@@ -132,6 +133,7 @@ function Modal() {
         <Image
           src={onboard_02}
           alt=" 좋아하는 인물과 커플 주식에 탑승할 수 있어요!"
+          priority
         />
       </ImageWrapper>
       <DescriptionWrapper>
@@ -176,6 +178,7 @@ function Modal() {
         <Image
           src={onboard_03}
           alt="안트코인을 사용해 관심있는 주제에 투표하세요!"
+          priority
         />
       </ImageWrapper>
       <DescriptionWrapper>
@@ -217,7 +220,11 @@ function Modal() {
   const Fourth = (
     <>
       <ImageWrapper>
-        <Image src={onboard_04} alt="안트코인은 쉽게 모을 수 있어요!" />
+        <Image
+          src={onboard_04}
+          alt="안트코인은 쉽게 모을 수 있어요!"
+          priority
+        />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -258,7 +265,11 @@ function Modal() {
   const Fifth = (
     <>
       <ImageWrapper>
-        <Image src={onboard_05} alt="모든 웹툰의 떡밥을 개미는 툰툰에서!" />
+        <Image
+          src={onboard_05}
+          alt="모든 웹툰의 떡밥을 개미는 툰툰에서!"
+          priority
+        />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
