@@ -52,7 +52,6 @@ function Modal() {
 
     if (!modalContainer) return;
 
-    console.log(modalContainer.children[0]);
     switch (step) {
       case 'first':
         modalContainer.scroll({
