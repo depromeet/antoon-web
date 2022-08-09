@@ -5,11 +5,11 @@ import ShareIcon from '@assets/icons/ShareIcon';
 
 import shareAPI from '@utils/shareAPI';
 
-type ShareBtnProps = {
+type ShareButtonProps = {
   isHeaderPainted: boolean;
 };
 
-function ShareBtn({ isHeaderPainted }: ShareBtnProps) {
+function ShareButton({ isHeaderPainted }: ShareButtonProps) {
   const router = useRouter();
   const path = router.asPath;
 
@@ -20,4 +20,4 @@ function ShareBtn({ isHeaderPainted }: ShareBtnProps) {
   );
 }
 
-export default ShareBtn;
+export default ShareButton;

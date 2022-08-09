@@ -2,8 +2,9 @@ import Link from 'next/link';
 
 import SearchIcon from '@assets/icons/SearchIcon';
 
+import ShareButton from './ShareButton';
+
 import { RightWrap } from './HeaderRightMenu.style';
-import ShareBtn from '@components/button/ShareBtn';
 
 type HeaderRight = '검색' | '공유하기' | '없음';
 
@@ -23,7 +24,7 @@ function HeaderRightMenu({
           </a>
         </Link>
       ) : headerRight === '공유하기' ? (
-        <ShareBtn isHeaderPainted={isHeaderPainted} />
+        <ShareButton isHeaderPainted={isHeaderPainted} />
       ) : headerRight === '없음' ? (
         <></>
       ) : (

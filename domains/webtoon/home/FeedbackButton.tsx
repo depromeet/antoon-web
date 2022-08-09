@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { EmailIcon } from '@assets/icons';
 
-function FloatingBtn() {
+function FeedbackButton() {
   return (
     <BtnWrap>
       <a
@@ -22,4 +22,4 @@ const BtnWrap = styled.div`
   text-align: right;
 `;
 
-export default FloatingBtn;
+export default FeedbackButton;

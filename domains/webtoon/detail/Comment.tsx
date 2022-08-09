@@ -16,14 +16,14 @@ import {
 } from './Comment.style';
 
 import UserProfile from '@components/image/UserProfile';
-import FavoriteBtn from '@components/button/FavoriteBtn';
+import FavoriteButton from '@domains/webtoon/detail/FavoriteButton';
 import CommentTextInput from '@components/detail/commentTextInput/CommentTextInput';
 import OnError from '@components/OnError';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import ErrorBoundary from '@components/ErrorBoundary';
 
 import { useInView } from 'react-intersection-observer';
-import { CommentType, Comments, IComment } from '@_types/comments-type';
+import { CommentType, IComment } from '@_types/comments-type';
 import { useEffect, useState } from 'react';
 
 function Comment({
@@ -72,7 +72,7 @@ function Comment({
           commentType={commentType}
         />
         <>
-          {cmmts?.pages.map((page, index) => {
+          {cmmts?.pages.map((page) => {
             return page.data?.map((comment: IComment) => {
               return (
                 <CommentWrap key={comment.discussionId}>
@@ -84,7 +84,7 @@ function Comment({
                     </UserInfo>
                     <Content>{comment?.content}</Content>
                     <FavoriteWrap>
-                      <FavoriteBtn
+                      <FavoriteButton
                         isFavoriteChecked={comment.isUserLike}
                         type={commentType}
                         id={comment.discussionId}
