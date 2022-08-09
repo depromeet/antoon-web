@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 import LogoIcon from '@assets/icons/LogoIcon';
 
-import BackBtn from '@components/button/BackBtn';
+import BackButton from './BackButton';
 
 import { LeftWrap } from './HeaderLeftMenu.style';
 
@@ -24,7 +24,7 @@ function HeaderLeftMenu({
           <LogoIcon />
         </button>
       ) : headerLeft === '뒤로가기' ? (
-        <BackBtn isHeaderPainted={isHeaderPainted} />
+        <BackButton isHeaderPainted={isHeaderPainted} />
       ) : headerLeft === '없음' ? (
         <></>
       ) : (

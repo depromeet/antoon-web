@@ -3,11 +3,11 @@ import { useRouter } from 'next/router';
 
 import BackIcon from '@assets/icons/BackIcon';
 
-type BackBtnProps = {
+type BackButtonProps = {
   isHeaderPainted: boolean;
 };
 
-function BackBtn({ isHeaderPainted }: BackBtnProps) {
+function BackButton({ isHeaderPainted }: BackButtonProps) {
   const router = useRouter();
   const path = router.asPath;
   const isShared = path.includes('shared');
@@ -19,4 +19,4 @@ function BackBtn({ isHeaderPainted }: BackBtnProps) {
   );
 }
 
-export default BackBtn;
+export default BackButton;

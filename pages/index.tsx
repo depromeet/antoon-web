@@ -6,7 +6,7 @@ import { Mixpanel } from 'mixpanel';
 import Header from '@components/layout/Header/Header';
 import Modal from '@components/modal/onboard/Modal';
 import { default as _Home } from '@domains/webtoon/home/Home';
-import FloatingBtn from '@components/button/FloatingBtn';
+import FeedbackButton from '@domains/webtoon/home/FeedbackButton';
 import CoinModal from '@domains/user/signup/modal/CoinModal';
 
 const Home: NextPage = () => {
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
       <Header headerLeft="로고" headerRight="검색" />
       <Modal />
       <_Home />
-      <FloatingBtn />
+      <FeedbackButton />
     </>
   );
 };

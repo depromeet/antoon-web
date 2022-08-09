@@ -15,7 +15,12 @@ type FavoriteProps = {
   isUser: boolean;
 };
 
-function FavoriteBtn({ isFavoriteChecked, type, id, isUser }: FavoriteProps) {
+function FavoriteButton({
+  isFavoriteChecked,
+  type,
+  id,
+  isUser,
+}: FavoriteProps) {
   const [isLiked, setIsLiked] = useState(isFavoriteChecked);
 
   const { fireToast } = useToast();
@@ -34,4 +39,4 @@ function FavoriteBtn({ isFavoriteChecked, type, id, isUser }: FavoriteProps) {
   return <HeartIcon fill={isLiked} onClickFavorite={onClickFavorite} />;
 }
 
-export default FavoriteBtn;
+export default FavoriteButton;

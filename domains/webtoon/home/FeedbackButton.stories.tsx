@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import FloatingBtn from './FloatingBtn';
+import FloatingBtn from './FeedbackButton';
 
 export default {
   title: 'Components/Common/Button',
