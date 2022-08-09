@@ -83,10 +83,10 @@ jobs:
                   path: ${{ env.CACHED_BUILD_PATH }}
                   key: build-${{ env.BUILD_CACHE_KEY }}-${{ github.ref_name }}
                   restore-keys: |
-                      build
+                      build-${{ env.BUILD_CACHE_KEY }}-
 
             - name: Build STG bundle
-              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.ref == 'refs/heads/main'
+              if: steps.restore_bundle.outputs.cache-hit != 'true'&& github.ref == 'refs/heads/main'
               run: |
                   cat << EOF >> .env
                   ${{ secrets.ENV_STG }}
@@ -94,7 +94,7 @@ jobs:
                   yarn build
 
             - name: Build PRD bundle
-              if: steps.restore_bundle.outputs.cache-hit == 'false' && github.ref_type == 'tag'
+              if: steps.restore_bundle.outputs.cache-hit != 'true' && github.ref_type == 'tag'
               run: |
                   cat << EOF >> .env
                   ${{ secrets.ENV_PRD }}

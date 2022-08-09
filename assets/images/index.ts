@@ -1,5 +1,5 @@
-export { ReactComponent as OnBoardingIntroduce01 } from './onboarding_introduce_01.svg';
-export { ReactComponent as OnBoardingIntroduce02 } from './onboarding_introduce_02.svg';
-export { ReactComponent as OnBoardingIntroduce03 } from './onboarding_introduce_03.svg';
-export { ReactComponent as OnBoardingIntroduce04 } from './onboarding_introduce_04.svg';
-export { ReactComponent as OnBoardingIntroduce05 } from './onboarding_introduce_05.svg';
+export { default as onboard_01 } from './onboard_01.png';
+export { default as onboard_02 } from './onboard_02.png';
+export { default as onboard_03 } from './onboard_03.png';
+export { default as onboard_04 } from './onboard_04.png';
+export { default as onboard_05 } from './onboard_05.png';

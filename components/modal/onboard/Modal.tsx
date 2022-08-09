@@ -1,18 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
+/* eslint-disable @next/next/no-img-element */
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import StepIndicator from '@assets/icons/StepIndicator';
-import {
-  OnBoardingIntroduce01,
-  OnBoardingIntroduce02,
-  OnBoardingIntroduce03,
-  OnBoardingIntroduce04,
-  OnBoardingIntroduce05,
-} from '@assets/images';
 import { Mixpanel } from 'mixpanel';
 import { createPortal } from 'react-dom';
 import {
   Background,
   ModalContainer,
+  SectionWrapper,
   ImageWrapper,
   DescriptionWrapper,
   DescriptionMain,
@@ -26,6 +21,15 @@ import {
   StartButton,
 } from './Modal.style';
 
+import {
+  onboard_01,
+  onboard_02,
+  onboard_03,
+  onboard_04,
+  onboard_05,
+} from '@assets/images';
+import Image from 'next/image';
+
 createPortal;
 
 type Step = 'first' | 'second' | 'third' | 'fourth' | 'fifth';
@@ -35,6 +39,52 @@ function Modal() {
   const [step, setStep] = useState<Step>('first');
   const [portal, setPortal] = useState<HTMLElement | null>(null);
   const [mount, setMount] = useState(false);
+
+  const modalContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    /**
+     * @ref SectionWrapper width is 312
+     */
+    const sectionWidth = 312;
+
+    const modalContainer = modalContainerRef.current;
+
+    if (!modalContainer) return;
+
+    switch (step) {
+      case 'first':
+        modalContainer.scroll({
+          left: sectionWidth * 0,
+          behavior: 'smooth',
+        });
+        return;
+      case 'second':
+        modalContainer.scroll({
+          left: sectionWidth * 1,
+          behavior: 'smooth',
+        });
+        return;
+      case 'third':
+        modalContainer.scroll({
+          left: sectionWidth * 2,
+          behavior: 'smooth',
+        });
+        return;
+      case 'fourth':
+        modalContainer.scroll({
+          left: sectionWidth * 3,
+          behavior: 'smooth',
+        });
+        return;
+      case 'fifth':
+        modalContainer.scroll({
+          left: sectionWidth * 4,
+          behavior: 'smooth',
+        });
+        return;
+    }
+  }, [step]);
 
   useEffect(() => {
     document.body.style.cssText = `
@@ -80,10 +130,14 @@ function Modal() {
     closeModal();
   };
 
-  const First = (
-    <>
+  const First = () => (
+    <SectionWrapper>
       <ImageWrapper>
-        <OnBoardingIntroduce01 />
+        <Image
+          src={onboard_01}
+          alt="개미의 탑승/하차는 웹툰 차트에 반영돼요!"
+          priority
+        />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -117,13 +171,17 @@ function Modal() {
         </IndicatorContainer>
         <NextButton onClick={() => onStep('second')}>다음</NextButton>
       </ButtonContainer>
-    </>
+    </SectionWrapper>
   );
 
-  const Second = (
-    <>
+  const Second = () => (
+    <SectionWrapper>
       <ImageWrapper>
-        <OnBoardingIntroduce02 />
+        <Image
+          src={onboard_02}
+          alt=" 좋아하는 인물과 커플 주식에 탑승할 수 있어요!"
+          priority
+        />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -140,10 +198,10 @@ function Modal() {
       <ButtonContainer>
         <PrevButton onClick={() => onStep('first')}>이전</PrevButton>
         <IndicatorContainer>
-          <IndicatorWrapper onClick={() => onStep('first')} currentStep={true}>
+          <IndicatorWrapper onClick={() => onStep('first')}>
             <StepIndicator />
           </IndicatorWrapper>
-          <IndicatorWrapper onClick={() => onStep('second')}>
+          <IndicatorWrapper onClick={() => onStep('second')} currentStep={true}>
             <StepIndicator active={true} />
           </IndicatorWrapper>
           <IndicatorWrapper onClick={() => onStep('third')}>
@@ -158,13 +216,17 @@ function Modal() {
         </IndicatorContainer>
         <NextButton onClick={() => onStep('third')}>다음</NextButton>
       </ButtonContainer>
-    </>
+    </SectionWrapper>
   );
 
-  const Third = (
-    <>
+  const Third = () => (
+    <SectionWrapper>
       <ImageWrapper>
-        <OnBoardingIntroduce03 />
+        <Image
+          src={onboard_03}
+          alt="안트코인을 사용해 관심있는 주제에 투표하세요!"
+          priority
+        />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -181,13 +243,13 @@ function Modal() {
       <ButtonContainer>
         <PrevButton onClick={() => onStep('second')}>이전</PrevButton>
         <IndicatorContainer>
-          <IndicatorWrapper onClick={() => onStep('first')} currentStep={true}>
+          <IndicatorWrapper onClick={() => onStep('first')}>
             <StepIndicator />
           </IndicatorWrapper>
           <IndicatorWrapper onClick={() => onStep('second')}>
             <StepIndicator />
           </IndicatorWrapper>
-          <IndicatorWrapper onClick={() => onStep('third')}>
+          <IndicatorWrapper onClick={() => onStep('third')} currentStep={true}>
             <StepIndicator active={true} />
           </IndicatorWrapper>
           <IndicatorWrapper onClick={() => onStep('fourth')}>
@@ -199,13 +261,17 @@ function Modal() {
         </IndicatorContainer>
         <NextButton onClick={() => onStep('fourth')}>다음</NextButton>
       </ButtonContainer>
-    </>
+    </SectionWrapper>
   );
 
-  const Fourth = (
-    <>
+  const Fourth = () => (
+    <SectionWrapper>
       <ImageWrapper>
-        <OnBoardingIntroduce04 />
+        <Image
+          src={onboard_04}
+          alt="안트코인은 쉽게 모을 수 있어요!"
+          priority
+        />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -222,7 +288,7 @@ function Modal() {
       <ButtonContainer>
         <PrevButton onClick={() => onStep('third')}>이전</PrevButton>
         <IndicatorContainer>
-          <IndicatorWrapper onClick={() => onStep('first')} currentStep={true}>
+          <IndicatorWrapper onClick={() => onStep('first')}>
             <StepIndicator />
           </IndicatorWrapper>
           <IndicatorWrapper onClick={() => onStep('second')}>
@@ -231,7 +297,7 @@ function Modal() {
           <IndicatorWrapper onClick={() => onStep('third')}>
             <StepIndicator />
           </IndicatorWrapper>
-          <IndicatorWrapper onClick={() => onStep('fourth')}>
+          <IndicatorWrapper onClick={() => onStep('fourth')} currentStep={true}>
             <StepIndicator active={true} />
           </IndicatorWrapper>
           <IndicatorWrapper onClick={() => onStep('fifth')}>
@@ -240,13 +306,17 @@ function Modal() {
         </IndicatorContainer>
         <NextButton onClick={() => onStep('fifth')}>다음</NextButton>
       </ButtonContainer>
-    </>
+    </SectionWrapper>
   );
 
-  const Fifth = (
-    <>
+  const Fifth = () => (
+    <SectionWrapper>
       <ImageWrapper>
-        <OnBoardingIntroduce05 />
+        <Image
+          src={onboard_05}
+          alt="모든 웹툰의 떡밥을 개미는 툰툰에서!"
+          priority
+        />
       </ImageWrapper>
       <DescriptionWrapper>
         <DescriptionMain>
@@ -263,7 +333,7 @@ function Modal() {
       <ButtonContainer>
         <PrevButton onClick={() => onStep('fourth')}>이전</PrevButton>
         <IndicatorContainer>
-          <IndicatorWrapper onClick={() => onStep('first')} currentStep={true}>
+          <IndicatorWrapper onClick={() => onStep('first')}>
             <StepIndicator />
           </IndicatorWrapper>
           <IndicatorWrapper onClick={() => onStep('second')}>
@@ -275,37 +345,27 @@ function Modal() {
           <IndicatorWrapper onClick={() => onStep('fourth')}>
             <StepIndicator />
           </IndicatorWrapper>
-          <IndicatorWrapper onClick={() => onStep('fifth')}>
+          <IndicatorWrapper onClick={() => onStep('fifth')} currentStep={true}>
             <StepIndicator active={true} />
           </IndicatorWrapper>
         </IndicatorContainer>
         <StartButton onClick={onFinish}>시작하기</StartButton>
       </ButtonContainer>
-    </>
+    </SectionWrapper>
   );
-
-  const renderContent = useCallback(() => {
-    switch (step) {
-      case 'first':
-        return First;
-      case 'second':
-        return Second;
-      case 'third':
-        return Third;
-      case 'fourth':
-        return Fourth;
-      case 'fifth':
-        return Fifth;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step]);
 
   return mount
     ? createPortal(
         <>
           {modalOpen && (
             <Background>
-              <ModalContainer>{renderContent()}</ModalContainer>
+              <ModalContainer ref={modalContainerRef}>
+                <First />
+                <Second />
+                <Third />
+                <Fourth />
+                <Fifth />
+              </ModalContainer>
             </Background>
           )}
         </>,
