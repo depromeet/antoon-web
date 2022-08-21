@@ -10,8 +10,8 @@ import DefaultMyPage from '@domains/user/mypage/DefaultMyPage';
 import MyPageMenu from '@domains/user/mypage/MyPageMenu';
 
 import { Menu } from '@domains/user/mypage/MyPage.style';
-import SignoutBtn from '@domains/user/mypage/SignoutBtn';
-import SigninBtn from '@domains/user/mypage/SigninBtn';
+import SignoutButton from '@domains/user/mypage/signout/SignoutButton';
+import SigninBtn from '@domains/user/mypage/signin/SigninButton';
 
 function MyPage() {
   useEffect(() => {
@@ -40,15 +40,11 @@ function MyPage() {
     <>
       {!isSSR && (
         <>
-          <Header
-            headerLeft="없음"
-            headerTitle="마이페이지"
-            headerRight="없음"
-          />
+          <Header left="없음" title="마이페이지" right="없음" />
           {isSignIn ? <MyPageWrap /> : <DefaultMyPage />}
           <Menu>
             <MyPageMenu />
-            {isSignIn ? <SignoutBtn /> : <SigninBtn />}
+            {isSignIn ? <SignoutButton /> : <SigninBtn />}
           </Menu>
         </>
       )}

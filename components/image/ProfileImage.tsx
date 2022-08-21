@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { ProfileImgWrap, ProfileImg } from './UserProfile.style';
+import {
+  ProfileImgWrap,
+  ProfileImg,
+} from '@components/image/ProfileImage.style';
 
 type ImgProps = {
   src: string;
@@ -8,7 +11,7 @@ type ImgProps = {
   height: string;
 };
 
-function UserProfile({ src, width, height }: ImgProps) {
+function ProfileImage({ src, width, height }: ImgProps) {
   return (
     <ProfileImgWrap width={width} height={height}>
       <ProfileImg
@@ -23,4 +26,4 @@ function UserProfile({ src, width, height }: ImgProps) {
   );
 }
 
-export default UserProfile;
+export default ProfileImage;

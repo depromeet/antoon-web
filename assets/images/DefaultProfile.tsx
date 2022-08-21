@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-const ProfileDefaultImg = ({
+const DefaultProfile = ({
   width,
   height,
 }: {
@@ -53,4 +53,4 @@ const ProfileDefaultImg = ({
   );
 };
 
-export default memo(ProfileDefaultImg);
+export default memo(DefaultProfile);

@@ -15,10 +15,10 @@ import {
   ModalContainer,
   TitleText,
   SubText,
-  BtnWrap,
-  CloseBtn,
-  SignoutBtn,
-} from './SignoutModal.style';
+  ButtonWrap,
+  CloseButton,
+  SignoutButton,
+} from '@domains/user/mypage/signout/SignoutModal.style';
 
 function SignoutModal({
   modalStatus,
@@ -31,14 +31,14 @@ function SignoutModal({
 
   const { mutate: mutateLogOut } = usePostUserLogOut();
 
-  const modalRef = useRef<HTMLDivElement>(null);
-  const innerModalRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const onClickOutSide = useCallback(
     (event: any) => {
       if (
-        modalRef.current!.contains(event.target) &&
-        !innerModalRef.current!.contains(event.target)
+        backgroundRef.current!.contains(event.target) &&
+        !containerRef.current!.contains(event.target)
       ) {
         setModalStatus(false);
       } else {
@@ -84,14 +84,14 @@ function SignoutModal({
   }, [modalStatus]);
 
   return (
-    <Background ref={modalRef}>
-      <ModalContainer ref={innerModalRef}>
+    <Background ref={backgroundRef}>
+      <ModalContainer ref={containerRef}>
         <TitleText>로그아웃</TitleText>
         <SubText>정말 로그아웃 하시겠어요?</SubText>
-        <BtnWrap>
-          <CloseBtn onClick={onClickClose}>닫기</CloseBtn>
-          <SignoutBtn onClick={onClickLogOut}>로그아웃</SignoutBtn>
-        </BtnWrap>
+        <ButtonWrap>
+          <CloseButton onClick={onClickClose}>닫기</CloseButton>
+          <SignoutButton onClick={onClickLogOut}>로그아웃</SignoutButton>
+        </ButtonWrap>
       </ModalContainer>
     </Background>
   );

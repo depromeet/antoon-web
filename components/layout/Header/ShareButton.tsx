@@ -6,16 +6,16 @@ import ShareIcon from '@assets/icons/ShareIcon';
 import shareAPI from '@utils/shareAPI';
 
 type ShareButtonProps = {
-  isHeaderPainted: boolean;
+  isPainted: boolean;
 };
 
-function ShareButton({ isHeaderPainted }: ShareButtonProps) {
+function ShareButton({ isPainted }: ShareButtonProps) {
   const router = useRouter();
   const path = router.asPath;
 
   return (
     <button onClick={() => shareAPI(path)}>
-      <ShareIcon fill={isHeaderPainted ? '#FFFFFF' : ''} />
+      <ShareIcon fill={isPainted ? '#FFFFFF' : ''} />
     </button>
   );
 }

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   useRef,
   useState,
@@ -16,10 +15,10 @@ import { SignupCoinIntroduce } from '@assets/icons';
 import {
   Background,
   ModalContainer,
-  UserName,
+  Name,
   Introduce,
-  StartBtn,
-} from './CoinModal.style';
+  StartButton,
+} from '@domains/user/signup/modal/CoinModal.style';
 
 function CoinModal({
   modalStatus,
@@ -31,7 +30,7 @@ function CoinModal({
   const modalRef = useRef<HTMLDivElement>(null);
   const innerModalRef = useRef<HTMLDivElement>(null);
 
-  const [userName, setUserName] = useState('');
+  const [userName, setName] = useState('');
 
   const { data: user } = useGetUserInformation();
 
@@ -51,7 +50,7 @@ function CoinModal({
   );
 
   useEffect(() => {
-    user && setUserName(user.name);
+    user && setName(user.name);
     document.addEventListener('mousedown', onClickOutSide);
 
     return () => {
@@ -83,14 +82,14 @@ function CoinModal({
   return (
     <Background ref={modalRef}>
       <ModalContainer ref={innerModalRef}>
-        <UserName>안녕하세요, {userName} 님!</UserName>
+        <Name>안녕하세요, {userName} 님!</Name>
         <Introduce>
           가입을 축하하는 의미로
           <br />
           30 안트코인을 지급해드렸어요!
         </Introduce>
         <SignupCoinIntroduce />
-        <StartBtn onClick={onClickStart}>시작하기</StartBtn>
+        <StartButton onClick={onClickStart}>시작하기</StartButton>
       </ModalContainer>
     </Background>
   );

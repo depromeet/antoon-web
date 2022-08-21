@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   useRef,
   useCallback,
@@ -25,7 +24,7 @@ import {
   IntroWrap,
   Divider,
   IntroduceText,
-} from './BadgeInfoModal.style';
+} from '@domains/user/mypage/badge/BadgeInfoModal.style';
 
 function BadgeInfoModal({
   modalStatus,

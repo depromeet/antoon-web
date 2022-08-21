@@ -12,11 +12,7 @@ function Ranks() {
 
   return (
     <>
-      <Header
-        headerTitle="실시간 차트"
-        headerLeft="뒤로가기"
-        headerRight="검색"
-      />
+      <Header title="실시간 차트" left="뒤로가기" right="검색" />
       <CommunityRanks />
     </>
   );

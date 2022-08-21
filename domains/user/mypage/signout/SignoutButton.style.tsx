@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const SignoutButton = styled.button`
+const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,4 +10,4 @@ const SignoutButton = styled.button`
   font-weight: 600;
 `;
 
-export { SignoutButton };
+export { Button };

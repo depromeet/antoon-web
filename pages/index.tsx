@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       {modalStatus && (
         <CoinModal modalStatus={modalStatus} setModalStatus={setModalStatus} />
       )}
-      <Header headerLeft="로고" headerRight="검색" />
+      <Header left="로고" right="검색" />
       <Modal />
       <_Home />
       <FeedbackButton />

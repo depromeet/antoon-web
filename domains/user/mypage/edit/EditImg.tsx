@@ -2,11 +2,11 @@ import { useState, ChangeEvent } from 'react';
 
 import { usePatchUserImg } from '@apis/user';
 
-import ProfileDefaultImg from '@assets/images/ProfileDefaultImg';
+import DefaultProfile from '@assets/images/DefaultProfile';
 
-import UserProfile from '@components/image/UserProfile';
+import ProfileImage from '@components/image/ProfileImage';
 
-import { UserProfileForm, UserProfileInput } from './EditImg.style';
+import { ProfileImageForm, ProfileImageInput } from './EditImg.style';
 
 import { IUser } from '@_types/user-type';
 
@@ -33,8 +33,8 @@ function EditImg({ user }: IUser) {
   };
 
   return (
-    <UserProfileForm>
-      <UserProfileInput
+    <ProfileImageForm>
+      <ProfileImageInput
         id="user-profile-input"
         type="file"
         name="image"
@@ -43,14 +43,14 @@ function EditImg({ user }: IUser) {
       />
       <label htmlFor="user-profile-input">
         {userImg ? (
-          <UserProfile src={userImg} width="100" height="100" />
+          <ProfileImage src={userImg} width="100" height="100" />
         ) : user ? (
-          <UserProfile src={user.imageUrl} width="100" height="100" />
+          <ProfileImage src={user.imageUrl} width="100" height="100" />
         ) : (
-          <ProfileDefaultImg width="100" height="100" />
+          <DefaultProfile width="100" height="100" />
         )}
       </label>
-    </UserProfileForm>
+    </ProfileImageForm>
   );
 }
 

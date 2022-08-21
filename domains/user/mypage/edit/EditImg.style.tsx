@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const UserProfileForm = styled.form`
+const ProfileImageForm = styled.form`
   position: relative;
   margin: 1.6rem auto 2.4rem;
   width: 10rem;
@@ -8,8 +8,8 @@ const UserProfileForm = styled.form`
   text-align: center;
 `;
 
-const UserProfileInput = styled.input`
+const ProfileImageInput = styled.input`
   display: none;
 `;
 
-export { UserProfileForm, UserProfileInput };
+export { ProfileImageForm, ProfileImageInput };
