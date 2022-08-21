@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 
 import Profile from '@domains/user/mypage/Profile';
 import Coin from '@domains/user/mypage/coin/Coin';
@@ -12,7 +12,7 @@ import ErrorBoundary from '@components/ErrorBoundary';
 import { MyPageWrap } from '@domains/user/mypage/MyPage.style';
 
 function MyPage() {
-  const { data: profile, isError } = useGetUserInformation();
+  const { data: profile, isError } = useGetProfile();
 
   const [coin, setCoin] = useState(0);
   const [badge, setBadge] = useState('');

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 import { usePostTopicsById } from '@apis/topics';
 
 import { AntCoinIcon, AntCoinSmallIcon } from '@assets/icons';
@@ -38,7 +38,7 @@ interface Props {
 }
 
 function Modal(props: Props) {
-  const { data: user } = useGetUserInformation();
+  const { data: user } = useGetProfile();
   const [portal, setPortal] = useState<HTMLElement | null>(null);
   const [mount, setMount] = useState(false);
   const {

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getCookie } from 'cookies-next';
 import { Mixpanel } from 'mixpanel';
 
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 
 import Header from '@components/layout/Header/Header';
 import MyPageWrap from '@domains/user/mypage/MyPage';
@@ -28,7 +28,7 @@ function MyPage() {
 
   const accessToken = getCookie('Access');
 
-  const { data: profile } = useGetUserInformation();
+  const { data: profile } = useGetProfile();
 
   const [isSignIn, setIsSignIn] = useState(false);
 

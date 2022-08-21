@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 
-import { usePatchUserImg } from '@apis/user';
+import { usePatchImage } from '@apis/user';
 
 import DefaultProfile from '@assets/images/DefaultProfile';
 
@@ -15,7 +15,7 @@ function EditImg({ user }: IUser) {
 
   const formData = new FormData();
 
-  const { mutate: mutatePatchUserImg } = usePatchUserImg(userImg);
+  const { mutate: mutatePatchProfileImage } = usePatchImage(userImg);
 
   const uploadImg = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -27,7 +27,7 @@ function EditImg({ user }: IUser) {
       reader.onloadend = () => {
         formData.append('file', file);
         setUserImg(String(reader.result));
-        mutatePatchUserImg();
+        mutatePatchProfileImage();
       };
     }
   };

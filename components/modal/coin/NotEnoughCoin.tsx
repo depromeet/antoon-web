@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react';
 
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 
 import { AntCoinBigGrayIcon, AntCoinSmallIcon } from '@assets/icons';
 
@@ -33,7 +33,7 @@ function NotEnoughCoin({
   modalStatus: boolean;
   setModalStatus: Dispatch<SetStateAction<boolean>>;
 }) {
-  const { data: profile } = useGetUserInformation();
+  const { data: profile } = useGetProfile();
 
   const [wallet, setWallet] = useState(0);
 

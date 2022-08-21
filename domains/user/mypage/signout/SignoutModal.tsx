@@ -8,7 +8,7 @@ import {
 import { useRouter } from 'next/router';
 import { removeCookies } from 'cookies-next';
 
-import { usePostUserLogOut } from '@apis/user';
+import { usePostLogout } from '@apis/user';
 
 import {
   Background,
@@ -29,7 +29,7 @@ function SignoutModal({
 }) {
   const router = useRouter();
 
-  const { mutate: mutateLogOut } = usePostUserLogOut();
+  const { mutate: mutateLogout } = usePostLogout();
 
   const backgroundRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -60,8 +60,8 @@ function SignoutModal({
     setModalStatus(false);
   };
 
-  const onClickLogOut = () => {
-    mutateLogOut();
+  const onClickLogout = () => {
+    mutateLogout();
     removeCookies('Access');
     removeCookies('Refresh');
     router.push('/');
@@ -90,7 +90,7 @@ function SignoutModal({
         <SubText>정말 로그아웃 하시겠어요?</SubText>
         <ButtonWrap>
           <CloseButton onClick={onClickClose}>닫기</CloseButton>
-          <SignoutButton onClick={onClickLogOut}>로그아웃</SignoutButton>
+          <SignoutButton onClick={onClickLogout}>로그아웃</SignoutButton>
         </ButtonWrap>
       </ModalContainer>
     </Background>

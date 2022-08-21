@@ -1,4 +1,4 @@
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 import { useGetCommentsById } from '@apis/comments';
 
 import {
@@ -33,7 +33,7 @@ function Comment({
   commentType: CommentType;
   id: number;
 }) {
-  const { data: user } = useGetUserInformation();
+  const { data: user } = useGetProfile();
   const { ref, inView } = useInView();
   const {
     data: cmmts,

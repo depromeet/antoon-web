@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 import { StockDownIcon, StockUpIcon } from '@assets/icons/StockIcon';
 import { useToast } from '@hooks/useToast';
 import {
@@ -25,7 +25,7 @@ interface Props {
 }
 
 function UpDownBtn(props: Props) {
-  const { data: user } = useGetUserInformation();
+  const { data: user } = useGetProfile();
   const { fireToast } = useToast();
 
   const handleModalClick = () => {
