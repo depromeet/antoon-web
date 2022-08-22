@@ -14,18 +14,18 @@ const UpperWrap = styled.div`
   justify-content: space-between;
 `;
 
-const UserBadgeDataWrap = styled.div`
+const BadgeDataWrap = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const BadgeName = styled.span`
+const Badge = styled.span`
   margin: 0 0 0 1rem;
   font-size: 1.6rem;
   font-weight: 600;
 `;
 
-const DefaultBadgeName = styled.span`
+const DefaultBadge = styled.span`
   margin: 0 0 0 1rem;
   color: ${(props) => props.theme.colors.grayscale.gray_600};
   font-size: 1.6rem;
@@ -44,14 +44,14 @@ const LowerWrap = styled.div<{ width: string }>`
   width: 100%;
 `;
 
-const CoinStatusWrap = styled.div<{ width: string }>`
+const CoinWrap = styled.div<{ width: string }>`
   display: ${(props) => (props.width === '0%' ? 'none' : 'flex')};
   flex-direction: column;
   align-items: flex-end;
   width: ${(props) => props.width};
 `;
 
-const CoinStatus = styled.div`
+const Coin = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,14 +72,14 @@ const ProgressBar = styled.div`
   height: 0.6rem;
 `;
 
-const BadgeStatusWrap = styled.div`
+const NextBadgeWrap = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0.8rem auto 0;
   width: 100%;
 `;
 
-const CoinStatusBar = styled.div<{ width: string }>`
+const CoinStatus = styled.div<{ width: string }>`
   z-index: 100;
   border-radius: 2.4rem;
   background-color: ${(props) => props.theme.colors.secondary.red};
@@ -87,7 +87,7 @@ const CoinStatusBar = styled.div<{ width: string }>`
   height: 0.6rem;
 `;
 
-const BadgeStatus = styled.span`
+const NextBadge = styled.span`
   color: ${(props) => props.theme.colors.grayscale.gray_700};
   font-size: 1rem;
   font-weight: 500;
@@ -96,15 +96,15 @@ const BadgeStatus = styled.span`
 export {
   BadgeWrap,
   UpperWrap,
-  UserBadgeDataWrap,
-  BadgeName,
-  DefaultBadgeName,
+  BadgeDataWrap,
+  Badge,
+  DefaultBadge,
   BadgeInfo,
   LowerWrap,
-  CoinStatusWrap,
-  CoinStatus,
+  CoinWrap,
+  Coin,
   ProgressBar,
-  CoinStatusBar,
-  BadgeStatusWrap,
-  BadgeStatus,
+  CoinStatus,
+  NextBadgeWrap,
+  NextBadge,
 };

@@ -1,26 +1,26 @@
 import { MyPageCoin } from '@assets/icons';
 
 import {
-  UserCoinWrap,
+  CoinWrap,
   CoinAmount,
-  Coin,
+  Coins,
   Text,
   TextGuide,
-} from './UserCoin.style';
+} from '@domains/user/mypage/coin/Coin.style';
 
-function UserCoin({ coin }: { coin: number }) {
+function Coin({ coin }: { coin: number }) {
   return (
-    <UserCoinWrap>
+    <CoinWrap>
       <div>
         <CoinAmount>
-          <Coin>{coin}</Coin>
+          <Coins>{coin}</Coins>
           <Text>ANT</Text>
         </CoinAmount>
         <TextGuide>보유 안트코인</TextGuide>
       </div>
       <MyPageCoin />
-    </UserCoinWrap>
+    </CoinWrap>
   );
 }
 
-export default UserCoin;
+export default Coin;

@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 
-const SigninWrap = styled.div`
+const SigninButtonWrap = styled.div`
   position: fixed;
-  bottom: 80px;
+  bottom: 8rem;
   margin: 1rem 0 0 -2.4rem;
   background-color: ${(props) => props.theme.colors.basic.white};
   padding: 0.5rem 2.4rem 2rem;
-  width: min(480px, calc(100%));
+  width: min(48rem, calc(100%));
   text-align: center;
 `;
 
-const SigninButton = styled.button`
+const Button = styled.button`
   border-radius: 1rem;
   background-color: ${(props) => props.theme.colors.grayscale.gray_1000};
   width: 100%;
@@ -20,4 +20,4 @@ const SigninButton = styled.button`
   font-weight: 600;
 `;
 
-export { SigninWrap, SigninButton };
+export { SigninButtonWrap, Button };

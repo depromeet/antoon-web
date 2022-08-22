@@ -1,28 +1,23 @@
 import { useState, useEffect } from 'react';
 
-import HeaderLeftMenu from './HeaderLeftMenu';
-import HeaderRightMenu from './HeaderRightMenu';
+import LeftButton from '@components/layout/Header/LeftButton';
+import RightButton from '@components/layout/Header/RightButton';
 
 import useScroll from '@hooks/useScroll';
 
-import { HeaderWrap, Title } from './Header.style';
+import { HeaderWrap, Title } from '@components/layout/Header/Header.style';
 
 type HeaderLeft = '로고' | '뒤로가기' | '없음';
 type HeaderRight = '검색' | '공유하기' | '없음';
 
 type HeaderProps = {
-  headerLeft: HeaderLeft;
-  headerTitle?: string | undefined;
-  headerColor?: string | undefined;
-  headerRight: HeaderRight;
+  left: HeaderLeft;
+  right: HeaderRight;
+  title?: string | undefined;
+  color?: string | undefined;
 };
 
-function Header({
-  headerLeft,
-  headerTitle,
-  headerColor,
-  headerRight,
-}: HeaderProps) {
+function Header({ left, right, title, color }: HeaderProps) {
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
@@ -31,26 +26,20 @@ function Header({
 
   const isScrolled = useScroll();
 
-  const [isHeaderPainted, setIsHeaderPainted] = useState(false);
+  const [isPainted, setIsPainted] = useState(false);
 
   useEffect(() => {
-    if (headerColor && !isScrolled) setIsHeaderPainted(true);
-    else setIsHeaderPainted(false);
-  }, [headerColor, isScrolled]);
+    if (color && !isScrolled) setIsPainted(true);
+    else setIsPainted(false);
+  }, [color, isScrolled]);
 
   return (
-    <HeaderWrap headerColor={isScrolled ? 'FFFFFF' : headerColor}>
+    <HeaderWrap color={isScrolled ? 'FFFFFF' : color}>
       {!isSSR && (
         <>
-          <HeaderLeftMenu
-            headerLeft={headerLeft}
-            isHeaderPainted={isHeaderPainted}
-          />
-          {headerTitle && <Title>{headerTitle}</Title>}
-          <HeaderRightMenu
-            headerRight={headerRight}
-            isHeaderPainted={isHeaderPainted}
-          />
+          <LeftButton left={left} isPainted={isPainted} />
+          {title && <Title>{title}</Title>}
+          <RightButton right={right} isPainted={isPainted} />
         </>
       )}
     </HeaderWrap>

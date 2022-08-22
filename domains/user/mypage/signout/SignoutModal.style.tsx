@@ -41,12 +41,12 @@ const SubText = styled.div`
   font-weight: 400;
 `;
 
-const BtnWrap = styled.div`
+const ButtonWrap = styled.div`
   display: flex;
   margin: 2.4rem auto 0;
 `;
 
-const CloseBtn = styled.button`
+const CloseButton = styled.button`
   margin: 0 0.8rem 0 0;
   border-radius: 1rem;
   background-color: ${(props) => props.theme.colors.grayscale.gray_200};
@@ -57,7 +57,7 @@ const CloseBtn = styled.button`
   font-weight: 500;
 `;
 
-const SignoutBtn = styled.button`
+const SignoutButton = styled.button`
   border-radius: 1rem;
   background-color: ${(props) => props.theme.colors.grayscale.gray_1000};
   width: 12.8rem;
@@ -72,7 +72,7 @@ export {
   ModalContainer,
   TitleText,
   SubText,
-  BtnWrap,
-  CloseBtn,
-  SignoutBtn,
+  ButtonWrap,
+  CloseButton,
+  SignoutButton,
 };

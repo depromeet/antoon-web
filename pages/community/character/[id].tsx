@@ -46,9 +46,9 @@ function CharacterDetailPage({
     <ErrorBoundary message="인물 정보를 불러오지 못하고 있어요 😭😭😭">
       <>
         <Header
-          headerLeft="뒤로가기"
-          headerRight="공유하기"
-          headerColor={characters?.backGroundColor}
+          left="뒤로가기"
+          right="공유하기"
+          color={characters?.backGroundColor}
         />
         {characters && <CharacterDetailPageWrap characters={characters} />}
         <Comment commentType="characters" id={Number(id)} />

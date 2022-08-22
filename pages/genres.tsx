@@ -12,7 +12,7 @@ function Genres() {
 
   return (
     <>
-      <Header headerTitle="장르별" headerLeft="뒤로가기" headerRight="검색" />
+      <Header title="장르별" left="뒤로가기" right="검색" />
       <GenreWebtoons />
     </>
   );

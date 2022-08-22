@@ -15,7 +15,7 @@ import {
   Favorite,
 } from './Comment.style';
 
-import UserProfile from '@components/image/UserProfile';
+import ProfileImage from '@components/image/ProfileImage';
 import FavoriteButton from '@domains/webtoon/detail/FavoriteButton';
 import CommentTextInput from '@components/detail/commentTextInput/CommentTextInput';
 import OnError from '@components/OnError';
@@ -76,7 +76,7 @@ function Comment({
             return page.data?.map((comment: IComment) => {
               return (
                 <CommentWrap key={comment.discussionId}>
-                  <UserProfile src={comment.imageUrl} width="32" height="32" />
+                  <ProfileImage src={comment.imageUrl} width="32" height="32" />
                   <MainWrap>
                     <UserInfo>
                       <Name>{comment.nickname}</Name>

@@ -1,4 +1,4 @@
-const UserBadgeIcon = ({ badge }: { badge: string }) => {
+const BadgeIcon = ({ badge }: { badge: string }) => {
   switch (badge) {
     case '거지개미':
       return (
@@ -608,4 +608,4 @@ const UserBadgeIcon = ({ badge }: { badge: string }) => {
   }
 };
 
-export default UserBadgeIcon;
+export default BadgeIcon;

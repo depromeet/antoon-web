@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const UserCoinWrap = styled.div`
+const CoinWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,7 +18,7 @@ const CoinAmount = styled.div`
   align-items: flex-end;
 `;
 
-const Coin = styled.span`
+const Coins = styled.span`
   margin: 0 0.3rem 0 0;
   font-size: 2.4rem;
   font-weight: 800;
@@ -35,4 +35,4 @@ const TextGuide = styled.div`
   font-weight: 500;
 `;
 
-export { UserCoinWrap, CoinAmount, Coin, Text, TextGuide };
+export { CoinWrap, CoinAmount, Coins, Text, TextGuide };

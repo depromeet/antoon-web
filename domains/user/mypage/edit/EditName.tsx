@@ -5,7 +5,7 @@ import DeleteIcon from '@assets/icons/DeleteIcon';
 import { useRouter } from 'next/router';
 import { useState, useCallback, useEffect } from 'react';
 
-import { usePatchUserName } from '@apis/user';
+import { usePatchName } from '@apis/user';
 
 import {
   InputWrap,
@@ -40,7 +40,7 @@ function EditName({ user }: IUser) {
     setName('');
   }, []);
 
-  const { mutate: mutateName } = usePatchUserName(name);
+  const { mutate: mutateName } = usePatchName(name);
 
   const onClickEditName = () => {
     if (!isError) {

@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 
 import { useGetUserInformation } from '@apis/user';
 
-import UserData from './UserData';
-import UserCoin from './UserCoin';
-import UserBadge from './UserBadge';
+import Profile from '@domains/user/mypage/Profile';
+import Coin from '@domains/user/mypage/coin/Coin';
+import Badge from '@domains/user/mypage/badge/Badge';
 
 import OnError from '@components/OnError';
 import ErrorBoundary from '@components/ErrorBoundary';
 
-import { MyPageWrap } from './MyPage.style';
+import { MyPageWrap } from '@domains/user/mypage/MyPage.style';
 
 function MyPage() {
   const { data: profile, isError } = useGetUserInformation();
@@ -28,9 +28,9 @@ function MyPage() {
   return (
     <ErrorBoundary message="사용자 정보를 불러오지 못하고 있어요 😭😭😭">
       <MyPageWrap>
-        <UserData profile={profile} />
-        <UserCoin coin={coin} />
-        <UserBadge coin={coin} badge={badge} />
+        <Profile profile={profile} />
+        <Coin coin={coin} />
+        <Badge coin={coin} badge={badge} />
       </MyPageWrap>
     </ErrorBoundary>
   );

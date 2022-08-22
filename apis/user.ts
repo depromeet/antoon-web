@@ -44,32 +44,32 @@ const usePostUserLogOut = () => {
   });
 };
 
-const patchUserName = async (userName: string) => {
+const patchName = async (name: string) => {
   return await instance()
     .patch('users/names', {
-      name: userName,
+      name: name,
     })
     .catch((e) => console.log(e));
 };
 
-const usePatchUserName = (userName: string) => {
+const usePatchName = (name: string) => {
   const queryClient = useQueryClient();
-  return useMutation(user.updateName(userName), () => patchUserName(userName), {
+  return useMutation(user.updateName(name), () => patchName(name), {
     onSuccess: () => queryClient.invalidateQueries('user'),
   });
 };
 
-const patchUserImg = async (userImg: string) => {
+const patchUserImg = async (image: string) => {
   return await instance()
-    .patch('users/images', userImg, {
+    .patch('users/images', image, {
       headers: { 'Content-Type': 'multipart/form-data' },
     })
     .catch((e) => console.log(e));
 };
 
-const usePatchUserImg = (userImg: string) => {
+const usePatchUserImg = (image: string) => {
   const queryClient = useQueryClient();
-  return useMutation(user.updateImg(userImg), () => patchUserImg(userImg), {
+  return useMutation(user.updateImg(image), () => patchUserImg(image), {
     onSuccess: () => queryClient.invalidateQueries('user'),
   });
 };
@@ -78,7 +78,7 @@ export {
   useGetUserInformation,
   usePostToken,
   usePostUserLogOut,
-  patchUserName,
-  usePatchUserName,
+  patchName,
+  usePatchName,
   usePatchUserImg,
 };

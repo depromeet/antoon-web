@@ -39,7 +39,7 @@ function SignIn() {
 
   return (
     <>
-      <Header headerLeft="뒤로가기" headerRight="없음" headerColor="1C1C1C" />
+      <Header left="뒤로가기" right="없음" color="1C1C1C" />
       <SignInWrap>
         <Intro />
         <BtnWrap>

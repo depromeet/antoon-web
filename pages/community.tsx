@@ -22,7 +22,7 @@ function Community() {
 
   return (
     <>
-      <Header headerTitle="커뮤니티" headerLeft="없음" headerRight="검색" />
+      <Header title="커뮤니티" left="없음" right="검색" />
       <HomeRealtimeChartWrapper style={{ paddingTop: '0.8rem' }}>
         <RealTimeChart page="community" />
       </HomeRealtimeChartWrapper>

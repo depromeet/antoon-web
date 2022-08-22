@@ -28,7 +28,7 @@ const ModalContainer = styled.div`
   text-align: center;
 `;
 
-const UserName = styled.p`
+const Name = styled.p`
   margin: 0 0 0.6rem;
   line-height: 2.3rem;
   color: ${(props) => props.theme.colors.grayscale.gray_1000};
@@ -44,7 +44,7 @@ const Introduce = styled.p`
   font-weight: 400;
 `;
 
-const StartBtn = styled.button`
+const StartButton = styled.button`
   margin: 3.2rem 0 0;
   border-radius: 1rem;
   background-color: ${(props) => props.theme.colors.grayscale.gray_1000};
@@ -54,4 +54,4 @@ const StartBtn = styled.button`
   font-size: 1.6rem;
 `;
 
-export { Background, ModalContainer, UserName, Introduce, StartBtn };
+export { Background, ModalContainer, Name, Introduce, StartButton };
