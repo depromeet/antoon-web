@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { user } from './queryKeys';
 import { instance } from './api';
 
-const postToken = async (refreshToken: string) => {
+const postTokenReIssue = async (refreshToken: string) => {
   return await instance()
     .post(
       'auth/refresh',
@@ -16,30 +16,32 @@ const postToken = async (refreshToken: string) => {
     .catch((e) => console.log(e));
 };
 
-const usePostToken = (refreshToken: string) => {
-  return useQuery(user.delete(refreshToken), () => postToken(refreshToken));
+const usePostTokenReIssue = (refreshToken: string) => {
+  return useQuery(user.tokenReIssue(refreshToken), () =>
+    postTokenReIssue(refreshToken),
+  );
 };
 
-const getUserInformation = async () => {
+const getProfile = async () => {
   return await instance()
     .get('users')
     .then((res) => res.data)
     .catch((e) => console.log(e));
 };
 
-const useGetUserInformation = () => {
-  return useQuery(user.information(), () => getUserInformation());
+const useGetProfile = () => {
+  return useQuery(user.profile(), () => getProfile());
 };
 
-const postUserLogOut = async () => {
+const postLogout = async () => {
   return await instance()
     .post('auth/logout')
     .catch((e) => console.log(e));
 };
 
-const usePostUserLogOut = () => {
+const usePostLogout = () => {
   const queryClient = useQueryClient();
-  return useMutation(user.logout(), () => postUserLogOut(), {
+  return useMutation(user.logout(), () => postLogout(), {
     onSuccess: () => queryClient.invalidateQueries('user'),
   });
 };
@@ -59,7 +61,7 @@ const usePatchName = (name: string) => {
   });
 };
 
-const patchUserImg = async (image: string) => {
+const patchImage = async (image: string) => {
   return await instance()
     .patch('users/images', image, {
       headers: { 'Content-Type': 'multipart/form-data' },
@@ -67,18 +69,29 @@ const patchUserImg = async (image: string) => {
     .catch((e) => console.log(e));
 };
 
-const usePatchUserImg = (image: string) => {
+const usePatchImage = (image: string) => {
   const queryClient = useQueryClient();
-  return useMutation(user.updateImg(image), () => patchUserImg(image), {
+  return useMutation(user.updateImage(image), () => patchImage(image), {
     onSuccess: () => queryClient.invalidateQueries('user'),
   });
 };
 
+const getCoins = async () => {
+  return await instance()
+    .get('coins/history')
+    .then((res) => res.data)
+    .catch((e) => console.log(e));
+};
+
+const useGetCoins = () => {
+  return useQuery(user.coins(), () => getCoins());
+};
+
 export {
-  useGetUserInformation,
-  usePostToken,
-  usePostUserLogOut,
-  patchName,
+  useGetProfile,
+  usePostTokenReIssue,
+  usePostLogout,
   usePatchName,
-  usePatchUserImg,
+  usePatchImage,
+  useGetCoins,
 };

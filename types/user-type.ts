@@ -15,3 +15,12 @@ export interface IProfile {
     imageUrl: string;
   };
 }
+
+export interface ICoins {
+  amount: number;
+  date: string;
+  reason: string;
+  remittanceType: string;
+  status: string;
+  wallet: number;
+}

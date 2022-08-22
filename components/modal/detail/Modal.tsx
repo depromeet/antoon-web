@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 import { usePatchJoinLeaveRecommendationById } from '@apis/webtoons';
 import { AntCoinBigIcon, AntCoinSmallIcon } from '@assets/icons';
 import { useToast } from '@hooks/useToast';
@@ -43,7 +43,7 @@ function Modal({
   onClose: Function;
   onRecommendSet: Function;
 }) {
-  const { data: user } = useGetUserInformation();
+  const { data: user } = useGetProfile();
   const [portal, setPortal] = useState<HTMLElement | null>(null);
   const [mount, setMount] = useState(false);
   const isVoting = false;

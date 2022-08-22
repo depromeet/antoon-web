@@ -72,12 +72,12 @@ const comments = {
 
 const user = {
   all: ['user'],
-  tokens: (refreshToken: string) => [...user.all, 'tokens', refreshToken],
-  delete: (refreshToken: string) => [...user.all, 'delete', refreshToken],
-  information: () => [...user.all, 'information'],
+  tokenReIssue: (token: string) => [...user.all, 'tokenReIssue', token],
+  profile: () => [...user.all, 'profile'],
   logout: () => [...user.all, 'logout'],
-  updateName: (userName: string) => [...user.all, 'update', userName],
-  updateImg: (userImg: string) => [...user.all, 'update', userImg],
+  updateName: (name: string) => [...user.all, 'updateName', name],
+  updateImage: (image: string) => [...user.all, 'updateImage', image],
+  coins: () => [...user.all, 'coins'],
 };
 
 const graph = {

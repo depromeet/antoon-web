@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 
 import { ArrowRight } from '@assets/icons';
 import { StockUpIcon } from '@assets/icons/StockIcon';
@@ -37,7 +37,7 @@ import {
 import { CharacterInfo } from '@_types/webtoon-type';
 
 function CharacterDetailPage({ characters }: { characters: CharacterInfo }) {
-  const { data: profile } = useGetUserInformation();
+  const { data: profile } = useGetProfile();
 
   const [wallet, setWallet] = useState(0);
 

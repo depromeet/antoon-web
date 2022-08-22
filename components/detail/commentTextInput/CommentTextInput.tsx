@@ -12,7 +12,7 @@ import {
 } from '@components/detail/commentTextInput/CommentTextInput.style';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 import { usePostCommentsById } from '@apis/comments';
 import LoadingSpinner from '@components/spinner/LoadingSpinner';
 import OnError from '@components/OnError';
@@ -25,7 +25,7 @@ interface Props {
 }
 
 function CommentTextInput(props: Props) {
-  const { data: user, isError } = useGetUserInformation();
+  const { data: user, isError } = useGetProfile();
   const MAX_LENGTH_CONTENT = 300;
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);

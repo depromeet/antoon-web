@@ -16,6 +16,7 @@ const CoinWrap = styled.div`
 const CoinAmount = styled.div`
   display: flex;
   align-items: flex-end;
+  cursor: pointer;
 `;
 
 const Coins = styled.span`
@@ -29,10 +30,14 @@ const Text = styled.span`
   font-weight: 700;
 `;
 
+const ButtonWrap = styled.div`
+  margin: 0 0 0 0.5rem;
+`;
+
 const TextGuide = styled.div`
   margin: 0.2rem 0 0;
   font-size: 1rem;
   font-weight: 500;
 `;
 
-export { CoinWrap, CoinAmount, Coins, Text, TextGuide };
+export { CoinWrap, CoinAmount, Coins, Text, ButtonWrap, TextGuide };

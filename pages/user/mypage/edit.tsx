@@ -5,7 +5,7 @@ import { Mixpanel } from 'mixpanel';
 
 import DefaultProfile from '@assets/images/DefaultProfile';
 
-import { useGetUserInformation } from '@apis/user';
+import { useGetProfile } from '@apis/user';
 
 import Header from '@components/layout/Header/Header';
 import OnError from '@components/OnError';
@@ -28,7 +28,7 @@ function Edit() {
     if (!accessToken) router.push('/user/mypage');
   }, [accessToken, router]);
 
-  const { data: user, isError } = useGetUserInformation();
+  const { data: user, isError } = useGetProfile();
 
   if (isError) return <OnError>로그인이 필요합니다.</OnError>;
 
