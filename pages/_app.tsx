@@ -11,9 +11,15 @@ import GlobalStyle from '@styles/GlobalStyle';
 import Layout from '@components/layout/Layout';
 import Script from 'next/script';
 import ToastList from '@components/toast/ToastList';
+import useGaPageView from '@hooks/useGaPageView';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function MyApp({ Component, pageProps }: any) {
+  const GA_KEY = process.env.NEXT_PUBLIC_GA_KEY;
+  const isPrd = process.env.NEXT_PUBLIC_ENV === 'prd';
+
+  useGaPageView();
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -47,22 +53,39 @@ function MyApp({ Component, pageProps }: any) {
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Script
-        id="hotjar"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:2991740,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-          `,
-        }}
-      />
+      {isPrd && (
+        <>
+          <Script
+            id="hotjar"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(h,o,t,j,a,r){
+                  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                  h._hjSettings={hjid:2991740,hjsv:6};
+                  a=o.getElementsByTagName('head')[0];
+                  r=o.createElement('script');r.async=1;
+                  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                  a.appendChild(r);
+                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+              `,
+            }}
+          />
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_KEY}`}
+            strategy="afterInteractive"
+          ></Script>
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              gtag('config', ${GA_KEY});  
+            `}
+          </Script>
+        </>
+      )}
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <RecoilRoot>

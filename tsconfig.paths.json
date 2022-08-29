@@ -9,6 +9,7 @@
         "@constants/*": ["constants/*"],
         "@domains/*": ["domains/*"],
         "@hooks/*": ["hooks/*"],
+        "@lib/*": ["lib/*"],
         "@pages/*": ["pages/*"],
         "@public/*": ["public/*"],
         "@states/*": ["states/*"],
