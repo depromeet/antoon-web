@@ -52,17 +52,13 @@ const comments = {
     id,
     content,
   ],
-  patch: (commentType: CommentType, id: number, content: string) => [
+  patch: (id: number, content: string) => [
     ...comments.all,
     'patch',
     id,
     content,
   ],
-  delete: (commentType: CommentType, id: number) => [
-    ...comments.all,
-    'delete',
-    id,
-  ],
+  delete: (id: number) => [...comments.all, 'delete', id],
   isLiked: (commentType: CommentType, id: number) => [
     ...comments.all,
     'isLiked',

@@ -87,7 +87,7 @@ const usePatchCommentsById = (id: number, content: string) => {
     comments.patch(id, content),
     () => patchCommentsById(id, content),
     {
-      onSuccess: () => queryClient.invalidateQueries(comments.lists(id)),
+      onSuccess: () => queryClient.invalidateQueries('comments'),
     },
   );
 };
@@ -101,7 +101,7 @@ const deleteCommentsById = async (id: number) => {
 const useDeleteCommentsById = (id: number) => {
   const queryClient = useQueryClient();
   return useMutation(comments.delete(id), () => deleteCommentsById(id), {
-    onSuccess: () => queryClient.invalidateQueries(comments.lists(id)),
+    onSuccess: () => queryClient.invalidateQueries('comments'),
   });
 };
 
