@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }: any) {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               
-              gtag('config', ${GA_KEY});  
+              gtag('config', '${GA_KEY}');  
             `}
           </Script>
         </>
