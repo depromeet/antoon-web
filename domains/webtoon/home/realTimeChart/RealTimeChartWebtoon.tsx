@@ -104,7 +104,7 @@ function RealTimeChart() {
               <RealTimeChartInformationWrapper>
                 <RealTimeChartTitle>{webtoon.title}</RealTimeChartTitle>
                 <RealTimeChartAuthor>
-                  {webtoon.writers.map((writer) => writer.name)}
+                  {webtoon.writers.map((writer) => writer.name).join(', ')}
                 </RealTimeChartAuthor>
               </RealTimeChartInformationWrapper>
               <RealTimeChartScoreWrapper>

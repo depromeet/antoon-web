@@ -42,6 +42,7 @@ function Rising() {
               width={120}
               height={120}
               layout="fixed"
+              objectFit="cover"
             />
             <RisingInformationWrapper>
               <RisingTitle>{webtoon.title}</RisingTitle>

@@ -50,8 +50,10 @@ function RealTimeChartCharacters(props: Props) {
         style={{
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
           width: '100%',
           paddingLeft: '1rem',
+          height: 204,
         }}
       >
         <LoadingSpinner />
