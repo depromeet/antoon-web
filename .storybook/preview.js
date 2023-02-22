@@ -1,6 +1,5 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { Global, css } from '@emotion/react';
-import { ThemeProvider } from 'emotion-theming';
+import { Global, css, ThemeProvider } from '@emotion/react';
 
 import themes from '@styles/themes/themes';
 
