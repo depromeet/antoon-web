@@ -17,12 +17,17 @@ module.exports = {
     storyStoreV7: true,
   },
   framework: '@storybook/react',
+  core: {
+    builder: 'webpack5',
+  },
   webpackFinal: async (config) => {
-    config.resolve.plugins.push(
+    config.resolve.plugins = [
+      ...(config.resolve.plugins || []),
       new TsconfigPathsPlugin({
         configFile: path.resolve(__dirname, '../tsconfig.json'),
+        extensions: config.resolve.extensions,
       }),
-    );
+    ];
 
     config.module.rules.unshift({
       test: /\.svg$/,
