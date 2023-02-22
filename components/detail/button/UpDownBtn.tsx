@@ -5,6 +5,7 @@ import { useToast } from '@hooks/useToast';
 import {
   UpDownBtnWrapper,
   UpDownBtnTitle,
+  UpDownBtnTitleIconWrapper,
   UpDownBtnSub,
 } from './UpDownBtn.style';
 
@@ -42,14 +43,14 @@ function UpDownBtn(props: Props) {
       <UpDownBtnWrapper status={props.upDownStatus} onClick={handleModalClick}>
         <UpDownBtnTitle>
           {props.upDownStatus === 'JOIN' && (
-            <span>
+            <UpDownBtnTitleIconWrapper>
               <StockUpIcon /> {'탑승하기'}
-            </span>
+            </UpDownBtnTitleIconWrapper>
           )}
           {props.upDownStatus === 'LEAVE' && (
-            <span>
+            <UpDownBtnTitleIconWrapper>
               <StockDownIcon /> {'하차하기'}
-            </span>
+            </UpDownBtnTitleIconWrapper>
           )}
         </UpDownBtnTitle>
         <UpDownBtnSub>

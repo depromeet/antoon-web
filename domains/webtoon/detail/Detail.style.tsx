@@ -6,18 +6,17 @@ const DetailWrapper = styled.div`
   background-position: center top;
   background-size: 100%;
   width: 100%;
-  min-width: 320px;
 `;
 
 const Container = styled.div`
   width: 100%;
-  min-width: 320px;
   height: 100%;
 `;
 
 const DetailContents = styled.section`
   display: block;
   background: #fff;
+  overflow-x: hidden;
 `;
 
 const DetailMain = styled.div`
