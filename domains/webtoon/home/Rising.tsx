@@ -21,7 +21,7 @@ function Rising() {
     getWebtoonsRising,
   );
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return <LoadingSpinner height={184.5} />;
 
   if (
     data === undefined ||

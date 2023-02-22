@@ -81,7 +81,7 @@ function Genres() {
     getWebtoonsGenresTop3,
   );
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return <LoadingSpinner height={115} />;
 
   if (
     data === undefined ||

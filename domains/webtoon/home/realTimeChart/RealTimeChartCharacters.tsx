@@ -44,21 +44,7 @@ function RealTimeChartCharacters(props: Props) {
     setIsSSR(false);
   }, []);
 
-  if (isLoading)
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          paddingLeft: '1rem',
-          height: 204,
-        }}
-      >
-        <LoadingSpinner />
-      </div>
-    );
+  if (isLoading) return <LoadingSpinner height={204} />;
 
   if (
     data === undefined ||

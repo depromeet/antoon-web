@@ -1,10 +1,19 @@
+import styled from '@emotion/styled';
 import MoonLoader from 'react-spinners/MoonLoader';
 
-function LoadingSpinner() {
+const Wrapper = styled.div<{ height?: number }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: ${(props) => props.height}px;
+`;
+
+function LoadingSpinner({ height }: { height?: number }) {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+    <Wrapper height={height}>
       <MoonLoader size={20} />
-    </div>
+    </Wrapper>
   );
 }
 

@@ -30,7 +30,7 @@ function TopicCards() {
 
   const { data, isLoading, isError } = useGetTopicsChoices();
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return <LoadingSpinner height={124} />;
 
   if (
     data === undefined ||

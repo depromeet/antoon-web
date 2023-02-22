@@ -30,19 +30,7 @@ function RealTimeChart() {
     setIsSSR(false);
   }, []);
 
-  if (isLoading)
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          width: '100%',
-          paddingLeft: '1rem',
-        }}
-      >
-        <LoadingSpinner />
-      </div>
-    );
+  if (isLoading) return <LoadingSpinner height={204} />;
 
   if (
     data === undefined ||
