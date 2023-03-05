@@ -5,11 +5,11 @@
     <p align="center">웹툰의 새로운 덕질 문화</p>
     <br />
     <p align="center">
-        <a href="https://antoon.fun/">View Demo</a>
+        <a href="https://antoon.fun/">Website</a>
         ·
-        <a href="https://github.com/depromeet/antoon-web/issues">Report Bug</a>
+        <a href="https://www.behance.net/gallery/147262623/-ANTOON-l-Webtoon-Community-Service">Behance</a>
         ·
-        <a href="https://github.com/depromeet/antoon-web/issues">Request Feature</a>
+        <a href="https://drive.google.com/file/d/1J30Z5vs2Jlx8OGZ0VOXDe_OWeZuw1dia/view?usp=share_link">Final Presentation</a>
     </p align="center">
 </p>
 
